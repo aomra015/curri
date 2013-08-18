@@ -1,0 +1,6 @@
+<div class="col-md-12 btn btn-primary btn-lg btn-block">
+
+<%= checkpoint.content %>
+<%= hidden_field_tag "checkpoints[checkpoint_#{checkpoint.id}][:id]]", checkpoint.id %>
+<%= select_tag("checkpoints[checkpoint_#{checkpoint.id}][:score]]", options_for_select([0,1,2])) %>
+</div>
