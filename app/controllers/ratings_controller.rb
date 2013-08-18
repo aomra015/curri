@@ -8,6 +8,6 @@ class RatingsController < ApplicationController
       rating = checkpoint.ratings.create(score: checkpoint_hash[":score"].to_i)
     end
 
-     redirect_to tracks_path
+     redirect_to tracks_path, notice: 'Survey registered!'
   end
 end

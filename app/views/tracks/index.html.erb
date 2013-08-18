@@ -2,3 +2,8 @@
 <div class="row">
 <%= render @tracks %>
 </div>
+
+<h2>Sample Graph for First Track</h2>
+<div class="row">
+  <%= content_tag :div, "", id: "tracks_chart", data: {ratings: ratings_data} %>
+</div>
