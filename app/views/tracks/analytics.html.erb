@@ -11,13 +11,14 @@
         </h4>
         <div class="progress">
           <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score %>%"></div>
-          <div class="progress-bar progress-bar-info" style="width: <%= checkpoint.one_score %>%"></div>
+          <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.one_score %>%"></div>
           <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score %>%"></div>
         </div>
       </div>
 
       <div class="col-md-3 ratings-count">
-        <p><%= checkpoint.ratings.count %> Responses</p>
+        <div class= "count-number"><%= checkpoint.ratings.count %></div>
+        <p><%="response".pluralize(checkpoint.ratings.count) %></p>
       </div>
     </div>
   <% end %>
