@@ -10,13 +10,13 @@ js_track = Track.create(name: "JavaScript Basics")
 jq_track = Track.create(name: "jQuery Basics")
 
 js_track.checkpoints.create([
-  {content: "What is Javascript & what is it used for?"},
+  {content: "What is JavaScript & what is it used for?"},
   {content: "Client side vs. Server side"},
   {content: "Assigning variables"},
   {content: "Naming conventions for variables"},
   {content: "Using Variables"},
   {content: "Primitive types: Strings, Numbers, Booleans"},
-  {content: "Object(the hash), Array(special case of object)"},
+  {content: "Object (the hash), Array (special case of object)"},
   {content: "Statements"},
   {content: "Defining functions/methods"},
   {content: "Calling functions/methods"},
