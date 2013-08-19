@@ -5,6 +5,7 @@ class RatingsController < ApplicationController
       unless no_score_selected?(checkpoint_hash)
         checkpoint = Checkpoint.find(checkpoint_hash[":id"])
         score = get_score(checkpoint_hash[":score"])
+        session["checkpoint_#{checkpoint.id}"] = score
         rating = checkpoint.ratings.create(score: score)
       end
     end
