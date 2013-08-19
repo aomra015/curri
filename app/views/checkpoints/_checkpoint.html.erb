@@ -5,16 +5,8 @@
     </h4>
   </div>
 
-  <div class="col-md-4">
-    <div class="progress">
-      <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score %>%"></div>
-      <div class="progress-bar progress-bar-info" style="width: <%= checkpoint.one_score %>%"></div>
-      <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score %>%"></div>
-    </div>
-  </div>
-
-  <div class="col-md-2 checkpoint-score-select">
-    <%= hidden_field_tag "checkpoints[checkpoint_#{checkpoint.id}][:id]]", checkpoint.id %>
-    <%= select_tag("checkpoints[checkpoint_#{checkpoint.id}][:score]]", options_for_select([0,1,2])) %>
+  <div class="col-md-6 checkpoint-score-select">
+    <%= hidden_field_tag checkpoint_hidden_tag_name(checkpoint), checkpoint.id %>
+    <%= select_tag(checkpoint_select_tag_name(checkpoint), options_for_select(checkpoint.options)) %>
   </div>
 </div>
