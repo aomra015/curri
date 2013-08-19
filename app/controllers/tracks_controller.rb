@@ -4,6 +4,10 @@ class TracksController < ApplicationController
     @tracks = Track.all
   end
 
+  def analytics
+    @tracks = Track.all
+  end
+
   private
   def track_params
     params.require(:track).permit(:name)

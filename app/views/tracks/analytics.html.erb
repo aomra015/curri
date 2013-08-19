@@ -1,0 +1,26 @@
+<% @tracks.each do |track| %>
+
+<div class="well">
+  <h1><%= track.name %></h1>
+
+  <% track.checkpoints.each do |checkpoint| %>
+    <div class="row">
+      <div class="col-md-9">
+        <h4>
+        <%= checkpoint.content %>
+        </h4>
+        <div class="progress">
+          <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score %>%"></div>
+          <div class="progress-bar progress-bar-info" style="width: <%= checkpoint.one_score %>%"></div>
+          <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score %>%"></div>
+        </div>
+      </div>
+
+      <div class="col-md-3 ratings-count">
+        <p><%= checkpoint.ratings.count %> Responses</p>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% end %>

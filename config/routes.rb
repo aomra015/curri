@@ -1,7 +1,11 @@
 Curry::Application.routes.draw do
 
   root to: 'tracks#index'
-  resources :tracks
+  resources :tracks do
+    collection do
+      get 'analytics'
+    end
+  end
   resources :checkpoints
   resources :ratings do
     collection do

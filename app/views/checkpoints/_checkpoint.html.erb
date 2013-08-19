@@ -7,11 +7,9 @@
 
   <div class="col-md-4">
     <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="<%= checkpoint.overall_score %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= checkpoint.overall_score %>%;">
-      <% if checkpoint.overall_score > 5 %>
-      <%= checkpoint.overall_score %> %
-      <% end %>
-      </div>
+      <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score %>%"></div>
+      <div class="progress-bar progress-bar-info" style="width: <%= checkpoint.one_score %>%"></div>
+      <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score %>%"></div>
     </div>
   </div>
 
