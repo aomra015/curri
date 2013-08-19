@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-js_track = Track.create(name: "Javscript Basics")
+js_track = Track.create(name: "JavaScript Basics")
 jq_track = Track.create(name: "jQuery Basics")
 
 js_track.checkpoints.create([
