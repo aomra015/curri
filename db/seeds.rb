@@ -6,36 +6,26 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-js_track = Track.create(name: "JavaScript Basics")
-jq_track = Track.create(name: "jQuery Basics")
+js_track = Track.create(name: "jQuery UI Autocomplete")
+api_track = Track.create(name: "API Building")
 
 js_track.checkpoints.create([
-  {content: "What is JavaScript & what is it used for?"},
-  {content: "Client side vs. Server side"},
-  {content: "Assigning variables"},
-  {content: "Naming conventions for variables"},
-  {content: "Using Variables"},
-  {content: "Primitive types: Strings, Numbers, Booleans"},
-  {content: "Object (the hash), Array (special case of object)"},
-  {content: "Statements"},
-  {content: "Defining functions/methods"},
-  {content: "Calling functions/methods"},
-  {content: "Flow Control (if statements)"},
-  {content: "Looping (for, while)"}
+  {content: "Installing a JS library"},
+  {content: "Selecting elements"},
+  {content: "Using jQuery UI widgets"},
+  {content: "Using an array source for autocomplete"},
+  {content: "Using a remote source for autocomplete"},
+  {content: "Using a remote function source for autocomplete"},
+  {content: "Sending Ajax requests"},
+  {content: "Parsing JSON results"}
   ])
 
-jq_track.checkpoints.create([
-  {content: "What is jQuery?"},
-  {content: "Why use jQuery? (problems it solves)"},
-  {content: "What is the DOM?"},
-  {content: "Finding elements in the DOM"},
-  {content: "Event binding (doing certain actions based on events, e.g., a mouse click)"},
-  {content: "Creating an element (div, image, etc.)"},
-  {content: "Changing the CSS of an element"},
-  {content: "Adding classes to an element"},
-  {content: "Hiding and showing elements"},
-  {content: "Appending html/text to an element"},
-  {content: "Appending an element to another"}
+api_track.checkpoints.create([
+  {content: "What are formats?"},
+  {content: "What is JSON?"},
+  {content: "How to request a specific a format"},
+  {content: "respond_with"},
+  {content: "respond_to"}
   ])
 
 
