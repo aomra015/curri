@@ -1,8 +1,10 @@
+<h1>Analytics</h1>
 <% @tracks.each do |track| %>
 
 <div class="well">
-  <h1><%= track.name %></h1>
-
+  <div class="row header-row">
+    <h1><%= track.name %></h1>
+  </div>
   <% track.checkpoints.each do |checkpoint| %>
     <div class="row">
       <div class="col-md-9">

@@ -1,5 +1,7 @@
 <div class="well">
-  <h2><%= track.name %></h2>
+  <div class="row header-row">
+    <h1><%= track.name %></h1>
+  </div>
   <%= form_tag add_ratings_path do %>
     <%= hidden_field_tag "track_id", track.id %>
     <%= render track.checkpoints %>
