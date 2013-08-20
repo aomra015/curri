@@ -4,7 +4,7 @@
   </div>
   <%= form_tag add_ratings_path do %>
     <%= hidden_field_tag "track_id", track.id %>
-    <%= render track.checkpoints %>
+    <%= render track.checkpoints.order(id: :asc) %>
     <div class="row">
       <div class="col-md-6"></div>
       <div class="col-md-6"><%= submit_tag 'Take survey', class: 'btn btn-sm btn-success' %></div>
