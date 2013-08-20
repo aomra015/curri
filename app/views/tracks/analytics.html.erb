@@ -1,5 +1,9 @@
-<% @tracks.each do |track| %>
+<%= form_tag scope_analytics_tracks_path do %>
+  Display results from <%= text_field_tag :start_at %> hours ago to <%= text_field_tag :end_at %> hours ago
+  <%= submit_tag "Scope it" %>
+<% end %>
 
+<% @tracks.each do |track| %>
 <div class="well">
   <h1><%= track.name %></h1>
 
@@ -10,18 +14,24 @@
         <%= checkpoint.content %>
         </h4>
         <div class="progress">
-          <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score %>%"></div>
-          <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.one_score %>%"></div>
-          <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score %>%"></div>
+          <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score(@start_time, @end_time) %>%"></div>
+          <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.one_score(@start_time, @end_time) %>%"></div>
+          <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score(@start_time, @end_time) %>%"></div>
         </div>
       </div>
 
       <div class="col-md-3 ratings-count">
-        <div class= "count-number"><%= checkpoint.ratings.count %></div>
-        <p><%="response".pluralize(checkpoint.ratings.count) %></p>
+        <div class= "count-number"><%= checkpoint.ratings_count(@start_time, @end_time) %></div>
+        <p><%="response".pluralize(checkpoint.ratings_count(@start_time, @end_time)) %></p>
       </div>
     </div>
   <% end %>
 </div>
 
 <% end %>
+
+
+<h2>Average rating over class (example: first track)</h2>
+<div class="row">
+  <%= content_tag :div, "", id: "tracks_chart", data: {ratings: ratings_data} %>
+</div>

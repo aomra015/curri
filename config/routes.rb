@@ -4,6 +4,7 @@ Curry::Application.routes.draw do
   resources :tracks do
     collection do
       get 'analytics'
+      post 'scope_analytics'
     end
   end
   resources :checkpoints

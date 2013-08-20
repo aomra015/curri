@@ -8,5 +8,5 @@ jQuery ->
     data: $('#tracks_chart').data('ratings')
     xkey: 'checkpoint'
     ykeys: ['class_score']
-    labels: ['Class score']
+    labels: ['Class Rating']
     postUnits: '%'
