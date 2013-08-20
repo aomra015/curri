@@ -10,11 +10,12 @@
 
 </head>
 <body>
+  <%= render "shared/header" %>
+  <div class="container">
   <% if notice %>
     <p class="notice alert alert-success"><%= notice %></p>
   <% end %>
 
-  <div class="container">
   <%= yield %>
   </div>
 
