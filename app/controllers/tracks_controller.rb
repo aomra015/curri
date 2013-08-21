@@ -15,8 +15,8 @@ class TracksController < ApplicationController
     start_at = params[:start_at].to_i
     end_at = params[:end_at].to_i
 
-    @start_time = now - start_at*60*60
-    @end_time = now - end_at*60*60
+    @start_time = now - start_at*60
+    @end_time = now - end_at*60
     @tracks = Track.all
     render :analytics
   end
