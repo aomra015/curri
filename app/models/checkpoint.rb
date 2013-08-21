@@ -2,11 +2,6 @@ class Checkpoint < ActiveRecord::Base
   belongs_to :track
   has_many :ratings
 
-
-  def options
-    ["Rate your understanding", "Don't Understand","Feel Comfortable","Totally Understand"]
-  end
-
   def overall_score
     if self.ratings.any?
       self.ratings.sum(:score) * 50 / self.ratings.size

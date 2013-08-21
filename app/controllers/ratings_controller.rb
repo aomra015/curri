@@ -15,16 +15,16 @@ class RatingsController < ApplicationController
 
   private
   def no_score_selected?(checkpoint_hash)
-    checkpoint_hash[":score"] == "Rate your understanding"
+    checkpoint_hash[":score"] == Rating::OPTIONS[0]
   end
 
   def get_score(score_string)
     case score_string
-    when "Don't Understand"
+    when Rating::OPTIONS[1]
       score = 0
-    when "Feel Comfortable"
+    when Rating::OPTIONS[2]
       score = 1
-    when "Totally Understand"
+    when Rating::OPTIONS[3]
       score = 2
     end
     score

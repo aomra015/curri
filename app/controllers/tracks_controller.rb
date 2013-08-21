@@ -6,8 +6,9 @@ class TracksController < ApplicationController
 
   def analytics
     @tracks = Track.all
-    @start_time = Rating.first.created_at
-    @end_time = Time.zone.now
+    now = Time.zone.now
+    @start_time = Rating.first.try(:created_at) || now
+    @end_time = now
   end
 
   def scope_analytics

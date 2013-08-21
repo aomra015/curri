@@ -7,7 +7,7 @@
 
   <div class="col-md-5 checkpoint-score-select">
     <%= hidden_field_tag checkpoint_hidden_tag_name(checkpoint), checkpoint.id %>
-    <%= select_tag(checkpoint_select_tag_name(checkpoint), options_for_select(checkpoint.options)) %>
+    <%= select_tag(checkpoint_select_tag_name(checkpoint), options_for_select(Rating::OPTIONS)) %>
   </div>
 
   <div class="col-md-2 <%= checkpoint_class_name(checkpoint) %>">
