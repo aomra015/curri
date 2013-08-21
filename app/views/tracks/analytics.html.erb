@@ -13,13 +13,13 @@
         <h4>
         <%= checkpoint.content %>
         </h4>
-        <%= render partial: 'progress_bar', locals: { checkpoint: checkpoint } %>
+        <div class="progress">
+          <%= progress_bars(checkpoint) %>
+        </div>
       </div>
 
-      <% ratings_count = checkpoint.ratings_count(@start_time, @end_time) %>
       <div class="col-md-3 ratings-count">
-        <div class= "count-number"><%= ratings_count %></div>
-        <p><%="response".pluralize(ratings_count) %></p>
+        <%= ratings_count_box(checkpoint) %>
       </div>
     </div>
   <% end %>
@@ -27,8 +27,8 @@
 
 <% end %>
 
-
+<!--
 <h2>Average rating over class (example: first track)</h2>
 <div class="row">
   <%= content_tag :div, "", id: "tracks_chart", data: {ratings: ratings_data} %>
-</div>
+</div> -->
