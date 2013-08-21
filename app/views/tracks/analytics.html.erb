@@ -1,5 +1,5 @@
 <div class="well analytics-filter"><%= form_tag(scope_analytics_tracks_path, class: "form-inline") do %>
-  Display results from <%= text_field_tag :start_at, "", class: "form-control", placeholder: "Enter number" %> minutes ago to <%= text_field_tag :end_at, "", class: "form-control", placeholder: "Enter number" %> minutes ago
+  Display results from <%= number_field_tag :start_at, @start_at, class: "form-control", placeholder: "Enter number" %> minutes ago to <%= number_field_tag :end_at, @end_at, class: "form-control", placeholder: "Enter number" %> minutes ago
   <%= submit_tag "Filter", class: "btn btn-small btn-success btn-filter" %>
 <% end %>
 </div>
@@ -18,9 +18,9 @@
         <%= checkpoint.content %>
         </h4>
         <div class="progress">
-          <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.zero_score(@start_time, @end_time) %>%"></div>
-          <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.one_score(@start_time, @end_time) %>%"></div>
-          <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.two_score(@start_time, @end_time) %>%"></div>
+          <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.get_score(0, @start_time, @end_time) %>%"></div>
+          <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.get_score(1, @start_time, @end_time) %>%"></div>
+          <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.get_score(2, @start_time, @end_time) %>%"></div>
         </div>
       </div>
 

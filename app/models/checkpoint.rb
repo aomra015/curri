@@ -18,27 +18,13 @@ class Checkpoint < ActiveRecord::Base
     end
   end
 
-  def zero_score(start_time, end_time)
+  def get_score(score, start_time, end_time)
     if self.ratings.any?
-      self.ratings.where({ created_at: start_time..end_time }).where(score: 0).count * 100.0 / self.ratings.size
+      ratings_over_time = self.ratings.where({ created_at: start_time..end_time })
+      ratings_over_time.where(score: score).count * 100.0 / ratings_over_time.count
     else
       0
     end
   end
 
-  def one_score(start_time, end_time)
-    if self.ratings.any?
-      self.ratings.where({ created_at: start_time..end_time }).where(score: 1).count * 100.0 / self.ratings.size
-    else
-      0
-    end
-  end
-
-  def two_score(start_time, end_time)
-    if self.ratings.any?
-      self.ratings.where({ created_at: start_time..end_time }).where(score: 2).count * 100.0 / self.ratings.size
-    else
-      0
-    end
-  end
 end
