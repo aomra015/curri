@@ -1,31 +1,7 @@
 <%= render 'time_filter' %>
 
 <h1>Analytics</h1>
-
-<% @tracks.each do |track| %>
-<div class="well">
-  <div class="row header-row">
-    <h1><%= track.name %></h1>
-  </div>
-  <% track.checkpoints.order(id: :asc).each do |checkpoint| %>
-    <div class="row">
-      <div class="col-md-9">
-        <h4>
-        <%= checkpoint.expectation %>
-        </h4>
-        <div class="progress">
-          <%= progress_bars(checkpoint) %>
-        </div>
-      </div>
-
-      <div class="col-md-3 ratings-count">
-        <%= ratings_count_box(checkpoint) %>
-      </div>
-    </div>
-  <% end %>
-</div>
-
-<% end %>
+<%= render :partial => 'track', collection: @tracks %>
 
 <!--
 <h2>Average rating over class (example: first track)</h2>

@@ -1,0 +1,6 @@
+<div class="well">
+  <div class="row header-row">
+    <h1><%= track.name %></h1>
+  </div>
+  <%= render :partial => 'checkpoint', collection: track.checkpoints.order(id: :asc) %>
+</div>
