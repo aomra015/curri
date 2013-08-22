@@ -12,4 +12,4 @@ jQuery ->
   #   postUnits: '%'
 
 
-  $('.success_criteria').popover()
+  $('.success_criteria').popover({placement: 'left'})
