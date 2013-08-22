@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
+#jQuery ->
   # Morris.Bar
   #   element: 'tracks_chart'
   #   data: $('#tracks_chart').data('ratings')
@@ -10,6 +10,3 @@ jQuery ->
   #   ykeys: ['class_score']
   #   labels: ['Class Rating']
   #   postUnits: '%'
-
-
-  $('.success_criteria').popover({placement: 'left'})
