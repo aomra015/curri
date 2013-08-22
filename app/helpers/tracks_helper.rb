@@ -4,7 +4,7 @@ module TracksHelper
     track = Track.first
     track.checkpoints.map do |checkpoint|
       {
-        checkpoint: checkpoint.content,
+        checkpoint: checkpoint.expectation,
         class_score: checkpoint.overall_score
       }
     end
