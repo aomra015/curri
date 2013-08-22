@@ -1,5 +1,7 @@
 Curry::Application.routes.draw do
 
+  resources :classrooms
+
   root to: 'tracks#index'
   resources :tracks do
     resources :checkpoints
