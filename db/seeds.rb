@@ -6,8 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-js_track = Track.create(name: "jQuery UI Autocomplete")
-api_track = Track.create(name: "API Building")
+test_classroom = Classroom.create(name: "Curry Classroom")
+
+js_track = test_classroom.tracks.create(name: "jQuery UI Autocomplete")
+api_track = test_classroom.tracks.create(name: "API Building")
 
 js_track.checkpoints.create([
   {expectation: "Installing a JS library"},

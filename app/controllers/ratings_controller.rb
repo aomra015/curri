@@ -1,5 +1,7 @@
 class RatingsController < ApplicationController
 
+  before_action :get_classroom
+
   def add
     params[:checkpoints].each_value do |checkpoint_hash|
 
@@ -12,6 +14,11 @@ class RatingsController < ApplicationController
 
     end
 
-     redirect_to tracks_path, notice: 'Responses registered!'
+     redirect_to classroom_tracks_path(@classroom), notice: 'Responses registered!'
+  end
+
+  private
+  def get_classroom
+    @classroom = Classroom.find(params[:classroom_id])
   end
 end

@@ -1,20 +1,19 @@
 Curry::Application.routes.draw do
-  root to: 'tracks#index'
+  root to: 'classrooms#index'
 
   resources :classrooms do
     resources :tracks do
+      resources :ratings do
+        collection do
+          post :add
+        end
+      end
       resources :checkpoints
     end
   end
 
   get '/analytics', to: 'analytics#index'
   post 'analytics/scope', to: 'analytics#scope'
-
-  resources :ratings do
-    collection do
-      post :add
-    end
-  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,7 +2,7 @@
   <div class="row header-row">
     <h1><%= track.name %></h1>
   </div>
-  <%= form_tag add_ratings_path do %>
+  <%= form_tag add_classroom_track_ratings_path(@classroom, track) do %>
     <%= hidden_field_tag "track_id", track.id %>
     <%= render track.checkpoints.order(id: :asc) %>
     <div class="row">
