@@ -1,11 +1,13 @@
 class CheckpointsController < ApplicationController
 
+  before_action :get_track
+  before_action :get_checkpoint, except: [:index, :new, :create]
+
   def index
-    @checkpoints = Checkpoint.all
+    @checkpoints = @track.checkpoints.all
   end
 
   def show
-    @checkpoint = Checkpoint.find(params[:id])
   end
 
   def new
@@ -13,7 +15,7 @@ class CheckpointsController < ApplicationController
   end
 
   def create
-    @checkpoint = Checkpoint.new(checkpoint_params)
+    @checkpoint = @track.checkpoints.build(checkpoint_params)
     if @checkpoint.save
       redirect_to checkpoint_path(@checkpoint), notice: "Checkpoint has been created"
     else
@@ -22,7 +24,6 @@ class CheckpointsController < ApplicationController
   end
 
   def edit
-    @checkpoint = Checkpoint.find(params[:id])
   end
 
   def update
@@ -36,6 +37,14 @@ class CheckpointsController < ApplicationController
   private
   def checkpoint_params
     params.require(:checkpoint).permit(:expectation, :success_criteria, :track_id)
+  end
+
+  def get_track
+    @track = Track.find(params[:track_id])
+  end
+
+  def get_checkpoint
+    @checkpoint = @track.checkpoints.find(params[:id])
   end
 end
 

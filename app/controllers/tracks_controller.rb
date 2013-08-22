@@ -1,11 +1,12 @@
 class TracksController < ApplicationController
 
+  before_action :get_track, only: [:show, :edit, :update]
+
   def index
     @tracks = Track.all
   end
 
   def show
-    @track = Track.find(params[:id])
   end
 
   def new
@@ -22,7 +23,6 @@ class TracksController < ApplicationController
   end
 
   def edit
-    @track = Track.find(params[:id])
   end
 
   def update
@@ -33,29 +33,11 @@ class TracksController < ApplicationController
     end
   end
 
-  def analytics
-    @tracks = Track.all
-    now = Time.zone.now
-    @start_at = 0
-    @end_at = 0
-
-    @start_time = Rating.first.try(:created_at) || now
-    @end_time = now
-  end
-
-  def scope_analytics
-    now = Time.zone.now
-    @start_at = params[:start_at].to_i
-    @end_at = params[:end_at].to_i
-
-    @start_time = now - @start_at*60
-    @end_time = now - @end_at*60
-    @tracks = Track.all
-    render :analytics
-  end
-
   private
   def track_params
     params.require(:track).permit(:name)
+  end
+  def get_track
+    @track = Track.find(params[:id])
   end
 end

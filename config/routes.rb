@@ -2,12 +2,12 @@ Curry::Application.routes.draw do
 
   root to: 'tracks#index'
   resources :tracks do
-    collection do
-      get 'analytics'
-      post 'scope_analytics'
-    end
+    resources :checkpoints
   end
-  resources :checkpoints
+
+  get '/analytics', to: 'analytics#index'
+  post 'analytics/scope', to: 'analytics#scope'
+
   resources :ratings do
     collection do
       post :add
