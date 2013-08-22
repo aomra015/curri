@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  content: MyString
-  track_id: 
+  expectation: MyString
+  success_criteria:
+  track_id:
 
 two:
-  content: MyString
-  track_id: 
+  expectation: MyString
+  success_criteria:
+  track_id:
