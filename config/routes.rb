@@ -1,10 +1,10 @@
 Curry::Application.routes.draw do
-
-  resources :classrooms
-
   root to: 'tracks#index'
-  resources :tracks do
-    resources :checkpoints
+
+  resources :classrooms do
+    resources :tracks do
+      resources :checkpoints
+    end
   end
 
   get '/analytics', to: 'analytics#index'

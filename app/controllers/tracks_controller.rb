@@ -1,9 +1,10 @@
 class TracksController < ApplicationController
 
+  before_action :get_classroom
   before_action :get_track, only: [:show, :edit, :update]
 
   def index
-    @tracks = Track.all
+    @tracks = @classroom.tracks
   end
 
   def show
@@ -14,11 +15,11 @@ class TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(track_params)
+    @track = @classroom.tracks.build(track_params)
     if @track.save
-      redirect_to track_path(@track), notice: "Track has been created"
+      redirect_to classroom_track_path(@classroom, @track), notice: "Track has been created"
     else
-      redirect_to tracks_path
+      redirect_to classroom_tracks_path(@classroom)
     end
   end
 
@@ -27,9 +28,9 @@ class TracksController < ApplicationController
 
   def update
     if @track.update(track_params)
-      redirect_to track_path(@track), notice: "Track has been updated"
+      redirect_to classroom_track_path(@classroom, @track), notice: "Track has been updated"
     else
-      redirect_to tracks_path
+      redirect_to classroom_tracks_path(@classroom)
     end
   end
 
@@ -37,7 +38,13 @@ class TracksController < ApplicationController
   def track_params
     params.require(:track).permit(:name)
   end
+
   def get_track
-    @track = Track.find(params[:id])
+    @track = @classroom.tracks.find(params[:id])
   end
+
+  def get_classroom
+    @classroom = Classroom.find(params[:classroom_id])
+  end
+
 end

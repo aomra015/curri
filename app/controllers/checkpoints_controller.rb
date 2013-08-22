@@ -1,5 +1,6 @@
 class CheckpointsController < ApplicationController
 
+  before_action :get_classroom
   before_action :get_track
   before_action :get_checkpoint, except: [:index, :new, :create]
 
@@ -17,9 +18,9 @@ class CheckpointsController < ApplicationController
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
     if @checkpoint.save
-      redirect_to track_checkpoint_path(@track, @checkpoint), notice: "Checkpoint has been created"
+      redirect_to classroom_track_checkpoint_path(@classroom, @track, @checkpoint), notice: "Checkpoint has been created"
     else
-      redirect_to track_checkpoints_path(@track)
+      redirect_to classroom_track_checkpoints_path(@classroom, @track)
     end
   end
 
@@ -28,9 +29,9 @@ class CheckpointsController < ApplicationController
 
   def update
     if @checkpoint.update(checkpoint_params)
-      redirect_to track_checkpoint_path(@track, @checkpoint), notice: "Checkpoint has been updated"
+      redirect_to classroom_track_checkpoint_path(@classroom, @track, @checkpoint), notice: "Checkpoint has been updated"
     else
-      redirect_to track_checkpoints_path(@track)
+      redirect_to classroom_track_checkpoints_path(@classroom, @track)
     end
   end
 
@@ -39,8 +40,12 @@ class CheckpointsController < ApplicationController
     params.require(:checkpoint).permit(:expectation, :success_criteria, :track_id)
   end
 
+  def get_classroom
+    @classroom = Classroom.find(params[:classroom_id])
+  end
+
   def get_track
-    @track = Track.find(params[:track_id])
+    @track = @classroom.tracks.find(params[:track_id])
   end
 
   def get_checkpoint
