@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822030238) do
+ActiveRecord::Schema.define(version: 20130822200454) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -22,6 +22,12 @@ ActiveRecord::Schema.define(version: 20130822030238) do
   end
 
   add_index "checkpoints", ["track_id"], name: "index_checkpoints_on_track_id"
+
+  create_table "classrooms", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ratings", force: true do |t|
     t.integer  "score"
@@ -36,6 +42,9 @@ ActiveRecord::Schema.define(version: 20130822030238) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "classroom_id"
   end
+
+  add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id"
 
 end
