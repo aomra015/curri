@@ -1,4 +1,4 @@
-<div class="well analytics-filter"><%= form_tag(analytics_scope_path, class: "form-inline") do %>
+<div class="well analytics-filter"><%= form_tag(scope_analytics_classroom_path(@classroom), class: "form-inline") do %>
   Display results from <%= number_field_tag :start_at, @start_at, class: "form-control", placeholder: "Enter number" %> minutes ago to <%= number_field_tag :end_at, @end_at, class: "form-control", placeholder: "Enter number" %> minutes ago
   <%= submit_tag "Filter", class: "btn btn-small btn-success btn-filter" %>
 <% end %>
