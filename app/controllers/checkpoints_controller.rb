@@ -4,7 +4,7 @@ class CheckpointsController < ApplicationController
   before_action :get_checkpoint, except: [:index, :new, :create]
 
   def index
-    @checkpoints = @track.checkpoints.all
+    @checkpoints = @track.checkpoints
   end
 
   def show
@@ -17,9 +17,9 @@ class CheckpointsController < ApplicationController
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
     if @checkpoint.save
-      redirect_to checkpoint_path(@checkpoint), notice: "Checkpoint has been created"
+      redirect_to track_checkpoint_path(@track, @checkpoint), notice: "Checkpoint has been created"
     else
-      redirect_to checkpoints_path
+      redirect_to track_checkpoints_path(@track)
     end
   end
 
@@ -28,9 +28,9 @@ class CheckpointsController < ApplicationController
 
   def update
     if @checkpoint.update(checkpoint_params)
-      redirect_to checkpoint_path(@checkpoint), notice: "Checkpoint has been updated"
+      redirect_to track_checkpoint_path(@track, @checkpoint), notice: "Checkpoint has been updated"
     else
-      redirect_to checkpoints_path
+      redirect_to track_checkpoints_path(@track)
     end
   end
 

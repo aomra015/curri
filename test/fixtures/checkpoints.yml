@@ -3,7 +3,7 @@
 one:
   expectation: MyString
   success_criteria:
-  track_id:
+  track: one
 
 two:
   expectation: MyString
