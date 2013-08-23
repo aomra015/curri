@@ -2,8 +2,8 @@
 
 one:
   score: 1
-  checkpoint_id: 
+  checkpoint: one
 
 two:
   score: 1
-  checkpoint_id: 
+  checkpoint: one
