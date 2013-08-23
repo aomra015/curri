@@ -3,9 +3,7 @@
     <h4>
     <%= checkpoint.expectation %>
     </h4>
-    <div class="progress">
-      <%= progress_bars(checkpoint) %>
-    </div>
+    <%= render partial: 'progress_bar', locals: { checkpoint: checkpoint } %>
   </div>
 
   <div class="col-md-3 ratings-count">
