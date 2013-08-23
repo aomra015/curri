@@ -1,9 +1,11 @@
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
   <div class="container">
     <a class="navbar-brand" href="/">Curry</a>
+    <% unless request.path == root_path %>
     <ul class="nav navbar-nav pull-right">
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <li><%= link_to 'Analytics', analytics_classroom_path(@classroom) %></li>
     </ul>
+    <% end %>
   </div>
 </nav>

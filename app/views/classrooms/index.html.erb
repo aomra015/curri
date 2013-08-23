@@ -1,0 +1,6 @@
+<h1>Your Classrooms</h1>
+<ul>
+  <% @classrooms.each do |classroom| %>
+  <li><%= link_to classroom.name, classroom_tracks_path(classroom) %></li>
+  <% end %>
+</ul>
