@@ -1,4 +1,5 @@
 Curry::Application.routes.draw do
+
   root to: 'classrooms#index'
 
   resources :classrooms do
@@ -15,6 +16,9 @@ Curry::Application.routes.draw do
       resources :checkpoints
     end
   end
+
+  get '/register', to: "teachers#new"
+  post "teachers/create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

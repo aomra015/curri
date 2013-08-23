@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130822200454) do
+ActiveRecord::Schema.define(version: 20130823215143) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20130822200454) do
 
   add_index "ratings", ["checkpoint_id"], name: "index_ratings_on_checkpoint_id"
 
+  create_table "students", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teachers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tracks", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -46,5 +56,17 @@ ActiveRecord::Schema.define(version: 20130822200454) do
   end
 
   add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id"
+
+  create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "email"
+    t.integer  "classrole_id"
+    t.string   "classrole_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+  end
+
+  add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type"
 
 end
