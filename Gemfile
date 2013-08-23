@@ -6,7 +6,15 @@ gem 'rails', '4.0.0'
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'pry-rails'
 end
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'minitest-rails-capybara'
+end
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -48,5 +56,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem 'pry-rails'
-gem 'simplecov', :require => false, :group => :test
