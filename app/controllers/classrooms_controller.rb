@@ -38,7 +38,4 @@ class ClassroomsController < ApplicationController
   def classroom_params
     params.require(:classroom).permit(:name)
   end
-  def get_classroom
-    @classroom = @current_user.classrooms.find(params[:id])
-  end
 end

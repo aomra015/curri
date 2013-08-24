@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class TracksControllerTest < ActionController::TestCase
+
+  def setup
+    session[:user_id] = users(:ahmed).id
+  end
+
   test "get list of tracks" do
     get :index, classroom_id: classrooms(:one)
     assert assigns(:tracks)

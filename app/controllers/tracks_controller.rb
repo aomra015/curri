@@ -1,6 +1,7 @@
 class TracksController < ApplicationController
 
-  before_action :get_classroom
+  before_action :check_user_login
+  before_action :get_nested_classroom
   before_action :get_track, only: [:show, :edit, :update]
 
   def index
@@ -41,10 +42,6 @@ class TracksController < ApplicationController
 
   def get_track
     @track = @classroom.tracks.find(params[:id])
-  end
-
-  def get_classroom
-    @classroom = Classroom.find(params[:classroom_id])
   end
 
 end

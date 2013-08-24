@@ -1,6 +1,7 @@
 class CheckpointsController < ApplicationController
 
-  before_action :get_classroom
+  before_action :check_user_login
+  before_action :get_nested_classroom
   before_action :get_track
   before_action :get_checkpoint, except: [:index, :new, :create]
 
@@ -38,10 +39,6 @@ class CheckpointsController < ApplicationController
   private
   def checkpoint_params
     params.require(:checkpoint).permit(:expectation, :success_criteria, :track_id)
-  end
-
-  def get_classroom
-    @classroom = Classroom.find(params[:classroom_id])
   end
 
   def get_track

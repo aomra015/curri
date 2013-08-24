@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class AnalyticsControllerTest < ActionController::TestCase
+
+  def setup
+    session[:user_id] = users(:ahmed).id
+  end
+
   test "get analytics for classroom tracks" do
     get :index, id: classrooms(:one)
 

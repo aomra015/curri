@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class CheckpointsControllerTest < ActionController::TestCase
+
+  def setup
+    session[:user_id] = users(:ahmed).id
+  end
+
   test "get list of checkpoints" do
     get :index, classroom_id: classrooms(:one), track_id: tracks(:one)
     assert assigns(:checkpoints)

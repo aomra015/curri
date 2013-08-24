@@ -1,5 +1,6 @@
 class AnalyticsController < ApplicationController
 
+  before_action :check_user_login
   before_action :get_classroom
 
   def index
@@ -22,10 +23,5 @@ class AnalyticsController < ApplicationController
     @end_time = now - @end_at*60
 
     render :index
-  end
-
-  private
-  def get_classroom
-    @classroom = Classroom.find(params[:id])
   end
 end
