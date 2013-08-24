@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
+  name: Ahmed's Intro To Curry
+  teacher: ahmed
 
 two:
-  name: MyString
+  name: Paula's Intro To Art
+  teacher: paula

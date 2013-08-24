@@ -1,5 +1,6 @@
 Curry::Application.routes.draw do
 
+  get "sessions/new"
   root to: 'classrooms#index'
 
   resources :classrooms do
@@ -19,6 +20,9 @@ Curry::Application.routes.draw do
 
   get '/register', to: "teachers#new"
   post "teachers/create"
+
+  get "/login", to: "sessions#new"
+  post "/login", to: "sessions#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

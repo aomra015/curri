@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823215143) do
+ActiveRecord::Schema.define(version: 20130823220454) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20130823215143) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "teacher_id"
   end
 
   create_table "ratings", force: true do |t|

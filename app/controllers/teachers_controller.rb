@@ -9,6 +9,7 @@ class TeachersController < ApplicationController
     @user.classrole = Teacher.create
 
     if @user.save
+      session[:user_id] = @user.id
       redirect_to classrooms_path
     else
       render :new

@@ -1,9 +1,10 @@
 class ClassroomsController < ApplicationController
 
+  before_action :check_user_login
   before_action :get_classroom, only: [:show, :edit, :update]
 
   def index
-    @classrooms = Classroom.all
+    @classrooms = @current_user.classrooms
   end
 
   def show
@@ -14,7 +15,7 @@ class ClassroomsController < ApplicationController
   end
 
   def create
-    @classroom = Classroom.new(classroom_params)
+    @classroom = @current_user.classrooms.build(classroom_params)
     if @classroom.save
       redirect_to classroom_path(@classroom), notice: "classroom has been created"
     else
@@ -38,6 +39,6 @@ class ClassroomsController < ApplicationController
     params.require(:classroom).permit(:name)
   end
   def get_classroom
-    @classroom = Classroom.find(params[:id])
+    @classroom = @current_user.classrooms.find(params[:id])
   end
 end

@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ClassroomsControllerTest < ActionController::TestCase
+
+  def setup
+    session[:user_id] = users(:ahmed).id
+  end
+
   test "get list of classrooms" do
     get :index
     assert assigns(:classrooms)
@@ -34,11 +39,9 @@ class ClassroomsControllerTest < ActionController::TestCase
   end
 
   test "update classroom" do
-    classroom = Classroom.create(name: "classroom name")
+    patch :update, id: classrooms(:one), classroom: {name: "Changed name" }
 
-    patch :update, id: classroom, classroom: {name: "Changed name" }
-
-    classroom = Classroom.find(classroom.id)
+    classroom = Classroom.find(classrooms(:one).id)
     assert_equal "Changed name", classroom.name
     assert_redirected_to classroom_path(assigns(:classroom))
   end

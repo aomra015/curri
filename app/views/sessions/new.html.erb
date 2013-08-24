@@ -1,0 +1,16 @@
+<h1>Login</h1>
+
+<%= form_tag login_path , class: 'form-horizontal' do %>
+
+  <div>
+    <%= label_tag :email, :class => "control-label" %>
+    <%= text_field_tag :email %>
+  </div>
+  <div>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div>
+    <%= submit_tag "Login In", id: "login-button"%>
+  </div>
+<% end %>
