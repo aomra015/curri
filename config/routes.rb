@@ -1,6 +1,5 @@
 Curry::Application.routes.draw do
 
-  get "sessions/new"
   root to: 'classrooms#index'
 
   resources :classrooms do
@@ -8,6 +7,7 @@ Curry::Application.routes.draw do
       get '/analytics', to: 'analytics#index'
       post 'scope_analytics', to: 'analytics#scope'
     end
+
     resources :tracks do
       resources :ratings do
         collection do
@@ -16,8 +16,11 @@ Curry::Application.routes.draw do
       end
       resources :checkpoints
     end
+
+    resources :invitations
   end
 
+  get '/invitations/:token/claim', to: "invitations#claim", as: "claim_invitation"
   get '/register', to: "teachers#new"
   post "teachers/create"
 

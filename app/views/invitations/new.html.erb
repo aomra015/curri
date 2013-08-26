@@ -1,0 +1,6 @@
+<h1>Invite Students</h1>
+<%= form_for [@classroom, @invitation] do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit 'Invite Students', id: 'invite-button' %>
+<% end %>

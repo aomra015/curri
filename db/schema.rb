@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823220454) do
+ActiveRecord::Schema.define(version: 20130826204421) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 20130823220454) do
     t.datetime "updated_at"
     t.integer  "teacher_id"
   end
+
+  create_table "invitations", force: true do |t|
+    t.integer  "classroom_id"
+    t.integer  "student_id"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "email"
+  end
+
+  add_index "invitations", ["classroom_id"], name: "index_invitations_on_classroom_id"
+  add_index "invitations", ["student_id"], name: "index_invitations_on_student_id"
 
   create_table "ratings", force: true do |t|
     t.integer  "score"
