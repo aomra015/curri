@@ -11,7 +11,9 @@ end
 
 group :test do
   gem 'simplecov', :require => false
+  gem 'minitest-rails'
   gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
 end
 
 

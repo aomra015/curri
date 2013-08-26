@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CheckpointTest < ActiveSupport::TestCase
 
-  def setup
+  before do
     # fixture has two ratings each with a score of 1
     @checkpoint = checkpoints(:one)
     @checkpoint_no_ratings = checkpoints(:two)

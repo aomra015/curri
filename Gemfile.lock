@@ -66,6 +66,8 @@ GEM
       capybara (~> 2.0)
       minitest (~> 4.0)
       rake
+    minitest-colorize (0.0.5)
+      minitest (>= 2.0)
     minitest-metadata (0.4.0)
       minitest (~> 4.7)
     minitest-rails (0.9.2)
@@ -156,6 +158,8 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jbuilder (~> 1.2)
   jquery-rails
+  minitest-colorize
+  minitest-rails
   minitest-rails-capybara
   pg
   pry-rails

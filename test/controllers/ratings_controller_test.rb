@@ -2,7 +2,7 @@ require 'test_helper'
 
 class RatingsControllerTest < ActionController::TestCase
 
-  def setup
+  before do
     session[:user_id] = users(:ahmed).id
   end
 
