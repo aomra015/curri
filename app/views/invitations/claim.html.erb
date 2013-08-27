@@ -1,0 +1,29 @@
+<h1>Sign up as a Student</h1>
+
+<%= form_tag invitations_create_student_path do |f| %>
+
+  <%= hidden_field_tag "user[token]", @token %>
+  <div>
+    <%= label_tag "user[username]" %>
+    <%= text_field_tag "user[username]" %>
+  </div>
+
+  <div>
+    <%= label_tag "user[email]" %>
+    <%= text_field_tag "user[email]" %>
+  </div>
+
+  <div>
+    <%= label_tag "user[password]" %>
+    <%= password_field_tag "user[password]" %>
+  </div>
+
+  <div>
+    <%= label_tag "user[password_confirmation]" %>
+    <%= password_field_tag "user[password_confirmation]" %>
+  </div>
+
+  <div>
+    <%= submit_tag 'Register', id: 'register-student' %>
+  </div>
+<% end %>

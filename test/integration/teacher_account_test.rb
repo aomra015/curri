@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserAccountsTest < Capybara::Rails::TestCase
+class TeacherAccountsTest < Capybara::Rails::TestCase
 
   test "a teacher can signup for an account" do
     visit register_path

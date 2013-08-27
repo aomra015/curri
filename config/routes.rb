@@ -20,7 +20,11 @@ Curry::Application.routes.draw do
     resources :invitations
   end
 
+  # Student Invitations
   get '/invitations/:token/claim', to: "invitations#claim", as: "claim_invitation"
+  post "invitations/create_student"
+
+
   get '/register', to: "teachers#new"
   post "teachers/create"
 

@@ -1,7 +1,7 @@
 class InvitationsController < ApplicationController
 
   before_action :check_user_login
-  before_action :get_nested_classroom
+  before_action :get_nested_classroom, only: [:new, :create]
 
   def new
     @invitation = Invitation.new
@@ -20,4 +20,33 @@ class InvitationsController < ApplicationController
 
   end
 
+  def claim
+    @user = User.new
+    @token = params[:token]
+  end
+
+  def create_student
+    invitation = Invitation.find_by(token: params[:user][:token])
+
+    if invitation.nil? || invitation.student
+      render :new, error: "The invitation is no longer valid or the URL is incorrect"
+    end
+
+    @user = User.new(user_params)
+    @user.classrole = Student.create
+
+    if @user.save
+      session[:user_id] = @user.id
+      invitation.student = @user.classrole
+      invitation.save
+      redirect_to classrooms_path
+    else
+      render :new
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+  end
 end

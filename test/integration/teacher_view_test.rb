@@ -17,22 +17,14 @@ class TeacherViewTest < Capybara::Rails::TestCase
 
   test "teacher can invite students" do
     teacher = users(:ahmed)
+    student_email = 'mystudent@gmail.com'
     login_as(teacher)
 
-    classroom = teacher.classrooms.first
-    click_link classroom.name
-    assert_equal classroom_tracks_path(classroom), current_path
-
-    click_link 'Invite Students'
-    assert_equal new_classroom_invitation_path(classroom), current_path
-
-    fill_in :invitation_email, with: 'mystudent@gmail.com'
-
     assert_difference 'Invitation.count' do
-      click_button 'invite-button'
+      invite_student(teacher, student_email)
     end
 
-    assert_equal classroom_tracks_path(classroom), current_path
+    assert_equal classroom_tracks_path(@classroom), current_path
     assert page.has_content?('Invitation Sent')
 
     last_email = ActionMailer::Base.deliveries.last
