@@ -1,6 +1,11 @@
-<h1>Your Classrooms</h1>
-<ul>
-  <% @classrooms.each do |classroom| %>
-  <li><%= link_to classroom.name, classroom_tracks_path(classroom) %></li>
-  <% end %>
-</ul>
+<h1><%= @current_user.username %> > Classrooms</h1>
+
+<%= render @classrooms %>
+
+<%= link_to new_classroom_path, class: "grid3 grid-plain" do %>
+  <div class="add-unit">
+    <div class="plus-sign">+</div>
+    <p class="add-text">Add New Classroom</p>
+  </div>
+
+<% end %>

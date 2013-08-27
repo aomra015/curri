@@ -1,4 +1,4 @@
 <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom) %>
 
-<h1>Tracks</h1>
+<h1><%= @classroom.name %> > Tracks</h1>
 <%= render @tracks %>
