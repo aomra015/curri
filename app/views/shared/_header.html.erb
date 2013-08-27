@@ -1,11 +1,11 @@
 <nav class="navbar" role="navigation">
   <div class="container">
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
-    <% unless request.path == root_path %>
+
     <ul class="nav">
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <li><%= link_to 'Analytics', analytics_classroom_path(@classroom) %></li>
     </ul>
-    <% end %>
+    
   </div>
 </nav>
