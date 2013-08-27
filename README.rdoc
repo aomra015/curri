@@ -9,3 +9,17 @@ To get this app working:
 4. rake db:seed
 5. rails s
 6. profit
+
+=== To do
+- student with account can claim invitation without sign up
+- logged in student can claim invitation
+- a student can rate checkpoints
+- a user can log out
+
+For views => create APIs so that:
+- students have limited access to classrooms
+- teachers have full access to classrooms
+
+Analytics:
+- individual student analytics views
+- aggregated analytics over time
