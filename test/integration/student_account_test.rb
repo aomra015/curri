@@ -23,4 +23,12 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     end
 
   end
+
+  test "student with account can claim invitation without sign up" do
+    skip
+  end
+
+  test "logged in student can claim invitation" do
+    skip
+  end
 end
