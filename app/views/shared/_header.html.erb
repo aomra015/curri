@@ -1,8 +1,8 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
+<nav class="navbar" role="navigation">
   <div class="container">
-    <a class="navbar-brand" href="/">Curry</a>
+    <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <% unless request.path == root_path %>
-    <ul class="nav navbar-nav pull-right">
+    <ul class="nav">
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <li><%= link_to 'Analytics', analytics_classroom_path(@classroom) %></li>
     </ul>
