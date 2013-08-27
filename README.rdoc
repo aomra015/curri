@@ -14,7 +14,6 @@ To get this app working:
 - student with account can claim invitation without sign up
 - logged in student can claim invitation
 - a student can rate checkpoints
-- a user can log out
 
 For views => create APIs so that:
 - students have limited access to classrooms

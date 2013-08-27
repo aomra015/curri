@@ -4,11 +4,18 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 // Variables
 
 $header-color: #37b590;
 $container-width: 960px;
 $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
+$border-radius: 4px;
+$grid-background: #F0ECDA;
 
 //Mixins
 
@@ -17,6 +24,13 @@ $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
   -moz-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
+}
+
+@mixin rounded-corner {
+  -webkit-border-radius: $border-radius;
+  -moz-border-radius: $border-radius;
+  -o-border-radius: $border-radius;
+  border-radius: $border-radius;
 }
 
 //Styles
@@ -29,7 +43,7 @@ body {
 
 nav {
   background-color: $header-color;
-  border-top: 3px solid darken($header-color, 15%);
+  border-top: 4px solid darken($header-color, 20%);
   border-bottom: 1px solid darken($header-color, 5%);
   margin-bottom: 40px;
 
@@ -71,4 +85,51 @@ nav {
   width: $container-width;
   margin: 0 auto;
   overflow: hidden;
+}
+
+// Typography
+
+h1 {
+  margin-top: 0;
+}
+
+// Layout
+
+.grid3 {
+  float: left;
+  background-color: $grid-background;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  width: 300px;
+  height: 400px;
+  @include rounded-corner;
+
+  &:nth-of-type(3n) { //why not 3n? need to fix this.
+    margin-right: 0;
+  }
+}
+.grid-plain {
+  background-color: transparent;
+  border: 8px solid $grid-background;
+  color: $grid-background;
+  @include all-transition;
+
+  &:hover {
+    border-color: darken($grid-background, 20%);
+    color: darken($grid-background, 20%);
+  }
+}
+
+.add-unit {
+  text-align: center;
+}
+
+.plus-sign {
+  font-size: 200px;
+  margin: 80px 0 -20px;
+}
+
+.add-text {
+  font-weight: bold;
+  font-size: 20px;
 }
