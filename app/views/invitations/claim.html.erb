@@ -4,22 +4,22 @@
 
   <%= hidden_field_tag "user[token]", @token %>
   <div>
-    <%= label_tag "user[username]" %>
+    <%= label_tag "user[username]", 'Username' %>
     <%= text_field_tag "user[username]" %>
   </div>
 
   <div>
-    <%= label_tag "user[email]" %>
+    <%= label_tag "user[email]", 'Email Address' %>
     <%= text_field_tag "user[email]" %>
   </div>
 
   <div>
-    <%= label_tag "user[password]" %>
+    <%= label_tag "user[password]", 'Password' %>
     <%= password_field_tag "user[password]" %>
   </div>
 
   <div>
-    <%= label_tag "user[password_confirmation]" %>
+    <%= label_tag "user[password_confirmation]", 'Password Confirmation' %>
     <%= password_field_tag "user[password_confirmation]" %>
   </div>
 
