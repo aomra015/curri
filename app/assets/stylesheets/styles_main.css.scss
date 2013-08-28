@@ -104,10 +104,12 @@ h1 {
   height: 400px;
   @include rounded-corner;
 
-  &:nth-of-type(3n) { //why not 3n? need to fix this.
-    margin-right: 0;
-  }
 }
+
+div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
+  margin-right: 0;
+}
+
 .grid-plain {
   background-color: transparent;
   border: 8px solid $grid-background;
@@ -124,7 +126,7 @@ h1 {
   text-align: center;
 }
 
-.plus-sign {
+.add-sign {
   font-size: 200px;
   margin: 80px 0 -20px;
 }

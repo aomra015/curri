@@ -1,4 +1,11 @@
 <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom) %>
 
 <h1><%= @classroom.name %> > Tracks</h1>
-<%= render @tracks %>
+<div class="grids"><%= render @tracks %>
+  <%= link_to new_classroom_track_path, class: "grid3 grid-plain" do %>
+    <div class="add-unit">
+      <div class="add-sign">+</div>
+      <p class="add-text">Add New Track</p>
+    </div>
+<% end %>
+</div>

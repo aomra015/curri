@@ -17,9 +17,9 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = @current_user.classrooms.build(classroom_params)
     if @classroom.save
-      redirect_to classroom_path(@classroom), notice: "classroom has been created"
+      redirect_to classrooms_path, notice: "classroom has been created"
     else
-      redirect_to classrooms_path
+      redirect_to classrooms_path, notice: "there was an error with your classroom creation"
     end
   end
 
