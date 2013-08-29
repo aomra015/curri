@@ -352,11 +352,19 @@ button.close {
   }
 }
 
+div.unit-inner.ratings-count {
+  margin-top: 80px;
+}
+
 .count-number {
   font-size: 45px;
   display: block;
   font-weight: 500;
   text-shadow: 1px 1px #fff;
+}
+
+.count-large {
+  font-size: 90px;
 }
 
 .checkpoint-content {
@@ -478,4 +486,39 @@ input {
   float: right;
   margin-right: 0;
   height: auto;
+}
+
+// Popover
+
+.popover.left {
+  margin-left: -10px;
+}
+
+.fade.in {
+opacity: 1;
+}
+
+.popover {
+position: absolute;
+top: 0;
+left: 0;
+z-index: 1010;
+display: none;
+max-width: 276px;
+padding: 1px;
+text-align: left;
+white-space: normal;
+background-color: #fff;
+border: 1px solid #ccc;
+border: 1px solid rgba(0,0,0,0.2);
+border-radius: 6px;
+-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+background-clip: padding-box;
+}
+
+.fade {
+opacity: 0;
+-webkit-transition: opacity .15s linear;
+transition: opacity .15s linear;
 }

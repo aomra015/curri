@@ -1,9 +1,14 @@
 <%= link_to classroom_tracks_path(classroom), class: "grid1 grid-unit" do %>
   <h3 class="grid-header"><%=classroom.name %></h3>
-  <ul>
-    <li><%= classroom.students.count %> <%= "Student".pluralize(classroom.students.count) %> </li>
-    <li><%= classroom.tracks.count %> <%= "Track".pluralize(classroom.tracks.count) %> </li>
-  </ul>
-  <div class= "unit-inner">
+  <div class= "unit-inner ratings-count">
+  <div class="count-number count-large">
+    <%= classroom.students.count %>
+  </div>
+  <p>
+    <%= "Student".pluralize(classroom.students.count) %>
+  </p>
+  <h2>
+    <%= classroom.tracks.count %> <%= "Track".pluralize(classroom.tracks.count) %>
+  </h2>
   </div>
 <% end %>
