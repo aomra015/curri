@@ -1,9 +1,12 @@
 <%= form_for [@classroom, @track] do |f| %>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <h3>
+    <%= f.label :name, 'Track Name' %>
+  </h3>
+  <span>
+    <%= f.text_field :name, class: "form-input" %>
+  </span>
+  <div>  
+    <%= f.submit 'Add Track', class: "add-track btn" %>
   </div>
-
-  <%= f.submit %>
 <% end %>

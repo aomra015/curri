@@ -1,5 +1,5 @@
 <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "grid1 grid-unit" do %>
-  <h3><%=track.name %></h3>
+  <h3 class="grid-header"><%=track.name %></h3>
   <div class= "row">
     <ul>
     <% track.checkpoints.each do |checkpoint| %>
