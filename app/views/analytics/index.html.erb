@@ -14,12 +14,12 @@ window.TRACK_ID = <%= @track.id %>
   </div>
 </div>
 
-<div class="grid1 grid-unit all-tracks">
+<div class="grid1 all-tracks">
   <h3 class="grid-header">All Tracks</h3>
   <div class="row">
     <ul>
       <% @classroom.tracks.each do |track| %>
-        <li><%= link_to track.name, classroom_track_analytics_path(@classroom, track) %></li>
+        <li class="link"><%= link_to track.name, classroom_track_analytics_path(@classroom, track) %></li>
       <% end %>
     </ul>
   </div>
