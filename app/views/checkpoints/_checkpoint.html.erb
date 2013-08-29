@@ -8,9 +8,9 @@
     </div>
   
     <div class="col-md-5 checkpoint-score-select">
-      <%= link_to "I understand", classroom_track_ratings_path(@classroom, @track, checkpoint: checkpoint, value: 0) %>
-      <%= link_to "I'm OK", classroom_track_ratings_path(@classroom, @track, checkpoint: checkpoint, value: 1) %>
-      <%= link_to "I need help!", classroom_track_ratings_path(@classroom, @track, checkpoint: checkpoint, value: 2) %>
+      <%= link_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), method: :post, remote: true %>
+      <%= link_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), method: :post, remote: true %>
+      <%= link_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), method: :post, remote: true %>
     </div>
   
     <div class="col-md-2 <%= checkpoint_class_name(checkpoint) %>">
