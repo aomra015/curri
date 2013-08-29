@@ -99,23 +99,28 @@ h2.page-header {
   border-left: 5px solid $secondary-color;
   padding-left: 10px;
   float: left;
+  margin-top: 5px;
 }
 
 // Layout
 
 #page-head {
   overflow: hidden;
+  margin-bottom: 10px;
 }
-.grid1, .grid2, .grid3 {
-  float: left;
-  background-color: $grid-background;
-  @include rounded-corner;
-  @include all-transition;
-  margin-bottom: 30px;
 
+.grid-unit {
   &:hover {
     background-color: darken($grid-background, 8%);
   }
+}
+
+.grid1, .grid2, .grid3 {
+  background-color: $grid-background;
+  float: left;
+  @include rounded-corner;
+  @include all-transition;
+  margin-bottom: 30px;
 }
 
 .grid1 {
@@ -124,7 +129,7 @@ h2.page-header {
   height: 400px;
 }
 
-.grid3 {
+.grid2 {
   width: 660px;
 }
 
@@ -147,7 +152,6 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 
 .row {
   border-bottom: 1px solid darken($grid-background, 10%);
-  position: relative;
 
 
   &:last-child {
@@ -157,6 +161,7 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 
 .unit-inner {
   padding: 0 20px;
+  position: relative;
 }
 
 .add-unit {
@@ -241,4 +246,65 @@ button.close {
   &:hover, &:focus {
     background: darken($secondary-color, 10%);
   }
+}
+
+.progress{
+  margin-top: 15px;
+  margin-bottom: 0px;
+  min-height: 25px;
+  background-color: #FAFAFA;
+  // box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+  overflow: hidden;
+  @include rounded-corner;
+}
+
+.progress-bar {
+  float: left;
+  width: 0;
+  height: 100%;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 25px;
+  color: #fff;
+  text-align: center;
+  background-color: #428bca;
+  -webkit-transition: width .6s ease;
+  transition: width .6s ease;
+}
+
+.progress-bar-danger {
+  background-color: #E03E3E;
+}
+.progress-bar-warning {
+  background-color: #EE9E47;
+}
+.progress-bar-success {
+  background-color: #43C74D;
+}
+
+.analytics-track-name {
+  float: left;
+  width: 70%;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.ratings-count {
+  text-align: center;
+  color: #777;
+  margin: 40px 0;
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.count-number {
+  font-size: 45px;
+  display: block;
+  font-weight: 500;
+  text-shadow: 1px 1px #fff;
 }

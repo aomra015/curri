@@ -5,7 +5,7 @@
       <% if @classroom %>
       <li><%= link_to 'Classrooms', classrooms_path %></li>
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
-      <li><%#= link_to 'Analytics', classroom_track_analytics_path(@classroom) %></li>
+      <!-- <li><%#= link_to 'Analytics', classroom_track_analytics_path(@classroom) %></li> -->
       <% end %>
       <% unless @current_user %>
       <li><%= link_to 'Register', register_path %></li>
