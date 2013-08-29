@@ -1,0 +1,5 @@
+(function() {
+  var marker = $('#checkpoint<%= @checkpoint.id %>').find('.marker');
+  marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2');
+  marker.addClass('checkpoint_<%= @rating.score %>');
+})();
