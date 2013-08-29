@@ -18,7 +18,7 @@ class TracksController < ApplicationController
   def create
     @track = @classroom.tracks.build(track_params)
     if @track.save
-      redirect_to classroom_tracks_path(@classroom), notice: "Track #{@track.name} has been created"
+      redirect_to classroom_tracks_path(@classroom), notice: "Track '#{@track.name}' has been created"
     end
   end
 

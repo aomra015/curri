@@ -220,9 +220,9 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 }
 
 .alert-success {
-  color: #468847;
-  background-color: #dff0d8;
-  border-color: #d6e9c6;
+  color: darken($success-color, 20%);
+  background-color: lighten($success-color, 50%);
+  border-color: lighten($success-color, 40%);
 }
 
 .alert-dismissable {
@@ -241,7 +241,7 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
   font-size: 21px;
   font-weight: bold;
   line-height: 1;
-  color: darken(#d6e9c6, 40%);
+  color: darken($success-color, 40%);
   text-shadow: 0 1px 0 #ffffff;
   opacity: 0.2;
   filter: alpha(opacity=20);
@@ -250,7 +250,6 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 
 .close:hover,
 .close:focus {
-  color: darken(#d6e9c6, 40%);
   text-decoration: none;
   cursor: pointer;
   opacity: 0.5;

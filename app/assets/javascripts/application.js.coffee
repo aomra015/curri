@@ -15,4 +15,4 @@
 #= require_tree .
 
 jQuery ->
-  $('.success_criteria').popover({placement: 'left'})
+  $('.success-criteria').popover({placement: 'left'})
