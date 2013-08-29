@@ -3,12 +3,6 @@
   <!-- <div class="row header-row">
     <h1><%= @track.name %></h1>
   </div> -->
-  <%= form_tag add_classroom_track_ratings_path(@classroom, @track) do %>
-    <%= hidden_field_tag "track_id", @track.id %>
+  
     <%= render @track.checkpoints.order(id: :asc) %>
-    <div class="row">
-      <div class="col-md-6"></div>
-      <div class="col-md-6"><%= submit_tag 'Take survey', class: 'btn btn-sm btn-success' %></div>
-    </div>
-  <% end %>
 </div>
