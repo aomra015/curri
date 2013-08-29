@@ -16,6 +16,8 @@ class RatingsController < ApplicationController
       session["checkpoint_#{@checkpoint.id}"] = score
       @rating = @checkpoint.ratings.create(score: score)
 
+      PrivatePub.publish_to "/track/#{params[:track_id]}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings
+
       respond_with @rating, location: nil
     end
   end

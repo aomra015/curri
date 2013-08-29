@@ -1,10 +1,11 @@
 class AnalyticsController < ApplicationController
 
   before_action :check_user_login
-  before_action :get_classroom
+  before_action :get_nested_classroom
 
   def index
-    @tracks = @classroom.tracks
+    @track = @classroom.tracks.find(params[:track_id])
+
     now = Time.zone.now
     @start_at = 0
     @end_at = 0

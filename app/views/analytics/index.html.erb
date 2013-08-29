@@ -1,4 +1,10 @@
-<%= render 'time_filter' %>
+<script>
+window.TRACK_ID = <%= @track.id %>
+</script>
+
+<%= subscribe_to "/track/#{@track.id}/ratings" %>
+
+<%#= render 'time_filter' %>
 
 <h1>Analytics</h1>
-<%= render :partial => 'track', collection: @tracks %>
+<%= render :partial => 'track' %>

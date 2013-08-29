@@ -3,12 +3,8 @@ Curry::Application.routes.draw do
   root to: 'classrooms#index'
 
   resources :classrooms do
-    member do
-      get '/analytics', to: 'analytics#index'
-      post 'scope_analytics', to: 'analytics#scope'
-    end
-
     resources :tracks do
+      get 'analytics', to: 'analytics#index'
       resources :ratings do
         collection do
           post :add
