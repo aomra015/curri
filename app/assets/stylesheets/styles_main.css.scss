@@ -184,9 +184,18 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
       // border-left: 3px solid red;
       padding: 20px 10px 20px 20px;
       border-bottom: 1px solid darken($grid-background, 10%);
+      @include all-transition;
 
       &:last-child {
         border-bottom: none;
+      }
+
+      &.link:hover {
+        background-color: darken($grid-background, 10%);
+      }
+
+      a {
+        display: block;
       }
     }
   }
