@@ -55,28 +55,6 @@
   padding-left: 35px;
 }
 
-.checkpoint_0, .checkpoint_1, .checkpoint_2 {
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 35px 35px 0;
-  border-color: transparent;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.checkpoint_0 {
-  border-right-color: #d9534f;
-}
-
-.checkpoint_1 {
-  border-right-color: #f0ad4e;
-}
-
-.checkpoint_2 {
-  border-right-color: #5cb85c;
-}
-
 .form-control {
   width: 115px;
   margin: 0 5px;

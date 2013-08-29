@@ -1,27 +1,35 @@
 <h1>Sign up as a Teacher</h1>
 
 <%= form_for @user, url: teachers_create_path do |f| %>
-  <div>
+  <h3>
     <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
+  </h3>
+  <span>
+    <%= f.text_field :username, placeholder: 'Please enter a username', class: "form-input" %>
+  </span>
 
-  <div>
+  <h3>
     <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+  </h3>
+  <span>
+    <%= f.email_field :email, placeholder: 'Please enter email address', class: "form-input" %>
+  </span>
 
-  <div>
+  <h3>
     <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
+  </h3>
+  <span>
+    <%= f.password_field :password, class: "form-input" %>
+  </span>
 
-  <div>
+  <h3>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
+  </h3>
+  <span>
+    <%= f.password_field :password_confirmation, class: "form-input" %>
+  </span>
 
   <div>
-    <%= f.submit 'Register', id: 'register-teacher' %>
+    <%= f.submit 'Register', class: 'register-teacher btn' %>
   </div>
 <% end %>
