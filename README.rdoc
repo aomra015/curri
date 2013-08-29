@@ -8,7 +8,8 @@ To get this app working:
 3. rake db:migrate
 4. rake db:seed
 5. rails s
-6. profit
+6. rackup private_pub.ru -s thin -E production
+7. profit
 
 === To do
 - student with account can claim invitation without sign up

@@ -3,7 +3,7 @@
   <!-- <div class="row header-row">
     <h1><%= @track.name %></h1>
   </div> -->
-  
+
     <%= render @track.checkpoints.order(id: :asc) %>
 </div>
 <div class="grid1 grid-unit all-tracks">
@@ -11,7 +11,7 @@
   <div class="row">
     <ul>
       <% @classroom.tracks.each do |track| %>
-        <li><%= track.name %></li>
+        <li><%= link_to track.name, classroom_track_path(@classroom, track) %></li>
       <% end %>
     </ul>
   </div>
