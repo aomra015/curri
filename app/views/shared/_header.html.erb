@@ -3,6 +3,7 @@
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <ul class="nav">
       <% if @classroom %>
+      <li><%= link_to 'Classrooms', classrooms_path %></li>
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <li><%= link_to 'Analytics', analytics_classroom_path(@classroom) %></li>
       <% end %>

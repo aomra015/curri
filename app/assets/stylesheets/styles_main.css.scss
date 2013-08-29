@@ -16,6 +16,7 @@ $container-width: 960px;
 $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
 $border-radius: 4px;
 $grid-background: #F0ECDA;
+$secondary-color: #F16739;
 
 //Mixins
 
@@ -39,6 +40,7 @@ body {
   font-family: $sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  color: #3C382B;
 }
 
 nav {
@@ -89,28 +91,48 @@ nav {
 
 // Typography
 
-h1 {
+h1, h2 {
   margin-top: 0;
+}
+
+h2.page-header {
+  border-left: 5px solid $secondary-color;
+  padding-left: 10px;
+  float: left;
 }
 
 // Layout
 
-.grid3 {
+#page-head {
+  overflow: hidden;
+}
+.grid1, .grid2, .grid3 {
   float: left;
   background-color: $grid-background;
-  margin-right: 30px;
+  @include rounded-corner;
+  @include all-transition;
   margin-bottom: 30px;
+
+  &:hover {
+    background-color: darken($grid-background, 8%);
+  }
+}
+
+.grid1 {
+  margin-right: 30px;
   width: 300px;
   height: 400px;
-  @include rounded-corner;
+}
 
+.grid3 {
+  width: 660px;
 }
 
 div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
   margin-right: 0;
 }
 
-.grid-plain {
+.grid-add {
   background-color: transparent;
   border: 8px solid $grid-background;
   color: $grid-background;
@@ -119,7 +141,20 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
   &:hover {
     border-color: darken($grid-background, 20%);
     color: darken($grid-background, 20%);
+    background-color: transparent;
   }
+}
+
+.row {
+  border-bottom: 1px solid darken($grid-background, 10%);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.unit-inner {
+  padding: 0 20px;
 }
 
 .add-unit {
@@ -134,4 +169,74 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 .add-text {
   font-weight: bold;
   font-size: 20px;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-success {
+  color: #468847;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert-dismissable {
+  padding-right: 40px;
+}
+
+.alert-dismissable .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  color: inherit;
+}
+
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: darken(#d6e9c6, 40%);
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+  @include all-transition;
+}
+
+.close:hover,
+.close:focus {
+  color: darken(#d6e9c6, 40%);
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
+.pull-right {
+  float: right;
+}
+.head-btn {
+  padding: 7px 15px;
+  @include rounded-corner;
+  @include all-transition;
+  background: $secondary-color;
+  color: #fff;
+  font-weight: bold;
+  border-left: 1px solid darken($secondary-color, 10%);
+
+  &:hover, &:focus {
+    background: darken($secondary-color, 10%);
+  }
 }

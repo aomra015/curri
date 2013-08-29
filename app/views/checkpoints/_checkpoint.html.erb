@@ -1,17 +1,19 @@
 <div class="row">
-  <div class="col-md-5 checkpoint-content">
-    <h4>
-    <%= content_tag :p, '?', class: 'btn btn-sm btn-success success_criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
-    <%= checkpoint.expectation %>
-    </h4>
-  </div>
-
-  <div class="col-md-5 checkpoint-score-select">
-    <%= hidden_field_tag checkpoint_hidden_tag_name(checkpoint), checkpoint.id %>
-    <%= select_tag(checkpoint_select_tag_name(checkpoint), options_for_select(Rating::OPTIONS.keys)) %>
-  </div>
-
-  <div class="col-md-2 <%= checkpoint_class_name(checkpoint) %>">
-
+  <div class="row-inner">
+    <div class="col-md-5 checkpoint-content">
+      <h4>
+      <%= content_tag :p, '?', class: 'btn btn-sm btn-success success_criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
+      <%= checkpoint.expectation %>
+      </h4>
+    </div>
+  
+    <div class="col-md-5 checkpoint-score-select">
+      <%= hidden_field_tag checkpoint_hidden_tag_name(checkpoint), checkpoint.id %>
+      <%= select_tag(checkpoint_select_tag_name(checkpoint), options_for_select(Rating::OPTIONS.keys)) %>
+    </div>
+  
+    <div class="col-md-2 <%= checkpoint_class_name(checkpoint) %>">
+  
+    </div>
   </div>
 </div>

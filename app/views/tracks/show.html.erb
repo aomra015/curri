@@ -1,7 +1,8 @@
-<div class="well">
-  <div class="row header-row">
+<h2><%= @classroom.name %> > <%= @track.name %></h2>
+<div class="grid3">
+  <!-- <div class="row header-row">
     <h1><%= @track.name %></h1>
-  </div>
+  </div> -->
   <%= form_tag add_classroom_track_ratings_path(@classroom, @track) do %>
     <%= hidden_field_tag "track_id", @track.id %>
     <%= render @track.checkpoints.order(id: :asc) %>
