@@ -17,6 +17,9 @@ $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
 $border-radius: 4px;
 $grid-background: #F0ECDA;
 $secondary-color: #F16739;
+$danger-color: #DB2C2C;
+$warning-color: #EEB247;
+$success-color: #16AC21;
 
 //Mixins
 
@@ -113,6 +116,17 @@ h2.page-header {
   &:hover {
     background-color: darken($grid-background, 8%);
   }
+
+  h3 {
+    padding: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-clip: border-box;
+    background-color: darken($grid-background, 30%);
+    color: #FAFAFA;
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
 }
 
 .grid1, .grid2, .grid3 {
@@ -127,6 +141,7 @@ h2.page-header {
   margin-right: 30px;
   width: 300px;
   height: 400px;
+  overflow: hidden;
 }
 
 .grid2 {
@@ -153,15 +168,28 @@ div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
 .row {
   border-bottom: 1px solid darken($grid-background, 10%);
 
-
   &:last-child {
     border-bottom: none;
+  }
+
+  ul {
+    padding-left: 0;
+    // margin-left: 20px;
+    margin-top: 0;
+
+    li {
+      list-style:none;
+      // border-left: 3px solid red;
+      padding: 20px 10px 20px 20px;
+      border-bottom: 1px solid darken($grid-background, 10%);
+    }
   }
 }
 
 .unit-inner {
   padding: 0 20px;
   position: relative;
+  overflow: hidden;
 }
 
 .add-unit {
@@ -234,10 +262,15 @@ button.close {
 .pull-right {
   float: right;
 }
-.head-btn {
+
+.btn {
   padding: 7px 15px;
   @include rounded-corner;
   @include all-transition;
+  
+}
+
+.btn-head {
   background: $secondary-color;
   color: #fff;
   font-weight: bold;
@@ -247,6 +280,7 @@ button.close {
     background: darken($secondary-color, 10%);
   }
 }
+
 
 .progress{
   margin-top: 15px;
@@ -264,7 +298,7 @@ button.close {
   height: 100%;
   font-size: 13px;
   font-weight: bold;
-  line-height: 25px;
+  line-height: 26px;
   color: #fff;
   text-align: center;
   background-color: #428bca;
@@ -273,18 +307,19 @@ button.close {
 }
 
 .progress-bar-danger {
-  background-color: #E03E3E;
+  background-color: $danger-color;
 }
 .progress-bar-warning {
-  background-color: #EE9E47;
+  background-color: $warning-color;
 }
 .progress-bar-success {
-  background-color: #43C74D;
+  background-color: $success-color;
 }
 
 .analytics-track-name {
   float: left;
   width: 70%;
+  margin-top: 40px;
 
   h4 {
     margin-top: 0;
@@ -307,4 +342,75 @@ button.close {
   display: block;
   font-weight: 500;
   text-shadow: 1px 1px #fff;
+}
+
+.checkpoint-content {
+  overflow: hidden;
+  margin-top: 5px;
+
+  h4 {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .success-criteria {
+    float: left;
+    color: #FAFAFA;
+    font-weight: bold;
+    background-color: #ccc;
+    margin-top: 15px;
+  }
+}
+
+.checkpoint-score-links{
+  margin: 30px 0;
+}
+
+.checkpoint-rating {
+  margin-right: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #FAFAFA;
+}
+
+.checkpoint0, .checkpoint1, .checkpoint2 {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.checkpoint0 {
+  background-color: $danger-color;
+}
+
+.checkpoint1 {
+  background-color: $warning-color;
+}
+
+.checkpoint2 {
+  background-color: $success-color;}
+
+.checkpoint_0, .checkpoint_1, .checkpoint_2 {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 35px 35px 0;
+  border-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.checkpoint_0 {
+  border-right-color: $danger-color;
+}
+
+.checkpoint_1 {
+  border-right-color: $warning-color;
+}
+
+.checkpoint_2 {
+  border-right-color: $success-color;
 }

@@ -1,6 +1,6 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > All Tracks</h2>
-  <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom), class: "head-btn pull-right" %>
+  <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom), class: "btn btn-head pull-right" %>
 </div>
 <div class="grids"><%= render @tracks %>
   <%= link_to new_classroom_track_path, class: "grid1 grid-add" do %>
