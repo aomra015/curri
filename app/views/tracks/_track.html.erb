@@ -1,5 +1,10 @@
 <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "grid1" do %>
   <div class= "unit-inner">
     <h3><%=track.name %></h3>
+    <ul>
+    <% track.checkpoints.each do |checkpoint| %>
+      <li><%= checkpoint.expectation %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
