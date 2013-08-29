@@ -5,6 +5,11 @@ window.TRACK_ID = <%= @track.id %>
 <%= subscribe_to "/track/#{@track.id}/ratings" %>
 
 <%#= render 'time_filter' %>
-
-<h1>Analytics</h1>
-<%= render :partial => 'track' %>
+<div id="page-head">
+  <h2 class="page-header">Analytics > <%= @track.name %></h2>
+</div>
+<div class="grids">
+  <div class="grid2">
+    <%= render :partial => 'track' %>
+  </div>
+</div>
