@@ -4,7 +4,7 @@ Curry::Application.routes.draw do
 
   resources :classrooms do
     resources :tracks do
-      get 'analytics', to: 'analytics#index'
+      get 'analytics', to: 'analytics#show'
       resources :ratings do
         collection do
           post :add

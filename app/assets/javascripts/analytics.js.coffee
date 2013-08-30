@@ -6,5 +6,4 @@
 
 $ ->
   PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings}) ->
-    console.log $("#checkpoint#{checkpoint}").length, checkpoint
     $("#checkpoint#{checkpoint}").find('.count-number').html(ratings.length)
