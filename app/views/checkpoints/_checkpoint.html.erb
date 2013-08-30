@@ -1,3 +1,9 @@
+<script>
+window.TRACK_ID = <%= @track.id %>
+</script>
+
+<%= subscribe_to "/track/#{@track.id}/ratings" %>
+
 <div class="row" id="checkpoint<%= checkpoint.id %>">
   <div class="unit-inner">
     <div class="checkpoint-content">
@@ -6,15 +12,15 @@
       </h4>
       <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
     </div>
-  
+
     <div class="checkpoint-score-links">
       <%= link_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), method: :post, remote: true, class: 'checkpoint-rating checkpoint0 btn' %>
       <%= link_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), method: :post, remote: true, class: 'checkpoint-rating checkpoint1 btn' %>
       <%= link_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), method: :post, remote: true, class: 'checkpoint-rating checkpoint2 btn' %>
     </div>
-  
+
     <div class="marker <%= checkpoint_class_name(checkpoint) %>">
-  
+
     </div>
   </div>
 </div>
