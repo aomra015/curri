@@ -7,11 +7,11 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should create ratings" do
-    assert_difference 'Rating.count', 2 do
-      post :add, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoints: { checkpoint_1: { ":id" => checkpoints(:one).id, ":score" => "Somewhat Comfortable" }, checkpoint_2: { ":id" => checkpoints(:two).id, ":score" => "Don't Understand" } }
+    assert_difference 'Rating.count' do
+      post :create, format: 'json', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
     end
-
-    assert_redirected_to classroom_tracks_path(classrooms(:one))
+    response = JSON.parse(@response.body)
+    assert_equal 0, response["score"]
   end
 
 end

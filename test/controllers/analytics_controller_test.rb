@@ -7,19 +7,12 @@ class AnalyticsControllerTest < ActionController::TestCase
   end
 
   test "get analytics for classroom tracks" do
-    get :index, id: classrooms(:one)
+    classroom = classrooms(:one)
+    track = classrooms(:one).tracks.first
+    get :show, classroom_id: classrooms(:one), track_id: track.id
 
-    assert_equal classrooms(:one).tracks, assigns(:tracks)
-
-    assert :success
-  end
-
-  test "get scoped analytics for classroom tracks" do
-    get :scope, id: classrooms(:one)
-
-    assert_equal classrooms(:one).tracks, assigns(:tracks)
+    assert_equal track, assigns(:track)
 
     assert :success
-
   end
 end

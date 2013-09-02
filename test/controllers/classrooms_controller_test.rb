@@ -29,7 +29,7 @@ class ClassroomsControllerTest < ActionController::TestCase
       post :create, classroom: {name: "Test classroom"}
     end
 
-    assert_redirected_to classroom_path(assigns(:classroom))
+    assert_redirected_to classrooms_path
   end
 
   test "get edit classroom form" do
