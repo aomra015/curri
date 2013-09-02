@@ -12,17 +12,31 @@ To get this app working:
 7. profit
 
 === To do
+
+Student View:
+- success criteria pop-over style needs to be fixed
+- give students an indication that their rating was saved to database. Maybe a "Last Rating at: <time>" somewhere on the page.
+- when on a track, the side menu should indicate current track (prehaps with a colour or icon)
+
+Invitations:
 - student with account can claim invitation without sign up
 - logged in student can claim invitation
-- a student can rate checkpoints
+- ability to invite multiple students at once
 
+Ratings:
+- checkpoint ratings are associated with a student
+
+Forms:
 - add validations to forms
 - add dynamic_forms gem for form errors
 
-For views => create APIs so that:
-- students have limited access to classrooms
-- teachers have full access to classrooms
+Teacher Authorization:
+- only teachers should access analytics view
+- only teachers should be able to add/edit/delete classrooms/tracks/checkpoints
+
+Student Authorization:
+- only students should be able to rate checkpoints
 
 Analytics:
-- individual student analytics views
+- individual student analytics
 - aggregated analytics over time
