@@ -16,6 +16,9 @@ To get this app working:
 - logged in student can claim invitation
 - a student can rate checkpoints
 
+- add validations to forms
+- add dynamic_forms gem for form errors
+
 For views => create APIs so that:
 - students have limited access to classrooms
 - teachers have full access to classrooms

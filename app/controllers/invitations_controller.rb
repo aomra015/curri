@@ -28,21 +28,21 @@ class InvitationsController < ApplicationController
   def create_student
     invitation = Invitation.find_by(token: params[:user][:token])
 
-    if invitation.nil? || invitation.student
-      render :new, error: "The invitation is no longer valid or the URL is incorrect"
-    end
-
-    @user = User.new(user_params)
-    @user.classrole = Student.create
-
-    if @user.save
-      session[:user_id] = @user.id
-      invitation.student = @user.classrole
-      invitation.save
-      redirect_to classrooms_path
+    if invitation && invitation.student.nil?
+      @user = User.new(user_params)
+      @user.classrole = Student.create
+      if @user.save
+        session[:user_id] = @user.id
+        invitation.student = @user.classrole
+        invitation.save
+        redirect_to classrooms_path
+      else
+        render :claim
+      end
     else
-      render :new
+      render :claim, error: "The invitation is no longer valid or the URL is incorrect"
     end
+
   end
 
   private
