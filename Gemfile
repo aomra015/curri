@@ -50,7 +50,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'private_pub'
 gem 'thin'
-
+gem 'dynamic_form'
 # Use unicorn as the app server
 # gem 'unicorn'
 

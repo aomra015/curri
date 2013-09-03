@@ -53,6 +53,7 @@ GEM
       debugger-ruby_core_source (~> 1.2.3)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    dynamic_form (1.1.4)
     em-http-request (1.1.0)
       addressable (>= 2.3.4)
       cookiejar
@@ -194,6 +195,7 @@ DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
   coffee-rails (~> 4.0.0)
   debugger
+  dynamic_form
   jbuilder (~> 1.2)
   jquery-rails
   minitest-colorize

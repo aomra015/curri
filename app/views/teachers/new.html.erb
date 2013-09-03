@@ -1,6 +1,7 @@
 <h1>Sign up as a Teacher</h1>
 
 <%= form_for @user, url: teachers_create_path do |f| %>
+  <%= f.error_messages %>
   <h3>
     <%= f.label :username %>
   </h3>

@@ -27,8 +27,8 @@ Ratings:
 - checkpoint ratings are associated with a student
 
 Forms:
-- add validations to forms
-- add dynamic_forms gem for form errors
+- ~~add validations to forms~~ email presence and uniqueness required
+- ~~add dynamic_forms gem for form errors~~ done; validation problems reported to user.
 
 Teacher Authorization:
 - only teachers should access analytics view
