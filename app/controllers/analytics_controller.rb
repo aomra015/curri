@@ -6,12 +6,11 @@ class AnalyticsController < ApplicationController
   def show
     @track = @classroom.tracks.find(params[:track_id])
 
-    now = Time.zone.now
-    @start_at = 0
-    @end_at = 0
+    # @start_at = 0
+    # @end_at = 0
 
-    @start_time = Rating.first.try(:created_at) || now
-    @end_time = now
+    @start_time = @track.created_at
+    @end_time = Time.zone.now
   end
 
   # def scope
