@@ -9,12 +9,11 @@
 5. rake db:seed
 
 ### Start development environment
-Terminal Tab 1: rails s
-Terminal Tab 2: rackup private_pub.ru -s thin -E production
+- `$ foreman start`
 
 ### Run tests
-Terminal Tab 1: rackup private_pub.ru -s thin -E test
-Terminal Tab 2: rake
+Terminal Tab 1: `$ rackup private_pub.ru -s thin -E test`
+Terminal Tab 2: `$ rake`
 
 ## To do
 
