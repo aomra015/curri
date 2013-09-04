@@ -1,6 +1,6 @@
 class CheckpointsController < ApplicationController
 
-  before_action :check_user_login
+  before_action :authorize
   before_action :get_nested_classroom
   before_action :get_track
   before_action :get_checkpoint, except: [:index, :new, :create]

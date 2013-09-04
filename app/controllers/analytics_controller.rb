@@ -1,6 +1,6 @@
 class AnalyticsController < ApplicationController
 
-  before_action :check_user_login
+  before_action :authorize
   before_action :get_nested_classroom
 
   def show
