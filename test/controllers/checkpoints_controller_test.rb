@@ -6,18 +6,6 @@ class CheckpointsControllerTest < ActionController::TestCase
     session[:user_id] = users(:ahmed).id
   end
 
-  test "get list of checkpoints" do
-    get :index, classroom_id: classrooms(:one), track_id: tracks(:one)
-    assert assigns(:checkpoints)
-    assert :success
-  end
-
-  test "show single checkpoint" do
-    get :show, classroom_id: classrooms(:one), track_id: tracks(:one), id: checkpoints(:one)
-    assert assigns(:checkpoint)
-    assert :success
-  end
-
   test "get new checkpoint form" do
     get :new, classroom_id: classrooms(:one), track_id: tracks(:one)
     assert assigns(:checkpoint)

@@ -10,7 +10,7 @@ Curry::Application.routes.draw do
           post :add
         end
       end
-      resources :checkpoints
+      resources :checkpoints, except: [:index, :show]
     end
 
     resources :invitations

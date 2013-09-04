@@ -3,14 +3,7 @@ class CheckpointsController < ApplicationController
   before_action :authorize
   before_action :get_nested_classroom
   before_action :get_track
-  before_action :get_checkpoint, except: [:index, :new, :create]
-
-  def index
-    @checkpoints = @track.checkpoints
-  end
-
-  def show
-  end
+  before_action :get_checkpoint, only: [:edit, :update]
 
   def new
     @checkpoint = Checkpoint.new
