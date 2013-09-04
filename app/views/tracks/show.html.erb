@@ -1,5 +1,7 @@
+<%= subscribe_to "/track/#{@track.id}/ratings" %>
+
 <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %></h2>
-<div class="grid2">
+<div class="grid2" id="track" data-trackid="<%= @track.id %>">
   <!-- <div class="row header-row">
     <h1><%= @track.name %></h1>
   </div> -->

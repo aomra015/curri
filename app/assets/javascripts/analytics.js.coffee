@@ -5,31 +5,7 @@
 #= require private_pub
 
 $ ->
-  get_score = (ratings) ->
-    zero_count = 0
-    one_count = 0
-    two_count = 0
-
-    for key, rating of ratings
-      if rating.score == 0
-        zero_count += 1
-      else if rating.score == 1
-        one_count += 1
-      else if rating.score == 2
-        two_count += 1
-
-    zero_percent = zero_count * 100 / ratings.length
-    one_percent = one_count * 100 / ratings.length
-    two_percent = two_count * 100 / ratings.length
-    {
-      zero_percent: "#{zero_percent}%",
-      one_percent: "#{one_percent}%",
-      two_percent: "#{two_percent}%",
-      zero_count: zero_count,
-      one_count: one_count,
-      two_count: two_count
-    }
-
+  TRACK_ID = $('#track').data('trackid')
   PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings, current_score}) ->
 
     #update analytics view
@@ -45,3 +21,28 @@ $ ->
     marker = $("#checkpoint#{checkpoint}").find('.marker')
     marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2')
     marker.addClass("checkpoint_#{current_score}")
+
+get_score = (ratings) ->
+  zero_count = 0
+  one_count = 0
+  two_count = 0
+
+  for key, rating of ratings
+    if rating.score == 0
+      zero_count += 1
+    else if rating.score == 1
+      one_count += 1
+    else if rating.score == 2
+      two_count += 1
+
+  zero_percent = zero_count * 100 / ratings.length
+  one_percent = one_count * 100 / ratings.length
+  two_percent = two_count * 100 / ratings.length
+  {
+    zero_percent: "#{zero_percent}%",
+    one_percent: "#{one_percent}%",
+    two_percent: "#{two_percent}%",
+    zero_count: zero_count,
+    one_count: one_count,
+    two_count: two_count
+  }
