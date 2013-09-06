@@ -11,7 +11,6 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
 end
@@ -51,7 +50,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 gem 'private_pub'
 gem 'thin'
-
+gem 'foreman'
+gem 'dynamic_form'
 # Use unicorn as the app server
 # gem 'unicorn'
 

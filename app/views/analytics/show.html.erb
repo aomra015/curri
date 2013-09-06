@@ -1,7 +1,3 @@
-<script>
-window.TRACK_ID = <%= @track.id %>
-</script>
-
 <%= subscribe_to "/track/#{@track.id}/ratings" %>
 
 <%#= render 'time_filter' %>
@@ -9,7 +5,7 @@ window.TRACK_ID = <%= @track.id %>
   <h2 class="page-header">Analytics > <%= @track.name %></h2>
 </div>
 <div class="grids">
-  <div class="grid2">
+  <div class="grid2" id="track" data-trackid="<%= @track.id %>">
     <%= render :partial => 'track' %>
   </div>
 </div>

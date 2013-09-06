@@ -10,7 +10,7 @@ class TeacherAccountsTest < Capybara::Rails::TestCase
     fill_in :user_password_confirmation, with: 'password123'
 
     assert_difference 'User.count' do
-      click_button 'register-teacher'
+      click_button 'Register'
     end
 
     assert current_path == classrooms_path, "Not redirected to user's classrooms"

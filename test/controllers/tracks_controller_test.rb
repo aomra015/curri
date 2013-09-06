@@ -29,7 +29,7 @@ class TracksControllerTest < ActionController::TestCase
       post :create, classroom_id: classrooms(:one), track: {name: "Test Track"}
     end
 
-    assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
+    assert_redirected_to classroom_tracks_path(assigns(:classroom))
   end
 
   test "get edit track form" do

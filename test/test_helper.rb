@@ -5,8 +5,6 @@ ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-
-require 'minitest/rails'
 require 'minitest/rails/capybara'
 require 'minitest/colorize'
 
@@ -25,7 +23,7 @@ class ActiveSupport::TestCase
     visit login_path
     fill_in :email, with: user.email
     fill_in :password, with: 'password123'
-    click_button 'login-button'
+    click_button 'Login'
   end
 
   def invite_student(teacher, student_email)
@@ -37,6 +35,6 @@ class ActiveSupport::TestCase
     assert_equal new_classroom_invitation_path(@classroom), current_path
 
     fill_in :invitation_email, with: student_email
-    click_button 'invite-button'
+    click_button 'Send Invitation'
   end
 end

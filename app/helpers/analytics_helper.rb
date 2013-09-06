@@ -2,7 +2,6 @@ module AnalyticsHelper
 
   def get_rating_label(checkpoint, score)
     label = checkpoint.ratings_count(@start_time, @end_time, score)
-    label = "" if label == 0
     label
   end
 
