@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
 
-  before_action :authorize
+  before_action :authorize, only: [:new, :create]
   before_action :get_nested_classroom, only: [:new, :create]
 
   def new
@@ -40,13 +40,42 @@ class InvitationsController < ApplicationController
         render :claim
       end
     else
-      render :claim, error: "The invitation is no longer valid or the URL is incorrect"
+      flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
+      render :claim
+    end
+
+  end
+
+  def login
+    @token = params[:token]
+  end
+
+  def add_student
+    invitation = Invitation.find_by(token: params[:user][:token])
+    @user = User.find_by_email(params[:user][:email])
+
+    if @user && @user.classrole_type != 'Student'
+      flash.now.alert = "You need a student account to accept the invitation."
+      render :login
+    elsif invitation && invitation.student.nil?
+      if @user && @user.authenticate(params[:user][:password])
+        session[:user_id] = @user.id
+        invitation.student = @user.classrole
+        invitation.save
+        redirect_to classrooms_path
+      else
+        flash.now.alert = "Email or password are not correct"
+        render :login
+      end
+    else
+      flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
+      render :login
     end
 
   end
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

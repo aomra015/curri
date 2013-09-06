@@ -11,3 +11,9 @@ paula:
   classrole: paula
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
+
+student:
+  email: student@school.com
+  classrole: student1
+  classrole_type: Student
+  password_digest: <%= BCrypt::Password.create("password123")%>

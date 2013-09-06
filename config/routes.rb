@@ -18,7 +18,9 @@ Curry::Application.routes.draw do
 
   # Student Invitations
   get '/invitations/:token/claim', to: "invitations#claim", as: "claim_invitation"
+  get '/invitations/:token/login', to: "invitations#login", as: "login_invitation"
   post "invitations/create_student"
+  post "invitations/add_student"
 
 
   get '/register', to: "teachers#new"

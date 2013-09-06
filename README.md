@@ -24,7 +24,7 @@
 - Give information about who is logged in (maybe in top right corner)
 
 ### Invitations
-- student with account can claim invitation without sign up
+- ~~student with account can claim invitation without sign up~~
 - logged in student can claim invitation
 - ability to invite multiple students at once
 
