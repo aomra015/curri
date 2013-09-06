@@ -2,12 +2,6 @@
 
 <%= form_for @user, url: teachers_create_path do |f| %>
   <%= f.error_messages %>
-  <h3>
-    <%= f.label :username %>
-  </h3>
-  <span>
-    <%= f.text_field :username, placeholder: 'Please enter a username', class: "form-input" %>
-  </span>
 
   <h3>
     <%= f.label :email %>

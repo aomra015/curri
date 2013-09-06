@@ -1,14 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 ahmed:
-  username: aomran
   email: aomra@gmail.com
   classrole: ahmed
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
 
 paula:
-  username: pfranzini
   email: franzini@paula.com
   classrole: paula
   classrole_type: Teacher

@@ -4,5 +4,5 @@ class Student < ActiveRecord::Base
   has_many :classrooms, through: :invitations
   has_many :ratings
 
-  delegate :username, :email, to: :user
+  delegate :email, to: :user
 end

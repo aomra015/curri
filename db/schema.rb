@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130826204421) do
+ActiveRecord::Schema.define(version: 20130906193533) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -71,7 +71,6 @@ ActiveRecord::Schema.define(version: 20130826204421) do
   add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id"
 
   create_table "users", force: true do |t|
-    t.string   "username"
     t.string   "email"
     t.integer  "classrole_id"
     t.string   "classrole_type"

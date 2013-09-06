@@ -8,7 +8,7 @@ class TeachersControllerTest < ActionController::TestCase
 
   test "should create a teacher" do
     assert_difference 'User.count' do
-      post :create, user: {username: "misty", email: "misty@aomran.com", password: "likeskoi", password_confirmation: "likeskoi"}
+      post :create, user: {email: "misty@aomran.com", password: "likeskoi", password_confirmation: "likeskoi"}
     end
 
     teacher = User.find(session[:user_id])

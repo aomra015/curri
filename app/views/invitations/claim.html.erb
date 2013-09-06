@@ -3,10 +3,6 @@
 <%= form_tag invitations_create_student_path, class: 'form-horizontal' do |f| %>
 
   <%= hidden_field_tag "user[token]", @token %>
-  <div>
-    <%= label_tag "user[username]", 'Username' %>
-    <%= text_field_tag "user[username]", nil, class: "form-input" %>
-  </div>
 
   <div>
     <%= label_tag "user[email]", 'Email Address' %>
