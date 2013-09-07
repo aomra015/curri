@@ -3,22 +3,30 @@ class RatingsController < ApplicationController
   before_action :authorize
   before_action :get_nested_classroom
 
-  respond_to :json
-
   def create
     score = params[:value].to_i
 
     if !Rating::OPTIONS[score]
       head 422
     else
-      @checkpoint = Checkpoint.find(params[:checkpoint_id])
+      @track = @classroom.tracks.find(params[:track_id])
+      @checkpoint = @track.checkpoints.find(params[:checkpoint_id])
 
       session["checkpoint_#{@checkpoint.id}"] = score
-      @rating = @checkpoint.ratings.create(score: score)
+      @rating = @checkpoint.ratings.new(score: score)
+      @rating.student = current_user.classrole
+      @rating.save
 
-      PrivatePub.publish_to "/track/#{params[:track_id]}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings, current_score: @rating.score
+      respond_to do |format|
+        format.html {
+          redirect_to classroom_track_url(@classroom, @track)
+        }
+        format.js {
+          PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings, current_score: @rating.score
+          render json: @rating
+        }
+      end
 
-      respond_with @rating, location: nil
     end
   end
 

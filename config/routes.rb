@@ -5,11 +5,7 @@ Curry::Application.routes.draw do
   resources :classrooms do
     resources :tracks do
       get 'analytics', to: 'analytics#show'
-      resources :ratings do
-        collection do
-          post :add
-        end
-      end
+      resources :ratings
       resources :checkpoints, except: [:index, :show]
     end
 

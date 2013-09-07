@@ -2,11 +2,11 @@
 # http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  classroom: 
-  student: 
+  classroom: one
+  student: student1
   token: MyString
 
 two:
-  classroom: 
-  student: 
+  classroom:
+  student:
   token: MyString

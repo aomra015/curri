@@ -29,7 +29,7 @@
 - ability to invite multiple students at once
 
 ### Ratings
-- checkpoint ratings should be associated with a student
+- ~~checkpoint ratings should be associated with a student~~
 
 ### Forms
 - ~~add validations to forms~~

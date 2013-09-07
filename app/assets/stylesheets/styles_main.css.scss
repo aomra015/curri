@@ -1,5 +1,5 @@
 * {
-  -moz-box-sizing: border-box; 
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -281,7 +281,7 @@ button.close {
   padding: 7px 15px;
   @include rounded-corner;
   @include all-transition;
-  
+
 }
 
 .btn-head {
@@ -521,4 +521,8 @@ background-clip: padding-box;
 opacity: 0;
 -webkit-transition: opacity .15s linear;
 transition: opacity .15s linear;
+}
+
+.button_to {
+  display:inline-block;
 }
