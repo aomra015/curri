@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to login_url, alert: 'Please log in or sign up.' if current_user.nil?
   end
+
+  def authorize_teacher
+    redirect_to classrooms_url, alert: 'Only a teacher can do that.' unless current_user.teacher?
+  end
 end

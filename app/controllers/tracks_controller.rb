@@ -1,6 +1,7 @@
 class TracksController < ApplicationController
 
   before_action :authorize
+  before_action :authorize_teacher, except: [:index, :show]
   before_action :get_nested_classroom
   before_action :get_track, only: [:show, :edit, :update]
 

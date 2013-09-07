@@ -22,6 +22,15 @@
 - give students an indication that their rating was saved to database. Maybe a "Last Rating at: <time>" somewhere on the page.
 - when on a track, the side menu should indicate current track (prehaps with a colour or icon)
 - Give information about who is logged in (maybe in top right corner)
+- Hide teacher interface from students by using the new 'teacher?' method.
+
+Example:
+
+```
+<% if current_user.teacher? %>
+  # Analytics link here
+<% end %>
+```
 
 ### Invitations
 - ~~student with account can claim invitation without sign up~~
@@ -36,8 +45,8 @@
 - ~~add dynamic_forms gem for form errors~~
 
 ### Teacher Authorization
-- only teachers should access analytics view
-- only teachers should be able to add/edit/delete classrooms/tracks/checkpoints
+- ~~only teachers should access analytics view~~
+- ~~only teachers should be able to add/edit/delete classrooms/tracks/checkpoints~~
 
 ### Student Authorization
 - ~~only students should be able to rate checkpoints~~
