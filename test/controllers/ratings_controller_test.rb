@@ -21,4 +21,12 @@ class RatingsControllerTest < ActionController::TestCase
     assert_equal 0, response["score"]
   end
 
+  test "only students should be able to rate checkpoints" do
+    session[:user_id] = users(:ahmed).id
+    post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
+
+    assert_redirected_to classroom_track_path(classrooms(:one), tracks(:one))
+    assert_equal "Only students can rate", flash[:alert]
+  end
+
 end

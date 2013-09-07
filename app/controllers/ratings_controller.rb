@@ -1,6 +1,7 @@
 class RatingsController < ApplicationController
 
   before_action :authorize
+  before_action :authorize_student
   before_action :get_nested_classroom
 
   def create
@@ -28,6 +29,11 @@ class RatingsController < ApplicationController
       end
 
     end
+  end
+
+  private
+  def authorize_student
+    redirect_to classroom_track_path(params[:classroom_id], params[:track_id]), alert: "Only students can rate" if current_user.classrole_type != 'Student'
   end
 
 end

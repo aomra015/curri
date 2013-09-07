@@ -40,7 +40,7 @@
 - only teachers should be able to add/edit/delete classrooms/tracks/checkpoints
 
 ### Student Authorization
-- only students should be able to rate checkpoints
+- ~~only students should be able to rate checkpoints~~
 
 ### Analytics
 - individual student analytics
