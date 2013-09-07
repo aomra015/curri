@@ -7,14 +7,16 @@
       <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
     </div>
 
-    <div class="checkpoint-score-links">
-      <%= button_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), remote: true, class: 'checkpoint-rating checkpoint0 btn' %>
-      <%= button_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), remote: true, class: 'checkpoint-rating checkpoint1 btn' %>
-      <%= button_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), remote: true, class: 'checkpoint-rating checkpoint2 btn' %>
-    </div>
+    <% if current_user.student? %>
+      <div class="checkpoint-score-links">
+        <%= button_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), remote: true, class: 'checkpoint-rating checkpoint0 btn' %>
+        <%= button_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), remote: true, class: 'checkpoint-rating checkpoint1 btn' %>
+        <%= button_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), remote: true, class: 'checkpoint-rating checkpoint2 btn' %>
+      </div>
 
-    <div class="marker <%= checkpoint_class_name(checkpoint) %>">
+      <div class="marker <%= checkpoint_class_name(checkpoint) %>">
+      </div>
+    <% end %>
 
-    </div>
   </div>
 </div>

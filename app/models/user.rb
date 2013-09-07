@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
 
   delegate :classrooms, to: :classrole
 
+  def teacher?
+    classrole_type == 'Teacher'
+  end
+
+  def student?
+    classrole_type == 'Student'
+  end
+
 end
