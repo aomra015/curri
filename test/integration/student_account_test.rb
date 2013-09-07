@@ -40,7 +40,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     visit claim_invitation_path(invitation.token)
 
     click_link 'skip this step'
-    assert_equal current_path, login_invitation_path(invitation.token), 'Did not go to page where students can log in to claim invitation'
+    assert_equal login_invitation_path(invitation.token), current_path, 'Did not go to page where students can log in to claim invitation'
 
     fill_in :user_email, with: users(:student).email
     fill_in :user_password, with: 'password123'
@@ -49,7 +49,21 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     assert_equal users(:student).classrole, Invitation.last.student, 'Student was not added to the classroom'
   end
 
-  test "logged in student can claim invitation" do
-    skip
+  test "currently logged in student can claim invitation without sign up" do
+    teacher = users(:ahmed)
+    student_email = users(:student).email
+
+    login_as(teacher)
+    invite_student(teacher, student_email)
+
+    within 'ul.nav' do
+      click_link 'Logout'
+    end
+    login_as(users(:student))
+
+    invitation = Invitation.last
+    visit claim_invitation_path(invitation.token)
+
+    assert_equal login_invitation_path(invitation.token), current_path, 'Did not redirect to page where students can log in to claim invitation'
   end
 end

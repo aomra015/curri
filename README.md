@@ -25,7 +25,7 @@
 
 ### Invitations
 - ~~student with account can claim invitation without sign up~~
-- logged in student can claim invitation
+- ~~currently logged in student can claim invitation without sign up~~
 - ability to invite multiple students at once
 
 ### Ratings

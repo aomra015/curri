@@ -1,6 +1,7 @@
 class InvitationsController < ApplicationController
 
   before_action :authorize, only: [:new, :create]
+  before_action :check_if_logged_in, only: [:claim]
   before_action :get_nested_classroom, only: [:new, :create]
 
   def new
@@ -77,5 +78,9 @@ class InvitationsController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def check_if_logged_in
+    redirect_to login_invitation_path(params[:token]) if current_user && current_user.classrole_type == 'Student'
   end
 end
