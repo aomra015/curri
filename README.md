@@ -18,9 +18,9 @@
 ## To do
 
 ### Front-end View
-- success criteria pop-over style needs to be fixed
-- give students an indication that their rating was saved to database. Maybe a "Last Rating at: <time>" somewhere on the page.
-- when on a track, the side menu should indicate current track (prehaps with a colour or icon)
+- Success criteria pop-over style needs to be fixed
+- Give students an indication that their rating was saved to the database. Maybe a "Last Rating at: <time>" somewhere on the page.
+- When on a track, the side menu should indicate current track (prehaps with a colour or icon)
 - Give information about who is logged in (maybe in top right corner)
 - Hide teacher interface from students by using the new 'teacher?' method.
 
@@ -33,14 +33,14 @@ Example:
 ```
 
 ### Forms
-- Create form object form track/checkpoints so that teachers can easily add this stuff.
+- Create form for adding a track and its associated checkpoints.
 
 ### Invitations
-- ability to invite multiple students at once
+- ability to invite multiple students at once (discuss this)
 
 ### Analytics
-- individual student analytics
-- aggregated analytics over time
+- individual student analytics (discuss this)
+- aggregated analytics over time (discuss this)
 
 ## Done
 
