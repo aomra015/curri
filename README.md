@@ -1,6 +1,6 @@
-# Getting Started
+# Curri App
 
-## To get this app working:
+## Getting Started
 
 1. Clone it down to your computer (don't fork it please).
 2. cd curry
@@ -32,10 +32,21 @@ Example:
 <% end %>
 ```
 
+### Forms
+- Create form object form track/checkpoints so that teachers can easily add this stuff.
+
+### Invitations
+- ability to invite multiple students at once
+
+### Analytics
+- individual student analytics
+- aggregated analytics over time
+
+## Done
+
 ### Invitations
 - ~~student with account can claim invitation without sign up~~
 - ~~currently logged in student can claim invitation without sign up~~
-- ability to invite multiple students at once
 
 ### Ratings
 - ~~checkpoint ratings should be associated with a student~~
@@ -50,7 +61,3 @@ Example:
 
 ### Student Authorization
 - ~~only students should be able to rate checkpoints~~
-
-### Analytics
-- individual student analytics
-- aggregated analytics over time
