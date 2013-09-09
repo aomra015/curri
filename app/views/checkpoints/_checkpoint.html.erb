@@ -5,8 +5,11 @@
       <%= checkpoint.expectation %>
       </h4>
       <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
-    </div>
 
+          <!-- Teacher Controls -->
+    <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn' %>
+    </div>
+    <!-- Student Controls -->
     <% if current_user.student? %>
       <div class="checkpoint-score-links">
         <%= button_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), remote: true, class: 'checkpoint-rating checkpoint0 btn' %>

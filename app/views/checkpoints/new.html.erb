@@ -1,15 +1,2 @@
 <h2>Add Checkpoints</h2>
-<%= form_for [@classroom, @track, @checkpoint] do |f| %>
-  <%= f.error_messages %>
-  <div>
-    <%= f.label :expectation %>
-    <%= f.text_area :expectation, rows: 2,class: "form-input-area" %>
-  </div>
-
-  <div>
-    <%= f.label :success_criteria %>
-    <%= f.text_area :success_criteria, rows: 2, class: "form-input-area"  %>
-  </div>
-
-  <%= f.submit 'Create Checkpoint', class: 'add-checkpoint btn'%>
-<% end %>
+<%= render 'form' %>
