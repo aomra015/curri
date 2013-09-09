@@ -9,4 +9,15 @@ class UserAccountsTest < Capybara::Rails::TestCase
 
     assert current_path == login_path, 'Did not redirect to login page'
   end
+
+  test "A user who forgot their password can get a reset email" do
+    visit login_path
+    click_link 'password-reset'
+
+    fill_in :email, with: 'paula@testmail.com'
+    click_button 'password-reset-button'
+
+    assert page.has_content?('Email sent with instructions for resetting password')
+
+  end
 end

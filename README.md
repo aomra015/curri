@@ -6,7 +6,6 @@
 2. cd curry
 3. bundle install
 4. rake db:migrate
-5. rake db:seed
 
 ### Start development environment
 - `$ foreman start`

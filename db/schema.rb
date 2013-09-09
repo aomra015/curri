@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130907020537) do
+ActiveRecord::Schema.define(version: 20130909202231) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -79,6 +79,8 @@ ActiveRecord::Schema.define(version: 20130907020537) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "password_digest"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type"
