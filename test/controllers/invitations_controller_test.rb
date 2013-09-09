@@ -10,6 +10,14 @@ class InvitationsControllerTest < ActionController::TestCase
     get :new, classroom_id: classrooms(:one).id
 
     assert assigns(:invitation)
+    assert assigns(:invitations)
+    assert_response :success
+  end
+
+  test "should get list of invitees" do
+    get :new, classroom_id: classrooms(:one).id
+
+    assert assigns(:invitation)
 
     assert_response :success
   end

@@ -30,6 +30,15 @@ class TeacherViewTest < Capybara::Rails::TestCase
     last_email = ActionMailer::Base.deliveries.last
 
     assert_equal ['mystudent@gmail.com'], last_email.to
+  end
 
+  test "teacher should see list of invited students" do
+    teacher = users(:ahmed)
+    login_as(teacher)
+    student_email = 'mystudent@gmail.com'
+    invite_student(teacher, student_email)
+
+    click_link 'Invite Students'
+    assert page.has_content?(student_email), 'Email of invited student not listed'
   end
 end

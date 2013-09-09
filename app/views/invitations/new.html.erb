@@ -1,3 +1,4 @@
+<div class="grid1">
 <h1>Invite Students</h1>
 <%= form_for [@classroom, @invitation] do |f| %>
   <h3>
@@ -10,3 +11,20 @@
     <%= f.submit 'Send Invitation', class: 'invite-button btn' %>
   </div>
 <% end %>
+</div>
+
+<div class="grid1">
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Status</th>
+    </tr>
+
+    <% @invitations.each do |invitation| %>
+      <tr>
+        <td><%= invitation.email %></td>
+        <td><%= get_invitation_status(invitation) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

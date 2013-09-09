@@ -541,3 +541,11 @@ transition: opacity .15s linear;
 .button_to {
   display:inline-block;
 }
+
+.accepted {
+  color: $success-color;
+}
+
+.pending {
+  color: $warning-color;
+}

@@ -7,6 +7,7 @@ class InvitationsController < ApplicationController
 
   def new
     @invitation = Invitation.new
+    @invitations = @classroom.invitations
   end
 
   def create

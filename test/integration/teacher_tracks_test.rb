@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TracksTest < Capybara::Rails::TestCase
+class TeacherTracksTest < Capybara::Rails::TestCase
 
   test "a teacher can add checkpoints to a track" do
     teacher = users(:ahmed)
