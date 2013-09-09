@@ -2,10 +2,10 @@
 
 one:
   expectation: Can build a thing
-  success_criteria:
+  success_criteria: something
   track: one
 
 two:
   expectation: MyString
-  success_criteria:
+  success_criteria: MyString
   track_id:

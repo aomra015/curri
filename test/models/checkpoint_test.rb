@@ -10,6 +10,16 @@ class CheckpointTest < ActiveSupport::TestCase
     @end_time = @checkpoint.ratings.last.created_at
   end
 
+  test "validate presence of both attributes" do
+    checkpoint = Checkpoint.new(expectation: 'something')
+    checkpoint.valid?
+    assert checkpoint.errors[:success_criteria].any?
+
+    checkpoint = Checkpoint.new(success_criteria: 'something else')
+    checkpoint.valid?
+    assert checkpoint.errors[:expectation].any?
+  end
+
   test "overall score" do
     assert_equal 50, @checkpoint.overall_score
     assert_equal 0, @checkpoint_no_ratings.overall_score

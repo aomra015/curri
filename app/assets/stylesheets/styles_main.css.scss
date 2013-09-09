@@ -439,7 +439,7 @@ div.unit-inner.ratings-count {
   border-right-color: $success-color;
 }
 
-.login-button, .invite-button, .register-teacher, .add-track, .add-classroom, #password-reset-button, .reset-button {
+.login-button, .invite-button, .register-teacher, .add-track, .add-classroom, #password-reset-button, .reset-button, .add-checkpoint {
   background-color: $secondary-color;
   color: #FAFAFA;
   font-weight: bold;
@@ -475,6 +475,21 @@ div.unit-inner.ratings-count {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+.form-input-area {
+  display: block;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
 input {
   border: none;
   font-family: inherit;

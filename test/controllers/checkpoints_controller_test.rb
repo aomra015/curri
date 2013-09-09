@@ -14,10 +14,16 @@ class CheckpointsControllerTest < ActionController::TestCase
 
   test "create checkpoint" do
     assert_difference 'Checkpoint.count' do
-      post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: {expectation: "Test Checkpoint"}
+      post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: {expectation: "Test Checkpoint", success_criteria: 'something'}
     end
 
-    assert_redirected_to classroom_track_checkpoint_path(assigns(:classroom), assigns(:track),assigns(:checkpoint))
+    assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
+  end
+
+  test "show form errors when missing information" do
+    post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: {expectation: "Test Checkpoint"}
+
+    assert_template :new
   end
 
   test "get edit checkpoint form" do
@@ -31,6 +37,6 @@ class CheckpointsControllerTest < ActionController::TestCase
 
     checkpoint = Checkpoint.find(checkpoints(:one))
     assert_equal "Changed expectation", checkpoint.expectation
-    assert_redirected_to classroom_track_checkpoint_path(assigns(:classroom), assigns(:track),assigns(:checkpoint))
+    assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
   end
 end
