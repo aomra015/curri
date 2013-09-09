@@ -1,7 +1,6 @@
 <h1>Log In To Claim Invitation</h1>
 
-<%= form_tag invitations_add_student_path, class: 'form-horizontal' do |f| %>
-  <%= f.error_messages %>
+<%= form_tag invitations_add_student_path, class: 'form-horizontal' do %>
   <%= hidden_field_tag "user[token]", @token %>
 
   <div>

@@ -32,7 +32,7 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should get claim form" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
     get :claim, token: token
 
     assert assigns(:user)
@@ -41,7 +41,7 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should create a student" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
     assert_difference 'User.count' do
       post :create_student, user: {email: "misty@aomran.com", password: "likeskoi", password_confirmation: "likeskoi", token: token}
     end
@@ -62,14 +62,14 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should give validation errors when creating students" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
     post :create_student, user: {password: "likeskoi", password_confirmation: "likeskoi", token: token}
 
     assert assigns(:user).errors[:email].any?
   end
 
   test "should get login form" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
     get :login, token: token
 
     assert assigns(:token)
@@ -77,7 +77,7 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should not add teacher to classroom" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
 
     post :add_student, user: {email: users(:ahmed).email, password: "password123", token: token}
 
@@ -93,7 +93,7 @@ class InvitationsControllerTest < ActionController::TestCase
   end
 
   test "should give login errors" do
-    token = Invitation.create.token
+    token = Invitation.create(email: 'student@gmail.com').token
 
     post :add_student, user: {email: users(:student).email, password: "wrongpassword", token: token}
 

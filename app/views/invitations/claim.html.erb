@@ -2,8 +2,7 @@
 
 <p>If you already have a student account then <%= link_to 'skip this step', login_invitation_path(@token) %>.</p>
 
-<%= form_tag invitations_create_student_path, class: 'form-horizontal' do |f| %>
-  <%= f.error_messages %>
+<%= form_tag invitations_create_student_path, class: 'form-horizontal' do %>
   <%= hidden_field_tag "user[token]", @token %>
 
   <div>
