@@ -13,9 +13,9 @@ class CheckpointsController < ApplicationController
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
     if @checkpoint.save
-      redirect_to classroom_track_checkpoint_path(@classroom, @track, @checkpoint), notice: "Checkpoint has been created"
+      redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been created"
     else
-      redirect_to classroom_track_checkpoints_path(@classroom, @track)
+      render :new
     end
   end
 
@@ -24,9 +24,9 @@ class CheckpointsController < ApplicationController
 
   def update
     if @checkpoint.update(checkpoint_params)
-      redirect_to classroom_track_checkpoint_path(@classroom, @track, @checkpoint), notice: "Checkpoint has been updated"
+      redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been updated"
     else
-      redirect_to classroom_track_checkpoints_path(@classroom, @track)
+      render :edit
     end
   end
 
