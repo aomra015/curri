@@ -1,6 +1,7 @@
 <div class="grid1">
 <h1>Invite Students</h1>
 <%= form_for [@classroom, @invitation] do |f| %>
+  <%= f.error_messages %>
   <h3>
     <%= f.label :email %>
     </h3>
