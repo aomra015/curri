@@ -5,4 +5,5 @@ class Classroom < ActiveRecord::Base
   has_many :students, through: :invitations
 
   belongs_to :teacher
+  validates :name, presence: true
 end
