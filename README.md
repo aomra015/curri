@@ -8,7 +8,7 @@
 4. `$ rake db:migrate`
 
 ### Start development environment (at localhost:3000)
-- `$ foreman start`
+- `$ foreman start -f Procfile-dev`
 
 ### Run tests
 - `$ rake test`
