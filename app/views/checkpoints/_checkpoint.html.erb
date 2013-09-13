@@ -4,10 +4,13 @@
       <h4>
       <%= checkpoint.expectation %>
       </h4>
-      <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
-
+      <% if current_user.student? %>
+        <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
+      <% else %>
           <!-- Teacher Controls -->
-    <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn' %>
+        <div><%= checkpoint.success_criteria %></div>
+        <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn' %>
+      <% end %>
     </div>
     <!-- Student Controls -->
     <% if current_user.student? %>
