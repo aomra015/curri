@@ -11,4 +11,4 @@
 - `$ foreman start`
 
 ### Run tests
-- `$ rake test` (make sure foreman is started in another terminal tab)
+- `$ rake test`

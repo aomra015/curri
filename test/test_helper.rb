@@ -38,3 +38,5 @@ class ActiveSupport::TestCase
     click_button 'Send Invitation'
   end
 end
+
+require "mocha/setup"

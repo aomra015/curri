@@ -14,9 +14,12 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should create ratings with js request" do
+    PrivatePub.stubs(:publish_to)
+
     assert_difference 'Rating.count' do
       post :create, format: 'js', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
     end
+
     response = JSON.parse(@response.body)
     assert_equal 0, response["score"]
   end
