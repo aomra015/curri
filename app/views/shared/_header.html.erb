@@ -7,7 +7,7 @@
       <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <% end %>
 
-      <% if @track %>
+      <% if @track && !current_user.student? %>
       <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
       <% end %>
       <% unless current_user %>

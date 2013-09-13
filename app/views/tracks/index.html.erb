@@ -1,12 +1,16 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > All Tracks</h2>
-  <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom), class: "btn btn-head pull-right" %>
+  <% if !current_user.student? %>
+    <%= link_to 'Invite Students', new_classroom_invitation_path(@classroom), class: "btn btn-head pull-right" %>
+  <% end %>
 </div>
 <div class="grids"><%= render @tracks %>
-  <%= link_to new_classroom_track_path, class: "grid1 grid-add" do %>
-    <div class="add-unit">
-      <div class="add-sign">+</div>
-      <p class="add-text">Add New Track</p>
-    </div>
-<% end %>
+  <% if !current_user.student? %>
+    <%= link_to new_classroom_track_path, class: "grid1 grid-add" do %>
+      <div class="add-unit">
+        <div class="add-sign">+</div>
+        <p class="add-text">Add New Track</p>
+      </div>
+    <% end %>
+  <% end %>
 </div>

@@ -2,10 +2,12 @@
   <h2 class="page-header">Your Classrooms</h2>
 </div>
 <div class="grids"><%= render @classrooms %>
-  <%= link_to new_classroom_path, class: "grid1 grid-add" do %>
-    <div class="add-unit">
-      <div class="add-sign">+</div>
-      <p class="add-text">Add New Classroom</p>
-    </div>
+  <% if !current_user.student? %>
+    <%= link_to new_classroom_path, class: "grid1 grid-add" do %>
+      <div class="add-unit">
+        <div class="add-sign">+</div>
+        <p class="add-text">Add New Classroom</p>
+      </div>
+    <% end %>
   <% end %>
 </div>
