@@ -2,7 +2,9 @@
 
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %></h2>
-  <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
+  <% if !current_user.student? %>
+    <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
+  <% end %>
 </div>
 
 <div class="grid2" id="track" data-trackid="<%= @track.id %>">
