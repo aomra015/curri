@@ -1,7 +1,5 @@
 # Curri App
 
-![image](https://www.codeship.io/projects/77939040-fe3a-0130-4688-0604cfbbdf6d/status)
-
 ## Getting Started
 
 1. `$ git clone git@github.com:aomra015/curry.git`
