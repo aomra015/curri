@@ -20,8 +20,9 @@ test:
 
 production:
   adapter: postgresql
-  database: <%= ENV['POSTGRESQL_ADDRESS'] %>
+  encoding: unicode
+  database: curri_production
+  pool: 5
+  host: localhost
   username: <%= ENV['POSTGRESQL_USERNAME'] %>
   password: <%= ENV['POSTGRESQL_PASSWORD'] %>
-  pool: 5
-  timeout: 5000
