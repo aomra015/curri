@@ -29,7 +29,7 @@ class TeacherViewTest < Capybara::Rails::TestCase
 
     last_email = ActionMailer::Base.deliveries.last
 
-    assert_equal ['mystudent@gmail.com'], last_email.to
+    assert_equal [student_email], last_email.to
   end
 
   test "teacher should see list of invited students" do
@@ -40,5 +40,23 @@ class TeacherViewTest < Capybara::Rails::TestCase
 
     click_link 'Invite Students'
     assert page.has_content?(student_email), 'Email of invited student not listed'
+  end
+
+  test "teacher can cancel invitations" do
+    teacher = users(:ahmed)
+    login_as(teacher)
+    student_email = 'mystudent@gmail.com'
+    invite_students(teacher, student_email)
+
+    invitation = Invitation.last
+    click_link 'Invite Students'
+
+    within "#invitation_#{invitation.id}" do
+      assert_difference 'Invitation.count', -1 do
+        click_link 'Remove'
+      end
+    end
+
+    assert_equal new_classroom_invitation_path(@classroom), current_path
   end
 end

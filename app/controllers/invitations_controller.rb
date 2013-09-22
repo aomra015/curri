@@ -1,9 +1,9 @@
 class InvitationsController < ApplicationController
 
-  before_action :authorize, only: [:new, :create]
-  before_action :authorize_teacher, only: [:new, :create]
+  before_action :authorize, only: [:new, :create, :destroy]
+  before_action :authorize_teacher, only: [:new, :create, :destroy]
   before_action :check_if_logged_in, only: [:claim]
-  before_action :get_nested_classroom, only: [:new, :create]
+  before_action :get_nested_classroom, only: [:new, :create, :destroy]
 
   def new
     @invitation = Invitation.new
@@ -86,6 +86,16 @@ class InvitationsController < ApplicationController
       render :login
     end
 
+  end
+
+  def destroy
+    invitation = @classroom.invitations.find(params[:id])
+    if invitation.destroy
+      redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
+    else
+      @invitations = @classroom.invitations
+      render :new
+    end
   end
 
   private

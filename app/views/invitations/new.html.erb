@@ -21,9 +21,10 @@
     </tr>
 
     <% @invitations.each do |invitation| %>
-      <tr>
+      <tr id="invitation_<%= invitation.id%>">
         <td><%= invitation.email %></td>
         <td><%= get_invitation_status(invitation) %></td>
+        <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'%></td>
       </tr>
     <% end %>
   </table>

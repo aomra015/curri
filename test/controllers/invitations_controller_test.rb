@@ -108,5 +108,11 @@ class InvitationsControllerTest < ActionController::TestCase
     assert_equal "Email or password are not correct", flash[:alert]
   end
 
+  test "should destroy invitation" do
+    assert_difference 'Invitation.count', -1 do
+      delete :destroy, id: invitations(:one), classroom_id: classrooms(:one)
+    end
+  end
+
 
 end
