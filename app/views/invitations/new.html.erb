@@ -5,7 +5,7 @@
     <%= label_tag :invitation_emails %>
     </h3>
   <span>
-    <%= text_area_tag :invitation_emails, placeholder: "Please enter email address", class: "form-input" %>
+    <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input-area", rows: 4 %>
   </span>
   <div>
     <%= submit_tag 'Send Invitation', class: 'invite-button btn' %>

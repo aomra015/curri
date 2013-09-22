@@ -31,6 +31,14 @@ class InvitationsControllerTest < ActionController::TestCase
     assert_redirected_to classroom_tracks_path(assigns(:classroom))
   end
 
+  test "invalid email formats not accepted" do
+    post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com student2@gmail.com"
+
+    assert_template :new
+    assert_equal "Invalid email format", flash[:alert]
+
+  end
+
   test "should get claim form" do
     token = Invitation.create(email: 'student@gmail.com').token
     get :claim, token: token
