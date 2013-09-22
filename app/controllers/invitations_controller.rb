@@ -1,9 +1,9 @@
 class InvitationsController < ApplicationController
 
-  before_action :authorize, only: [:new, :create]
-  before_action :authorize_teacher, only: [:new, :create]
+  before_action :authorize, only: [:new, :create, :destroy]
+  before_action :authorize_teacher, only: [:new, :create, :destroy]
   before_action :check_if_logged_in, only: [:claim]
-  before_action :get_nested_classroom, only: [:new, :create]
+  before_action :get_nested_classroom, only: [:new, :create, :destroy]
 
   def new
     @invitation = Invitation.new
@@ -11,15 +11,27 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new(email: params[:invitation][:email])
-    @invitation.classroom = @classroom
+    emails = params[:invitation_emails].split(/,|\n/)
+    invitations = []
 
-    if @invitation.save
-      InvitationMailer.invite(@invitation).deliver
-      redirect_to classroom_tracks_path(@classroom), notice: 'Invitation Sent'
-    else
-      render :new
+    emails.each do |email|
+      invitation = Invitation.new(email: email.strip)
+      invitation.classroom = @classroom
+
+      if invitation.invalid?
+        flash[:alert] = "Invalid email format"
+        @invitations = @classroom.invitations
+        render :new and return
+      else
+        invitations << invitation
+      end
     end
+
+    invitations.each do |inv|
+      inv.save
+      InvitationMailer.invite(inv).deliver
+    end
+    redirect_to classroom_tracks_path(@classroom), notice: 'Invitations Sent'
 
   end
 
@@ -75,6 +87,12 @@ class InvitationsController < ApplicationController
       render :login
     end
 
+  end
+
+  def destroy
+    invitation = @classroom.invitations.find(params[:id])
+    invitation.destroy
+    redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
   end
 
   private

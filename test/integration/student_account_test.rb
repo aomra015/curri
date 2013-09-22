@@ -7,7 +7,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     student_email = 'mystudent@gmail.com'
 
     login_as(teacher)
-    invite_student(teacher, student_email)
+    invite_students(teacher, student_email)
 
     invitation = Invitation.last
 
@@ -28,7 +28,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     student_email = 'mystudent@gmail.com'
 
     login_as(teacher)
-    invite_student(teacher, student_email)
+    invite_students(teacher, student_email)
 
     within 'ul.nav' do
       click_link 'Logout'
@@ -54,7 +54,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     student_email = users(:student).email
 
     login_as(teacher)
-    invite_student(teacher, student_email)
+    invite_students(teacher, student_email)
 
     within 'ul.nav' do
       click_link 'Logout'

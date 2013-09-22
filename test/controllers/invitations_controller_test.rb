@@ -24,11 +24,19 @@ class InvitationsControllerTest < ActionController::TestCase
 
   test "create invitation" do
 
-    assert_difference 'Invitation.count' do
-      post :create, classroom_id: classrooms(:one), invitation: {email: "student@email.com"}
+    assert_difference 'Invitation.count', 2 do
+      post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com, student2@gmail.com"
     end
 
     assert_redirected_to classroom_tracks_path(assigns(:classroom))
+  end
+
+  test "invalid email formats not accepted" do
+    post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com student2@gmail.com"
+
+    assert_template :new
+    assert_equal "Invalid email format", flash[:alert]
+
   end
 
   test "should get claim form" do
@@ -98,6 +106,12 @@ class InvitationsControllerTest < ActionController::TestCase
     post :add_student, user: {email: users(:student).email, password: "wrongpassword", token: token}
 
     assert_equal "Email or password are not correct", flash[:alert]
+  end
+
+  test "should destroy invitation" do
+    assert_difference 'Invitation.count', -1 do
+      delete :destroy, id: invitations(:one), classroom_id: classrooms(:one)
+    end
   end
 
 
