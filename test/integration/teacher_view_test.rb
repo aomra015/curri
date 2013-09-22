@@ -38,7 +38,7 @@ class TeacherViewTest < Capybara::Rails::TestCase
     student_email = 'mystudent@gmail.com'
     invite_students(teacher, student_email)
 
-    click_link 'Invite Students'
+    click_link 'manage-students'
     assert page.has_content?(student_email), 'Email of invited student not listed'
   end
 
@@ -49,7 +49,7 @@ class TeacherViewTest < Capybara::Rails::TestCase
     invite_students(teacher, student_email)
 
     invitation = Invitation.last
-    click_link 'Invite Students'
+    click_link 'manage-students'
 
     within "#invitation_#{invitation.id}" do
       assert_difference 'Invitation.count', -1 do

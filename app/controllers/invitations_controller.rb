@@ -91,12 +91,8 @@ class InvitationsController < ApplicationController
 
   def destroy
     invitation = @classroom.invitations.find(params[:id])
-    if invitation.destroy
-      redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
-    else
-      @invitations = @classroom.invitations
-      render :new
-    end
+    invitation.destroy
+    redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
   end
 
   private
