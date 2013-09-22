@@ -1,15 +1,14 @@
 <div class="grid1">
 <h1>Invite Students</h1>
-<%= form_for [@classroom, @invitation] do |f| %>
-  <%= f.error_messages %>
+<%= form_tag classroom_invitations_path(@classroom) do |f| %>
   <h3>
-    <%= f.label :email %>
+    <%= label_tag :invitation_emails %>
     </h3>
   <span>
-    <%= f.text_field :email, placeholder: "Please enter email address", class: "form-input" %>
+    <%= text_area_tag :invitation_emails, placeholder: "Please enter email address", class: "form-input" %>
   </span>
   <div>
-    <%= f.submit 'Send Invitation', class: 'invite-button btn' %>
+    <%= submit_tag 'Send Invitation', class: 'invite-button btn' %>
   </div>
 <% end %>
 </div>

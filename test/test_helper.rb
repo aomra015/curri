@@ -26,7 +26,7 @@ class ActiveSupport::TestCase
     click_button 'Login'
   end
 
-  def invite_student(teacher, student_email)
+  def invite_students(teacher, student_emails)
     @classroom = teacher.classrooms.first
     click_link @classroom.name
     assert_equal classroom_tracks_path(@classroom), current_path
@@ -34,7 +34,7 @@ class ActiveSupport::TestCase
     click_link 'Invite Students'
     assert_equal new_classroom_invitation_path(@classroom), current_path
 
-    fill_in :invitation_email, with: student_email
+    fill_in :invitation_emails, with: student_emails
     click_button 'Send Invitation'
   end
 end

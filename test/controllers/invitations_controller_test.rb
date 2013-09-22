@@ -24,8 +24,8 @@ class InvitationsControllerTest < ActionController::TestCase
 
   test "create invitation" do
 
-    assert_difference 'Invitation.count' do
-      post :create, classroom_id: classrooms(:one), invitation: {email: "student@email.com"}
+    assert_difference 'Invitation.count', 2 do
+      post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com, student2@gmail.com"
     end
 
     assert_redirected_to classroom_tracks_path(assigns(:classroom))

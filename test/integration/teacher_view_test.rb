@@ -21,11 +21,11 @@ class TeacherViewTest < Capybara::Rails::TestCase
     login_as(teacher)
 
     assert_difference 'Invitation.count' do
-      invite_student(teacher, student_email)
+      invite_students(teacher, student_email)
     end
 
     assert_equal classroom_tracks_path(@classroom), current_path
-    assert page.has_content?('Invitation Sent')
+    assert page.has_content?('Invitations Sent')
 
     last_email = ActionMailer::Base.deliveries.last
 
@@ -36,7 +36,7 @@ class TeacherViewTest < Capybara::Rails::TestCase
     teacher = users(:ahmed)
     login_as(teacher)
     student_email = 'mystudent@gmail.com'
-    invite_student(teacher, student_email)
+    invite_students(teacher, student_email)
 
     click_link 'Invite Students'
     assert page.has_content?(student_email), 'Email of invited student not listed'

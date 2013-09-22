@@ -11,12 +11,18 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    @invitation = Invitation.new(email: params[:invitation][:email])
-    @invitation.classroom = @classroom
+    email_array = params[:invitation_emails].split(/,|\n/)
+    email_array.each { |email| email.strip! }
 
-    if @invitation.save
-      InvitationMailer.invite(@invitation).deliver
-      redirect_to classroom_tracks_path(@classroom), notice: 'Invitation Sent'
+    email_array.each do |email|
+      invitation = Invitation.new(email: email)
+      invitation.classroom = @classroom
+      invitation.save
+      InvitationMailer.invite(invitation).deliver
+    end
+
+    if email_array
+      redirect_to classroom_tracks_path(@classroom), notice: 'Invitations Sent'
     else
       render :new
     end
