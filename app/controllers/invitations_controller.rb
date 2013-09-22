@@ -12,26 +12,27 @@ class InvitationsController < ApplicationController
 
   def create
     emails = params[:invitation_emails].split(/,|\n/)
-    emails.each { |email| email.strip! }
     invitations = []
 
     emails.each do |email|
-      invitation = Invitation.new(email: email)
+      invitation = Invitation.new(email: email.strip)
       invitation.classroom = @classroom
-      invitations << invitation
+
+      if invitation.invalid?
+        flash[:alert] = "Invalid email format"
+        @invitations = @classroom.invitations
+        render :new and return
+      else
+        invitations << invitation
+      end
     end
 
-    if invitations.map(&:valid?).include?(false)
-      flash[:alert] = "Invalid email format"
-      @invitations = @classroom.invitations
-      render :new
-    else
-      invitations.each do |inv|
-        inv.save
-        InvitationMailer.invite(inv).deliver
-      end
-      redirect_to classroom_tracks_path(@classroom), notice: 'Invitations Sent'
+    invitations.each do |inv|
+      inv.save
+      InvitationMailer.invite(inv).deliver
     end
+    redirect_to classroom_tracks_path(@classroom), notice: 'Invitations Sent'
+
   end
 
   def claim
