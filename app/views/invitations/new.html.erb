@@ -1,15 +1,14 @@
 <div class="grid1">
 <h1>Invite Students</h1>
-<%= form_for [@classroom, @invitation] do |f| %>
-  <%= f.error_messages %>
+<%= form_tag classroom_invitations_path(@classroom) do %>
   <h3>
-    <%= f.label :email %>
+    <%= label_tag :invitation_emails %>
     </h3>
   <span>
-    <%= f.text_field :email, placeholder: "Please enter email address", class: "form-input" %>
+    <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input-area", rows: 4 %>
   </span>
   <div>
-    <%= f.submit 'Send Invitation', class: 'invite-button btn' %>
+    <%= submit_tag 'Send Invitation', class: 'invite-button btn' %>
   </div>
 <% end %>
 </div>
@@ -22,9 +21,10 @@
     </tr>
 
     <% @invitations.each do |invitation| %>
-      <tr>
+      <tr id="invitation_<%= invitation.id%>">
         <td><%= invitation.email %></td>
         <td><%= get_invitation_status(invitation) %></td>
+        <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn'%></td>
       </tr>
     <% end %>
   </table>
