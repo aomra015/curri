@@ -1,13 +1,2 @@
 <h2>Add Classroom</h2>
-<%= form_for Classroom.new do |f| %>
-  <%= f.error_messages %>
-  <h3>
-    <%= f.label :name, 'Classroom Name' %>
-  </h3>
-  <span>
-    <%= f.text_field :name, placeholder: "Enter classroom name", class: "form-input" %>
-  </span>
-  <div>
-    <%= f.submit 'Add Classroom', class: "add-classroom btn" %>
-  </div>
-<% end %>
+<%= render 'form' %>
