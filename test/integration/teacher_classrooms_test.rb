@@ -32,4 +32,18 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
     changed_classroom = Classroom.find(classrooms(:one).id)
     assert_equal 'Changed classroom name', changed_classroom.name
   end
+
+  test "a teacher can delete classrooms" do
+    teacher = users(:ahmed)
+    login_as(teacher)
+
+    classroom = classrooms(:one)
+    click_link classroom.name
+
+    click_link 'manage-classroom'
+
+    assert_difference 'Classroom.count', -1 do
+        click_link 'delete-classroom'
+    end
+  end
 end

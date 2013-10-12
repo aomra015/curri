@@ -1,2 +1,4 @@
 <h2>Edit Classroom</h2>
 <%= render 'form' %>
+
+<%= link_to 'Delete Classroom', @classroom, method: :delete, data: {confirm: "Are you sure you want to delete the classroom?"}, class: "btn btn-head pull-right", id: 'delete-classroom' %>
