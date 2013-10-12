@@ -10,7 +10,9 @@
       <% else %>
         <!-- Teacher Controls -->
         <div><%= checkpoint.success_criteria %></div>
-        <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn' %>
+        <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn', id: "edit-checkpoint" %>
+
+        <%= link_to 'Delete', classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn', id: "delete-checkpoint" %>
       <% end %>
     </div>
     <% if current_user.student? %>

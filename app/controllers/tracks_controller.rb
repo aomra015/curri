@@ -3,7 +3,7 @@ class TracksController < ApplicationController
   before_action :authorize
   before_action :authorize_teacher, except: [:index, :show]
   before_action :get_nested_classroom
-  before_action :get_track, only: [:show, :edit, :update]
+  before_action :get_track, only: [:show, :edit, :update, :destroy]
 
   def index
     @tracks = @classroom.tracks
@@ -32,6 +32,11 @@ class TracksController < ApplicationController
     else
       redirect_to classroom_tracks_path(@classroom)
     end
+  end
+
+  def destroy
+    @track.destroy
+    redirect_to classroom_tracks_path(@classroom)
   end
 
   private

@@ -2,48 +2,47 @@ require 'test_helper'
 
 class TeacherTracksTest < Capybara::Rails::TestCase
 
-  test "a teacher can add checkpoints to a track" do
+  before do
     teacher = users(:ahmed)
     login_as(teacher)
 
-    classroom = classrooms(:one)
-    click_link classroom.name
+    @classroom = classrooms(:one)
+    click_link @classroom.name
 
-    track = tracks(:one)
-    click_link track.name
-    assert_equal classroom_track_path(classroom, track), current_path
+    @track = tracks(:one)
+  end
 
-    click_link 'Add Checkpoints'
-    assert_equal new_classroom_track_checkpoint_path(classroom, track), current_path
+  test "a teacher can add a track" do
+    click_link "add-track"
+    assert_equal new_classroom_track_path(@classroom), current_path
 
-    fill_in :checkpoint_expectation, with: 'Can build a thing'
-    fill_in :checkpoint_success_criteria, with: 'something'
+    fill_in :track_name, with: "New track name"
 
-    assert_difference 'track.checkpoints.count' do
-      click_button 'Create Checkpoint'
+    assert_difference 'Track.count' do
+      click_button 'Create Track'
     end
   end
 
-  test "a teacher can edit checkpoints" do
-    teacher = users(:ahmed)
-    login_as(teacher)
+  test "a teacher can edit a track" do
+    click_link @track.name
+    click_link 'manage-track'
 
-    classroom = classrooms(:one)
-    click_link classroom.name
-    track = tracks(:one)
-    click_link track.name
+    assert_equal edit_classroom_track_path(@classroom, @track), current_path
 
-    checkpoint = checkpoints(:one)
+    fill_in :track_name, with: 'Changed track name'
+    click_button 'Update Track'
 
-    within "#checkpoint#{checkpoint.id}" do
-        click_link 'Edit'
+    changed_track = Track.find(@track.id)
+    assert_equal 'Changed track name', changed_track.name
+  end
+
+  test "a teacher can delete tracks" do
+    click_link @track.name
+    click_link 'manage-track'
+
+    assert_difference 'Track.count', -1 do
+        click_link 'delete-track'
     end
-
-    assert_equal edit_classroom_track_checkpoint_path(classroom, track, checkpoint), current_path
-
-    fill_in :checkpoint_expectation, with: 'Changed expectation'
-    fill_in :checkpoint_success_criteria, with: 'some criteria'
-    click_button 'Update Checkpoint'
   end
 
 end
