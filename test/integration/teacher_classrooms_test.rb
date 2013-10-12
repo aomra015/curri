@@ -9,7 +9,14 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
   end
 
   test "a teacher can add a classroom" do
+    click_link "add-classroom"
+    assert_equal new_classroom_path, current_path
 
+    fill_in :classroom_name, with: "New classroom name"
+
+    assert_difference 'Classroom.count' do
+      click_button 'Create Classroom'
+    end
   end
 
   test "a teacher should see a list of their classrooms after login" do

@@ -39,4 +39,11 @@ class CheckpointsControllerTest < ActionController::TestCase
     assert_equal "Changed expectation", checkpoint.expectation
     assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
   end
+
+  test "delete checkpoint" do
+    assert_difference 'Checkpoint.count', -1 do
+      delete :destroy, classroom_id: classrooms(:one), track_id: tracks(:one), id: checkpoints(:one)
+    end
+    assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
+  end
 end

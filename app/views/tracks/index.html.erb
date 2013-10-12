@@ -7,7 +7,7 @@
 </div>
 <div class="grids"><%= render @tracks %>
   <% if current_user.teacher? %>
-    <%= link_to new_classroom_track_path, class: "grid1 grid-add" do %>
+    <%= link_to new_classroom_track_path, class: "grid1 grid-add", id: "add-track" do %>
       <div class="add-unit">
         <div class="add-sign">+</div>
         <p class="add-text">Add New Track</p>

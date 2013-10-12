@@ -31,7 +31,7 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     checkpoint = checkpoints(:one)
 
     within "#checkpoint#{checkpoint.id}" do
-        click_link 'Edit'
+        click_link 'edit-checkpoint'
     end
 
     assert_equal edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), current_path
@@ -39,5 +39,15 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     fill_in :checkpoint_expectation, with: 'Changed expectation'
     fill_in :checkpoint_success_criteria, with: 'some criteria'
     click_button 'Update Checkpoint'
+  end
+
+  test "a teacher can delete checkpoints" do
+    checkpoint = checkpoints(:one)
+
+    within "#checkpoint#{checkpoint.id}" do
+      assert_difference 'Checkpoint.count', -1 do
+          click_link 'delete-checkpoint'
+      end
+    end
   end
 end
