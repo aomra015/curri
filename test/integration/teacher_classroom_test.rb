@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TeacherViewTest < Capybara::Rails::TestCase
+class TeacherClasroomTest < Capybara::Rails::TestCase
 
   test "a teacher should see a list of their classrooms after login" do
     teacher = users(:ahmed)
