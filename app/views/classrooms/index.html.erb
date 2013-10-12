@@ -2,7 +2,7 @@
   <h2 class="page-header">Your Classrooms</h2>
 </div>
 <div class="grids"><%= render @classrooms %>
-  <% if !current_user.student? %>
+  <% if current_user.teacher? %>
     <%= link_to new_classroom_path, class: "grid1 grid-add" do %>
       <div class="add-unit">
         <div class="add-sign">+</div>
