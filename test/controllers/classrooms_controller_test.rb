@@ -43,6 +43,14 @@ class ClassroomsControllerTest < ActionController::TestCase
 
     classroom = Classroom.find(classrooms(:one).id)
     assert_equal "Changed name", classroom.name
-    assert_redirected_to classroom_path(assigns(:classroom))
+    assert_redirected_to classroom_tracks_path(assigns(:classroom))
   end
+
+  test "delete classroom" do
+    assert_difference 'Classroom.count', -1 do
+      delete :destroy, id: classrooms(:one)
+    end
+    assert_redirected_to classrooms_path
+  end
+
 end

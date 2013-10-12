@@ -2,13 +2,14 @@ require 'test_helper'
 
 class StudentAccountsTest < Capybara::Rails::TestCase
 
+  before do
+    @teacher = users(:ahmed)
+    login_as(@teacher)
+    student_email = users(:student).email
+    invite_students(@teacher, student_email)
+  end
+
   test "a student can accept invitation and create an account" do
-    teacher = users(:ahmed)
-    student_email = 'mystudent@gmail.com'
-
-    login_as(teacher)
-    invite_students(teacher, student_email)
-
     invitation = Invitation.last
 
     visit claim_invitation_path(invitation.token)
@@ -24,12 +25,6 @@ class StudentAccountsTest < Capybara::Rails::TestCase
   end
 
   test "student with account can claim invitation without sign up" do
-    teacher = users(:ahmed)
-    student_email = 'mystudent@gmail.com'
-
-    login_as(teacher)
-    invite_students(teacher, student_email)
-
     within 'ul.nav' do
       click_link 'Logout'
     end
@@ -50,12 +45,6 @@ class StudentAccountsTest < Capybara::Rails::TestCase
   end
 
   test "currently logged in student can claim invitation without sign up" do
-    teacher = users(:ahmed)
-    student_email = users(:student).email
-
-    login_as(teacher)
-    invite_students(teacher, student_email)
-
     within 'ul.nav' do
       click_link 'Logout'
     end

@@ -45,4 +45,11 @@ class TracksControllerTest < ActionController::TestCase
     assert_equal "Changed name", track.name
     assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
   end
+
+  test "delete track" do
+    assert_difference 'Track.count', -1 do
+      delete :destroy, classroom_id: classrooms(:one), id: tracks(:one)
+    end
+    assert_redirected_to classroom_tracks_path(assigns(:classroom))
+  end
 end

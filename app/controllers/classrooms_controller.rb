@@ -2,7 +2,7 @@ class ClassroomsController < ApplicationController
 
   before_action :authorize
   before_action :authorize_teacher, except: [:index, :show]
-  before_action :get_classroom, only: [:show, :edit, :update]
+  before_action :get_classroom, only: [:show, :edit, :update, :destroy]
 
   def index
     @classrooms = @current_user.classrooms
@@ -18,9 +18,9 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = @current_user.classrooms.build(classroom_params)
     if @classroom.save
-      redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created"
+      redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created."
     else
-      redirect_to classrooms_path, notice: "there was an error with your classroom creation"
+      redirect_to classrooms_path, notice: "There was an error with your classroom creation."
     end
   end
 
@@ -29,10 +29,15 @@ class ClassroomsController < ApplicationController
 
   def update
     if @classroom.update(classroom_params)
-      redirect_to classroom_path(@classroom), notice: "classroom has been updated"
+      redirect_to classroom_tracks_path(@classroom), notice: "Classroom has been updated."
     else
       redirect_to classrooms_path
     end
+  end
+
+  def destroy
+    @classroom.destroy
+    redirect_to classrooms_path, notice: "Classroom has been deleted."
   end
 
   private
