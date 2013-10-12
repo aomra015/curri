@@ -13,32 +13,19 @@ class TeacherTracksTest < Capybara::Rails::TestCase
     click_link @track.name
   end
 
-  test "a teacher can add checkpoints to a track" do
-    assert_equal classroom_track_path(@classroom, @track), current_path
-
-    click_link 'Add Checkpoints'
-    assert_equal new_classroom_track_checkpoint_path(@classroom, @track), current_path
-
-    fill_in :checkpoint_expectation, with: 'Can build a thing'
-    fill_in :checkpoint_success_criteria, with: 'something'
-
-    assert_difference '@track.checkpoints.count' do
-      click_button 'Create Checkpoint'
-    end
+  test "a teacher can add a track" do
   end
 
-  test "a teacher can edit checkpoints" do
-    checkpoint = checkpoints(:one)
+  test "a teacher can edit a track" do
 
-    within "#checkpoint#{checkpoint.id}" do
-        click_link 'Edit'
+  end
+
+  test "a teacher can delete tracks" do
+    click_link 'manage-track'
+
+    assert_difference 'Track.count', -1 do
+        click_link 'delete-track'
     end
-
-    assert_equal edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), current_path
-
-    fill_in :checkpoint_expectation, with: 'Changed expectation'
-    fill_in :checkpoint_success_criteria, with: 'some criteria'
-    click_button 'Update Checkpoint'
   end
 
 end

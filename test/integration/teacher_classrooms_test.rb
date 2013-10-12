@@ -8,6 +8,10 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
     @classroom = classrooms(:one)
   end
 
+  test "a teacher can add a classroom" do
+
+  end
+
   test "a teacher should see a list of their classrooms after login" do
     assert page.has_content?(@classroom.name)
 
