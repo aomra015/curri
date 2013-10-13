@@ -3,7 +3,19 @@
 one:
   score: 1
   checkpoint: one
+  student: student1
 
 two:
   score: 1
   checkpoint: one
+  student: student2
+
+three:
+  score: 1
+  checkpoint: two
+  student: student1
+
+four:
+  score: 1
+  checkpoint: two
+  student: student1

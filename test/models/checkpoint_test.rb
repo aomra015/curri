@@ -3,9 +3,9 @@ require 'test_helper'
 class CheckpointTest < ActiveSupport::TestCase
 
   before do
-    # fixture has two ratings each with a score of 1
+    # checkpoints(:one) has two unique ratings (score of 1)
     @checkpoint = checkpoints(:one)
-    @checkpoint_no_ratings = checkpoints(:two)
+    @checkpoint_no_ratings = checkpoints(:noratings)
     @start_time = @checkpoint.ratings.first.created_at - 1
     @end_time = @checkpoint.ratings.last.created_at
   end
@@ -18,11 +18,6 @@ class CheckpointTest < ActiveSupport::TestCase
     checkpoint = Checkpoint.new(success_criteria: 'something else')
     checkpoint.valid?
     assert checkpoint.errors[:expectation].any?
-  end
-
-  test "overall score" do
-    assert_equal 50, @checkpoint.overall_score
-    assert_equal 0, @checkpoint_no_ratings.overall_score
   end
 
   test "ratings count" do
@@ -40,5 +35,11 @@ class CheckpointTest < ActiveSupport::TestCase
     assert_equal 0, @checkpoint.get_score(2, @start_time, @end_time)
 
     assert_equal 0, @checkpoint_no_ratings.get_score(2, @start_time, @end_time)
+  end
+
+  test "only one rating per student counts" do
+    # checkpoints(:two) has two ratings by same student
+    @checkpoint_two = checkpoints(:two)
+    assert_equal 1, @checkpoint_two.ratings_count(@start_time, @end_time, 1)
   end
 end

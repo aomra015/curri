@@ -3,15 +3,21 @@ require 'test_helper'
 class StudentViewTest < Capybara::Rails::TestCase
 
   test "a student can rate checkpoints" do
-    login_as(users(:student))
+    student = users(:student)
+    login_as(student)
+    classroom = student.classrooms.first
 
-    click_link "Ahmed's Intro To Curry"
-    click_link "First Track"
+    click_link classroom.name
+    track = classroom.tracks.first
+    click_link track.name
 
-    assert page.has_content?("Can build a thing")
+    checkpoint = track.checkpoints.first
+    assert page.has_content?(checkpoint.expectation)
 
-    assert_difference 'Rating.count' do
-      click_button 'Totally Understand'
+    within "#checkpoint#{checkpoint.id}" do
+      assert_difference 'Rating.count' do
+        click_button 'Totally Understand'
+      end
     end
 
     assert_equal users(:student).classrole, Rating.last.student, 'Student is not associated with the rating'
