@@ -20,6 +20,8 @@ class TracksController < ApplicationController
     @track = @classroom.tracks.build(track_params)
     if @track.save
       redirect_to classroom_tracks_path(@classroom), notice: "Track '#{@track.name}' has been created"
+    else
+      render :new
     end
   end
 
@@ -30,7 +32,7 @@ class TracksController < ApplicationController
     if @track.update(track_params)
       redirect_to classroom_track_path(@classroom, @track), notice: "Track has been updated"
     else
-      redirect_to classroom_tracks_path(@classroom)
+      render :edit
     end
   end
 
@@ -41,7 +43,7 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name)
+    params.require(:track).permit(:name, :start_date, :start_time, :end_date, :end_time)
   end
 
   def get_track
