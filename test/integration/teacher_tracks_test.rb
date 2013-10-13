@@ -17,6 +17,10 @@ class TeacherTracksTest < Capybara::Rails::TestCase
     assert_equal new_classroom_track_path(@classroom), current_path
 
     fill_in :track_name, with: "New track name"
+    fill_in :track_start_date, with: "2013-10-1"
+    fill_in :track_start_time, with: "6:30pm"
+    fill_in :track_end_date, with: "2013-10-1"
+    fill_in :track_end_time, with: "9:30pm"
 
     assert_difference 'Track.count' do
       click_button 'Create Track'

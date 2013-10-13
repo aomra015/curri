@@ -6,6 +6,15 @@
   <span>
     <%= f.text_field :name, placeholder: "Enter track name", class: "form-input" %>
   </span>
+
+  <h3>Start &amp; End Time</h3>
+  <span>
+    <%= f.date_field :start_date, placeholder: DateTime.now.strftime("%Y/%m/%d"), class: "form-input form-input-inline"  %>
+    <%= f.time_field :start_time, placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
+    to
+    <%= f.date_field :end_date, placeholder: DateTime.now.strftime("%Y/%m/%d"), class: "form-input form-input-inline"  %>
+    <%= f.time_field :end_time, placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
+  </span>
   <div>
     <%= f.submit class: "add-track btn" %>
   </div>
