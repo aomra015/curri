@@ -20,7 +20,7 @@ class ClassroomsController < ApplicationController
     if @classroom.save
       redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created."
     else
-      redirect_to classrooms_path, notice: "There was an error with your classroom creation."
+      render :new
     end
   end
 
@@ -31,7 +31,7 @@ class ClassroomsController < ApplicationController
     if @classroom.update(classroom_params)
       redirect_to classroom_tracks_path(@classroom), notice: "Classroom has been updated."
     else
-      redirect_to classrooms_path
+      render :edit
     end
   end
 
