@@ -9,4 +9,8 @@ module TracksHelper
   #     }
   #   end
   # end
+
+  def nice_time_format(track, method)
+    track.send(method).to_s(:time) if track.send(method)
+  end
 end

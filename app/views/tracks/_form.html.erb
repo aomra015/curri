@@ -10,10 +10,10 @@
   <h3>Start &amp; End Time</h3>
   <span>
     <%= f.text_field :start_date, placeholder: DateTime.now.strftime("%Y-%m-%d"), class: "form-input form-input-inline"  %>
-    <%= f.text_field :start_time, placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
+    <%= f.text_field :start_time, value: nice_time_format(@track, :start_time), placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
     to
     <%= f.text_field :end_date, placeholder: DateTime.now.strftime("%Y-%m-%d"), class: "form-input form-input-inline"  %>
-    <%= f.text_field :end_time, placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
+    <%= f.text_field :end_time, value: nice_time_format(@track, :end_time), placeholder: DateTime.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
   </span>
   <div>
     <%= f.submit class: "add-track btn" %>
