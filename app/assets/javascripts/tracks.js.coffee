@@ -10,3 +10,9 @@
   #   ykeys: ['class_score']
   #   labels: ['Class Rating']
   #   postUnits: '%'
+
+jQuery ->
+  $('#track_start_date').datepicker({ dateFormat: "yy-mm-dd" })
+  $('#track_start_time').timepicker()
+  $('#track_end_date').datepicker({ dateFormat: "yy-mm-dd" })
+  $('#track_end_time').timepicker()
