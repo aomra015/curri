@@ -8,6 +8,8 @@
   <% end %>
 </div>
 
+  <p><%= display_start_end_times(@track) %></p>
+
 <div class="grid2" id="track" data-trackid="<%= @track.id %>">
   <%= render @track.checkpoints.order(id: :asc) %>
 </div>

@@ -475,6 +475,10 @@ div.unit-inner.ratings-count {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+.form-input-inline {
+  display: inline-block;
+}
+
 .form-input-area {
   display: block;
   padding: 6px 12px;
