@@ -6,6 +6,11 @@ one:
   track: one
 
 two:
-  expectation: MyString
-  success_criteria: MyString
-  track_id:
+  expectation: Can build a thing
+  success_criteria: something
+  track: one
+
+noratings:
+  expectation: Can build a thing
+  success_criteria: something
+  track: one

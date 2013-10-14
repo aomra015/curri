@@ -23,7 +23,7 @@ class RatingsController < ApplicationController
           redirect_to classroom_track_url(@classroom, @track)
         }
         format.js {
-          PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings, current_score: @rating.score
+          PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.group(:student_id), current_score: @rating.score
           render json: @rating
         }
       end
