@@ -3,7 +3,9 @@
 one:
   score: 1
   checkpoint: one
+  student: student1
 
 two:
   score: 1
   checkpoint: one
+  student: student2
