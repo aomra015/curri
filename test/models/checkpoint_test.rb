@@ -38,8 +38,24 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "only one rating per student counts" do
-    # checkpoints(:two) has two ratings by same student
     @checkpoint_two = checkpoints(:two)
-    assert_equal 1, @checkpoint_two.ratings_count(@start_time, @end_time, 1)
+
+    student = students(:student1)
+    first_rating = Rating.new(score: 1)
+    first_rating.student = student
+    first_rating.checkpoint = @checkpoint_two
+    first_rating.save
+
+    second_rating = Rating.new(score: 2)
+    second_rating.student = student
+    second_rating.checkpoint = @checkpoint_two
+    second_rating.save
+
+    @start = first_rating.created_at - 1
+    @end = second_rating.created_at
+
+    assert_equal 0, @checkpoint_two.ratings_count(@start, @end, 1)
+    assert_equal 1, @checkpoint_two.ratings_count(@start, @end, 2)
+    assert_equal 1, @checkpoint_two.ratings_count(@start, @end)
   end
 end

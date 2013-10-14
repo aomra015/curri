@@ -6,15 +6,23 @@ class Checkpoint < ActiveRecord::Base
 
   def ratings_count(start_time, end_time, score="all")
     if self.ratings.any?
-      ratings_over_time = self.ratings.where({ created_at: start_time..end_time }).group(:student_id)
+      scoped_ratings = self.ratings.where({ created_at: start_time..end_time }).group(:student_id)
       if score == "all"
-        ratings_over_time.length
+        scoped_ratings.length
       else
-        ratings_over_time.where(score: score).length
+        get_score_count(score, scoped_ratings)
       end
     else
       0
     end
+  end
+
+  def get_score_count(score, ratings)
+    count = 0
+    ratings.each do |rating|
+      count += 1 if rating.score == score
+    end
+    count
   end
 
   def get_score(score, start_time, end_time)
