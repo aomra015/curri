@@ -7,14 +7,14 @@ class UserAccountsTest < Capybara::Rails::TestCase
     login_as(teacher)
     click_link 'Logout'
 
-    assert current_path == login_path, 'Did not redirect to login page'
+    assert_equal login_path, current_path
   end
 
   test "a user (teacher) can edit their profile" do
     login_as(users(:paula))
 
     click_link('Profile')
-    assert current_path == edit_profile_path, 'Not redirected to user edit profile page'
+    assert_equal edit_profile_path, current_path
 
     fill_in :user_email, with: 'paula@little.com'
     fill_in :user_password, with: 'password453'
@@ -24,7 +24,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
 
     assert current_path == edit_profile_path
     user = User.find(users(:paula).id)
-    assert user.email == 'paula@little.com', 'Email was not updated'
+    assert_equal 'paula@little.com', user.email
     assert user.authenticate('password453')
   end
 
@@ -32,7 +32,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
     login_as(users(:student))
 
     click_link('Profile')
-    assert current_path == edit_profile_path, 'Not redirected to user edit profile page'
+    assert_equal edit_profile_path, current_path
 
     fill_in :user_email, with: 'stud222@school.com'
     fill_in :user_password, with: 'password453'
@@ -40,9 +40,9 @@ class UserAccountsTest < Capybara::Rails::TestCase
 
     click_button 'Submit'
 
-    assert current_path == edit_profile_path
+    assert_equal edit_profile_path, current_path
     user = User.find(users(:student).id)
-    assert user.email == 'stud222@school.com', 'Email was not updated'
+    assert_equal 'stud222@school.com', user.email
     assert user.authenticate('password453')
   end
 

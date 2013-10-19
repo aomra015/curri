@@ -17,7 +17,7 @@
       <% end %>
 
       <% if current_user %>
-        <% if @on_profile %>
+        <% if current_page?('/profile/edit') %>
           <li><%= link_to 'Classrooms', classrooms_path %></li>
         <% else %>
          <li><%= link_to 'Profile', edit_profile_path %></li>
