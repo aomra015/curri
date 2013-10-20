@@ -58,4 +58,21 @@ class CheckpointTest < ActiveSupport::TestCase
     assert_equal 1, @checkpoint_two.ratings_count(@start, @end, 2)
     assert_equal 1, @checkpoint_two.ratings_count(@start, @end)
   end
+
+  test "latest student score" do
+    @checkpoint_two = checkpoints(:two)
+
+    student = students(:student1)
+    first_rating = Rating.new(score: 1)
+    first_rating.student = student
+    first_rating.checkpoint = @checkpoint_two
+    first_rating.save
+
+    second_rating = Rating.new(score: 2)
+    second_rating.student = student
+    second_rating.checkpoint = @checkpoint_two
+    second_rating.save
+
+    assert_equal "2", @checkpoint_two.latest_student_score(student)
+  end
 end

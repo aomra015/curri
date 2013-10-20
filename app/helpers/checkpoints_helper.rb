@@ -9,7 +9,7 @@ module CheckpointsHelper
   end
 
   def checkpoint_class_name(checkpoint)
-    "checkpoint_" + checkpoint.ratings.where(student_id: current_user.classrole.id).last.try(:score).to_s
+    "checkpoint_" + checkpoint.latest_student_score(current_user.classrole)
   end
 
 end
