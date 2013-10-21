@@ -18,22 +18,23 @@ class Checkpoint < ActiveRecord::Base
   end
 
   def hasnt_voted(start_time, end_time)
+    hasnt_voted_list = []
     scoped_ratings = get_scoped_ratings(start_time, end_time) if self.ratings.any?
-    unless self.ratings.any? && scoped_ratings.any?
-      "Hasn't voted: all"
-    else if  self.track.classroom.students.count != scoped_ratings.length
+
+    if !self.ratings.any? || !scoped_ratings.any?
+      hasnt_voted_list << "all"
+
+    elsif  self.track.classroom.students.count != scoped_ratings.length
       student_list = self.track.classroom.students_list
       scoped_ratings.each do |rating|
         student_list.delete(rating.student.id)
       end
-      teststring = ""
       student_list.each do |student_id|
-        teststring += Student.find(student_id).email.to_s + " "
-      end
-
-      "Hasn't voted: " + teststring
+        hasnt_voted_list << Student.find(student_id).email.to_s
       end
     end
+
+    hasnt_voted_list
   end
 
   def get_scoped_ratings(start_time, end_time)
