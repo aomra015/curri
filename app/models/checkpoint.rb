@@ -21,11 +21,11 @@ class Checkpoint < ActiveRecord::Base
     hasnt_voted_list = []
     scoped_ratings = get_scoped_ratings(start_time, end_time) if self.ratings.any?
 
-    if !self.ratings.any? || !scoped_ratings.any?
+    if self.ratings.empty? || scoped_ratings.empty?
       hasnt_voted_list << "all"
 
     elsif  self.track.classroom.students.count != scoped_ratings.length
-      student_list = self.track.classroom.students_list
+      student_list = self.track.classroom.students.pluck(:id)
       scoped_ratings.each do |rating|
         student_list.delete(rating.student.id)
       end
