@@ -10,3 +10,8 @@ two:
   classroom:
   student:
   token: MyString
+
+three:
+  classroom: one
+  student: student2
+  token: MyString
