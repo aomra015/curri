@@ -9,7 +9,7 @@ module CheckpointsHelper
   end
 
   def checkpoint_class_name(checkpoint)
-    "checkpoint_" + session["checkpoint_#{checkpoint.id}"].to_s
+    "checkpoint_" + checkpoint.latest_student_score(current_user.classrole)
   end
 
 end

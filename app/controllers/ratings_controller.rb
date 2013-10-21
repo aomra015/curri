@@ -13,7 +13,6 @@ class RatingsController < ApplicationController
       @track = @classroom.tracks.find(params[:track_id])
       @checkpoint = @track.checkpoints.find(params[:checkpoint_id])
 
-      session["checkpoint_#{@checkpoint.id}"] = score
       @rating = @checkpoint.ratings.new(score: score)
       @rating.student = current_user.classrole
       @rating.save

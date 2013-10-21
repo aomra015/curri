@@ -33,4 +33,8 @@ class Checkpoint < ActiveRecord::Base
     end
   end
 
+  def latest_student_score(student)
+    ratings.where(student_id: student.id).last.try(:score).to_s
+  end
+
 end
