@@ -15,6 +15,7 @@ module AnalyticsHelper
   def hasnt_voted_box(checkpoint)
     hasnt_voted_list = checkpoint.hasnt_voted(@start_time, @end_time)
     output = content_tag :p, "Hasn't voted:"
+    output = content_tag :p, "" if hasnt_voted_list.empty?
     hasnt_voted_list.each do |email|
       output += content_tag :li, email
     end
