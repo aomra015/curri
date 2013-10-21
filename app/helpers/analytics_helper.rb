@@ -12,4 +12,8 @@ module AnalyticsHelper
     big_number + byline
   end
 
+  def hasnt_voted_box(checkpoint)
+    test = checkpoint.hasnt_voted(@start_time, @end_time)
+  end
+
 end
