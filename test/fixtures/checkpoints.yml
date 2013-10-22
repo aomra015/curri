@@ -14,3 +14,8 @@ noratings:
   expectation: Can build a thing
   success_criteria: something
   track: one
+
+onerating:
+  expectation: Can build a thing
+  success_criteria: something
+  track: one

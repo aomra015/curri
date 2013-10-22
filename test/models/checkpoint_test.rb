@@ -6,6 +6,7 @@ class CheckpointTest < ActiveSupport::TestCase
     # checkpoints(:one) has two unique ratings (score of 1)
     @checkpoint = checkpoints(:one)
     @checkpoint_no_ratings = checkpoints(:noratings)
+    @checkpoint_onerating = checkpoints(:onerating)
     @start_time = @checkpoint.ratings.first.created_at - 1
     @end_time = @checkpoint.ratings.last.created_at
   end
@@ -27,6 +28,12 @@ class CheckpointTest < ActiveSupport::TestCase
     assert_equal 2, @checkpoint.ratings_count(@start_time, @end_time)
 
     assert_equal 0, @checkpoint_no_ratings.ratings_count(@start_time, @end_time)
+  end
+
+  test "hasnt voted" do
+    assert_equal ["all"], @checkpoint_no_ratings.hasnt_voted(@start_time, @end_time)
+    assert_equal [], @checkpoint.hasnt_voted(@start_time, @end_time)
+    assert_equal ['student2@school.com'], @checkpoint_onerating.hasnt_voted(@start_time, @end_time)
   end
 
   test "get score" do

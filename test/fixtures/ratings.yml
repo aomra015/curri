@@ -9,3 +9,8 @@ two:
   score: 1
   checkpoint: one
   student: student2
+
+three:
+  score: 1
+  checkpoint: onerating
+  student: student1
