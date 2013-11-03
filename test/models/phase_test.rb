@@ -3,7 +3,6 @@ require 'test_helper'
 class PhaseTest < ActiveSupport::TestCase
 
   def setup
-    #@test_track = {:created_at => "2am", :start_time => "4am", :end_time => "6am"}
     @oct1_two_am = DateTime.new(2012, 10, 1, 2, 0, 0)
     @oct10 = DateTime.new(2012, 10, 10)
     @oct15 = DateTime.new(2012, 10, 15)
@@ -20,8 +19,7 @@ class PhaseTest < ActiveSupport::TestCase
   end
 
   def test_bad_phase_error
-    bad_phase = Phase.new(@test_track,"not before")
-    assert_raises(ArgumentError) {bad_phase.start_time}
+    assert_raises(ArgumentError) {Phase.new(@test_track,"not before")}
   end
 
   def test_merge_time

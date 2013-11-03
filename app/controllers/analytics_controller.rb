@@ -6,13 +6,7 @@ class AnalyticsController < ApplicationController
 
   def show
     @track = @classroom.tracks.find(params[:track_id])
-
-    # @start_at = 0
-    # @end_at = 0
     @phase = Phase.new(@track,"default")
-    #@start_time = phase.start_time
-    #@end_time = phase.end_time
-
   end
 
   # def scope
