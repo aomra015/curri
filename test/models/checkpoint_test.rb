@@ -9,9 +9,9 @@ class CheckpointTest < ActiveSupport::TestCase
     @checkpoint_onerating = checkpoints(:onerating)
 
     # stubbing time
-    date_in_future = DateTime.now + 1
+    date_in_future = Time.zone.now + 1
     date_in_past = @checkpoint.track.created_at - 1
-    DateTime.expects(:now).returns(date_in_future)
+    Time.zone.expects(:now).returns(date_in_future)
     @checkpoint.track.created_at = date_in_past
 
     @phase = Phase.new(@checkpoint.track,"all")

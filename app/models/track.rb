@@ -4,6 +4,6 @@ class Track < ActiveRecord::Base
   validates :name, presence: true
 
   def phasing?
-    start_date && start_time && end_date && end_time
+    start_time && end_time
   end
 end

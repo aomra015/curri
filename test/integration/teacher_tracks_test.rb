@@ -26,8 +26,8 @@ class TeacherTracksTest < Capybara::Rails::TestCase
       click_button 'Create Track'
     end
 
-    assert_equal Time.zone.parse("2013-10-1"), Track.last.start_date
-    assert_equal Time.zone.parse('9:30pm'), Track.last.end_time
+    assert_equal Time.zone.parse("2013-10-1 6:30pm"), Track.last.start_time
+    assert_equal Time.zone.parse('2013-10-1 9:30pm'), Track.last.end_time
   end
 
   test "a teacher can edit a track" do
@@ -45,8 +45,8 @@ class TeacherTracksTest < Capybara::Rails::TestCase
 
     changed_track = Track.find(@track.id)
     assert_equal 'Changed track name', changed_track.name
-    assert_equal Time.zone.parse('2013-08-10'), changed_track.start_date
-    assert_equal Time.zone.parse('11:30pm'), changed_track.end_time
+    assert_equal Time.zone.parse('2013-08-10 6:30pm'), changed_track.start_time
+    assert_equal Time.zone.parse('2013-08-10 11:30pm'), changed_track.end_time
 
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131103193657) do
+ActiveRecord::Schema.define(version: 20131103225111) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -68,9 +68,7 @@ ActiveRecord::Schema.define(version: 20131103193657) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "classroom_id"
-    t.datetime "start_date"
     t.datetime "start_time"
-    t.datetime "end_date"
     t.datetime "end_time"
   end
 
