@@ -3,13 +3,13 @@ require 'test_helper'
 class PhaseTest < ActiveSupport::TestCase
 
   def setup
-    @oct1_two_am = DateTime.new(2012, 10, 1, 2, 0, 0)
-    @oct10 = DateTime.new(2012, 10, 10)
-    @oct15 = DateTime.new(2012, 10, 15)
-    @some_four_am = DateTime.new(2002, 3, 5, 4, 0, 0)
-    @some_six_am = DateTime.new(2004, 5, 6, 6, 0, 0)
-    @oct10_four_am = DateTime.new(2012, 10, 10, 4, 0, 0)
-    @oct15_six_am = DateTime.new(2012, 10, 15, 6, 0, 0)
+    @oct1_two_am = Time.zone.parse("2012-10-1 2am")
+    @oct10 = Time.zone.parse("2012-10-10")
+    @oct15 = Time.zone.parse("2012-10-15")
+    @some_four_am = Time.zone.parse("2002-6-4 4am")
+    @some_six_am = Time.zone.parse("2004-6-6 6am")
+    @oct10_four_am = Time.zone.parse("2012-10-10 4am")
+    @oct15_six_am = Time.zone.parse("2012-10-15 6am")
     @test_track = Track.new({:created_at => @oct1_two_am, :start_date => @oct10, :start_time => @some_four_am,
       :end_date => @oct15, :end_time => @some_six_am})
     @test_phase_before = Phase.new(@test_track,"before")
