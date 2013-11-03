@@ -9,9 +9,10 @@ class AnalyticsController < ApplicationController
 
     # @start_at = 0
     # @end_at = 0
+    @phase = Phase.new(@track,"default")
+    #@start_time = phase.start_time
+    #@end_time = phase.end_time
 
-    @start_time = @track.created_at
-    @end_time = Time.zone.now
   end
 
   # def scope

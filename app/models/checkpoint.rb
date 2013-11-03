@@ -4,9 +4,9 @@ class Checkpoint < ActiveRecord::Base
 
   validates  :expectation, :success_criteria, presence: true
 
-  def ratings_count(start_time, end_time, score="all")
+  def ratings_count(phase, score="all")
     if self.ratings.any?
-      scoped_ratings = get_scoped_ratings(start_time, end_time)
+      scoped_ratings = get_scoped_ratings(phase)
       if score == "all"
         scoped_ratings.length
       else
@@ -17,9 +17,9 @@ class Checkpoint < ActiveRecord::Base
     end
   end
 
-  def hasnt_voted(start_time, end_time)
+  def hasnt_voted(phase)
     hasnt_voted_list = []
-    scoped_ratings = get_scoped_ratings(start_time, end_time) if self.ratings.any?
+    scoped_ratings = get_scoped_ratings(phase) if self.ratings.any?
 
     if self.ratings.empty? || scoped_ratings.empty?
       hasnt_voted_list << "all"
@@ -37,8 +37,8 @@ class Checkpoint < ActiveRecord::Base
     hasnt_voted_list
   end
 
-  def get_scoped_ratings(start_time, end_time)
-    self.ratings.where({ created_at: start_time..end_time }).group(:student_id)
+  def get_scoped_ratings(phase)
+    self.ratings.where({ created_at: phase.start_time..phase.end_time }).group(:student_id)
   end
 
   def get_score_count(score, ratings)
@@ -49,9 +49,9 @@ class Checkpoint < ActiveRecord::Base
     count
   end
 
-  def get_score(score, start_time, end_time)
+  def get_score(score, phase)
     if self.ratings.any?
-      ratings_count(start_time, end_time, score) * 100.0 / ratings_count(start_time, end_time)
+      ratings_count(phase, score) * 100.0 / ratings_count(phase)
     else
       0
     end

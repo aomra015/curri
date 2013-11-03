@@ -7,8 +7,14 @@ class CheckpointTest < ActiveSupport::TestCase
     @checkpoint = checkpoints(:one)
     @checkpoint_no_ratings = checkpoints(:noratings)
     @checkpoint_onerating = checkpoints(:onerating)
-    @start_time = @checkpoint.ratings.first.created_at - 1
-    @end_time = @checkpoint.ratings.last.created_at
+
+    # stubbing time
+    date_in_future = DateTime.now + 1
+    date_in_past = @checkpoint.track.created_at - 1
+    DateTime.expects(:now).returns(date_in_future)
+    @checkpoint.track.created_at = date_in_past
+
+    @phase = Phase.new(@checkpoint.track,"default")
   end
 
   test "validate presence of both attributes" do
@@ -22,26 +28,26 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "ratings count" do
-    assert_equal 0, @checkpoint.ratings_count(@start_time, @end_time, 0)
-    assert_equal 0, @checkpoint.ratings_count(@start_time, @end_time, 2)
-    assert_equal 2, @checkpoint.ratings_count(@start_time, @end_time, 1)
-    assert_equal 2, @checkpoint.ratings_count(@start_time, @end_time)
+    assert_equal 0, @checkpoint.ratings_count(@phase, 0)
+    assert_equal 0, @checkpoint.ratings_count(@phase, 2)
+    assert_equal 2, @checkpoint.ratings_count(@phase, 1)
+    assert_equal 2, @checkpoint.ratings_count(@phase)
 
-    assert_equal 0, @checkpoint_no_ratings.ratings_count(@start_time, @end_time)
+    assert_equal 0, @checkpoint_no_ratings.ratings_count(@phase)
   end
 
   test "hasnt voted" do
-    assert_equal ["all"], @checkpoint_no_ratings.hasnt_voted(@start_time, @end_time)
-    assert_equal [], @checkpoint.hasnt_voted(@start_time, @end_time)
-    assert_equal ['student2@school.com'], @checkpoint_onerating.hasnt_voted(@start_time, @end_time)
+    assert_equal ["all"], @checkpoint_no_ratings.hasnt_voted(@phase)
+    assert_equal [], @checkpoint.hasnt_voted(@phase)
+    assert_equal ['student2@school.com'], @checkpoint_onerating.hasnt_voted(@phase)
   end
 
   test "get score" do
-    assert_equal 0, @checkpoint.get_score(0, @start_time, @end_time)
-    assert_equal 100, @checkpoint.get_score(1, @start_time, @end_time)
-    assert_equal 0, @checkpoint.get_score(2, @start_time, @end_time)
+    assert_equal 0, @checkpoint.get_score(0, @phase)
+    assert_equal 100, @checkpoint.get_score(1, @phase)
+    assert_equal 0, @checkpoint.get_score(2, @phase)
 
-    assert_equal 0, @checkpoint_no_ratings.get_score(2, @start_time, @end_time)
+    assert_equal 0, @checkpoint_no_ratings.get_score(2, @phase)
   end
 
   test "only one rating per student counts" do
@@ -58,12 +64,9 @@ class CheckpointTest < ActiveSupport::TestCase
     second_rating.checkpoint = @checkpoint_two
     second_rating.save
 
-    @start = first_rating.created_at - 1
-    @end = second_rating.created_at
-
-    assert_equal 0, @checkpoint_two.ratings_count(@start, @end, 1)
-    assert_equal 1, @checkpoint_two.ratings_count(@start, @end, 2)
-    assert_equal 1, @checkpoint_two.ratings_count(@start, @end)
+    assert_equal 0, @checkpoint_two.ratings_count(@phase, 1)
+    assert_equal 1, @checkpoint_two.ratings_count(@phase, 2)
+    assert_equal 1, @checkpoint_two.ratings_count(@phase)
   end
 
   test "latest student score" do
