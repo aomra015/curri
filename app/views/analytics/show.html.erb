@@ -20,3 +20,9 @@
     </ul>
   </div>
 </div>
+<div>
+  <% if @track.phasing? %>
+    <p><%= display_start_end_times(@track) %></p>
+    <%= render :partial => 'phasing' %>
+  <% end %>
+</div>

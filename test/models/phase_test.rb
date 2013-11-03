@@ -15,7 +15,7 @@ class PhaseTest < ActiveSupport::TestCase
     @test_phase_before = Phase.new(@test_track,"before")
     @test_phase_during = Phase.new(@test_track,"during")
     @test_phase_after = Phase.new(@test_track,"after")
-    @test_phase_default = Phase.new(@test_track,"default")
+    @test_phase_all = Phase.new(@test_track,"all")
   end
 
   def test_bad_phase_error
@@ -47,10 +47,10 @@ class PhaseTest < ActiveSupport::TestCase
     assert_equal DateTime.now.to_time.to_i, @test_phase_after.end_time.to_time.to_i
   end
 
-  def test_start_time_default
-    assert_equal @oct1_two_am, @test_phase_default.start_time
+  def test_start_time_all
+    assert_equal @oct1_two_am, @test_phase_all.start_time
   end
-  def test_end_time_default
-    assert_equal DateTime.now.to_time.to_i, @test_phase_default.end_time.to_time.to_i
+  def test_end_time_all
+    assert_equal DateTime.now.to_time.to_i, @test_phase_all.end_time.to_time.to_i
   end
 end

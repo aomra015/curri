@@ -6,7 +6,8 @@ class AnalyticsController < ApplicationController
 
   def show
     @track = @classroom.tracks.find(params[:track_id])
-    @phase = Phase.new(@track,"default")
+    @phase = Phase.new(@track, params[:phase_text] || "all")
+
   end
 
   # def scope

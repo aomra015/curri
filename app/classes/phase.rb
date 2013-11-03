@@ -1,8 +1,10 @@
 class Phase
-  def initialize(track, phase)
+  attr_reader :phase_text
+
+  def initialize(track, phase_text)
     @track = track
-    @phase = phase.downcase
-    unless ['default','before','during','after'].include?(@phase)
+    @phase_text = phase_text.downcase
+    unless ['all','before','during','after'].include?(@phase_text)
       raise ArgumentError.new("Invalid phase")
     end
     @start_of_everything = track.created_at
@@ -10,9 +12,9 @@ class Phase
   end
 
   def start_time
-    if @phase == 'during'
+    if @phase_text == 'during'
       return merge_time(@track.start_date, @track.start_time)
-    elsif @phase == 'after'
+    elsif @phase_text == 'after'
       return merge_time(@track.end_date, @track.end_time)
     else
       return @start_of_everything
@@ -20,9 +22,9 @@ class Phase
   end
 
   def end_time
-    if @phase == 'before'
+    if @phase_text == 'before'
       return merge_time(@track.start_date, @track.start_time)
-    elsif @phase == 'during'
+    elsif @phase_text == 'during'
       return merge_time(@track.end_date, @track.end_time)
     else
       return @end_of_everything
