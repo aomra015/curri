@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013003251) do
+ActiveRecord::Schema.define(version: 20131103225111) do
 
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
@@ -68,10 +68,8 @@ ActiveRecord::Schema.define(version: 20131013003251) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "classroom_id"
-    t.date     "start_date"
-    t.time     "start_time"
-    t.date     "end_date"
-    t.time     "end_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
   end
 
   add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id"
