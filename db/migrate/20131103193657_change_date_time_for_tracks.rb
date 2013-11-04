@@ -1,8 +1,11 @@
 class ChangeDateTimeForTracks < ActiveRecord::Migration
   def change
-    change_column :tracks, :start_date, :datetime
-    change_column :tracks, :start_time, :datetime
-    change_column :tracks, :end_date, :datetime
-    change_column :tracks, :end_time, :datetime
+    remove_column :tracks, :start_date
+    remove_column :tracks, :start_time
+    remove_column :tracks, :end_date
+    remove_column :tracks, :end_time
+
+    add_column :tracks, :start_time, :datetime
+    add_column :tracks, :end_time, :datetime
   end
 end
