@@ -565,18 +565,22 @@ transition: opacity .15s linear;
 
 .hide-role
 {
+    position: relative;
     margin-top: 4px;
     width:17px;
     height:17px;
     border:3px solid darken($header-color, 20%);
 }
-.hide-role a{
+.hide-role span{
+    position: absolute;
+    top: 20px;
+    left: -120px;
+
     display: none;
 }
-.hide-role:hover a{
+.hide-role:hover span{
     display:block;
-    margin-left: -120px;
-    margin-top: 20px;
+    width: 300px;
     color: rgba(255,255,255,0.8);
     font-size: 14px;
     font-weight: normal;
