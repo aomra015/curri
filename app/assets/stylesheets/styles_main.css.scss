@@ -562,3 +562,22 @@ transition: opacity .15s linear;
 .pending {
   color: $warning-color;
 }
+
+.hide-role
+{
+    margin-top: 4px;
+    width:17px;
+    height:17px;
+    border:3px solid darken($header-color, 20%);
+}
+.hide-role a{
+    display: none;
+}
+.hide-role:hover a{
+    display:block;
+    margin-left: -120px;
+    margin-top: 20px;
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    font-weight: normal;
+}
