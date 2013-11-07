@@ -8,3 +8,12 @@
     </ul>
   </div>
 <% end %>
+<% if current_user.student? %>
+  <div>
+    <div class="progress">
+      <div class="progress-bar progress-bar-danger" style="width: <%= @current_user.classrole.get_student_score(0, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 0) %></div>
+      <div class="progress-bar progress-bar-warning" style="width: <%= @current_user.classrole.get_student_score(1, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 1) %></div>
+      <div class="progress-bar progress-bar-success" style="width: <%= @current_user.classrole.get_student_score(2, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 2) %></div>
+    </div>
+  </div>
+<% end %>
