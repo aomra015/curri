@@ -12,10 +12,14 @@
   <div>
     <div class="progress progress-border">
       <% this_student = @current_user.classrole %>
-      <div class="progress-bar progress-bar-danger" style="width: <%= this_student.get_student_score(0, track) %>%"><%= this_student.student_ratings_count(track,0) %></div>
-      <div class="progress-bar progress-bar-warning" style="width: <%= this_student.get_student_score(1, track) %>%"><%= this_student.student_ratings_count(track,1) %></div>
-      <div class="progress-bar progress-bar-success" style="width: <%= this_student.get_student_score(2, track) %>%"><%= this_student.student_ratings_count(track,2) %></div>
-      <div class="progress-bar progress-bar-empty" style="width: <%= this_student.get_student_unanswered(track) %>%"><%= track.checkpoints.length - this_student.student_ratings_count(track) %></div>
+      <% this_student_0 = this_student.student_ratings_count(track,0) %>
+      <% this_student_1 = this_student.student_ratings_count(track,1) %>
+      <% this_student_2 = this_student.student_ratings_count(track,2) %>
+      <% this_student_e = this_student.get_student_unanswered(track) %>
+      <div class="progress-bar progress-bar-danger" style="width: <%= scale(track,this_student_0) %>%"><%= this_student_0 %></div>
+      <div class="progress-bar progress-bar-warning" style="width: <%= scale(track,this_student_1) %>%"><%= this_student_1 %></div>
+      <div class="progress-bar progress-bar-success" style="width: <%= scale(track,this_student_2) %>%"><%= this_student_2 %></div>
+      <div class="progress-bar progress-bar-empty" style="width: <%= scale(track,this_student_e) %>%"><%= this_student_e %></div>
     </div>
   </div>
 <% end %>
