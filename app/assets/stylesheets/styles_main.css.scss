@@ -321,6 +321,10 @@ button.close {
   transition: width .6s ease;
 }
 
+.progress-border{
+  border: 1px solid  grey;
+}
+
 .progress-bar-danger {
   background-color: $danger-color;
 }
@@ -329,6 +333,10 @@ button.close {
 }
 .progress-bar-success {
   background-color: $success-color;
+}
+.progress-bar-empty {
+  background-color: rgba(255,255,255,1.0);
+  color: #000;
 }
 
 .analytics-track-name {

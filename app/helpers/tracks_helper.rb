@@ -26,9 +26,4 @@ module TracksHelper
       "Track start/end: #{start_string} to #{end_string}"
     end
   end
-
-  def get_track_rating_label(track, student, score)
-    label = student.student_ratings_count(track, score)
-    label
-  end
 end

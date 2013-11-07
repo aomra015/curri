@@ -31,11 +31,10 @@ class Student < ActiveRecord::Base
   end
 
   def get_student_score(score,track)
-    if self.ratings.any?
-      student_ratings_count(track, score) * 100.0 / student_ratings_count(track)
-    else
-      0
-    end
+      student_ratings_count(track, score) * 100.0 / track.checkpoints.length
   end
 
+  def get_student_unanswered(track)
+      (track.checkpoints.length - student_ratings_count(track))* 100.0/ track.checkpoints.length
+  end
 end

@@ -10,10 +10,12 @@
 <% end %>
 <% if current_user.student? %>
   <div>
-    <div class="progress">
-      <div class="progress-bar progress-bar-danger" style="width: <%= @current_user.classrole.get_student_score(0, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 0) %></div>
-      <div class="progress-bar progress-bar-warning" style="width: <%= @current_user.classrole.get_student_score(1, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 1) %></div>
-      <div class="progress-bar progress-bar-success" style="width: <%= @current_user.classrole.get_student_score(2, track) %>%"><%= get_track_rating_label(track, @current_user.classrole, 2) %></div>
+    <div class="progress progress-border">
+      <% this_student = @current_user.classrole %>
+      <div class="progress-bar progress-bar-danger" style="width: <%= this_student.get_student_score(0, track) %>%"><%= this_student.student_ratings_count(track,0) %></div>
+      <div class="progress-bar progress-bar-warning" style="width: <%= this_student.get_student_score(1, track) %>%"><%= this_student.student_ratings_count(track,1) %></div>
+      <div class="progress-bar progress-bar-success" style="width: <%= this_student.get_student_score(2, track) %>%"><%= this_student.student_ratings_count(track,2) %></div>
+      <div class="progress-bar progress-bar-empty" style="width: <%= this_student.get_student_unanswered(track) %>%"><%= track.checkpoints.length - this_student.student_ratings_count(track) %></div>
     </div>
   </div>
 <% end %>
