@@ -11,6 +11,8 @@ class Student < ActiveRecord::Base
       track_ratings = get_track_ratings(track)
       if score == "all"
         track_ratings.length
+      elsif score == "empty"
+        track.checkpoints.length - track_ratings.length
       else
         get_student_score_count(score, track_ratings)
       end
@@ -31,6 +33,6 @@ class Student < ActiveRecord::Base
   end
 
   def get_student_unanswered(track)
-      track.checkpoints.length - student_ratings_count(track)
+
   end
 end

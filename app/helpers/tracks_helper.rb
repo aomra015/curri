@@ -29,4 +29,10 @@ module TracksHelper
   def scale(track,score)
     score * 100.0 / track.checkpoints.length
   end
+
+  def score_count(track,score)
+    @current_user.classrole.student_ratings_count(track,score)
+  end
+
+
 end
