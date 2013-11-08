@@ -18,7 +18,6 @@ module TracksHelper
     track.send(method).strftime("%Y-%m-%d") if track.send(method)
   end
 
-
   def display_start_end_times(track)
     if track.phasing?
       start_string = track.start_time.strftime("%l:%M%P, %e %b %y")
@@ -26,4 +25,14 @@ module TracksHelper
       "Track start/end: #{start_string} to #{end_string}"
     end
   end
+
+  def scale(track,score)
+    score * 100.0 / track.checkpoints.length
+  end
+
+  def score_count(track,score)
+    @current_user.classrole.student_ratings_count(track,score)
+  end
+
+
 end
