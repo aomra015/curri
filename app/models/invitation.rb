@@ -8,4 +8,8 @@ class Invitation < ActiveRecord::Base
   def generate_token
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
+
+  def signed_up_as_email
+    Student.find(self.student_id).email.to_s
+  end
 end
