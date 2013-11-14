@@ -155,6 +155,13 @@ h3.grid-header {
   margin-right: 30px;
 }
 
+.grid3 {
+  margin-right: 30px;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+}
+
 div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
   margin-right: 0;
 }
