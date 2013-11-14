@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131103225111) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "checkpoints", force: true do |t|
     t.string   "expectation"
     t.integer  "track_id"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 20131103225111) do
     t.string   "success_criteria"
   end
 
-  add_index "checkpoints", ["track_id"], name: "index_checkpoints_on_track_id"
+  add_index "checkpoints", ["track_id"], name: "index_checkpoints_on_track_id", using: :btree
 
   create_table "classrooms", force: true do |t|
     t.string   "name"
@@ -39,8 +42,8 @@ ActiveRecord::Schema.define(version: 20131103225111) do
     t.string   "email"
   end
 
-  add_index "invitations", ["classroom_id"], name: "index_invitations_on_classroom_id"
-  add_index "invitations", ["student_id"], name: "index_invitations_on_student_id"
+  add_index "invitations", ["classroom_id"], name: "index_invitations_on_classroom_id", using: :btree
+  add_index "invitations", ["student_id"], name: "index_invitations_on_student_id", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "score"
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20131103225111) do
     t.integer  "student_id"
   end
 
-  add_index "ratings", ["checkpoint_id"], name: "index_ratings_on_checkpoint_id"
-  add_index "ratings", ["student_id"], name: "index_ratings_on_student_id"
+  add_index "ratings", ["checkpoint_id"], name: "index_ratings_on_checkpoint_id", using: :btree
+  add_index "ratings", ["student_id"], name: "index_ratings_on_student_id", using: :btree
 
   create_table "students", force: true do |t|
     t.datetime "created_at"
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 20131103225111) do
     t.datetime "end_time"
   end
 
-  add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id"
+  add_index "tracks", ["classroom_id"], name: "index_tracks_on_classroom_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -85,6 +88,6 @@ ActiveRecord::Schema.define(version: 20131103225111) do
     t.datetime "password_reset_sent_at"
   end
 
-  add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type"
+  add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type", using: :btree
 
 end
