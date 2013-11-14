@@ -8,6 +8,7 @@ development:
   encoding: unicode
   database: curri_development
   pool: 5
+  host: localhost
   username: <%= ENV['USER'] %>
   password:
 
@@ -16,6 +17,7 @@ test:
   encoding: unicode
   database: curri_test
   pool: 5
+  host: localhost
   username: <%= ENV['USER'] %>
   password:
 
