@@ -4,6 +4,8 @@ class Checkpoint < ActiveRecord::Base
 
   validates  :expectation, :success_criteria, presence: true
 
+  default_scope { order(id: :asc) }
+
   def ratings_count(phase, score="all")
     if self.ratings.any?
       scoped_ratings = get_scoped_ratings(phase)
