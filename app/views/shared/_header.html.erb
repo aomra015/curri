@@ -2,9 +2,11 @@
   <div class="container">
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <ul class="nav">
-      <% if @classroom && @classroom.id %>
+      <% if @classroom %>
         <li><%= link_to 'Classrooms', classrooms_path %></li>
-        <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+        <% if @classroom.id %>
+          <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+          <% end %>
       <% end %>
 
       <% if @track && @track.id && current_user.teacher? %>
