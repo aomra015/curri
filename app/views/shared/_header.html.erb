@@ -4,10 +4,12 @@
     <ul class="nav">
       <% if @classroom %>
         <li><%= link_to 'Classrooms', classrooms_path %></li>
-        <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+        <% if @classroom.id %>
+          <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+          <% end %>
       <% end %>
 
-      <% if @track && current_user.teacher? %>
+      <% if @track && @track.id && current_user.teacher? %>
         <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
       <% end %>
 

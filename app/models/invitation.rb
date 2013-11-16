@@ -10,6 +10,6 @@ class Invitation < ActiveRecord::Base
   end
 
   def signed_up_as_email
-    Student.find(self.student_id).email.to_s
+    Student.find(self.student_id).email if self.student_id
   end
 end

@@ -3,6 +3,8 @@ class Track < ActiveRecord::Base
   has_many :checkpoints
   validates :name, presence: true
 
+  default_scope { order(id: :asc) }
+
   def phasing?
     start_time && end_time
   end

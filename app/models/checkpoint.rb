@@ -4,6 +4,8 @@ class Checkpoint < ActiveRecord::Base
 
   validates  :expectation, :success_criteria, presence: true
 
+  default_scope { order(id: :asc) }
+
   def ratings_count(phase, score="all")
     if self.ratings.any?
       scoped_ratings = get_scoped_ratings(phase)
@@ -30,7 +32,7 @@ class Checkpoint < ActiveRecord::Base
         student_list.delete(rating.student.id)
       end
       student_list.each do |student_id|
-        hasnt_voted_list << Student.find(student_id).email.to_s
+        hasnt_voted_list << Student.find(student_id).email
       end
     end
 
@@ -38,7 +40,7 @@ class Checkpoint < ActiveRecord::Base
   end
 
   def get_scoped_ratings(phase)
-    self.ratings.where({ created_at: phase.start_time..phase.end_time }).group(:student_id)
+    self.ratings.where({ created_at: phase.start_time..phase.end_time }).select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
   end
 
   def get_score_count(score, ratings)

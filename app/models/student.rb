@@ -21,7 +21,7 @@ class Student < ActiveRecord::Base
     end
   end
   def get_track_ratings(track)
-    self.ratings.where({ checkpoint_id: track.checkpoints }).group(:checkpoint_id)
+    self.ratings.where({ checkpoint_id: track.checkpoints.pluck(:id) }).select("DISTINCT ON (checkpoint_id) * ").order("checkpoint_id, created_at DESC")
   end
 
   def get_student_score_count(score, ratings)
