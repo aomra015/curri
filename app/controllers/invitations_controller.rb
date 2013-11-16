@@ -41,7 +41,8 @@ class InvitationsController < ApplicationController
   end
 
   def create_student
-    invitation = Invitation.find_by(token: params[:user][:token])
+    @token = params[:user][:token]
+    invitation = Invitation.find_by(token: @token)
 
     if invitation && invitation.student.nil?
       @user = User.new(user_params)
