@@ -52,7 +52,7 @@ end
 gem 'bcrypt-ruby'
 
 gem 'private_pub'
-gem 'thin'
+gem "thin", "~> 1.6.1"
 gem 'foreman'
 gem 'dynamic_form'
 # Use unicorn as the app server
