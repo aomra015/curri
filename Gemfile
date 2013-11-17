@@ -5,17 +5,6 @@ ruby "2.0.0"
 gem 'rails', '4.0.1'
 gem 'pg'
 
-group :development, :test do
-  gem 'pry-rails'
-  gem "mocha", :require => false
-end
-
-group :test do
-  gem 'simplecov', :require => false
-  gem 'minitest-rails-capybara'
-  gem 'minitest-colorize'
-end
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -38,6 +27,19 @@ gem 'jquery-ui-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+group :development, :test do
+  gem 'pry-rails'
+  gem "mocha", :require => false
+  gem 'thin'
+  gem 'foreman'
+end
+
+group :test do
+  gem 'simplecov', :require => false
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -52,8 +54,6 @@ end
 gem 'bcrypt-ruby'
 
 gem 'private_pub'
-gem 'thin'
-gem 'foreman'
 gem 'dynamic_form'
 # Use unicorn as the app server
 # gem 'unicorn'
