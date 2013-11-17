@@ -5,5 +5,5 @@ production:
         target: rails
         execute: true
         sudo: true
-        apply_during: build_only
+        apply_during: all
         run_on: all_servers
