@@ -78,7 +78,7 @@ Curry::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.default_url_options = { :host => "rhino.curri-app.c66.me" }
+  config.action_mailer.default_url_options = { :host => "rhino.curri.c66.me" }
   config.action_mailer.smtp_settings = {
     :port =>           '587',
     :address =>        'smtp.mandrillapp.com',
