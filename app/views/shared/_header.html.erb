@@ -25,6 +25,15 @@
          <li><%= link_to 'Profile', edit_profile_path %></li>
         <% end %>
         <li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li>
+
+      <% if current_user.student? %>
+        <% if current_user.classrole.help %>
+          <li><%= link_to "I need help!", update_status_path, method: :patch %></li>
+        <% else %>
+          <li><%= link_to "I'm OK", update_status_path, method: :patch %></li>
+        <% end %>
+      <% end %>
+
         <li><%= link_to 'Logout', logout_path, method: :delete %></li>
       <% end %>
 
