@@ -19,8 +19,8 @@ $ ->
 
     #update student view
     marker = $("#checkpoint#{checkpoint}").find('.marker')
-    marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2')
-    marker.addClass("checkpoint_#{current_score}")
+    marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
+      marker.addClass("checkpoint_#{current_score}").fadeIn()
 
 getScores = (ratings) ->
   zeroCount = 0
