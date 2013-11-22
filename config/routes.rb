@@ -3,6 +3,8 @@ Curry::Application.routes.draw do
   root to: 'classrooms#index'
 
   resources :classrooms do
+    get 'requesters', to: 'requesters#index'
+    patch 'requesters/:id/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
       get 'analytics', to: 'analytics#show'
       resources :ratings

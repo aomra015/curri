@@ -1,0 +1,24 @@
+<div id="page-head">
+  <h2 class="page-header"><%= @classroom.name %> > Your Students Needing Help</h2>
+</div>
+<div class="grid3">
+<% if @classroom.requesters_count == 0 %>
+  <h2> You have no students needing help! </h2>
+<% else %>
+  <table>
+    <tr>
+      <th>Student</th>
+      <th>Time</th>
+      <th>OK</th>
+    </tr>
+
+    <% @requesters.each do |requester| %>
+      <tr>
+        <td><%= requester.email %></td>
+        <td><%= requester.updated_at %></td>
+        <td><%= link_to 'Done', classroom_reset_status_path(@classroom, requester), method: :patch, class: 'remove_button btn'%></td>
+      </tr>
+    <% end %>
+  </table>
+  <% end %>
+</div>
