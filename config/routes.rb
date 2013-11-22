@@ -33,6 +33,7 @@ Curry::Application.routes.draw do
 
   get '/profile/edit', to: "users#edit_profile", as: "edit_profile"
   patch '/profile', to: 'users#update_profile', as: 'update_profile'
+  patch '/help_status', to: 'students#update_status', as: 'update_status'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
