@@ -8,7 +8,7 @@ class RequestersController < ApplicationController
   end
 
   def reset_status
-    requester = @classroom.students.find(params[:id])
+    requester = @classroom.invitations.find(params[:id])
     requester.toggle(:help).save
     redirect_to classroom_requesters_path(@classroom), notice: "Help status toggled."
   end

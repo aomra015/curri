@@ -10,7 +10,7 @@ class Classroom < ActiveRecord::Base
   default_scope { order(id: :asc) }
 
   def requesters_count
-    if self.students.any?
+    if self.invitations.any?
       requesters = get_requesters || []
       requesters.length
     else
@@ -18,7 +18,7 @@ class Classroom < ActiveRecord::Base
     end
   end
   def get_requesters
-    self.students.where({ help: true }).order(" updated_at ASC")
+    self.invitations.where({ help: true }).order(" updated_at ASC")
     #for now getting time data of help request from update of student model should do since no other attribs to update in student
   end
 
