@@ -14,7 +14,7 @@
 
     <% @requesters.each do |requester| %>
       <tr>
-        <td><%= requester.email %></td>
+        <td><%= requester.student.email %></td>
         <td><%= requester.updated_at %></td>
         <td><%= link_to 'Done', classroom_reset_status_path(@classroom, requester), method: :patch, class: 'remove_button btn'%></td>
       </tr>
