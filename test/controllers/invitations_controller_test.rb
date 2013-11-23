@@ -114,5 +114,22 @@ class InvitationsControllerTest < ActionController::TestCase
     end
   end
 
+  test "student should be able to toggle status" do
+    session[:user_id] = users(:student).id
+    @request.env['HTTP_REFERER'] = classrooms_url
+    assert_equal false, invitations(:one).help
+    patch :update_status, {classroom_id: classrooms(:one).id}
+    invitation = Invitation.find(invitations(:one).id)
+    assert_equal true, invitation.help
+    assert_redirected_to :back
+  end
+
+  test "action redirects to some default url if referer is missing" do
+    session[:user_id] = users(:student).id
+    patch :update_status, {classroom_id: classrooms(:one).id}
+    assert_redirected_to classrooms_path
+  end
+
+
 
 end

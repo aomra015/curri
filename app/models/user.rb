@@ -16,6 +16,11 @@ class User < ActiveRecord::Base
     classrole_type == 'Student'
   end
 
+  def needs_help?(classroom)
+    invitation = classroom.invitations.find_by(student_id: self.classrole_id)
+    invitation.help
+  end
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
