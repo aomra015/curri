@@ -5,8 +5,18 @@
       <% if @classroom %>
         <li><%= link_to 'Classrooms', classrooms_path %></li>
         <% if @classroom.id %>
-          <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+          <% if current_user.teacher? %>
+            <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom) %></li>
           <% end %>
+          <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+          <% if current_user.student? %>
+            <% if current_user.needs_help?(@classroom) %>
+              <li><%= link_to "I need help!", update_status_path(classroom_id: @classroom.id), method: :patch %></li>
+            <% else %>
+              <li><%= link_to "I'm OK", update_status_path(classroom_id: @classroom.id), method: :patch %></li>
+            <% end %>
+          <% end %>
+        <% end %>
       <% end %>
 
       <% if @track && @track.id && current_user.teacher? %>
@@ -26,13 +36,6 @@
         <% end %>
         <li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li>
 
-      <% if current_user.student? %>
-        <% if current_user.classrole.help %>
-          <li><%= link_to "I need help!", update_status_path, method: :patch %></li>
-        <% else %>
-          <li><%= link_to "I'm OK", update_status_path, method: :patch %></li>
-        <% end %>
-      <% end %>
 
         <li><%= link_to 'Logout', logout_path, method: :delete %></li>
       <% end %>

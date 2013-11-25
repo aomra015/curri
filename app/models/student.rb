@@ -31,8 +31,4 @@ class Student < ActiveRecord::Base
     end
     count
   end
-
-  def get_student_unanswered(track)
-
-  end
 end

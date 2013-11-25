@@ -5,13 +5,16 @@ one:
   classroom: one
   student: student1
   token: MyString
+  email: foo1@foo.com
 
 two:
-  classroom:
+  classroom: two
   student:
   token: MyString
+  email: foo2@foo.com
 
 three:
   classroom: one
   student: student2
   token: MyString
+  email: foo3@foo.com

@@ -9,4 +9,17 @@ class Classroom < ActiveRecord::Base
 
   default_scope { order(id: :asc) }
 
+  def requesters_count
+    if self.invitations.any?
+      requesters = get_requesters || []
+      requesters.length
+    else
+      0
+    end
+  end
+  def get_requesters
+    self.invitations.where({ help: true }).order(" updated_at ASC")
+    #for now getting time data of help request from update of student model should do since no other attribs to update in student
+  end
+
 end
