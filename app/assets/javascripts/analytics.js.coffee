@@ -17,11 +17,6 @@ $ ->
     checkpoint_row.find('.progress-bar-warning').css('width', scores.onePercent).html(scores.oneCount)
     checkpoint_row.find('.progress-bar-success').css('width', scores.twoPercent).html(scores.twoCount)
 
-    #update student view
-    marker = $("#checkpoint#{checkpoint}").find('.marker')
-    marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
-      marker.addClass("checkpoint_#{current_score}").fadeIn()
-
 getScores = (ratings) ->
   zeroCount = 0
   oneCount = 0
