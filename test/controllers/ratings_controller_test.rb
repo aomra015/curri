@@ -7,17 +7,19 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should create ratings with html request" do
+    PrivatePub.stubs(:publish_to)
+
     assert_difference 'Rating.count' do
       post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
     end
     assert_redirected_to classroom_track_path(classrooms(:one), tracks(:one))
   end
 
-  test "should create ratings with js request" do
+  test "should create ratings with json request" do
     PrivatePub.stubs(:publish_to)
 
     assert_difference 'Rating.count' do
-      post :create, format: 'js', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
+      post :create, format: 'json', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
     end
 
     response = JSON.parse(@response.body)
