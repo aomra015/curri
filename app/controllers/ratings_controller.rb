@@ -17,13 +17,15 @@ class RatingsController < ApplicationController
       @rating.student = current_user.classrole
       @rating.save
 
+      PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
+
       respond_to do |format|
         format.html {
           redirect_to classroom_track_url(@classroom, @track)
         }
-        format.js {
-          PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC"), current_score: @rating.score
-          render json: @rating
+
+        format.json {
+          render json: { checkpoint_id: @checkpoint.id, current_score: @rating.score }
         }
       end
 

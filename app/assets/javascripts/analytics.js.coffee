@@ -6,7 +6,7 @@
 
 $ ->
   TRACK_ID = $('#track').data('trackid')
-  PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings, current_score}) ->
+  PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings}) ->
 
     #update analytics view
     checkpoint_row = $("#checkpoint#{checkpoint}")
@@ -16,11 +16,6 @@ $ ->
     checkpoint_row.find('.progress-bar-danger').css('width', scores.zeroPercent).html(scores.zeroCount)
     checkpoint_row.find('.progress-bar-warning').css('width', scores.onePercent).html(scores.oneCount)
     checkpoint_row.find('.progress-bar-success').css('width', scores.twoPercent).html(scores.twoCount)
-
-    #update student view
-    marker = $("#checkpoint#{checkpoint}").find('.marker')
-    marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
-      marker.addClass("checkpoint_#{current_score}").fadeIn()
 
 getScores = (ratings) ->
   zeroCount = 0
