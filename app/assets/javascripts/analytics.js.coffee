@@ -6,7 +6,7 @@
 
 $ ->
   TRACK_ID = $('#track').data('trackid')
-  PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings, current_score}) ->
+  PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings}) ->
 
     #update analytics view
     checkpoint_row = $("#checkpoint#{checkpoint}")

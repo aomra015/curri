@@ -6,13 +6,11 @@ $ ->
   $('.checkpoint-score-links').on "click", 'input[type=submit]', (e) ->
     e.preventDefault()
     urlPath = $(this).closest('form').attr('action')
-    checkpoint = $(this).closest('.row')
-    current_score = urlPath.slice(-1)
     $.ajax
       url: urlPath
       type: 'POST'
-      success: ->
-        #update student view
-        marker = checkpoint.find('.marker')
+      dataType: 'JSON'
+      success: (data) ->
+        marker = $("#checkpoint#{data.checkpoint_id}").find('.marker')
         marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
-          marker.addClass("checkpoint_#{current_score}").fadeIn()
+          marker.addClass("checkpoint_#{data.current_score}").fadeIn()

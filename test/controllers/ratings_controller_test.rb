@@ -23,7 +23,8 @@ class RatingsControllerTest < ActionController::TestCase
     end
 
     response = JSON.parse(@response.body)
-    assert_equal 0, response["score"]
+    assert_equal 0, response["current_score"]
+    assert_equal checkpoints(:one).id, response["checkpoint_id"]
   end
 
   test "only students should be able to rate checkpoints" do
