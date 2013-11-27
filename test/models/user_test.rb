@@ -6,6 +6,7 @@ class UserTest < ActiveSupport::TestCase
     @blank_user.invalid?
     @teacher = users(:ahmed)
     @student = users(:student)
+    @nameless_student = users(:nameless_student)
     @classroom = classrooms(:one)
     @invitation1 = invitations(:one)
   end
@@ -36,4 +37,11 @@ class UserTest < ActiveSupport::TestCase
     assert_equal true, @student.needs_help?(@classroom)
   end
 
+  test "naming validation" do
+    # nameless student bad; nameless teacher ok
+    @teacher.valid?
+    assert_empty @teacher.errors[:first_name]
+    @nameless_student.valid?
+    assert @nameless_student.errors[:first_name].any?
+  end
 end

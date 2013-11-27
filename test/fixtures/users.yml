@@ -27,3 +27,9 @@ student2:
   classrole: student2
   classrole_type: Student
   password_digest: <%= BCrypt::Password.create("password123")%>
+
+nameless_student:
+  email: student00@school.com
+  classrole: student00
+  classrole_type: Student
+  password_digest: <%= BCrypt::Password.create("password123")%>
