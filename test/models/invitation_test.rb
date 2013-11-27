@@ -27,12 +27,12 @@ class InvitationTest < ActiveSupport::TestCase
     assert_not_equal invitation_one.token, invitation_two.token
   end
 
-  test "signed_up_as_email" do
+  test "invitation email_address method" do
     assert_equal "foo1@foo.com", @invitation1.email
-    assert_equal "student@school.com", @invitation1.signed_up_as_email
+    assert_equal "student@school.com", @invitation1.email_address
   end
 
-  test "name method" do
-    assert_equal "jane doe", @invitation1.name
+  test "full_name method" do
+    assert_equal "jane doe", @invitation1.full_name
   end
 end
