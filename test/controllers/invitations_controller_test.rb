@@ -51,7 +51,7 @@ class InvitationsControllerTest < ActionController::TestCase
   test "should create a student" do
     token = Invitation.create(email: 'student@gmail.com').token
     assert_difference 'User.count' do
-      post :create_student, user: {email: "misty@aomran.com", password: "likeskoi", password_confirmation: "likeskoi", token: token}
+      post :create_student, user: {email: "misty@aomran.com", first_name: "misty", last_name: "omran-franzini", password: "likeskoi", password_confirmation: "likeskoi", token: token}
     end
 
     student = User.find(session[:user_id])

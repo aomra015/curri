@@ -11,6 +11,16 @@
   </div>
 
   <div>
+    <%= label_tag "user[first_name]", 'First Name' %>
+    <%= text_field_tag "user[first_name]", nil, class: "form-input" %>
+  </div>
+
+  <div>
+    <%= label_tag "user[last_name]", 'Last Name' %>
+    <%= text_field_tag "user[last_name]", nil, class: "form-input" %>
+  </div>
+
+  <div>
     <%= label_tag "user[password]", 'Password' %>
     <%= password_field_tag "user[password]", nil, class: "form-input" %>
   </div>
