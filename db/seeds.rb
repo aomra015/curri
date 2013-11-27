@@ -11,10 +11,11 @@ student_roles = []
 num_students.times {|i| student_roles << Student.create()}
 
 myinvitations = []
-num_students.times {|i| myinvitations << Invitation.create(student: student_roles[i], classroom: default_classroom, token: "esteem", email: "fakestudent#{i+1}@gmail.com") }
+num_students.times {|i| myinvitations << Invitation.create(student: student_roles[i],  classroom: default_classroom, token: "esteem", email: "fakestudent#{i+1}@gmail.com") }
 
 mystudents = []
 num_students.times {|i| mystudents << User.create(email: "student#{i+1}@fakemail.com",
+  first_name: "Ima", last_name: "Student#{i+1}",
   classrole: student_roles[i], classrole_type: "Student" , password: "1234", password_confirmation: "1234" )}
 
 mydates = [Time.zone.parse("2012-10-1 2pm"), Time.zone.parse("2012-10-10 2pm"), Time.zone.parse("2012-10-15 2pm")]

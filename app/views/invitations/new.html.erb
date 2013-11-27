@@ -16,15 +16,15 @@
 <div class="grid3">
   <table>
     <tr>
-      <th>Email (invited as)</th>
+      <th>Name</th>
       <th>Email (signed up as)</th>
       <th>Status</th>
     </tr>
 
     <% @invitations.each do |invitation| %>
       <tr id="invitation_<%= invitation.id%>">
+        <td><%= invitation.name %></td>
         <td><%= invitation.email %></td>
-        <td><%= invitation.signed_up_as_email %></td>
         <td><%= get_invitation_status(invitation) %></td>
         <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'remove_button btn'%></td>
       </tr>

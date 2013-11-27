@@ -1,6 +1,9 @@
 require "test_helper"
 
 class InvitationTest < ActiveSupport::TestCase
+  before do
+    @invitation1 = invitations(:one)
+  end
 
   test "emails are validated for format" do
     invitation = Invitation.new(email: 'Ahmed')
@@ -24,4 +27,12 @@ class InvitationTest < ActiveSupport::TestCase
     assert_not_equal invitation_one.token, invitation_two.token
   end
 
+  test "signed_up_as_email" do
+    assert_equal "foo1@foo.com", @invitation1.email
+    assert_equal "student@school.com", @invitation1.signed_up_as_email
+  end
+
+  test "name method" do
+    assert_equal "jane doe", @invitation1.name
+  end
 end

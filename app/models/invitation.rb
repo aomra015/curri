@@ -12,4 +12,12 @@ class Invitation < ActiveRecord::Base
   def signed_up_as_email
     Student.find(self.student_id).email if self.student_id
   end
+
+  def name
+    if self.student_id
+      first_name = Student.find(self.student_id).first_name
+      last_name = Student.find(self.student_id).last_name
+      first_name + " " + last_name
+    end
+  end
 end

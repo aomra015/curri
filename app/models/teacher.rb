@@ -3,6 +3,8 @@ class Teacher < ActiveRecord::Base
   has_many :classrooms
 
   delegate :email, to: :user
+  delegate :first_name, to: :user
+  delegate :last_name, to: :user
 
   after_create :add_default_classroom
 
