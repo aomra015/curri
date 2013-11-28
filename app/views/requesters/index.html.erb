@@ -16,7 +16,7 @@
       <tr>
         <td><%= requester.full_name %></td>
         <td><%= requester.updated_at.strftime("%l:%M%P, %e %b %y") %></td>
-        <td><%= link_to 'Done', classroom_reset_status_path(@classroom, requester), method: :patch, class: 'remove_button btn'%></td>
+        <td><%= link_to 'Done', classroom_reset_status_path(@classroom, invitation_id: requester.id), method: :patch, class: 'remove_button btn'%></td>
       </tr>
     <% end %>
   </table>

@@ -96,12 +96,6 @@ class InvitationsController < ApplicationController
     redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
   end
 
-  def update_status
-    invitation = @current_user.classrole.invitations.find_by(classroom_id: params[:classroom_id])
-    invitation.toggle(:help).save
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
-  end
-
   private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)

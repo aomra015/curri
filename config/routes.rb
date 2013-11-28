@@ -4,7 +4,7 @@ Curry::Application.routes.draw do
 
   resources :classrooms do
     get 'requesters', to: 'requesters#index'
-    patch 'requesters/:id/reset_status', to: 'requesters#reset_status', as: "reset_status"
+    patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
       get 'analytics', to: 'analytics#show'
       resources :ratings
@@ -35,7 +35,6 @@ Curry::Application.routes.draw do
 
   get '/profile/edit', to: "users#edit_profile", as: "edit_profile"
   patch '/profile', to: 'users#update_profile', as: 'update_profile'
-  patch '/help_status', to: 'invitations#update_status', as: 'update_status'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
