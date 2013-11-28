@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123021430) do
+ActiveRecord::Schema.define(version: 20131127175904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 20131123021430) do
     t.string   "password_digest"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type", using: :btree

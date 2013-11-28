@@ -15,6 +15,8 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     visit claim_invitation_path(invitation.token)
 
     fill_in :user_email, with: 'student@gmail.com'
+    fill_in :user_first_name, with: 'jane'
+    fill_in :user_last_name, with: 'doe'
     fill_in :user_password, with: 'password123'
     fill_in :user_password_confirmation, with: 'password123'
 

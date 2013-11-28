@@ -5,6 +5,8 @@ class Student < ActiveRecord::Base
   has_many :ratings
 
   delegate :email, to: :user
+  delegate :first_name, to: :user
+  delegate :last_name, to: :user
 
   def student_ratings_count(track, score="all")
     if self.ratings.any?

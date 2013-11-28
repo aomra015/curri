@@ -14,8 +14,8 @@
 
     <% @requesters.each do |requester| %>
       <tr>
-        <td><%= requester.student.email %></td>
-        <td><%= requester.updated_at %></td>
+        <td><%= requester.full_name %></td>
+        <td><%= requester.updated_at.strftime("%l:%M%P, %e %b %y") %></td>
         <td><%= link_to 'Done', classroom_reset_status_path(@classroom, requester), method: :patch, class: 'remove_button btn'%></td>
       </tr>
     <% end %>

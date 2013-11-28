@@ -9,7 +9,15 @@ class Invitation < ActiveRecord::Base
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
 
-  def signed_up_as_email
-    Student.find(self.student_id).email if self.student_id
+  def email_address
+    if self.student_id
+      self.student.email
+    else
+      self.email
+    end
+  end
+
+  def full_name
+    self.student.first_name + " " + self.student.last_name if self.student_id
   end
 end
