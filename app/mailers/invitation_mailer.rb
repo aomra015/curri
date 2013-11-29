@@ -1,5 +1,5 @@
 class InvitationMailer < ActionMailer::Base
-  default from: "curry@fakemail.com"
+  default from: "hi@curriapp.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,6 +8,6 @@ class InvitationMailer < ActionMailer::Base
   #
   def invite(invitation)
     @token = invitation.token
-    mail to: invitation.email, subject: "Invitation to Curry"
+    mail to: invitation.email, subject: "Invitation to Curri"
   end
 end
