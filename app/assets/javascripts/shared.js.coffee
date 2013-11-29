@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-#= require private_pub
 
 $ ->
   CLASSROOM_ID = $('#track_link').data('classroomid')
