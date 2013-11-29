@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Curry::Application.config.session_store :cookie_store, key: '_curry_session'
+Curri::Application.config.session_store :cookie_store, key: '_curri_session'

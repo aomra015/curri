@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Curry::Application.load_tasks
+Curri::Application.load_tasks
