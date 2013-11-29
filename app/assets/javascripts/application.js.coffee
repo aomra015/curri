@@ -14,6 +14,8 @@
 #= require jquery.ui.datepicker
 #= require jquery_ujs
 #= require private_pub
+#= require jquery.timepicker.min
+#= require uservoice
 #= require_tree .
 
 
