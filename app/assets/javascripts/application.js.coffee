@@ -13,7 +13,9 @@
 #= require jquery
 #= require jquery.ui.datepicker
 #= require jquery_ujs
+#= require private_pub
 #= require_tree .
+
 
 jQuery ->
   $('.success-criteria').popover({placement: 'left'})

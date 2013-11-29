@@ -17,9 +17,12 @@ class User < ActiveRecord::Base
     classrole_type == 'Student'
   end
 
+  def get_invitation(classroom)
+    classroom.invitations.find_by(student_id: self.classrole_id)
+  end
+
   def needs_help?(classroom)
-    invitation = classroom.invitations.find_by(student_id: self.classrole_id)
-    invitation.help
+    get_invitation(classroom).help
   end
 
   def send_password_reset
