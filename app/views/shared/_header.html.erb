@@ -3,15 +3,16 @@
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <ul class="nav">
       <% if @classroom %>
+      <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
         <li><%= link_to 'Classrooms', classrooms_path %></li>
         <% if @classroom.id %>
           <% if current_user.teacher? %>
-            <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom) %></li>
+            <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom), id: "requesters_link" %></li>
           <% end %>
-          <li><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
+          <li id="track_link" data-classroomid="<%= @classroom.id %>" ><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
           <% if current_user.student? %>
             <% if current_user.needs_help?(@classroom) %>
-              <li><%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch %></li>
+              <li><%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%></li>
             <% else %>
               <li><%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %></li>
             <% end %>

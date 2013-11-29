@@ -10,9 +10,12 @@ class RequestersController < ApplicationController
     if @current_user.teacher?
       requester = @classroom.invitations.find(params[:invitation_id])
     else
-      requester = @current_user.classrole.invitations.find_by(classroom_id: params[:classroom_id])
+      requester = @current_user.classrole.invitations.find_by(classroom_id: @classroom.id)
     end
+
     requester.toggle(:help).save
+    PrivatePub.publish_to "/classrooms/#{@classroom.id}/requesters", requester: requester.id, requesters_count: @classroom.requesters_count
+
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
   end
 end
