@@ -1,4 +1,4 @@
-Curry::Application.routes.draw do
+Curri::Application.routes.draw do
 
   root to: 'classrooms#index'
 
