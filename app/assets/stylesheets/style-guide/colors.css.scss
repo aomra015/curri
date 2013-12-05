@@ -1,0 +1,7 @@
+@import 'variables';
+
+.branding-color-swatches {
+    .primary { background-color: #B90020; }
+    .secondary { background-color: $secondary-color; }
+    .accent { background-color: #C59E16; }
+  }

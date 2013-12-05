@@ -1,3 +1,6 @@
+@import 'variables';
+@import 'mixins';
+
 * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -9,40 +12,14 @@ a {
   color: inherit;
 }
 
-// Variables
 
-$header-color: #37b590;
-$container-width: 960px;
-$sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
-$border-radius: 4px;
-$grid-background: #F0ECDA;
-$secondary-color: #F16739;
-$danger-color: #DB2C2C;
-$warning-color: #EEB247;
-$success-color: #16AC21;
-
-//Mixins
-
-@mixin all-transition {
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-}
-
-@mixin rounded-corner {
-  -webkit-border-radius: $border-radius;
-  -moz-border-radius: $border-radius;
-  -o-border-radius: $border-radius;
-  border-radius: $border-radius;
-}
 
 //Styles
 
 body {
   font-family: $sans-serif;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+  // -webkit-font-smoothing: antialiased;
   color: #3C382B;
 }
 
@@ -290,12 +267,12 @@ button.close {
   float: right;
 }
 
-.btn {
-  padding: 7px 15px;
-  @include rounded-corner;
-  @include all-transition;
+// .btn {
+//   padding: 7px 15px;
+//   @include rounded-corner;
+//   @include all-transition;
 
-}
+// }
 
 .btn-head {
   background: $secondary-color;

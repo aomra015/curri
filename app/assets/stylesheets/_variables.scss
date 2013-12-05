@@ -1,0 +1,31 @@
+// Variables
+
+$header-color: #37b590;
+$container-width: 960px;
+// $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
+$border-radius: 4px;
+$grid-background: #F0ECDA;
+$secondary-color: #F16739;
+// $danger-color: #DB2C2C;
+// $warning-color: #EEB247;
+// $success-color: #16AC21;
+
+// colors
+$primary-color: #5DA3FD;
+$success-color: #88DB81;
+$warning-color: #FDB343;
+$danger-color: #FF5454;
+
+$lt-grey: #ddd;
+$md-grey: #888;
+
+$main-color: #415463;
+$text-color: darken($main-color, 5%);
+$link-color: $primary-color;
+
+// arrange these
+
+$sans-serif: "source sans pro", "helvetica neue", helvetica, lucida sans, sans-serif;
+$global-radius: 5px;
+$button-highlight: inset 0 -4px 0 0 rgba(255,255,255,0.4);
+$focus-outline: 0 0 5px 1px rgb(0, 82, 255);
