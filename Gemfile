@@ -10,6 +10,10 @@ group :development, :test do
   gem "mocha", :require => false
 end
 
+group :development do
+  gem 'style-guide'
+end
+
 group :test do
   gem 'simplecov', :require => false
   gem 'minitest-rails-capybara'
@@ -63,3 +67,5 @@ gem 'dynamic_form'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+gem "rack-livereload", group: "development"
+gem "guard-livereload", group: "development"
