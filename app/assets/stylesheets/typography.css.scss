@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'mixins';
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  p & {
+    &:hover, &:focus {
+      color: darken($link-color, 30%);
+      border-bottom: 1px solid darken($link-color, 20%);
+    }
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.9rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 1.3rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0.7rem 0 0.5rem;
+}
+
+p {
+  color: $main-color;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  &:last-of-type {
+    margin-bottom: 1.5rem;
+  }
+}

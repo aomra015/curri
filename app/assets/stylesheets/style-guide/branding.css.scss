@@ -1,7 +1,42 @@
 @import 'variables';
+@import 'mixins';
 
-.branding-color-swatches {
-    .primary { background-color: #B90020; }
-    .secondary { background-color: $secondary-color; }
-    .accent { background-color: #C59E16; }
-  }
+
+
+.branding-colors > div {
+  height: 35px;
+  padding:5px 10px;
+  color: white;
+  margin-bottom: 5px;
+  border-radius: $global-radius;
+}
+
+.main {
+  background-color: $main-color;
+}
+
+.primary {
+  background-color: $primary-color;
+}
+
+.success {
+  background-color: $success-color;
+}
+.warning {
+  background-color: $warning-color;
+}
+
+.danger {
+  background-color: $danger-color;
+}
+
+div.lt-grey {
+  background-color: $lt-grey;
+  color: $md-grey;
+}
+
+.md-grey {
+  background-color: $md-grey;
+}
+
+// General styles

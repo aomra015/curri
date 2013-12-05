@@ -6,33 +6,42 @@ body.style-guide {
 }
 div.style-guide-bar {
   background-color: transparent;
+  top: 10px;
 }
 
 div.style-guide-bar-section a {
   color: white;
   height: auto;
+  padding: 5px 15px;
+  margin-right: 5px;
+  border-radius: $global-radius;
 }
 
 div.style-guide-bar-section a:hover {
-  background: rgba(255,255,255, 0.2);
-  color: white;
+  color: $text-color;
+  background-color: lighten($main-color, 35%);
 }
 
 div.style-guide-bar-section.active a:hover, div.style-guide-bar-section.active a {
   color: white;
-  background-color: transparent;
-  padding-bottom: 5px;
-  border-bottom: 3px solid white;
+  background: darken($main-color, 15%);
+  // padding-bottom: 5px;
+  // border-bottom: 3px solid white;
 }
 
 div.style-guide-bar a.brand {
   color: white;
+  font-size: 1px;
+  line-height: inherit;
   visibility: hidden;
+  margin: 0 10px;
+  padding: 2px 10px;
   &:hover {
     color: $lt-grey;
   }
   &::before {
-    content: "CURRI";
+    content: "Back to Curri";
+    font-size: 17px;
     visibility: visible;
   }
 }
@@ -63,14 +72,24 @@ div.style-guide-partial-title {
   color: $text-color;
   border-bottom: 1px solid $lt-grey;
 }
+
 div.style-guide-partial-description {
   font-size: 15px;
   color: $text-color;
 }
 
-div.style-guide-partial-identifiers code, div.style-guide-partial-description code {
-  border-radius: 3px;
+.style-guide-partial-rendered code, div.style-guide-partial-identifiers code, div.style-guide-partial-description code {
   padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.style-guide-partial-rendered code {
+  background-color: lighten($text-color, 65%);
+  font-size: 13px;
+  font-family: $source-code;
+  }
+
+div.style-guide-partial-identifiers code, div.style-guide-partial-description code {
   background-color: lighten(#d14, 50%);
   border: none;
 }

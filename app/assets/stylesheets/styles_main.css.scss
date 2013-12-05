@@ -7,12 +7,10 @@
   box-sizing: border-box;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-
+// a {
+//   text-decoration: none;
+//   color: inherit;
+// }
 
 //Styles
 
@@ -20,7 +18,7 @@ body {
   font-family: $sans-serif;
   text-rendering: optimizeLegibility;
   // -webkit-font-smoothing: antialiased;
-  color: #3C382B;
+  color: $text-color;
 }
 
 nav {
