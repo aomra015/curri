@@ -16,6 +16,8 @@ group :test do
   gem 'minitest-colorize'
 end
 
+gem 'spring', group: :development
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
