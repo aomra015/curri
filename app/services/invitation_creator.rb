@@ -5,8 +5,7 @@ class InvitationCreator
 
   def initialize(emails, classroom)
     @classroom = classroom
-    @emails = emails.split(/,|\n/)
-    @emails.map!(&:strip)
+    @emails = emails.split(/,|\n/).map!(&:strip)
     @invitations = []
   end
 
@@ -17,7 +16,7 @@ class InvitationCreator
       if invitation.invalid?
         return false
       else
-        @invitations << invitation
+        invitations << invitation
       end
     end
 
@@ -26,7 +25,7 @@ class InvitationCreator
 
   def save
     if valid?
-      @invitations.each do |inv|
+      invitations.each do |inv|
         inv.save
         InvitationMailer.invite(inv).deliver
       end
