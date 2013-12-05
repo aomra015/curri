@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  style_guide:
+    buttons:
+      options: Regular buttons should be used for forms and primary actions. Use the `.btn` class to style buttons.
+      type: We only use two button sizes- the default larger size and a smaller size. The small buttons should be used for secondary actions- to open new pages and modals. Use the `.btn-small` class to change the appearance.

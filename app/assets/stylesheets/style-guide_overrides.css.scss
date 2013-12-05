@@ -1,6 +1,51 @@
 @import 'variables';
 @import 'mixins';
 
-.style-guide {
-  font-family: $sans-serif !important;
+body.style-guide {
+  font: normal 16px/1.618 $sans-serif;
+}
+div.style-guide-bar {
+  background-color: transparent;
+}
+
+div.style-guide-bar-section a {
+  color: white;
+  height: auto;
+}
+
+div.style-guide-bar-section a:hover {
+  background: rgba(255,255,255, 0.2);
+  color: white;
+}
+
+div.style-guide-bar-section.active a:hover, div.style-guide-bar-section.active a {
+  color: white;
+  background-color: transparent;
+  padding-bottom: 5px;
+  border-bottom: 3px solid white;
+}
+
+div.style-guide-section-heading {
+  box-shadow: none;
+  text-shadow: none;
+  background: $main-color;
+}
+
+div.style-guide-content {
+  padding-top: 25px;
+}
+
+div.style-guide-partial {
+  margin: 0 0 20px 0;
+}
+
+div.style-guide-partial-title {
+  letter-spacing: 0;
+  font-weight: 700;
+  color: $text-color;
+  border-bottom: 1px solid $lt-grey;
+}
+div.style-guide-partial-description {
+  font-size: 15px;
+  color: $text-color;
 }
