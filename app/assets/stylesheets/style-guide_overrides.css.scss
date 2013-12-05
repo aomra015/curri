@@ -25,6 +25,18 @@ div.style-guide-bar-section.active a:hover, div.style-guide-bar-section.active a
   border-bottom: 3px solid white;
 }
 
+div.style-guide-bar a.brand {
+  color: white;
+  visibility: hidden;
+  &:hover {
+    color: $lt-grey;
+  }
+  &::before {
+    content: "CURRI";
+    visibility: visible;
+  }
+}
+
 div.style-guide-section-heading {
   box-shadow: none;
   text-shadow: none;
@@ -35,8 +47,14 @@ div.style-guide-content {
   padding-top: 25px;
 }
 
+div.style-guide-sidebar {
+  border: 4px solid $lt-grey;
+  box-shadow: none;
+}
+
 div.style-guide-partial {
   margin: 0 0 20px 0;
+  padding: 0 10px 10px 10px;
 }
 
 div.style-guide-partial-title {
@@ -48,4 +66,11 @@ div.style-guide-partial-title {
 div.style-guide-partial-description {
   font-size: 15px;
   color: $text-color;
+}
+
+div.style-guide-partial-identifiers code, div.style-guide-partial-description code {
+  border-radius: 3px;
+  padding: 2px 5px;
+  background-color: lighten(#d14, 50%);
+  border: none;
 }
