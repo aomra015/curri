@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby "2.0.0"
-gem 'rails', '4.0.1'
+gem 'rails', '>= 4.0.0'
 gem 'pg'
 
 group :development, :test do
