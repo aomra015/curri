@@ -25,8 +25,7 @@ div.style-guide-bar-section a:hover {
 div.style-guide-bar-section.active a:hover, div.style-guide-bar-section.active a {
   color: white;
   background: darken($main-color, 15%);
-  // padding-bottom: 5px;
-  // border-bottom: 3px solid white;
+  cursor: default;
 }
 
 div.style-guide-bar a.brand {
