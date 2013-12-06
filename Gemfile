@@ -17,6 +17,7 @@ group :test do
 end
 
 gem 'spring', group: :development
+gem 'email_validator'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
