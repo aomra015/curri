@@ -75,6 +75,20 @@ div.style-guide-partial-title {
 div.style-guide-partial-description {
   font-size: 15px;
   color: $text-color;
+  & pre > code {
+    display: inline-block;  
+    color: $text-color;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 16px 60px 16px 20px;
+    margin: 10px 0 15px;
+    border-radius: 3px;
+    word-wrap: normal;
+    white-space: pre-wrap;
+  }
 }
 
 .style-guide-partial-rendered code, div.style-guide-partial-identifiers code, div.style-guide-partial-description code {
