@@ -23,7 +23,7 @@ en:
   hello: "Hello world"
   style_guide:
     1_overview:
-      01_overview: This is the living styleguide for Curri. It may be modified after discussion with other team members.
+      01_introduction: This is the living styleguide for Curri. It may be modified after discussion with other team members.
       02_coding_style: |
         &#8226;&nbsp; Use soft-tabs with a two space indent.
         &#8226;&nbsp; Put spaces before `{` in rule declarations.
