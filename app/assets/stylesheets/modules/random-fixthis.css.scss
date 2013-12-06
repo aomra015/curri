@@ -91,6 +91,10 @@
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+.form-control {
+  width: 115px;
+  margin: 0 5px;
+}
 
 .all-tracks {
   float: right;
