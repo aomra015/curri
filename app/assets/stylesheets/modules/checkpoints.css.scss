@@ -1,0 +1,73 @@
+@import 'globals/all';
+
+.checkpoint-content {
+  overflow: hidden;
+  margin-top: 5px;
+
+  h4 {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .success-criteria {
+    float: left;
+    color: #FAFAFA;
+    font-weight: bold;
+    background-color: #ccc;
+    margin-top: 15px;
+  }
+}
+
+.checkpoint-score-links{
+  margin: 30px 0;
+}
+
+.checkpoint-rating {
+  margin-right: 20px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #FAFAFA;
+}
+
+.checkpoint0, .checkpoint1, .checkpoint2 {
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.checkpoint0 {
+  background-color: $danger-color;
+}
+
+.checkpoint1 {
+  background-color: $warning-color;
+}
+
+.checkpoint2 {
+  background-color: $success-color;}
+
+.checkpoint_0, .checkpoint_1, .checkpoint_2 {
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-width: 0 35px 35px 0;
+  border-color: transparent;
+  opacity: 0.8;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.checkpoint_0 {
+  border-right-color: $danger-color;
+}
+
+.checkpoint_1 {
+  border-right-color: $warning-color;
+}
+
+.checkpoint_2 {
+  border-right-color: $success-color;
+}

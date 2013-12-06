@@ -90,7 +90,7 @@ en:
 
         **Application manifest**
 
-        Use the Sprockets `//=require` syntax to specify how your styles should be merged into a single stylesheet in production. Here’s an example `application.css.scss`:
+        The Sprockets `//=require` syntax is used to specify how styles should be merged into a single stylesheet in production. Our `application.css.scss` contains:
 
         ```
         //= require reset

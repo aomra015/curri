@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'mixins';
+// This stylesheet ONLY overrides the default styles that come with the style-guide gem. Do not put any styles that control any part of the app here. An extra level of specificity is added by calling the name of the html element along with the class in order to override the default style, rather than adding !important to each property.
+
+@import 'globals/all';
 
 body.style-guide {
   font: normal 16px/1.618 $sans-serif;

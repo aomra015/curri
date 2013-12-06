@@ -1,0 +1,145 @@
+// Place all the layout styles here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'globals/all';
+
+.container {
+  width: $container-width;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+.grid-unit {
+  &:hover {
+    background-color: darken($grid-background, 8%);
+  }
+}
+
+.grid1, .grid2, .grid3 {
+  background-color: $grid-background;
+  float: left;
+  @include rounded-corner;
+  @include all-transition;
+  margin-bottom: 30px;
+}
+
+.grid1 {
+  margin-right: 30px;
+  width: 300px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.grid-temp {
+  margin-right: 30px;
+  width: 300px;
+  float: left;
+}
+
+.grid2 {
+  width: 630px;
+  margin-right: 30px;
+}
+
+.grid3 {
+  margin-right: 30px;
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+}
+
+div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
+  margin-right: 0;
+}
+
+.grid-add {
+  background-color: transparent;
+  border: 8px solid $grid-background;
+  color: $grid-background;
+  @include all-transition;
+
+  &:hover {
+    border-color: darken($grid-background, 20%);
+    color: darken($grid-background, 20%);
+    background-color: transparent;
+  }
+}
+
+.row {
+  border-bottom: 1px solid darken($grid-background, 10%);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  ul {
+    padding-left: 0;
+    // margin-left: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    li {
+      list-style:none;
+      // border-left: 3px solid red;
+      padding: 20px 10px 20px 20px;
+      border-bottom: 1px solid darken($grid-background, 10%);
+      @include all-transition;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      &.link:hover {
+        background-color: darken($grid-background, 10%);
+      }
+
+      a {
+        display: block;
+      }
+    }
+  }
+}
+
+.unit-inner {
+  padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pull-right {
+  float: right;
+}
+
+.well {
+  background-color: #f9f9f9;
+  margin-bottom: 60px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+.well .row {
+  padding: 40px 0;
+  border-bottom: 1px solid #e3e3e3;
+  margin-right: -19px;
+  margin-left: -19px;
+  position: relative;
+}
+
+.well .row:last-child {
+  border-bottom: none;
+}
+
+.row.header-row {
+  padding: 15px 0 0 10px;
+  background-color: #e7e7e7;
+  text-shadow: 1px 1px 2px #fff;
+  border-bottom: 1px solid #ccc;
+}
+
+.col-md-9 {
+  padding-right: 35px;
+  padding-left: 35px;
+}
