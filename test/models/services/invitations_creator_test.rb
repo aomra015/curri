@@ -36,7 +36,7 @@ class InvitationsCreatorTest < ActiveSupport::TestCase
       end
   end
 
-  test "with ivalid emails the save method returns false" do
+  test "with invalid emails the save method returns false" do
     assert_equal false, @invalid_invitation_creator.save
   end
 
