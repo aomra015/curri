@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   belongs_to :classrole, polymorphic: true
   validates  :email, presence: true
   validates :email, uniqueness: true
-  validates :email, format: { with: /@/ }
+  validates :email, :email => true
   validates :first_name, presence: true, if: :student?
   validates :last_name, presence: true, if: :student?
   has_secure_password

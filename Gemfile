@@ -66,3 +66,6 @@ gem 'dynamic_form'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+group :development do
+  gem 'brakeman', :require => false
+end
