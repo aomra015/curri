@@ -68,4 +68,7 @@ gem 'dynamic_form'
 gem 'debugger', group: [:development, :test]
 group :development do
   gem 'brakeman', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end

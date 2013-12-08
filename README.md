@@ -13,3 +13,7 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 
 ### Run tests
 - `$ rake test`
+
+### Better Errors
+- This app uses the gem 'better_errors' to get much more useful errors in development.
+- The [Rails Panel](https://chrome.google.com/webstore/detail/railspanel/gjpfobpafnhjhbajcjgccbbdofdckggg) chrome extension allows us to see useful information for every request (like controller, action, DB queries, errors, etc.). It's optional but recommended.
