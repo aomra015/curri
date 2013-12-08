@@ -20,3 +20,6 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 
 ### Rails Best Practices
 From the command line run `$ rails_best_practices -f html` to have the code reviewed. You should see a file called `rails_best_practices_output.html` with some suggestions for refactoring.
+
+### Improving Database queries
+In development we have the "bullet" gem enabled. It will print suggestions to the browser's console. Open the "Uniform Notifier" object to see the suggestion for improving the query on the page.

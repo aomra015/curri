@@ -72,4 +72,5 @@ group :development do
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rails_best_practices'
+  gem 'bullet'
 end
