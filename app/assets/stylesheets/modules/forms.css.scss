@@ -20,10 +20,10 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
   &:focus {
-    border-color: $primary-color;
+    border-color: $color-primary;
     outline: 0;
-    -webkit-box-shadow: 0 0 8px lighten($primary-color, 20%);
-    box-shadow: 0 0 8px lighten($primary-color, 20%);
+    -webkit-box-shadow: 0 0 8px lighten($color-primary, 20%);
+    box-shadow: 0 0 8px lighten($color-primary, 20%);
   }
 }
 

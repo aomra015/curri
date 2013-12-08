@@ -38,15 +38,15 @@
   }
 }
 .checkpoint0 {
-  background-color: $danger-color;
+  background-color: $color-danger;
 }
 
 .checkpoint1 {
-  background-color: $warning-color;
+  background-color: $color-warning;
 }
 
 .checkpoint2 {
-  background-color: $success-color;}
+  background-color: $color-success;}
 
 .checkpoint_0, .checkpoint_1, .checkpoint_2 {
   width: 0px;
@@ -61,13 +61,13 @@
 }
 
 .checkpoint_0 {
-  border-right-color: $danger-color;
+  border-right-color: $color-danger;
 }
 
 .checkpoint_1 {
-  border-right-color: $warning-color;
+  border-right-color: $color-warning;
 }
 
 .checkpoint_2 {
-  border-right-color: $success-color;
+  border-right-color: $color-success;
 }

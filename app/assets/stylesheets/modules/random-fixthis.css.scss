@@ -142,11 +142,11 @@ transition: opacity .15s linear;
 }
 
 .accepted {
-  color: $success-color;
+  color: $color-success;
 }
 
 .pending {
-  color: $warning-color;
+  color: $color-warning;
 }
 
 .hide-role

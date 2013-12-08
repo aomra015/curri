@@ -2,12 +2,12 @@
 @import 'globals/all';
 
 a {
-  color: $link-color;
+  color: $color-link;
   text-decoration: none;
   p & {
     &:hover, &:focus {
-      color: darken($link-color, 30%);
-      border-bottom: 1px solid darken($link-color, 20%);
+      color: darken($color-link, 30%);
+      border-bottom: 1px solid darken($color-link, 20%);
     }
   }
 }
@@ -33,7 +33,7 @@ h4 {
 }
 
 p {
-  color: $main-color;
+  color: $color-main;
   margin-bottom: 0.5rem;
   font-size: 1rem;
   line-height: 1.5;

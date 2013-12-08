@@ -19,13 +19,13 @@ div.style-guide-bar-section a {
 }
 
 div.style-guide-bar-section a:hover {
-  color: $text-color;
-  background-color: lighten($main-color, 35%);
+  color: $color-text;
+  background-color: lighten($color-main, 35%);
 }
 
 div.style-guide-bar-section.active a:hover, div.style-guide-bar-section.active a {
   color: white;
-  background: darken($main-color, 15%);
+  background: darken($color-main, 15%);
   cursor: default;
 }
 
@@ -49,7 +49,7 @@ div.style-guide-bar a.brand {
 div.style-guide-section-heading {
   box-shadow: none;
   text-shadow: none;
-  background: $main-color;
+  background: $color-main;
 }
 
 div.style-guide-content {
@@ -69,16 +69,16 @@ div.style-guide-partial {
 div.style-guide-partial-title {
   letter-spacing: 0;
   font-weight: 700;
-  color: $text-color;
+  color: $color-text;
   border-bottom: 1px solid $grey-lt;
 }
 
 div.style-guide-partial-description {
   font-size: 15px;
-  color: $text-color;
+  color: $color-text;
   & pre > code {
     display: inline-block;  
-    color: $text-color;
+    color: $color-text;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     font-size: 13px;
@@ -98,7 +98,7 @@ div.style-guide-partial-description {
 }
 
 .style-guide-partial-rendered code {
-  background-color: lighten($text-color, 65%);
+  background-color: lighten($color-text, 65%);
   font-size: 13px;
   font-family: $source-code;
   }

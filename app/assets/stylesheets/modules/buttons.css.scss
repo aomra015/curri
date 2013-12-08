@@ -90,16 +90,16 @@ button,
 }
 
 .btn-primary {
-  border-color: darken($primary-color, 15%);
-  background: $primary-color;
+  border-color: darken($color-primary, 15%);
+  background: $color-primary;
   color: white;
-  -webkit-box-shadow: inset 0 -3px 0 0 darken($primary-color, 15%), $button-highlight;
-  box-shadow: inset 0 -3px 0 0 darken($primary-color, 15%), $button-highlight;
+  -webkit-box-shadow: inset 0 -3px 0 0 darken($color-primary, 15%), $button-highlight;
+  box-shadow: inset 0 -3px 0 0 darken($color-primary, 15%), $button-highlight;
 
   &:hover,
   &:focus {
-    border-color: darken($primary-color, 25%);
-    background: darken($primary-color, 10%);
+    border-color: darken($color-primary, 25%);
+    background: darken($color-primary, 10%);
   }
 
   &[disabled],
@@ -107,69 +107,69 @@ button,
   &.disabled:hover,
   &.disabled:focus,
   &.disabled:active {
-    border-color: $primary-color;
-    background: lighten($primary-color, 10%);
-    -webkit-box-shadow: inset 0 -3px 0 0 $primary-color;
-    box-shadow: inset 0 -3px 0 0 $primary-color;
+    border-color: $color-primary;
+    background: lighten($color-primary, 10%);
+    -webkit-box-shadow: inset 0 -3px 0 0 $color-primary;
+    box-shadow: inset 0 -3px 0 0 $color-primary;
   }
 }
 
 .btn-success {
-  border-color: darken($success-color, 15%);
-  background: $success-color;
+  border-color: darken($color-success, 15%);
+  background: $color-success;
   color: white;
-  -webkit-box-shadow: inset 0 -3px 0 0 darken($success-color, 15%), $button-highlight;
-  box-shadow: inset 0 -3px 0 0 darken($success-color, 15%), $button-highlight;
+  -webkit-box-shadow: inset 0 -3px 0 0 darken($color-success, 15%), $button-highlight;
+  box-shadow: inset 0 -3px 0 0 darken($color-success, 15%), $button-highlight;
 
   &:hover, &:focus {
-    border-color: darken($success-color, 25%);
-    background: darken($success-color, 10%);
+    border-color: darken($color-success, 25%);
+    background: darken($color-success, 10%);
   }
 
   &[disabled], &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active {
-    border-color: $success-color;
-    background: lighten($success-color, 10%);
-    -webkit-box-shadow: inset 0 -3px 0 0 $success-color;
-    box-shadow: inset 0 -3px 0 0 $success-color;
+    border-color: $color-success;
+    background: lighten($color-success, 10%);
+    -webkit-box-shadow: inset 0 -3px 0 0 $color-success;
+    box-shadow: inset 0 -3px 0 0 $color-success;
   }
 }
 
 .btn-warning {
-  border-color: darken($warning-color, 15%);
-  background: $warning-color;
+  border-color: darken($color-warning, 15%);
+  background: $color-warning;
   color: white;
-  -webkit-box-shadow: inset 0 -3px 0 0 darken($warning-color, 15%), $button-highlight;
-  box-shadow: inset 0 -3px 0 0 darken($warning-color, 15%), $button-highlight;
+  -webkit-box-shadow: inset 0 -3px 0 0 darken($color-warning, 15%), $button-highlight;
+  box-shadow: inset 0 -3px 0 0 darken($color-warning, 15%), $button-highlight;
 
   &:hover, &:focus {
-    border-color: darken($warning-color, 20%);
-    background: darken($warning-color, 10%);
+    border-color: darken($color-warning, 20%);
+    background: darken($color-warning, 10%);
   }
 
   &[disabled], &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active {
-    border-color: $warning-color;
-    background: lighten($warning-color, 10%);
-    -webkit-box-shadow: inset 0 -3px 0 0 $warning-color;
-    box-shadow: inset 0 -3px 0 0 $warning-color;
+    border-color: $color-warning;
+    background: lighten($color-warning, 10%);
+    -webkit-box-shadow: inset 0 -3px 0 0 $color-warning;
+    box-shadow: inset 0 -3px 0 0 $color-warning;
   }
 }
 
 .btn-danger {
-  border-color: darken($danger-color, 20%);
-  background: $danger-color;
+  border-color: darken($color-danger, 20%);
+  background: $color-danger;
   color: white;
-  -webkit-box-shadow: inset 0 -3px 0 0 darken($danger-color, 20%), $button-highlight;
-  box-shadow: inset 0 -3px 0 0 darken($danger-color, 20%), $button-highlight;
+  -webkit-box-shadow: inset 0 -3px 0 0 darken($color-danger, 20%), $button-highlight;
+  box-shadow: inset 0 -3px 0 0 darken($color-danger, 20%), $button-highlight;
 
   &:hover, &:focus {
-    border-color: darken($danger-color, 25%);
-    background: darken($danger-color, 10%);
+    border-color: darken($color-danger, 25%);
+    background: darken($color-danger, 10%);
   }
 
   &[disabled], &.disabled, &.disabled:hover, &.disabled:focus, &.disabled:active {
-    border-color: $danger-color;
-    background: lighten($danger-color, 10%);
-    -webkit-box-shadow: inset 0 -3px 0 0 $danger-color;
-    box-shadow: inset 0 -3px 0 0 $danger-color;
+    border-color: $color-danger;
+    background: lighten($color-danger, 10%);
+    -webkit-box-shadow: inset 0 -3px 0 0 $color-danger;
+    box-shadow: inset 0 -3px 0 0 $color-danger;
   }
 }
