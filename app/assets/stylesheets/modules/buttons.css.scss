@@ -29,17 +29,17 @@ button,
   margin: 0 25px 15px 0;
   padding: 2px 15px 5px;
   border-radius: $global-radius;
-  border: 1px solid $lt-grey;
-  background: lighten($lt-grey, 10%);
+  border: 1px solid $grey-lt;
+  background: lighten($grey-lt, 10%);
   min-width: 125px;
-  color: $md-grey;
-  -webkit-box-shadow: inset 0px -3px 0px 0px $lt-grey, $button-highlight;
-  box-shadow: inset 0px -3px 0px 0px $lt-grey, $button-highlight;
+  color: $grey-md;
+  -webkit-box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
+  box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
 
   &:hover,
   &:focus {
-    background: lighten($lt-grey, 8%);
-    border-color: darken($lt-grey, 8%);
+    background: lighten($grey-lt, 8%);
+    border-color: darken($grey-lt, 8%);
     // outline: 1px solid rgb(0, 82, 255);
   }
 
@@ -55,10 +55,10 @@ button,
   &.disabled:hover,
   &.disabled:focus,
   &.disabled:active {
-    border-color: lighten($lt-grey, 2%);
-    background: lighten( $lt-grey, 10%);
-    -webkit-box-shadow: inset 0 -3px 0 0 lighten($lt-grey, 2%);
-    box-shadow: inset 0 -3px 0 0 lighten($lt-grey, 2%);
+    border-color: lighten($grey-lt, 2%);
+    background: lighten( $grey-lt, 10%);
+    -webkit-box-shadow: inset 0 -3px 0 0 lighten($grey-lt, 2%);
+    box-shadow: inset 0 -3px 0 0 lighten($grey-lt, 2%);
   }
 }
 
@@ -67,8 +67,8 @@ button,
   margin-right: 15px;
   padding: 0 15px 3px;
   min-width: 60px;
-  -webkit-box-shadow: inset 0px -3px 0px 0px $lt-grey, $button-highlight;
-  box-shadow: inset 0px -3px 0px 0px $lt-grey, $button-highlight;
+  -webkit-box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
+  box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
 
   &:active {
     top: 2px;

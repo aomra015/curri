@@ -23,7 +23,7 @@ en:
   hello: "Hello world"
   style_guide:
     1_overview:
-      01_introduction: This is the living styleguide for Curri. It may be modified after discussion with other team members.
+      01_introduction: "This is the living styleguide for Curri. It may be modified after discussion with other team members. [Twitter's Bootstrap](http://getbootstrap.com/) and [Github's CSS styleguide](https://github.com/styleguide/css) have provided a lot of the inspiration for the code."
       02_coding_style: |
         &#8226;&nbsp; Use soft-tabs with a two space indent.
         &#8226;&nbsp; Put spaces before `{` in rule declarations.
@@ -121,3 +121,8 @@ en:
       02_sizes: We only use two button sizes- the default larger size and a smaller size. The small buttons should be used for secondary actions- to open new pages and modals. Use the `.btn-small` class to change the appearance.
       03_button_tags: "The different button classes can be used on `<a>`, `<button>`, or `<input>` elements. <br /><br />**Note:** As a best practice, it is recommended to use the `<button>` element whenever possible to ensure matching cross-browser rendering. Among other things, there's a Firefox bug that prevents us from setting the line-height of `<input>`-based buttons, causing them to not exactly match the height of other buttons on Firefox."
       04_disabled: "On button and input elements, use the `disabled` attribute to disable the button action. On `<a>` elements use the `.disabled` class to achieve the same effect. <br /><br /> **Note:** Link functionality will not be disabled when using the `.disabled` class on `<a>` elements, and will need to be done through javascript. If you add the disabled attribute to a `<button>`, IE 9 and below will render text gray with a nasty text-shadow."
+    4_forms:
+      01_basic_form: |
+        Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-control` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
+
+        We only use the stacked style with the label and input on their own lines, left aligned. There is no need for inline forms in our app right now, but if the need arises, those styles will be defined here as optional.
