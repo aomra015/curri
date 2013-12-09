@@ -133,3 +133,5 @@ en:
         Add `.form-input-required` to the containing `<div>` to ensure that the labels get the asterisk. Also add the `required="true"` attribute to the inputs to make sure that they are filled before the form can be submitted. 
 
         If every field in the form is required, then you can instead add `.form-required` to the `<form>` itself, as in the example below.
+
+      04_form_width: Forms can easily by wrapped by a parent element or a grid unit, and the 100% width will conform to the container.
