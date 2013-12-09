@@ -7,11 +7,11 @@ Curri::Application.routes.draw do
     patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
       get 'analytics', to: 'analytics#show'
-      resources :ratings
+      resources :ratings, only: [:create]
       resources :checkpoints, except: [:index, :show]
     end
 
-    resources :invitations
+    resources :invitations, only: [:new, :create, :destroy]
   end
 
   # Student Invitations
@@ -30,7 +30,7 @@ Curri::Application.routes.draw do
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
-  resources :password_resets
+  resources :password_resets, except: [:show, :destroy, :index]
 
   # User Profiles
   get '/profile/edit', to: "users#edit_profile", as: "edit_profile"
