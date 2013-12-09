@@ -9,4 +9,8 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Curri::Application.config.secret_key_base = '251dd10a30470252fd692ec60816b906044ef9b050cea4963ee69e681860716e3fe22ef52815e973fa44f130bc37fa8e02d7fd8dc431e8d78e03620c7493ae27'
+Curri::Application.config.secret_key_base = if Rails.env.development? or Rails.env.test?
+  '32301ede3cd683cba0a497abe16646c4875490840c241ecb101f91255437011c617174ce9bd1bd89666917a586da63607ed9ed4c0f2d58975294d407ab81a0f9'
+else
+  ENV['SECRET_TOKEN']
+end

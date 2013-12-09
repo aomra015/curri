@@ -72,3 +72,11 @@ gem 'dynamic_form'
 gem 'debugger', group: [:development, :test]
 gem "rack-livereload", group: "development"
 gem "guard-livereload", group: "development"
+group :development do
+  gem 'brakeman', :require => false
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'rails_best_practices'
+  gem 'bullet'
+end
