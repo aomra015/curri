@@ -118,14 +118,13 @@ input {
   font-family: inherit;
   text-rendering: optimizeLegibility;
   // -webkit-font-smoothing: antialiased;
-}
-
-input[type="file"] {
   display: block;
+  &[disabled] {
+    background-color: lighten($grey-lt, 5%);
+  }
 }
 
 label {
-  display: inline-block;
   font-weight: bold;
   margin-bottom: 7px;
 }

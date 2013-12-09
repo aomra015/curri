@@ -123,6 +123,13 @@ en:
       04_disabled: "On button and input elements, use the `disabled` attribute to disable the button action. On `<a>` elements use the `.disabled` class to achieve the same effect. <br /><br /> **Note:** Link functionality will not be disabled when using the `.disabled` class on `<a>` elements, and will need to be done through javascript. If you add the disabled attribute to a `<button>`, IE 9 and below will render text gray with a nasty text-shadow."
     4_forms:
       01_basic_form: |
-        Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-control` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
+        Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-input` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
 
         We only use the stacked style with the label and input on their own lines, left aligned. There is no need for inline forms in our app right now, but if the need arises, those styles will be defined here as optional.
+
+      02_disabled: Add the `disabled` attribute on an input to prevent user input and trigger a slightly different look.
+
+      03_required: | 
+        Add `.form-input-required` to the containing `<div>` to ensure that the labels get the asterisk. Also add the `required="true"` attribute to the inputs to make sure that they are filled before the form can be submitted. 
+
+        If every field in the form is required, then you can instead add `.form-required` to the `<form>` itself, as in the example below.
