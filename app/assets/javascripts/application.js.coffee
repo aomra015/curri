@@ -18,6 +18,8 @@
 #= require uservoice
 #= require_tree .
 
+#-------------------------------------
+#  Inbox
+#-------------------------------------
 
-jQuery ->
-  $('.success-criteria').popover({placement: 'left'})
+# If you’re not sure where something should go, add it here.
