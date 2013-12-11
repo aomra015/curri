@@ -12,7 +12,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
   test "a student can accept invitation and create an account" do
     invitation = Invitation.last
 
-    visit claim_invitation_path(invitation.token)
+    visit invitations_claim_path(invitation.token)
 
     fill_in :user_email, with: 'student@gmail.com'
     fill_in :user_first_name, with: 'jane'
@@ -34,10 +34,10 @@ class StudentAccountsTest < Capybara::Rails::TestCase
 
     invitation = Invitation.last
 
-    visit claim_invitation_path(invitation.token)
+    visit invitations_claim_path(invitation.token)
 
     click_link 'skip this step'
-    assert_equal login_invitation_path(invitation.token), current_path, 'Did not go to page where students can log in to claim invitation'
+    assert_equal invitations_login_path(invitation.token), current_path, 'Did not go to page where students can log in to claim invitation'
 
     fill_in :user_email, with: users(:student).email
     fill_in :user_password, with: 'password123'
@@ -53,8 +53,8 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     login_as(users(:student))
 
     invitation = Invitation.last
-    visit claim_invitation_path(invitation.token)
+    visit invitations_claim_path(invitation.token)
 
-    assert_equal login_invitation_path(invitation.token), current_path, 'Did not redirect to page where students can log in to claim invitation'
+    assert_equal invitations_login_path(invitation.token), current_path, 'Did not redirect to page where students can log in to claim invitation'
   end
 end

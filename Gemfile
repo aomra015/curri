@@ -69,6 +69,8 @@ gem 'debugger', group: [:development, :test]
 group :development do
   gem 'brakeman', :require => false
   gem 'better_errors'
+  # following two gems slow down db manipulations, comment them out and
+  # re-"bundle install" if this is a problem
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rails_best_practices'

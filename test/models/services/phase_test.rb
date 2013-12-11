@@ -7,10 +7,10 @@ class PhaseTest < ActiveSupport::TestCase
     @oct10_four_am = Time.zone.parse("2012-10-10 4am")
     @oct15_six_am = Time.zone.parse("2012-10-15 6am")
     @test_track = Track.new({:created_at => @oct1_two_am, :start_time => @oct10_four_am, :end_time => @oct15_six_am})
-    @test_phase_before = Phase.new(@test_track,"before")
-    @test_phase_during = Phase.new(@test_track,"during")
-    @test_phase_after = Phase.new(@test_track,"after")
-    @test_phase_all = Phase.new(@test_track,"all")
+    @test_phase_before = Phase.new(@test_track,"Before")
+    @test_phase_during = Phase.new(@test_track,"During")
+    @test_phase_after = Phase.new(@test_track,"After")
+    @test_phase_all = Phase.new(@test_track,"All")
   end
 
   def test_bad_phase_error

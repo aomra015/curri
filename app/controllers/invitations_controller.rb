@@ -89,6 +89,6 @@ class InvitationsController < ApplicationController
   end
 
   def check_if_logged_in
-    redirect_to login_invitation_path(params[:token]) if current_user && current_user.classrole_type == 'Student'
+    redirect_to invitations_login_path(params[:token]) if current_user && current_user.classrole_type == 'Student'
   end
 end
