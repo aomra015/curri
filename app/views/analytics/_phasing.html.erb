@@ -1,4 +1,4 @@
 <%= form_tag classroom_track_analytics_path(@classroom, @track), method: "get" do  %>
-  <%= select_tag :phase_text, options_for_select(Phase::PHASES, @phase.phase_text.capitalize) %>
+  <%= select_tag :phase_text, options_for_select(Phase::PHASES, @phase.phase_text) %>
   <%= submit_tag 'Choose phase', class: 'add-phase btn'%>
 <% end %>
