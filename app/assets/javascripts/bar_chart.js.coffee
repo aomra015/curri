@@ -1,6 +1,5 @@
 class @BarChart
-  constructor: (@ratingsData, @element) ->
-  scores: {}
+  constructor: (@ratingsData, @element) -> @scores = {}
   init: ->
     @getScores()
     @buildChart()
