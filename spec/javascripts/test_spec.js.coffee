@@ -1,8 +1,5 @@
 describe 'Test', ->
   it 'loads fixtures', ->
-    $container = affix('.container')
-    expect($container).toEqual($('.container'))
-
-  it 'loads more fixtures', ->
-    $container = affix('#container')
-    expect($container).toNotEqual($('#not-container'))
+    loadFixtures('myfixture.html')
+    expect($('.container')).toExist()
+    expect($('#container')).not.toExist()

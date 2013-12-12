@@ -8,9 +8,7 @@ gem 'pg'
 group :development, :test do
   gem 'pry-rails'
   gem "mocha", :require => false
-  gem 'jasmine-rails'
-  gem 'jasmine-jquery-rails'
-  gem 'guard-jasmine'
+  gem "teaspoon"
 end
 
 group :test do
