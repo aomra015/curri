@@ -1,6 +1,7 @@
 # ==== On page load do this! ====
+$ = jQuery
 
-jQuery ->
+$ ->
 
   # Activate jQuery libraries
   $('.success-criteria').popover({placement: 'left'})
@@ -12,8 +13,8 @@ jQuery ->
   # Update analytics bars
   TRACK_ID = $('#track').data('trackid')
   PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings}) ->
-    $checkpoint_row = $("#checkpoint#{checkpoint}")
-    new @BarChart(ratings, $checkpoint_row).init()
+    ratingScores = new @RatingCounter(ratings).init()
+    $("#checkpoint#{checkpoint}").barChart(ratingScores)
 
   # Student rating AJAX
   $('.checkpoint-score-links form').on "ajax:success", (e, data) ->
