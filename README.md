@@ -13,4 +13,6 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 
 ### Run tests
 - `$ rake test` to run Ruby tests.
-- `$ guard` to run JavaScript tests. Note that you need to have phantomjs installed (`$ brew install phantomjs`).
+- `$ guard` to run JavaScript tests. 
+
+Note that you need to have phantomjs installed (`$ brew install phantomjs`) to run the JavaScript tests. Phantomjs seems to be giving error messages in Mavericks so use `$ guard 2> >(grep -v CoreText 1>&2)` to silence these errors.
