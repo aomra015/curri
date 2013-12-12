@@ -8,13 +8,15 @@ gem 'pg'
 group :development, :test do
   gem 'pry-rails'
   gem "mocha", :require => false
+  gem 'jasmine-rails'
+  gem 'jasmine-jquery-rails'
+  gem 'guard-jasmine'
 end
 
 group :test do
   gem 'simplecov', :require => false
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
-  gem 'jasmine-rails'
 end
 
 gem 'spring', group: :development

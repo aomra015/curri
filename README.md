@@ -13,4 +13,4 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 
 ### Run tests
 - `$ rake test` to run Ruby tests.
-- `$ RAILS_ENV=test rake spec:javascript` to run JavaScript tests. Note that you need to have phantomjs installed (`$ brew install phantomjs`).
+- `$ guard` to run JavaScript tests. Note that you need to have phantomjs installed (`$ brew install phantomjs`).
