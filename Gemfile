@@ -14,6 +14,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'minitest-rails-capybara'
   gem 'minitest-colorize'
+  gem 'jasmine-rails'
 end
 
 gem 'spring', group: :development
