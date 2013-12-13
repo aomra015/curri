@@ -1,4 +1,4 @@
-class @RatingCounter
+class @RatingsCounter
   constructor: (@ratingsData) ->
   init: ->
     count = [0, 0, 0]

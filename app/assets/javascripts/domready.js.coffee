@@ -13,8 +13,8 @@ $ ->
   # Update analytics bars
   TRACK_ID = $('#track').data('trackid')
   PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings}) ->
-    ratingScores = new @RatingCounter(ratings).init()
-    $("#checkpoint#{checkpoint}").barChart(ratingScores)
+    ratingsCounts = new @RatingsCounter(ratings).init()
+    $("#checkpoint#{checkpoint}").barChart(ratingsCounts)
 
   # Student rating AJAX
   $('.checkpoint-score-links form').on "ajax:success", (e, data) ->
