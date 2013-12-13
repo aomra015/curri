@@ -20,12 +20,11 @@ class RatingsController < ApplicationController
       PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
 
       respond_to do |format|
-        format.html {
-          redirect_to classroom_track_url(@classroom, @track)
-        }
-
         format.json {
           render json: { checkpoint_id: @checkpoint.id, current_score: @rating.score }
+        }
+        format.html {
+          redirect_to classroom_track_url(@classroom, @track)
         }
       end
 

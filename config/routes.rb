@@ -8,32 +8,32 @@ Curri::Application.routes.draw do
     patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
       get 'analytics', to: 'analytics#show'
-      resources :ratings
+      resources :ratings, only: [:create]
       resources :checkpoints, except: [:index, :show]
     end
 
-    resources :invitations
+    resources :invitations, only: [:new, :create, :destroy]
   end
 
   # Student Invitations
-  get '/invitations/:token/claim', to: "invitations#claim", as: "claim_invitation"
-  get '/invitations/:token/login', to: "invitations#login", as: "login_invitation"
-  post "invitations/create_student"
-  post "invitations/add_student"
+  namespace :invitations do
+    get 'claim/:token', action: "claim", as: "claim"
+    get 'login/:token', action: "login", as: "login"
+    post "create_student"
+    post "add_student"
+  end
 
-
+  # Teacher Registration
   get '/register', to: "teachers#new"
   post "teachers/create"
 
+  # User Authentication
   get "/login", to: "sessions#new"
   post "/login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
+  resources :password_resets, except: [:show, :destroy, :index]
 
-  # Password Reset
-  resources :password_resets
-
-  # USER Routes
-
+  # User Profiles
   get '/profile/edit', to: "users#edit_profile", as: "edit_profile"
   patch '/profile', to: 'users#update_profile', as: 'update_profile'
 

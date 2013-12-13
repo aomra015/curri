@@ -6,7 +6,7 @@
 </div>
 <div class="grids">
   <div class="grid2" id="track" data-trackid="<%= @track.id %>">
-    <%= render :partial => 'track' %>
+    <%= render 'track' %>
   </div>
 </div>
 
@@ -23,6 +23,6 @@
 <div>
   <% if @track.phasing? %>
     <p><%= display_start_end_times(@track) %></p>
-    <%= render :partial => 'phasing' %>
+    <%= render 'phasing' %>
   <% end %>
 </div>

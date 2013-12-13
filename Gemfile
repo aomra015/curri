@@ -8,6 +8,7 @@ gem 'pg'
 group :development, :test do
   gem 'pry-rails'
   gem "mocha", :require => false
+  gem "teaspoon"
 end
 
 group :development do
@@ -75,6 +76,8 @@ gem "guard-livereload", group: "development"
 group :development do
   gem 'brakeman', :require => false
   gem 'better_errors'
+  # following two gems slow down db manipulations, comment them out and
+  # re-"bundle install" if this is a problem
   gem 'binding_of_caller'
   gem 'meta_request'
   gem 'rails_best_practices'
