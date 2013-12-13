@@ -5,10 +5,10 @@ $ ->
 
   # Activate jQuery libraries
   $('.success-criteria').popover({placement: 'left'})
-  $('#track_start_date').datepicker({ dateFormat: "yy-mm-dd" })
-  $('#track_start_time').timepicker()
-  $('#track_end_date').datepicker({ dateFormat: "yy-mm-dd" })
-  $('#track_end_time').timepicker()
+  $('#track_start_date').pickadate({ format: "yyyy-mm-dd" })
+  $('#track_end_date').pickadate({ format: "yyyy-mm-dd" })
+  $('#track_start_time').pickatime({format: 'hh:i a'})
+  $('#track_end_time').pickatime({format: 'hh:i a'})
 
   # Update analytics bars
   TRACK_ID = $('#track').data('trackid')

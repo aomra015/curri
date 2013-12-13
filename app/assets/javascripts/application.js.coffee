@@ -11,11 +11,12 @@
 # about supported directives.
 #
 #= require jquery
-#= require jquery.ui.datepicker
 #= require jquery_ujs
 #= require private_pub
-#= require jquery.timepicker.min
 #= require uservoice
+#= require pickadate/picker
+#= require pickadate/picker.date
+#= require pickadate/picker.time
 #= require_tree .
 
 #-------------------------------------
