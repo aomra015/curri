@@ -8,6 +8,7 @@ gem 'pg'
 group :development, :test do
   gem 'pry-rails'
   gem "mocha", :require => false
+  gem "teaspoon"
 end
 
 group :test do

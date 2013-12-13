@@ -1,25 +1,25 @@
-class @BarChart
-  constructor: (@ratingsData, @element) -> @scores = {}
+class @RatingsCounter
+  constructor: (@ratingsData) ->
   init: ->
-    @getScores()
-    @buildChart()
-  getScores: ->
     count = [0, 0, 0]
-
     for rating in @ratingsData
       count[rating.score] += 1
 
-    numberOfRatings = @ratingsData.length
-    percents = count.map (c) -> (c * 100 / numberOfRatings) + "%"
+    ratings = { totalCount: @ratingsData.length }
+    percents = count.map (c) -> (c * 100 / ratings.totalCount) + "%"
 
-    @scores.zeroPercent = percents[0]
-    @scores.onePercent = percents[1]
-    @scores.twoPercent = percents[2]
-    @scores.zeroCount = count[0]
-    @scores.oneCount = count[1]
-    @scores.twoCount = count[2]
-  buildChart: ->
-    @element.find('.count-number').html(@ratingsData.length)
-    @element.find('.progress-bar-danger').css('width', @scores.zeroPercent).html(@scores.zeroCount)
-    @element.find('.progress-bar-warning').css('width', @scores.onePercent).html(@scores.oneCount)
-    @element.find('.progress-bar-success').css('width', @scores.twoPercent).html(@scores.twoCount)
+    ratings.zeroPercent = percents[0]
+    ratings.onePercent = percents[1]
+    ratings.twoPercent = percents[2]
+    ratings.zeroCount = count[0]
+    ratings.oneCount = count[1]
+    ratings.twoCount = count[2]
+    ratings
+
+$ = jQuery
+$.fn.barChart = (data) ->
+  return @each () ->
+    $(this).find('.count-number').html(data.totalCount)
+    $(this).find('.progress-bar-danger').css('width', data.zeroPercent).html(data.zeroCount)
+    $(this).find('.progress-bar-warning').css('width', data.onePercent).html(data.oneCount)
+    $(this).find('.progress-bar-success').css('width', data.twoPercent).html(data.twoCount)
