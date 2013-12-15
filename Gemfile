@@ -15,6 +15,7 @@ group :development, :test do
   gem 'pry-rescue'
   gem "mocha", :require => false
   gem "teaspoon"
+  gem "thin", "~> 1.6.1"
 end
 
 group :development do
@@ -34,7 +35,6 @@ end
 gem 'email_validator'
 gem 'bcrypt-ruby'
 gem 'private_pub'
-gem "thin", "~> 1.6.1"
 gem 'foreman'
 gem 'dynamic_form'
 

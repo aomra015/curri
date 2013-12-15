@@ -16,4 +16,4 @@
 /tmp
 /coverage
 rails_best_practices_output.html
-spec/tmp/*
+.env
