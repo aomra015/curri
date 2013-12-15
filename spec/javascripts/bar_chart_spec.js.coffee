@@ -48,19 +48,19 @@ describe 'BarChart jQuery Plugin', ->
 
   describe 'Display of bar', ->
     it 'should draw red portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-danger').css('width')).toFixed(4)
-      expected = test.counts.zeroPercent.toFixed(4)
-      expect(result).toEqual(expected)
+      result = parseFloat(test.checkpoint.find('.progress-bar-danger').css('width'))
+      expected = test.counts.zeroPercent
+      expect(result).toBeCloseTo(expected,3)
 
     it 'should draw orange portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-warning').css('width')).toFixed(4)
-      expected = test.counts.onePercent.toFixed(4)
-      expect(result).toEqual(expected)
+      result = parseFloat(test.checkpoint.find('.progress-bar-warning').css('width'))
+      expected = test.counts.onePercent
+      expect(result).toBeCloseTo(expected,3)
 
     it 'should draw green portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-success').css('width')).toFixed(4)
-      expected = test.counts.twoPercent.toFixed(4)
-      expect(result).toEqual(expected)
+      result = parseFloat(test.checkpoint.find('.progress-bar-success').css('width'))
+      expected = test.counts.twoPercent
+      expect(result).toBeCloseTo(expected,3)
 
     it 'should contain a percent sign', ->
       expect(test.checkpoint.find('.progress-bar-danger').css('width')).toMatch(/\d+\%/)
