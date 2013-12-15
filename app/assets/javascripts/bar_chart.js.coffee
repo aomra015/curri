@@ -6,7 +6,7 @@ class @RatingsCounter
       count[rating.score] += 1
 
     ratings = { totalCount: @ratingsData.length }
-    percents = count.map (c) -> (c * 100 / ratings.totalCount) + "%"
+    percents = count.map (c) -> (c * 100 / ratings.totalCount)
 
     ratings.zeroPercent = percents[0]
     ratings.onePercent = percents[1]
@@ -20,6 +20,6 @@ $ = jQuery
 $.fn.barChart = (data) ->
   return @each () ->
     $(this).find('.count-number').html(data.totalCount)
-    $(this).find('.progress-bar-danger').css('width', data.zeroPercent).html(data.zeroCount)
-    $(this).find('.progress-bar-warning').css('width', data.onePercent).html(data.oneCount)
-    $(this).find('.progress-bar-success').css('width', data.twoPercent).html(data.twoCount)
+    $(this).find('.progress-bar-danger').css('width', data.zeroPercent + "%").html(data.zeroCount)
+    $(this).find('.progress-bar-warning').css('width', data.onePercent + "%").html(data.oneCount)
+    $(this).find('.progress-bar-success').css('width', data.twoPercent + "%").html(data.twoCount)
