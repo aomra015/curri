@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require_tree .
- *= require jquery.ui.datepicker
+ *= require pickadate/classic
+ *= require pickadate/classic.date
+ *= require pickadate/classic.time
  */
 
 

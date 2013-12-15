@@ -11,7 +11,7 @@ module TracksHelper
   # end
 
   def nice_time_format(track, method)
-    track.send(method).to_s(:time) if track.send(method)
+    track.send(method).strftime("%l:%M%P") if track.send(method)
   end
 
   def nice_date_format(track, method)

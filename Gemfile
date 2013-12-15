@@ -5,10 +5,24 @@ ruby "2.0.0"
 gem 'rails', '>= 4.0.0'
 gem 'pg'
 
+group :production do
+  gem 'rails_12factor'
+  gem 'newrelic_rpm'
+end
+
 group :development, :test do
   gem 'pry-rails'
+  gem 'pry-rescue'
   gem "mocha", :require => false
   gem "teaspoon"
+end
+
+group :development do
+  gem 'brakeman', :require => false
+  gem 'better_errors'
+  gem 'rails_best_practices'
+  gem 'bullet'
+  gem 'spring'
 end
 
 group :test do
@@ -17,8 +31,20 @@ group :test do
   gem 'minitest-colorize'
 end
 
-gem 'spring', group: :development
 gem 'email_validator'
+gem 'bcrypt-ruby'
+gem 'private_pub'
+gem "thin", "~> 1.6.1"
+gem 'foreman'
+gem 'dynamic_form'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+# Assets
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'pickadate-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -32,48 +58,11 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
-
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-#gem 'turbolinks'
+# gem 'turbolinks'
 
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
-end
-
-group :production do
-  gem 'rails_12factor'
-  gem 'newrelic_rpm'
-end
-
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby'
-
-gem 'private_pub'
-gem "thin", "~> 1.6.1"
-gem 'foreman'
-gem 'dynamic_form'
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-gem 'debugger', group: [:development, :test]
-group :development do
-  gem 'brakeman', :require => false
-  gem 'better_errors'
-  # following two gems slow down db manipulations, comment them out and
-  # re-"bundle install" if this is a problem
-  gem 'binding_of_caller'
-  gem 'meta_request'
-  gem 'rails_best_practices'
-  gem 'bullet'
-end
