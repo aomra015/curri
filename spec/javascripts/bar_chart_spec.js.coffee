@@ -15,9 +15,9 @@ describe 'RatingsCounter', ->
     expect(test.result.totalCount).toEqual(3)
 
   it 'should calculate percentages', ->
-    expect(test.result.zeroPercent).toEqual('66.66666666666667%')
-    expect(test.result.onePercent).toEqual('33.333333333333336%')
-    expect(test.result.twoPercent).toEqual('0%')
+    expect(test.result.zeroPercent).toBeCloseTo(66.6667,3)
+    expect(test.result.onePercent).toBeCloseTo(33.3333,3)
+    expect(test.result.twoPercent).toBeCloseTo(0,3)
 
 describe 'BarChart jQuery Plugin', ->
 
@@ -27,9 +27,8 @@ describe 'BarChart jQuery Plugin', ->
     myRatingsCounter = new RatingsCounter(data)
     test.counts = myRatingsCounter.init()
 
-    loadFixtures('student-checkpoint.html')
-    $("#checkpoint").barChart(test.counts)
-    test.checkpoint = $("#checkpoint")
+    loadFixtures('analytics-checkpoint.html')
+    test.checkpoint = $("#checkpoint").barChart(test.counts)
 
     # hack to get % rather than px widths
     test.checkpoint.find('.progress').hide()
@@ -50,15 +49,20 @@ describe 'BarChart jQuery Plugin', ->
   describe 'Display of bar', ->
     it 'should draw red portion of bar', ->
       result = parseFloat(test.checkpoint.find('.progress-bar-danger').css('width')).toFixed(4)
-      expected = parseFloat(test.counts.zeroPercent).toFixed(4)
+      expected = test.counts.zeroPercent.toFixed(4)
       expect(result).toEqual(expected)
 
     it 'should draw orange portion of bar', ->
       result = parseFloat(test.checkpoint.find('.progress-bar-warning').css('width')).toFixed(4)
-      expected = parseFloat(test.counts.onePercent).toFixed(4)
+      expected = test.counts.onePercent.toFixed(4)
       expect(result).toEqual(expected)
 
     it 'should draw green portion of bar', ->
       result = parseFloat(test.checkpoint.find('.progress-bar-success').css('width')).toFixed(4)
-      expected = parseFloat(test.counts.twoPercent).toFixed(4)
+      expected = test.counts.twoPercent.toFixed(4)
       expect(result).toEqual(expected)
+
+    it 'should contain a percent sign', ->
+      expect(test.checkpoint.find('.progress-bar-danger').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-warning').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-success').css('width')).toMatch(/\d+\%/)
