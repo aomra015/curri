@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
 
-  before_action :authorize, only: [:new, :create, :destroy, :update_status]
+  before_action :authorize, only: [:new, :create, :destroy]
   before_action :authorize_teacher, only: [:new, :create, :destroy]
   before_action :check_if_logged_in, only: [:claim]
   before_action :get_nested_classroom, only: [:new, :create, :destroy]
