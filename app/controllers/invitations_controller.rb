@@ -37,7 +37,7 @@ class InvitationsController < ApplicationController
     @token = params[:user][:token]
     invitation = Invitation.find_by(token: @token)
 
-    if invitation && invitation.student.nil?
+    if invitation.try(:claimable?)
       @user = User.new(user_params)
       @user.classrole = Student.create
       if @user.save
@@ -63,11 +63,11 @@ class InvitationsController < ApplicationController
     invitation = Invitation.find_by(token: params[:user][:token])
     @user = User.find_by_email(params[:user][:email])
 
-    if @user && @user.classrole_type != 'Student'
+    if !@user.try(:student?)
       flash.now.alert = "You need a student account to accept the invitation."
       render :login
-    elsif invitation && invitation.student.nil?
-      if @user && @user.authenticate(params[:user][:password])
+    elsif invitation.try(:claimable?)
+      if @user.try(:authenticate, params[:user][:password])
         session[:user_id] = @user.id
         invitation.student = @user.classrole
         invitation.save
@@ -89,6 +89,6 @@ class InvitationsController < ApplicationController
   end
 
   def check_if_logged_in
-    redirect_to invitations_login_path(params[:token]) if current_user && current_user.classrole_type == 'Student'
+    redirect_to invitations_login_path(params[:token]) if current_user.try(:student?)
   end
 end

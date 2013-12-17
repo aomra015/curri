@@ -2,43 +2,33 @@
   <div class="container">
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <ul class="nav">
-      <% if @classroom %>
-      <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
-        <li><%= link_to 'Classrooms', classrooms_path %></li>
-        <% if @classroom.id %>
-          <% if current_user.teacher? %>
-            <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom), id: "requesters_link" %></li>
+      <li><%= link_to 'Classrooms', classrooms_path %></li>
+      <% if @classroom.try(:id) %>
+        <% if current_user.teacher? %>
+          <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
+          <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom), id: "requesters_link" %></li>
+          <% if @track.try(:id)%>
+            <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
           <% end %>
-          <li id="track_link" data-classroomid="<%= @classroom.id %>" ><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
-          <% if current_user.student? %>
-            <% if current_user.needs_help?(@classroom) %>
-              <li><%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%></li>
-            <% else %>
-              <li><%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %></li>
-            <% end %>
+        <% else %>
+          <% if current_user.needs_help?(@classroom) %>
+            <li><%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%></li>
+          <% else %>
+            <li><%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %></li>
           <% end %>
         <% end %>
-      <% end %>
 
-      <% if @track && @track.id && current_user.teacher? %>
-        <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
-      <% end %>
-
-      <% unless current_user %>
-        <li><%= link_to 'Login', login_path %></li>
-        <li><%= link_to 'Register', register_path %></li>
+        <li id="track_link" data-classroomid="<%= @classroom.id %>" ><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
       <% end %>
 
       <% if current_user %>
-        <% if current_page?('/profile/edit') %>
-          <li><%= link_to 'Classrooms', classrooms_path %></li>
-        <% else %>
-         <li><%= link_to 'Profile', edit_profile_path %></li>
-        <% end %>
+        <li><%= link_to 'Classrooms', classrooms_path %></li>
+        <li><%= link_to 'Profile', edit_profile_path %></li>
         <li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li>
-
-
         <li><%= link_to 'Logout', logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Login', login_path %></li>
+        <li><%= link_to 'Register', register_path %></li>
       <% end %>
 
     </ul>
