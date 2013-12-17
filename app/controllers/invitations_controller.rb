@@ -22,6 +22,12 @@ class InvitationsController < ApplicationController
     end
   end
 
+  def destroy
+    invitation = @classroom.invitations.find(params[:id])
+    invitation.destroy
+    redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
+  end
+
   def claim
     @user = User.new
     @token = params[:token]
@@ -75,12 +81,6 @@ class InvitationsController < ApplicationController
       render :login
     end
 
-  end
-
-  def destroy
-    invitation = @classroom.invitations.find(params[:id])
-    invitation.destroy
-    redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
   end
 
   private
