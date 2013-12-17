@@ -1,6 +1,5 @@
 class RatingsController < ApplicationController
 
-  before_action :authorize
   before_action :authorize_student
   before_action :get_nested_classroom
 

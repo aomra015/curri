@@ -1,5 +1,5 @@
 class RequestersController < ApplicationController
-  before_action :authorize
+
   before_action :get_nested_classroom
 
   def index

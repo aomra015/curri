@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  before_action :authorize
+
   private
   def get_classroom
     @classroom = @current_user.classrooms.find(params[:id])

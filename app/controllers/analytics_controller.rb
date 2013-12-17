@@ -1,6 +1,5 @@
 class AnalyticsController < ApplicationController
 
-  before_action :authorize
   before_action :authorize_teacher
   before_action :get_nested_classroom
 
