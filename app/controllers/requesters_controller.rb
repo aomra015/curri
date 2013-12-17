@@ -1,6 +1,6 @@
 class RequestersController < ApplicationController
 
-  before_action :get_nested_classroom
+  before_action :get_classroom
 
   def index
     @requesters = @classroom.get_requesters

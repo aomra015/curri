@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
 
   private
   def get_classroom
-    @classroom = @current_user.classrooms.find(params[:id])
-  end
-
-  def get_nested_classroom
-    @classroom = @current_user.classrooms.find(params[:classroom_id])
+    if params[:classroom_id]
+      @classroom = @current_user.classrooms.find(params[:classroom_id])
+    else
+      @classroom = @current_user.classrooms.find(params[:id])
+    end
   end
 
   def current_user
