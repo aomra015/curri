@@ -44,8 +44,8 @@ class StudentsController < ApplicationController
   def get_invitation
     @token = params[:user][:token]
     @invitation = Invitation.find_by(token: @token)
-    unless @invitation && @invitation.student.nil?
-      flash[:alert] = "The invitation is no longer valid or the URL is incorrect"
+    if @invitation.nil? || @invitation.student
+      flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
       action = params[:action] == 'create' ? :new : :login
       render action
     end
