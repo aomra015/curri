@@ -2,6 +2,7 @@ class StudentsController < ApplicationController
 
   skip_before_action :authorize
   before_action :check_if_logged_in, only: [:new]
+  before_action :get_invitation, only: [:create, :enroll]
 
   def new
     @user = User.new
@@ -9,25 +10,13 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @token = params[:user][:token]
-    invitation = Invitation.find_by(token: @token)
-
-    if invitation.try(:claimable?)
-      @user = User.new(user_params)
-      @user.classrole = Student.create
-      if @user.save
-        session[:user_id] = @user.id
-        invitation.student = @user.classrole
-        invitation.save
-        redirect_to classrooms_path
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    @user.classrole = Student.create
+    if @user.save
+      claim_invitation
     else
-      flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
       render :new
     end
-
   end
 
   def login
@@ -35,30 +24,40 @@ class StudentsController < ApplicationController
   end
 
   def enroll
-    invitation = Invitation.find_by(token: params[:user][:token])
     @user = User.find_by_email(params[:user][:email])
 
     if !@user.try(:student?)
       flash.now.alert = "You need a student account to accept the invitation."
       render :login
-    elsif invitation.try(:claimable?)
+    else
       if @user.try(:authenticate, params[:user][:password])
-        session[:user_id] = @user.id
-        invitation.student = @user.classrole
-        invitation.save
-        redirect_to classrooms_path
+        claim_invitation
       else
         flash.now.alert = "Email or password are not correct"
         render :login
       end
-    else
-      flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
-      render :login
     end
 
   end
 
   private
+  def get_invitation
+    @token = params[:user][:token]
+    @invitation = Invitation.find_by(token: @token)
+    unless @invitation && @invitation.student.nil?
+      flash[:alert] = "The invitation is no longer valid or the URL is incorrect"
+      action = params[:action] == 'create' ? :new : :login
+      render action
+    end
+  end
+
+  def claim_invitation
+    session[:user_id] = @user.id
+    @invitation.student = @user.classrole
+    @invitation.save
+    redirect_to classrooms_path
+  end
+
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
   end
