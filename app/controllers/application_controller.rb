@@ -8,11 +8,7 @@ class ApplicationController < ActionController::Base
 
   private
   def get_classroom
-    if params[:classroom_id]
-      @classroom = @current_user.classrooms.find(params[:classroom_id])
-    else
-      @classroom = @current_user.classrooms.find(params[:id])
-    end
+    @classroom = @current_user.classrooms.find(params[:classroom_id] || params[:id])
   end
 
   def current_user
