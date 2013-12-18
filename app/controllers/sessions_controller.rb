@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
+
+  skip_before_action :authorize
+
   def new
   end
 
   def create
     user = User.find_by_email(params[:email])
-    if user && user.authenticate(params[:password])
+    if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
       redirect_to classrooms_path, notice: "You are signed in as #{user.email}"
     else

@@ -12,7 +12,6 @@ end
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'pry-rescue'
   gem "mocha", :require => false
   gem "teaspoon"
   gem "thin", "~> 1.6.1"

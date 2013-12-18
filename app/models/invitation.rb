@@ -20,4 +20,8 @@ class Invitation < ActiveRecord::Base
   def full_name
     self.student.first_name + " " + self.student.last_name if self.student_id
   end
+
+  def claimable?
+    student.nil?
+  end
 end

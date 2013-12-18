@@ -1,6 +1,5 @@
 class ClassroomsController < ApplicationController
 
-  before_action :authorize
   before_action :authorize_teacher, except: [:index, :show]
   before_action :get_classroom, only: [:show, :edit, :update, :destroy]
 

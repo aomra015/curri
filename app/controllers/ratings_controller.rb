@@ -1,8 +1,7 @@
 class RatingsController < ApplicationController
 
-  before_action :authorize
   before_action :authorize_student
-  before_action :get_nested_classroom
+  before_action :get_classroom
 
   def create
     score = params[:value].to_i
