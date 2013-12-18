@@ -4,13 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user
 
+  before_action :authorize
+
   private
   def get_classroom
-    @classroom = @current_user.classrooms.find(params[:id])
-  end
-
-  def get_nested_classroom
-    @classroom = @current_user.classrooms.find(params[:classroom_id])
+    @classroom = @current_user.classrooms.find(params[:classroom_id] || params[:id])
   end
 
   def current_user
