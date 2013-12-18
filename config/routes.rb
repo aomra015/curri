@@ -14,12 +14,12 @@ Curri::Application.routes.draw do
     resources :invitations, only: [:new, :create, :destroy]
   end
 
-  # Student Invitations
-  namespace :invitations do
-    get 'claim/:token', action: "claim", as: "claim"
-    get 'login/:token', action: "login", as: "login"
-    post "create_student"
-    post "add_student"
+  # Student Registration
+  namespace :students do
+    get 'new/:token', action: 'new', as: 'new'
+    post 'create'
+    get 'login/:token', action: 'login', as: 'login'
+    post 'enroll'
   end
 
   # Teacher Registration
