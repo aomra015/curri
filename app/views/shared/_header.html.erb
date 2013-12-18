@@ -2,10 +2,9 @@
   <div class="container">
     <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div>
     <ul class="nav">
-      <li><%= link_to 'Classrooms', classrooms_path %></li>
       <% if @classroom.try(:id) %>
+        <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
         <% if current_user.teacher? %>
-          <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
           <li><%= link_to "Requesters (#{@classroom.requesters_count})", classroom_requesters_path(@classroom), id: "requesters_link" %></li>
           <% if @track.try(:id)%>
             <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
