@@ -1,0 +1,11 @@
+// This stylesheet is ONLY for classes that are used exclusively in the app to demonstrate certain styles. These styles should not be used in the app. 
+
+@import 'globals/all';
+
+.show-grid {
+  color: white;
+  background-color: lighten($color-main, 30%);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 0;
+}

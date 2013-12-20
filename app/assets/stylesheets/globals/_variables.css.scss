@@ -1,8 +1,6 @@
-// Variables
-
+// older variables- these should be deleted
 $header-color: #37b590;
 $container-width: 960px;
-// $sans-serif: "proxima nova", "helvetica neue", helvetica, arial, sans-serif;
 $border-radius: 4px;
 $grid-background: #F0ECDA;
 $secondary-color: #F16739;
@@ -15,13 +13,22 @@ $color-warning: #FDB343;
 $color-danger: #FF5454;
 $color-text: darken($color-main, 5%);
 $color-link: $color-primary;
-
 $grey-lt: #ddd;
 $grey-md: #888;
 
+// Paula's suggestions: More saturated colors
+// $color-primary: #3D88FF;
+// $color-success: #00CB51;
+// $color-warning: #EDC028;
+// $color-danger: #F02810;
+
+// breakpoint sizes
+
+$small-end: 480px;
+$med-end: 768px;
+$large-start: 1024px;
 
 // arrange these
-
 $sans-serif: "source sans pro", "helvetica neue", helvetica, lucida sans, sans-serif;
 $source-code: Monaco, Menlo, Consolas, "Courier New", monospace;
 $global-radius: 5px;

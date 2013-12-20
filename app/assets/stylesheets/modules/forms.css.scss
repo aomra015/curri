@@ -40,8 +40,8 @@
   margin: 5px 0 10px 0;
 }
 
-form.form-required > .form-group > label:after,
-.form-input-required > label:after {
+.form-required label:after,
+.form-input-required label:after {
   content: "*";
   font-size: 18px;
   color: $color-primary;

@@ -13,3 +13,18 @@
   -o-border-radius: $border-radius;
   border-radius: $border-radius;
 }
+
+@mixin media-query($media-query) {
+
+  @if $media-query ==  small {
+    @media only screen and (min-width:$small-end) { @content; }
+  }
+
+  @if $media-query ==  medium {
+      @media only screen and (min-width:$med-end) { @content; }
+    }
+  
+  @if $media-query ==  large {
+      @media only screen and (min-width:$large-start) { @content; }
+    }
+}

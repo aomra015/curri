@@ -31,6 +31,7 @@ en:
         &#8226;&nbsp; Use hex color codes `#000` unless using `rgba`.
         &#8226;&nbsp; Use `//` for comment blocks (instead of `/* */`)."
         &#8226;&nbsp; Write comma-delimited selectors on separate lines, with no space after commas.
+        &#8226;&nbsp; Leave a blank line between selectors.
 
         This is an example of good syntax:
         
@@ -51,9 +52,9 @@ en:
 
         **Categorization**
 
-        &#8226;&nbsp;  Base styles are the default styles for HTML elements (`<h1>`, `<p>`, `<pre>`, etc.).
-        &#8226;&nbsp;  Layout styles are grid and other reusable layout classes.
-        &#8226;&nbsp;  All remaining CSS is classified into modules, with classes namespaced by module. For example, an alert module might have the following rules: `.alert`, `.alert-message`, `.alert-icon`.
+        &#8226;&nbsp; Base styles are the default styles for HTML elements (`<h1>`, `<p>`, `<pre>`, etc.).
+        &#8226;&nbsp; Layout styles are grid and other reusable layout classes.
+        &#8226;&nbsp; All remaining CSS is classified into modules, with classes namespaced by module. For example, an alert module might have the following rules: `.alert`, `.alert-message`, `.alert-icon`.
 
         **Guidelines**
 
@@ -119,8 +120,15 @@ en:
     3_buttons:
       01_styles: "Regular buttons should be used for forms and primary actions. Use the `.btn` class to style buttons, and add any of the additional `.btn-primary`,`,btn-success`,`.btn-warning` or `.btn-danger` classes as needed."
       02_sizes: We only use two button sizes- the default larger size and a smaller size. The small buttons should be used for secondary actions- to open new pages and modals. Use the `.btn-small` class to change the appearance.
-      03_button_tags: "The different button classes can be used on `<a>`, `<button>`, or `<input>` elements. <br /><br />**Note:** As a best practice, it is recommended to use the `<button>` element whenever possible to ensure matching cross-browser rendering. Among other things, there's a Firefox bug that prevents us from setting the line-height of `<input>`-based buttons, causing them to not exactly match the height of other buttons on Firefox."
-      04_disabled: "On button and input elements, use the `disabled` attribute to disable the button action. On `<a>` elements use the `.disabled` class to achieve the same effect. <br /><br /> **Note:** Link functionality will not be disabled when using the `.disabled` class on `<a>` elements, and will need to be done through javascript. If you add the disabled attribute to a `<button>`, IE 9 and below will render text gray with a nasty text-shadow."
+      03_button_tags: |
+        The different button classes can be used on `<a>`, `<button>`, or `<input>` elements.
+
+        **Note:** As a best practice, it is recommended to use the `<button>` element whenever possible to ensure matching cross-browser rendering. Among other things, there's a Firefox bug that prevents us from setting the line-height of `<input>`-based buttons, causing them to not exactly match the height of other buttons on Firefox."
+      
+      04_disabled: |
+        On button and input elements, use the `disabled` attribute to disable the button action. On `<a>` elements use the `.disabled` class to achieve the same effect.
+
+        **Note:** Link functionality will not be disabled when using the `.disabled` class on `<a>` elements, and will need to be done through javascript. If you add the disabled attribute to a `<button>`, IE 9 and below will render text gray with a nasty text-shadow."
     4_forms:
       01_basic_form: |
         Individual form controls automatically receive some global styling. All textual `<input>`, `<textarea>`, and `<select>` elements with `.form-input` are set to `width: 100%;` by default. Wrap labels and controls in `.form-group` for optimum spacing.
@@ -134,4 +142,23 @@ en:
 
         If every field in the form is required, then you can instead add `.form-required` to the `<form>` itself, as in the example below.
 
-      04_form_width: Forms can easily by wrapped by a parent element or a grid unit, and the 100% width will conform to the container.
+      04_form_width: Forms can easily by wrapped by a parent element or a grid unit, and the 100% width will conform to the container. See the [Layout](http://localhost:3000/style-guide/5_layout#01_grid) section for more about grids.
+
+    5_layout:
+      01_grid: |
+        We use a 4-up fluid grid in combination with `@media-query`'s to organize the layout of our app. Content is designed in a mobile-first format. All app content is contained in a `.wrapper`, and this:
+
+        &#8226;&nbsp; Sets the `max-width` 
+        &#8226;&nbsp; Accommodates the fixed nav on the left and assigns a right margin (at larger sizes). 
+        &#8226;&nbsp; At smaller sizes, the wrapper provides an equal left and right margin, as the mobile nav becomes visible.
+
+        Within the `.wrapper`, content is contained in a `.main`, which provides padding for inner elements.
+
+        Any modules that are within the `.main` div, should be contained in a `.grid`. All grid units are 100% at mobile sizes and change according to screen width (see next section), and are assigned a `.grid-unit`. Along with this, a size class needs to be assigned, either `.narrow`, `.wide` or `.whole`, which will ensure correct display at all screen sizes.
+
+        At larger screen sizes, `.narrow` takes up 25% of the available width, and `.wide` takes up 75%. At medium sizes, these become 33.33% and 66.67% respectively, whereas at small sizes they are all full-width; `.whole` is always 100% of available width. Resize this window to see how the grid responds.
+
+      02_responsive: |
+        Breakpoint sizes are defined in the `_variables.css.scss` file. These are then called in the `_mixins.css.scss` file when defining the `@mixin media-query`. For ease of use, these are named `$small-end`, `$med-end` and `$large-start`, corresponding to the 3 different breakpoints.
+
+        In a mobile-first design strategy, default styles are created for the smallest viewports (generally 320px wide), and `@media-query`'s are used to apply responsive styles to adapt the design to larger viewports.
