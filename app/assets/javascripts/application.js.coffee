@@ -11,13 +11,16 @@
 # about supported directives.
 #
 #= require jquery
-#= require jquery.ui.datepicker
 #= require jquery_ujs
 #= require private_pub
-#= require jquery.timepicker.min
 #= require uservoice
+#= require pickadate/picker
+#= require pickadate/picker.date
+#= require pickadate/picker.time
 #= require_tree .
 
+#-------------------------------------
+#  Inbox
+#-------------------------------------
 
-jQuery ->
-  $('.success-criteria').popover({placement: 'left'})
+# If you’re not sure where something should go, add it here.

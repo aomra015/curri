@@ -5,6 +5,6 @@ test:
   server: "http://localhost:8080/faye"
   secret_token: "secret"
 production:
-  server: "http://rhino.curri.c66.me:8080/faye"
-  secret_token: "64522e60e25b29293d2b968773bdb695a55c7744f67b91220c97ee818fd69698"
+  server: "http://curripush.herokuapp.com/faye"
+  secret_token: <%= ENV['PUSH_SECRET'] %>
   signature_expiration: 3600 # one hour

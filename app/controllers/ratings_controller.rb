@@ -1,8 +1,7 @@
 class RatingsController < ApplicationController
 
-  before_action :authorize
   before_action :authorize_student
-  before_action :get_nested_classroom
+  before_action :get_classroom
 
   def create
     score = params[:value].to_i
@@ -20,12 +19,11 @@ class RatingsController < ApplicationController
       PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
 
       respond_to do |format|
-        format.html {
-          redirect_to classroom_track_url(@classroom, @track)
-        }
-
         format.json {
           render json: { checkpoint_id: @checkpoint.id, current_score: @rating.score }
+        }
+        format.html {
+          redirect_to classroom_track_url(@classroom, @track)
         }
       end
 

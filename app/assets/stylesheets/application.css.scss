@@ -12,4 +12,7 @@
  *= require ./base
  *= require ./layout
  *= require_tree ./modules
- */
+ *= require pickadate/classic
+ *= require pickadate/classic.date
+ *= require pickadate/classic.time
+*/
