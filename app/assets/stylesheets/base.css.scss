@@ -1,0 +1,130 @@
+// Place all the base styles here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic);
+@import 'globals/all';
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $sans-serif;
+  text-rendering: optimizeLegibility;
+  color: $color-text;
+}
+
+a {
+  color: $color-link;
+  text-decoration: none;
+  p & {
+    &:hover, &:focus {
+      color: darken($color-link, 30%);
+      border-bottom: 1px solid darken($color-link, 20%);
+    }
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.9rem;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: 1.3rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 1rem 0 0.6rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0.7rem 0 0.5rem;
+}
+
+p {
+  color: $color-main;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h2.page-header {
+  border-left: 5px solid $secondary-color;
+  padding-left: 10px;
+  float: left;
+  margin-top: 5px;
+}
+
+h3.grid-header {
+  padding: 20px;
+  margin-top: 0;
+  margin-bottom: 0;
+  background-clip: border-box;
+  background-color: darken($grid-background, 30%);
+  color: #FAFAFA;
+  border-top-left-radius: $border-radius;
+  border-top-right-radius: $border-radius;
+}
+
+nav {
+  background-color: $header-color;
+  border-top: 4px solid darken($header-color, 20%);
+  border-bottom: 1px solid darken($header-color, 5%);
+  margin-bottom: 40px;
+
+  #logo {
+    float: left;
+    padding-top: 25px;
+
+    a {
+      display: block;
+    }
+  }
+
+  ul {
+    float: right;
+    margin: 0;
+    padding: 25px 0;
+
+    li {
+      float: left;
+      margin-left: 3rem;
+
+      a {
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 600;
+      color: darken($header-color, 20%);
+      color: darken($header-color, 20%);
+      @include all-transition;
+
+        &:hover{
+         color: rgba(255,255,255,0.8);
+        }
+      }
+    }
+  }
+}
+
+input {
+  border: none;
+  font-family: inherit;
+  text-rendering: optimizeLegibility;
+  // -webkit-font-smoothing: antialiased;
+  display: block;
+  &[disabled] {
+    background-color: lighten($grey-lt, 5%);
+  }
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 7px;
+}

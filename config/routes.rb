@@ -1,5 +1,6 @@
 Curri::Application.routes.draw do
 
+  mount StyleGuide::Engine => "/style-guide" if Rails.env.development?
   root to: 'classrooms#index'
 
   resources :classrooms do

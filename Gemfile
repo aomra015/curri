@@ -18,11 +18,14 @@ group :development, :test do
 end
 
 group :development do
+  gem 'style-guide'
   gem 'brakeman', :require => false
   gem 'better_errors'
   gem 'rails_best_practices'
   gem 'bullet'
   gem 'spring'
+  gem 'rack-livereload'
+  gem 'guard-livereload'
 end
 
 group :test do

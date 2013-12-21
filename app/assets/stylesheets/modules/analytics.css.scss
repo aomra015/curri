@@ -1,0 +1,54 @@
+@import 'globals/all';
+
+.analytics-track-name {
+  float: left;
+  width: 70%;
+  margin-top: 40px;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+  }
+}
+
+.ratings-count {
+  text-align: center;
+  color: #777;
+  margin: 40px 0;
+
+  p {
+    margin-top: 0;
+  }
+}
+
+.hasnt-voted {
+  text-align: center;
+  color: #777;
+  margin: 0 0 5px 0;
+  p {
+    margin-top: 0;
+  }
+}
+
+div.unit-inner.ratings-count {
+  margin-top: 80px;
+}
+
+.count-number {
+  font-size: 45px;
+  display: block;
+  font-weight: 500;
+  text-shadow: 1px 1px #fff;
+}
+
+.count-large {
+  font-size: 90px;
+}
+
+.btn-filter {
+  margin-left: 5px;
+}
+.analytics-filter {
+  padding: 20px;
+  margin-bottom: 30px;
+}
