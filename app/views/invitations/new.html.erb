@@ -25,7 +25,7 @@
       <tr id="invitation_<%= invitation.id%>">
         <td><%= invitation.full_name %></td>
         <td><%= invitation.email_address %></td>
-        <td><%= get_invitation_status(invitation) %></td>
+        <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
         <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'remove_button btn'%></td>
       </tr>
     <% end %>

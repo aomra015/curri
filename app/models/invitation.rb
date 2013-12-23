@@ -9,6 +9,10 @@ class Invitation < ActiveRecord::Base
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
 
+  def status
+    student ? 'Accepted' : 'Pending'
+  end
+
   def email_address
     if self.student_id
       self.student.email
