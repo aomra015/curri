@@ -1,20 +1,19 @@
 <div class="row" id="checkpoint<%= checkpoint.id %>">
   <div class="unit-inner">
     <div class="checkpoint-content">
-      <h4>
-      <%= checkpoint.expectation %>
-      </h4>
-      <% if current_user.student? %>
-        <!-- Student Controls -->
-        <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
-      <% else %>
-        <!-- Teacher Controls -->
+      <h4><%= checkpoint.expectation %></h4>
+
+      <% if current_user.teacher? %>
         <div><%= checkpoint.success_criteria %></div>
+        <!-- Teacher Controls -->
         <%= link_to 'Edit', edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'btn', id: "edit-checkpoint" %>
 
         <%= link_to 'Delete', classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn', id: "delete-checkpoint" %>
+      <% else %>
+        <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
       <% end %>
     </div>
+
     <% if current_user.student? %>
       <!-- Student Controls -->
       <div class="checkpoint-score-links">
@@ -22,9 +21,7 @@
         <%= button_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), class: 'checkpoint-rating checkpoint1 btn', remote: true %>
         <%= button_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), class: 'checkpoint-rating checkpoint2 btn', remote: true %>
       </div>
-
-      <div class="marker <%= checkpoint_class_name(checkpoint) %>">
-      </div>
+      <div class="marker <%= checkpoint_class_name(checkpoint) %>"></div>
     <% end %>
 
   </div>
