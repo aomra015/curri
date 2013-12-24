@@ -20,8 +20,5 @@
   </div>
 </div>
 <div>
-  <% if @track.phasing? %>
-    <p><%= display_start_end_times(@track) %></p>
-    <%= render 'phasing' %>
-  <% end %>
+  <%= render 'phasing' if @track.phasing? %>
 </div>
