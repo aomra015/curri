@@ -6,34 +6,6 @@ class Checkpoint < ActiveRecord::Base
 
   default_scope { order(id: :asc) }
 
-  def ratings_count(ratingData, score="all")
-    if ratingData.any?
-      if score == "all"
-        ratingData.size
-      else
-        get_score_count(score, ratingData)
-      end
-    else
-      0
-    end
-  end
-
-  def get_score_count(score, scoped_ratings)
-    count = 0
-    scoped_ratings.each do |rating|
-      count += 1 if rating.score == score
-    end
-    count
-  end
-
-  def get_score(score, ratingData)
-    if ratingData.any?
-      ratings_count(ratingData, score) * 100.0 / ratings_count(ratingData)
-    else
-      0
-    end
-  end
-
   def hasnt_voted(phase)
     hasnt_voted_list = []
     scoped_ratings = phase.ratings(self) if self.ratings.any?
