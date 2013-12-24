@@ -2,19 +2,19 @@ module AnalyticsHelper
 
   SCORE_WORD = ['danger', 'warning', 'success']
 
-  def ratings_count(ratingData, score)
+  def ratings_count(ratings, score)
     count = 0
-    if ratingData.any?
-      ratingData.each do |rating|
+    if ratings.any?
+      ratings.each do |rating|
         count += 1 if rating.score == score
       end
     end
     count
   end
 
-  def get_score(ratingData, score)
-    if ratingData.any?
-      ratings_count(ratingData, score) * 100.0 / ratingData.length
+  def get_score(ratings, score)
+    if ratings.any?
+      ratings_count(ratings, score) * 100.0 / ratings.length
     else
       0
     end
