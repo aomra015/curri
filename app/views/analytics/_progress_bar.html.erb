@@ -1,5 +1,5 @@
 <div class="progress">
-  <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.get_score(0, @phase) %>%"><%= get_rating_label(checkpoint, 0) %></div>
-  <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.get_score(1, @phase) %>%"><%= get_rating_label(checkpoint, 1) %></div>
-  <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.get_score(2, @phase) %>%"> <%= get_rating_label(checkpoint, 2) %></div>
+  <div class="progress-bar progress-bar-danger" style="width: <%= checkpoint.get_score(0, @phase.ratings(checkpoint)) %>%"><%= get_rating_label(checkpoint, 0) %></div>
+  <div class="progress-bar progress-bar-warning" style="width: <%= checkpoint.get_score(1, @phase.ratings(checkpoint)) %>%"><%= get_rating_label(checkpoint, 1) %></div>
+  <div class="progress-bar progress-bar-success" style="width: <%= checkpoint.get_score(2, @phase.ratings(checkpoint)) %>%"> <%= get_rating_label(checkpoint, 2) %></div>
 </div>

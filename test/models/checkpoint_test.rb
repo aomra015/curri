@@ -28,12 +28,14 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "ratings count" do
-    assert_equal 0, @checkpoint.ratings_count(@phase, 0)
-    assert_equal 0, @checkpoint.ratings_count(@phase, 2)
-    assert_equal 2, @checkpoint.ratings_count(@phase, 1)
-    assert_equal 2, @checkpoint.ratings_count(@phase)
+    ratingData = @phase.ratings(@checkpoint)
+    assert_equal 0, @checkpoint.ratings_count(ratingData, 0)
+    assert_equal 0, @checkpoint.ratings_count(ratingData, 2)
+    assert_equal 2, @checkpoint.ratings_count(ratingData, 1)
+    assert_equal 2, @checkpoint.ratings_count(ratingData)
 
-    assert_equal 0, @checkpoint_no_ratings.ratings_count(@phase)
+    emptyratingData = @phase.ratings(@checkpoint_no_ratings)
+    assert_equal 0, @checkpoint_no_ratings.ratings_count(emptyratingData)
   end
 
   test "hasnt voted" do
@@ -43,15 +45,19 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "get score" do
-    assert_equal 0, @checkpoint.get_score(0, @phase)
-    assert_equal 100, @checkpoint.get_score(1, @phase)
-    assert_equal 0, @checkpoint.get_score(2, @phase)
+    ratingData = @phase.ratings(@checkpoint)
+    assert_equal 0, @checkpoint.get_score(0, ratingData)
+    assert_equal 100, @checkpoint.get_score(1, ratingData)
+    assert_equal 0, @checkpoint.get_score(2, ratingData)
 
-    assert_equal 0, @checkpoint_no_ratings.get_score(2, @phase)
+    emptyratingData = @phase.ratings(@checkpoint_no_ratings)
+
+    assert_equal 0, @checkpoint_no_ratings.get_score(2, emptyratingData)
   end
 
   test "only one rating per student counts" do
     @checkpoint_two = checkpoints(:two)
+    ratingData = @phase.ratings(@checkpoint_two)
 
     student = students(:student1)
     first_rating = Rating.new(score: 1)
@@ -64,9 +70,9 @@ class CheckpointTest < ActiveSupport::TestCase
     second_rating.checkpoint = @checkpoint_two
     second_rating.save
 
-    assert_equal 0, @checkpoint_two.ratings_count(@phase, 1)
-    assert_equal 1, @checkpoint_two.ratings_count(@phase, 2)
-    assert_equal 1, @checkpoint_two.ratings_count(@phase)
+    assert_equal 0, @checkpoint_two.ratings_count(ratingData, 1)
+    assert_equal 1, @checkpoint_two.ratings_count(ratingData, 2)
+    assert_equal 1, @checkpoint_two.ratings_count(ratingData)
   end
 
   test "latest student score" do

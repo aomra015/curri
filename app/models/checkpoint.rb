@@ -6,14 +6,29 @@ class Checkpoint < ActiveRecord::Base
 
   default_scope { order(id: :asc) }
 
-  def ratings_count(phase, score="all")
-    if self.ratings.any?
-      scoped_ratings = phase.ratings(self)
+  def ratings_count(ratingData, score="all")
+    if ratingData.any?
       if score == "all"
-        scoped_ratings.length
+        ratingData.size
       else
-        get_score_count(score, scoped_ratings)
+        get_score_count(score, ratingData)
       end
+    else
+      0
+    end
+  end
+
+  def get_score_count(score, scoped_ratings)
+    count = 0
+    scoped_ratings.each do |rating|
+      count += 1 if rating.score == score
+    end
+    count
+  end
+
+  def get_score(score, ratingData)
+    if ratingData.any?
+      ratings_count(ratingData, score) * 100.0 / ratings_count(ratingData)
     else
       0
     end
@@ -37,22 +52,6 @@ class Checkpoint < ActiveRecord::Base
     end
 
     hasnt_voted_list
-  end
-
-  def get_score_count(score, ratings)
-    count = 0
-    ratings.each do |rating|
-      count += 1 if rating.score == score
-    end
-    count
-  end
-
-  def get_score(score, phase)
-    if self.ratings.any?
-      ratings_count(phase, score) * 100.0 / ratings_count(phase)
-    else
-      0
-    end
   end
 
   def latest_student_score(student)
