@@ -1,11 +1,18 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > All Tracks</h2>
+
+  <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <%= link_to 'Manage Students', new_classroom_invitation_path(@classroom), class: "btn btn-head pull-right", id: 'manage-students' %>
     <%= link_to 'Manage Classroom', edit_classroom_path(@classroom), class: "btn btn-head pull-right", id: 'manage-classroom' %>
   <% end %>
+
 </div>
-<div class="grids"><%= render @tracks %>
+
+<div class="grids">
+  <%= render @tracks %>
+
+  <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <%= link_to new_classroom_track_path, class: "grid1 grid-add", id: "add-track" do %>
       <div class="add-unit">
@@ -14,4 +21,5 @@
       </div>
     <% end %>
   <% end %>
+
 </div>

@@ -1,15 +1,5 @@
 module TracksHelper
 
-  # def ratings_data
-  #   track = Track.first
-  #   track.checkpoints.map do |checkpoint|
-  #     {
-  #       checkpoint: checkpoint.expectation,
-  #       class_score: checkpoint.overall_score
-  #     }
-  #   end
-  # end
-
   def nice_time_format(track, method)
     track.send(method).strftime("%l:%M%P") if track.send(method)
   end
@@ -33,6 +23,5 @@ module TracksHelper
   def score_count(track,score)
     @current_user.classrole.student_ratings_count(track,score)
   end
-
 
 end
