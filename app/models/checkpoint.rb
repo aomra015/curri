@@ -8,7 +8,7 @@ class Checkpoint < ActiveRecord::Base
 
   def ratings_count(phase, score="all")
     if self.ratings.any?
-      scoped_ratings = get_scoped_ratings(phase)
+      scoped_ratings = phase.ratings(self)
       if score == "all"
         scoped_ratings.length
       else
@@ -21,7 +21,7 @@ class Checkpoint < ActiveRecord::Base
 
   def hasnt_voted(phase)
     hasnt_voted_list = []
-    scoped_ratings = get_scoped_ratings(phase) if self.ratings.any?
+    scoped_ratings = phase.ratings(self) if self.ratings.any?
 
     if self.ratings.empty? || scoped_ratings.empty?
       hasnt_voted_list << "all"
@@ -37,10 +37,6 @@ class Checkpoint < ActiveRecord::Base
     end
 
     hasnt_voted_list
-  end
-
-  def get_scoped_ratings(phase)
-    self.ratings.where({ created_at: phase.start_time..phase.end_time }).select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
   end
 
   def get_score_count(score, ratings)
