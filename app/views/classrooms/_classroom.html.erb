@@ -5,10 +5,10 @@
     <%= classroom.students.count %>
   </div>
   <p>
-    <%= "Student".pluralize(classroom.students.count) %>
+    <%= "Student".pluralize(classroom.students.size) %>
   </p>
   <h2>
-    <%= classroom.tracks.count %> <%= "Track".pluralize(classroom.tracks.count) %>
+    <%= classroom.tracks.size %> <%= "Track".pluralize(classroom.tracks.size) %>
   </h2>
   </div>
 <% end %>

@@ -1,12 +1,14 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %></h2>
+
+  <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
     <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), class: "btn btn-head pull-right", id: 'manage-track' %>
   <% end %>
-</div>
 
-  <p><%= display_start_end_times(@track) %></p>
+</div>
+<p><%= display_start_end_times(@track) %></p>
 
 <div class="grid2" id="track" data-trackid="<%= @track.id %>">
   <%= render @track.checkpoints %>

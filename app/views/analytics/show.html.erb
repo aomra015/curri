@@ -1,12 +1,11 @@
 <%= subscribe_to "/track/#{@track.id}/ratings" %>
 
-<%#= render 'time_filter' %>
 <div id="page-head">
   <h2 class="page-header">Analytics > <%= @track.name %></h2>
 </div>
 <div class="grids">
   <div class="grid2" id="track" data-trackid="<%= @track.id %>">
-    <%= render 'track' %>
+    <div><%= render :partial => 'checkpoint', collection: @track.checkpoints %></div>
   </div>
 </div>
 
@@ -21,8 +20,5 @@
   </div>
 </div>
 <div>
-  <% if @track.phasing? %>
-    <p><%= display_start_end_times(@track) %></p>
-    <%= render 'phasing' %>
-  <% end %>
+  <%= render 'phasing' if @track.phasing? %>
 </div>

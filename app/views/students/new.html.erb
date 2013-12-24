@@ -1,6 +1,6 @@
 <h1>Sign up as a Student</h1>
 
-  <p>If you already have a student account then <%= link_to 'skip this step', students_login_path(@token), class: 'remove_button btn' %>.</p>
+<p>If you already have a student account then <%= link_to 'skip this step', students_login_path(@token), class: 'remove_button btn' %>.</p>
 
 <%= form_tag students_create_path, class: 'form-horizontal' do %>
   <%= hidden_field_tag "user[token]", @token %>

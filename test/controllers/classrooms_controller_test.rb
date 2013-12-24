@@ -12,12 +12,6 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "show single classroom" do
-    get :show, id: classrooms(:one)
-    assert assigns(:classroom)
-    assert :success
-  end
-
   test "get new classroom form" do
     get :new
     assert assigns(:classroom)

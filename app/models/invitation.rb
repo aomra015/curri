@@ -5,19 +5,21 @@ class Invitation < ActiveRecord::Base
   before_create :generate_token
   validates :email, :email => true
 
+  scope :help_needed, -> { where(help: true) }
+
   def generate_token
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
   end
 
+  def status
+    student ? 'Accepted' : 'Pending'
+  end
+
   def email_address
-    if self.student_id
-      self.student.email
-    else
-      self.email
-    end
+    student ? student.email : email
   end
 
   def full_name
-    self.student.first_name + " " + self.student.last_name if self.student_id
+    "#{student.first_name} #{student.last_name}" if student
   end
 end
