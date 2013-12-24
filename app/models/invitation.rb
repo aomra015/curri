@@ -14,14 +14,10 @@ class Invitation < ActiveRecord::Base
   end
 
   def email_address
-    if self.student_id
-      self.student.email
-    else
-      self.email
-    end
+    student ? student.email : email
   end
 
   def full_name
-    self.student.first_name + " " + self.student.last_name if self.student_id
+    "#{student.first_name} #{student.last_name}" if student
   end
 end
