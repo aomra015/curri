@@ -14,22 +14,14 @@ class ClassroomTest < ActiveSupport::TestCase
     assert classroom.errors[:name].any?
   end
 
-  test "requesters count" do
-    assert_equal 0, @classroom.requesters_count
-    @invitation1.toggle(:help).save
-    @invitation2.toggle(:help).save
-    assert_equal 2, @classroom.requesters_count
-    assert_equal 0, @classroom_no_requesters.requesters_count
-  end
-
   test "get requesters" do
     date_in_past = Time.zone.now - 1
     @invitation1.toggle(:help).save
     @invitation1.updated_at = date_in_past
     @invitation1.save
     @invitation2.toggle(:help).save
-    assert_equal @invitation1,@classroom.get_requesters.first
-    assert_equal @invitation2,@classroom.get_requesters.last
-    assert_equal 2, @classroom.get_requesters.count
+    assert_equal @invitation1,@classroom.requesters.first
+    assert_equal @invitation2,@classroom.requesters.last
+    assert_equal 2, @classroom.requesters.size
   end
 end

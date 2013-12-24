@@ -3,7 +3,7 @@ class RequestersController < ApplicationController
   before_action :get_classroom
 
   def index
-    @requesters = @classroom.get_requesters
+    @requesters = @classroom.requesters
   end
 
   def reset_status
@@ -14,7 +14,7 @@ class RequestersController < ApplicationController
     end
 
     requester.toggle(:help).save
-    PrivatePub.publish_to "/classrooms/#{@classroom.id}/requesters", requester: requester.id, requesters_count: @classroom.requesters_count
+    PrivatePub.publish_to "/classrooms/#{@classroom.id}/requesters", requester: requester.id, requesters_count: @classroom.requesters.size
 
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
   end
