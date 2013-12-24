@@ -5,8 +5,6 @@ class CheckpointTest < ActiveSupport::TestCase
   before do
     # checkpoints(:one) has two unique ratings (score of 1)
     @checkpoint = checkpoints(:one)
-    @checkpoint_no_ratings = checkpoints(:noratings)
-    @checkpoint_onerating = checkpoints(:onerating)
 
     # stubbing time
     date_in_future = Time.zone.now + 1
@@ -25,12 +23,6 @@ class CheckpointTest < ActiveSupport::TestCase
     checkpoint = Checkpoint.new(success_criteria: 'something else')
     checkpoint.valid?
     assert checkpoint.errors[:expectation].any?
-  end
-
-  test "hasnt voted" do
-    assert_equal ["all"], @checkpoint_no_ratings.hasnt_voted(@phase)
-    assert_equal [], @checkpoint.hasnt_voted(@phase)
-    assert_equal ['student2@school.com'], @checkpoint_onerating.hasnt_voted(@phase)
   end
 
   test "latest student score" do
