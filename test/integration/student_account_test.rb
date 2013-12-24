@@ -28,7 +28,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
 
   test "student with account can claim invitation without sign up" do
     within 'ul.nav' do
-      click_link 'Logout'
+      click_link 'logout-link'
     end
     assert_equal current_path, login_path
 
@@ -48,7 +48,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
 
   test "currently logged in student can claim invitation without sign up" do
     within 'ul.nav' do
-      click_link 'Logout'
+      click_link 'logout-link'
     end
     login_as(users(:student))
 

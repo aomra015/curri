@@ -5,7 +5,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
   test "a user can log out" do
     teacher = users(:ahmed)
     login_as(teacher)
-    click_link 'Logout'
+    click_link 'logout-link'
 
     assert_equal login_path, current_path
   end
