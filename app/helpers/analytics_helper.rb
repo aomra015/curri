@@ -2,43 +2,32 @@ module AnalyticsHelper
 
   SCORE_WORD = ['danger', 'warning', 'success']
 
-  def ratings_count(ratingData, score="all")
-    if ratingData.any?
-      if score == "all"
-        ratingData.size
-      else
-        get_score_count(score, ratingData)
-      end
-    else
-      0
-    end
-  end
-
-  def get_score_count(score, scoped_ratings)
+  def ratings_count(ratingData, score)
     count = 0
-    scoped_ratings.each do |rating|
-      count += 1 if rating.score == score
+    if ratingData.any?
+      ratingData.each do |rating|
+        count += 1 if rating.score == score
+      end
     end
     count
   end
 
-  def get_score(score, ratingData)
+  def get_score(ratingData, score)
     if ratingData.any?
-      ratings_count(ratingData, score) * 100.0 / ratings_count(ratingData)
+      ratings_count(ratingData, score) * 100.0 / ratingData.length
     else
       0
     end
   end
 
   def render_bar(ratings, score)
-    bar = content_tag :div, ratings_count(ratings, score), class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{get_score(score, ratings)}%"
+    bar = content_tag :div, ratings_count(ratings, score), class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{get_score(ratings, score)}%"
   end
 
   def ratings_count_box(checkpoint)
-    ratingData = @phase.ratings(checkpoint)
-    ratings_count_num = ratings_count(ratingData)
-    big_number = content_tag :div, ratings_count_num, class: 'count-number'
-    byline = content_tag :p, 'response'.pluralize(ratings_count_num)
+    count_num = @phase.ratings(checkpoint).length
+    big_number = content_tag :div, count_num, class: 'count-number'
+    byline = content_tag :p, 'response'.pluralize(count_num)
     big_number + byline
   end
 

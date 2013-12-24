@@ -15,15 +15,18 @@ class AnalyticsHelperTest < ActionView::TestCase
     @phase = Phase.new(@checkpoint.track,"All")
   end
 
-  test "ratings count" do
+  test "checkpoint with ratings count" do
     ratingData = @phase.ratings(@checkpoint)
     assert_equal 0, ratings_count(ratingData, 0)
-    assert_equal 0, ratings_count(ratingData, 2)
     assert_equal 2, ratings_count(ratingData, 1)
-    assert_equal 2, ratings_count(ratingData)
+    assert_equal 0, ratings_count(ratingData, 2)
+  end
 
-    emptyratingData = @phase.ratings(checkpoints(:noratings))
-    assert_equal 0, ratings_count(emptyratingData)
+  test "checkpoint without ratings count" do
+    ratingData = @phase.ratings(checkpoints(:noratings))
+    assert_equal 0, ratings_count(ratingData, 0)
+    assert_equal 0, ratings_count(ratingData, 1)
+    assert_equal 0, ratings_count(ratingData, 2)
   end
 
   test "only one rating per student counts" do
@@ -33,18 +36,17 @@ class AnalyticsHelperTest < ActionView::TestCase
     ratingData = @phase.ratings(checkpoints(:noratings))
     assert_equal 0, ratings_count(ratingData, 1)
     assert_equal 1, ratings_count(ratingData, 2)
-    assert_equal 1, ratings_count(ratingData)
   end
 
   test "get scores" do
     ratingData = @phase.ratings(@checkpoint)
-    assert_equal 0, get_score(0, ratingData)
-    assert_equal 100, get_score(1, ratingData)
-    assert_equal 0, get_score(2, ratingData)
+    assert_equal 0, get_score(ratingData, 0)
+    assert_equal 100, get_score(ratingData, 1)
+    assert_equal 0, get_score(ratingData, 2)
 
     emptyratingData = @phase.ratings(checkpoints(:noratings))
 
-    assert_equal 0, get_score(2, emptyratingData)
+    assert_equal 0, get_score(emptyratingData, 2)
   end
 
   test "build bars" do
