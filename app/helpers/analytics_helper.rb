@@ -1,6 +1,6 @@
 module AnalyticsHelper
 
-  SCORE_WORD = ['danger', 'warning', 'success']
+  SCORE_WORD = ['danger', 'warning', 'success', 'empty']
 
   def ratings_count(ratings, score)
     count = 0
@@ -12,7 +12,7 @@ module AnalyticsHelper
     count
   end
 
-  def get_score(ratings, score)
+  def percent_score(ratings, score)
     if ratings.any?
       ratings_count(ratings, score) * 100.0 / ratings.length
     else
@@ -20,8 +20,8 @@ module AnalyticsHelper
     end
   end
 
-  def render_bar(ratings, score)
-    bar = content_tag :div, ratings_count(ratings, score), class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{get_score(ratings, score)}%"
+  def render_bar(count, score, percent)
+    bar = content_tag :div, count, class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{percent}%"
   end
 
   def ratings_count_box(checkpoint)

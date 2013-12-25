@@ -40,19 +40,19 @@ class AnalyticsHelperTest < ActionView::TestCase
 
   test "get scores" do
     ratingData = @phase.ratings(@checkpoint)
-    assert_equal 0, get_score(ratingData, 0)
-    assert_equal 100, get_score(ratingData, 1)
-    assert_equal 0, get_score(ratingData, 2)
+    assert_equal 0, percent_score(ratingData, 0)
+    assert_equal 100, percent_score(ratingData, 1)
+    assert_equal 0, percent_score(ratingData, 2)
 
     emptyratingData = @phase.ratings(checkpoints(:noratings))
 
-    assert_equal 0, get_score(emptyratingData, 2)
+    assert_equal 0, percent_score(emptyratingData, 2)
   end
 
   test "build bars" do
     ratings = @phase.ratings(@checkpoint)
     progress_bar = content_tag :div, 2, class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
-    assert_equal progress_bar, render_bar(ratings, 1)
+    assert_equal progress_bar, render_bar(ratings_count(ratings, 1), 1, percent_score(ratings, 1) )
   end
 
   test "hasnt voted list for class with two students" do

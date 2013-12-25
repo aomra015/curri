@@ -3,10 +3,10 @@
   <% if current_user.student? %>
     <div class="grid-temp">
       <div class="progress progress-border">
-        <div class="progress-bar progress-bar-danger" style="width: <%= scale(track,score_count(track,0)) %>%"><%= score_count(track,0) %></div>
-        <div class="progress-bar progress-bar-warning" style="width: <%= scale(track,score_count(track,1)) %>%"><%= score_count(track,1) %></div>
-        <div class="progress-bar progress-bar-success" style="width: <%= scale(track,score_count(track,2)) %>%"><%= score_count(track,2) %></div>
-        <div class="progress-bar progress-bar-empty" style="width: <%= scale(track, no_scores(track)) %>%"><%= no_scores(track) %></div>
+        <%= render_bar(score_count(track, 0)[:count], 0, score_count(track, 0)[:percent] )%>
+        <%= render_bar(score_count(track, 1)[:count], 1, score_count(track, 1)[:percent] )%>
+        <%= render_bar(score_count(track, 2)[:count], 2, score_count(track, 2)[:percent] )%>
+        <%= render_bar(no_scores(track)[:count], 3, no_scores(track)[:percent] )%>
       </div>
     </div>
   <% end %>
