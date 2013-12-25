@@ -6,7 +6,7 @@
         <div class="progress-bar progress-bar-danger" style="width: <%= scale(track,score_count(track,0)) %>%"><%= score_count(track,0) %></div>
         <div class="progress-bar progress-bar-warning" style="width: <%= scale(track,score_count(track,1)) %>%"><%= score_count(track,1) %></div>
         <div class="progress-bar progress-bar-success" style="width: <%= scale(track,score_count(track,2)) %>%"><%= score_count(track,2) %></div>
-        <div class="progress-bar progress-bar-empty" style="width: <%= scale(track,score_count(track,"empty")) %>%"><%= score_count(track,"empty") %></div>
+        <div class="progress-bar progress-bar-empty" style="width: <%= scale(track, no_scores(track)) %>%"><%= no_scores(track) %></div>
       </div>
     </div>
   <% end %>

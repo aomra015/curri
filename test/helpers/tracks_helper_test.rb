@@ -20,4 +20,8 @@ class TracksHelperTest < ActionView::TestCase
     assert_equal 1, score_count(@track,1)
     assert_equal 1, score_count(@track,2)
   end
+
+  test "empty bar scores count" do
+    assert_equal 2, no_scores(@track)
+  end
 end

@@ -21,7 +21,18 @@ module TracksHelper
   end
 
   def score_count(track,score)
-    current_user.classrole.student_ratings_count(track,score)
+    ratings = current_user.classrole.track_ratings(track)
+    count = 0
+    if ratings.any?
+      ratings.each do |rating|
+        count += 1 if rating.score == score
+      end
+    end
+    count
   end
 
+  def no_scores(track)
+    track_ratings = current_user.classrole.track_ratings(track)
+    track.checkpoints.length - track_ratings.length
+  end
 end
