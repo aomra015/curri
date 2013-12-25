@@ -17,16 +17,16 @@ class AnalyticsHelperTest < ActionView::TestCase
 
   test "checkpoint with ratings count" do
     ratingData = @phase.ratings(@checkpoint)
-    assert_equal 0, ratings_count(ratingData, 0)
-    assert_equal 2, ratings_count(ratingData, 1)
-    assert_equal 0, ratings_count(ratingData, 2)
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 0, @checkpoint))
+    assert_equal({ :count => 2, :percent => 100.0 }, ratings_count(ratingData, 1, @checkpoint))
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 2, @checkpoint))
   end
 
   test "checkpoint without ratings count" do
     ratingData = @phase.ratings(checkpoints(:noratings))
-    assert_equal 0, ratings_count(ratingData, 0)
-    assert_equal 0, ratings_count(ratingData, 1)
-    assert_equal 0, ratings_count(ratingData, 2)
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 0, checkpoints(:noratings)))
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 1, checkpoints(:noratings)))
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 2, checkpoints(:noratings)))
   end
 
   test "only one rating per student counts" do
@@ -34,19 +34,19 @@ class AnalyticsHelperTest < ActionView::TestCase
     Rating.create(score: 2, student: students(:student1), checkpoint: checkpoints(:noratings))
 
     ratingData = @phase.ratings(checkpoints(:noratings))
-    assert_equal 0, ratings_count(ratingData, 1)
-    assert_equal 1, ratings_count(ratingData, 2)
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 1, checkpoints(:noratings)))
+    assert_equal({ :count => 1, :percent => 50.0 }, ratings_count(ratingData, 2, checkpoints(:noratings)))
   end
 
   test "get scores" do
     @checkpoint = checkpoints(:onerating)
     ratingData = @phase.ratings(@checkpoint)
-    assert_equal 0, percent_score(ratingData, 0, @checkpoint)
-    assert_equal 50, percent_score(ratingData, 1, @checkpoint)
-    assert_equal 0, percent_score(ratingData, 2, @checkpoint)
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 0, @checkpoint))
+    assert_equal({ :count => 1, :percent => 50.0 }, ratings_count(ratingData, 1, @checkpoint))
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(ratingData, 2, @checkpoint))
 
     emptyratingData = @phase.ratings(checkpoints(:noratings))
-    assert_equal 0, percent_score(emptyratingData, 2, checkpoints(:noratings))
+    assert_equal({ :count => 0, :percent => 0.0 }, ratings_count(emptyratingData, 2, checkpoints(:noratings)))
   end
 
   test "empty bar ratings count" do
@@ -60,7 +60,7 @@ class AnalyticsHelperTest < ActionView::TestCase
   test "build bars" do
     ratings = @phase.ratings(@checkpoint)
     progress_bar = content_tag :div, 2, class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
-    assert_equal progress_bar, render_bar(ratings_count(ratings, 1), 1, percent_score(ratings, 1, @checkpoint) )
+    assert_equal progress_bar, render_bar(ratings_count(ratings, 1, @checkpoint)[:count], 1, ratings_count(ratings, 1, @checkpoint)[:percent] )
   end
 
   test "hasnt voted list for class with two students" do

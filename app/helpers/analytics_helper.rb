@@ -2,22 +2,16 @@ module AnalyticsHelper
 
   SCORE_WORD = ['danger', 'warning', 'success', 'empty']
 
-  def ratings_count(ratings, score)
+  def ratings_count(ratings, score, checkpoint)
     count = 0
     if ratings.any?
       ratings.each do |rating|
         count += 1 if rating.score == score
       end
     end
-    count
-  end
-
-  def percent_score(ratings, score, checkpoint)
-    if ratings.any?
-      ratings_count(ratings, score) * 100.0 / student_count(checkpoint)
-    else
-      0
-    end
+    number_students = student_count(checkpoint)
+    percent = count * 100.0 / number_students
+    { count: count, percent: percent }
   end
 
   def no_ratings(ratings, checkpoint)
