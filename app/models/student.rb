@@ -8,12 +8,10 @@ class Student < ActiveRecord::Base
   delegate :first_name, to: :user
   delegate :last_name, to: :user
 
-  def student_ratings_count(track, score="all")
+  def student_ratings_count(track, score)
     if self.ratings.any?
-      track_ratings = get_track_ratings(track)
-      if score == "all"
-        track_ratings.length
-      elsif score == "empty"
+      track_ratings = track_ratings(track)
+      if score == "empty"
         track.checkpoints.length - track_ratings.length
       else
         get_student_score_count(score, track_ratings)
@@ -22,7 +20,7 @@ class Student < ActiveRecord::Base
       0
     end
   end
-  def get_track_ratings(track)
+  def track_ratings(track)
     self.ratings.where({ checkpoint_id: track.checkpoints.pluck(:id) }).select("DISTINCT ON (checkpoint_id) * ").order("checkpoint_id, created_at DESC")
   end
 

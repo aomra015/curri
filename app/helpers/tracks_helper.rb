@@ -21,7 +21,7 @@ module TracksHelper
   end
 
   def score_count(track,score)
-    @current_user.classrole.student_ratings_count(track,score)
+    current_user.classrole.student_ratings_count(track,score)
   end
 
 end
