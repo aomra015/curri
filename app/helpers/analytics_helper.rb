@@ -12,12 +12,23 @@ module AnalyticsHelper
     count
   end
 
-  def percent_score(ratings, score)
+  def percent_score(ratings, score, checkpoint)
     if ratings.any?
-      ratings_count(ratings, score) * 100.0 / ratings.length
+      ratings_count(ratings, score) * 100.0 / student_count(checkpoint)
     else
       0
     end
+  end
+
+  def no_ratings(ratings, checkpoint)
+    number_students = student_count(checkpoint)
+    count = number_students - ratings.length
+    percent = count * 100.0 / number_students
+    { count: count, percent: percent }
+  end
+
+  def student_count(checkpoint)
+    checkpoint.track.classroom.students.size
   end
 
   def render_bar(count, score, percent)
