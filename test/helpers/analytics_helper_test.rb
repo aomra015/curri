@@ -60,7 +60,7 @@ class AnalyticsHelperTest < ActionView::TestCase
   test "build bars" do
     ratings = @phase.ratings(@checkpoint)
     progress_bar = content_tag :div, 2, class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
-    assert_equal progress_bar, render_bar(ratings_count(ratings, 1, @checkpoint)[:count], 1, ratings_count(ratings, 1, @checkpoint)[:percent] )
+    assert_equal progress_bar, render_bar(ratings_count(ratings, 1, @checkpoint), 1)
   end
 
   test "hasnt voted list for class with two students" do

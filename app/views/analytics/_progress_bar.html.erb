@@ -1,6 +1,6 @@
 <div class="progress progress-border">
-  <%= render_bar(ratings_count(ratings, 0, checkpoint)[:count], 0, ratings_count(ratings, 0, checkpoint)[:percent] )%>
-  <%= render_bar(ratings_count(ratings, 1, checkpoint)[:count], 1, ratings_count(ratings, 1, checkpoint)[:percent] )%>
-  <%= render_bar(ratings_count(ratings, 2, checkpoint)[:count], 2, ratings_count(ratings, 2, checkpoint)[:percent] )%>
-  <%= render_bar(no_ratings(ratings, checkpoint)[:count], 3, no_ratings(ratings, checkpoint)[:percent] )%>
+  <%= render_bar(ratings_count(ratings, 0, checkpoint), 0)%>
+  <%= render_bar(ratings_count(ratings, 1, checkpoint), 1)%>
+  <%= render_bar(ratings_count(ratings, 2, checkpoint), 2,)%>
+  <%= render_bar(no_ratings(ratings, checkpoint), 3)%>
 </div>
