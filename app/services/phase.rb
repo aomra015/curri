@@ -1,11 +1,11 @@
 class Phase
-  attr_reader :phase_text
+  attr_reader :state
   PHASES = ['Realtime','Before','During','After']
 
-  def initialize(track, phase_text)
+  def initialize(track, state)
     @track = track
-    @phase_text = phase_text
-    unless PHASES.include?(@phase_text)
+    @state = state
+    unless PHASES.include?(@state)
       raise ArgumentError.new("Invalid phase")
     end
     @start_of_everything = track.created_at
@@ -13,9 +13,9 @@ class Phase
   end
 
   def start_time
-    if @phase_text == 'During'
+    if @state == 'During'
       return @track.start_time
-    elsif @phase_text == 'After'
+    elsif @state == 'After'
       return @track.end_time
     else
       return @start_of_everything
@@ -23,9 +23,9 @@ class Phase
   end
 
   def end_time
-    if @phase_text == 'Before'
+    if @state == 'Before'
       return @track.start_time
-    elsif @phase_text == 'During'
+    elsif @state == 'During'
       return @track.end_time
     else
       return @end_of_everything

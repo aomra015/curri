@@ -1,4 +1,4 @@
-<%= subscribe_to "/track/#{@track.id}/ratings" %>
+<%= subscribe_to "/track/#{@track.id}/ratings" if @phase.state == 'Realtime' %>
 
 <div id="page-head">
   <h2 class="page-header">Analytics > <%= @track.name %></h2>
