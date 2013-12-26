@@ -19,12 +19,8 @@ module AnalyticsHelper
     { count: count, percent: percent }
   end
 
-  def student_count(checkpoint)
-    checkpoint.track.classroom.students.size
-  end
-
   def render_bar(counts, score)
-    bar = content_tag :div, counts[:count], class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{counts[:percent]}%"
+    content_tag :div, counts[:count], class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{counts[:percent]}%"
   end
 
   def ratings_count_box(checkpoint)
