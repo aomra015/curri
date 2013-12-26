@@ -1,0 +1,6 @@
+<div class="progress progress-border">
+  <%= render_bar(ratings_count(ratings, total_count, 0), 0)%>
+  <%= render_bar(ratings_count(ratings, total_count, 1), 1)%>
+  <%= render_bar(ratings_count(ratings, total_count, 2), 2,)%>
+  <%= render_bar(no_ratings(ratings, total_count), 3)%>
+</div>

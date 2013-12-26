@@ -15,23 +15,4 @@ module TracksHelper
       "Track start/end: #{start_string} to #{end_string}"
     end
   end
-
-  def score_count(track,score)
-    ratings = current_user.classrole.track_ratings(track)
-    count = 0
-    if ratings.any?
-      ratings.each do |rating|
-        count += 1 if rating.score == score
-      end
-    end
-    percent = count * 100.0 / track.checkpoints.length
-    { count: count, percent: percent }
-  end
-
-  def no_scores(track)
-    track_ratings = current_user.classrole.track_ratings(track)
-    count = track.checkpoints.length - track_ratings.length
-    percent = count * 100.0 / track.checkpoints.length
-    { count: count, percent: percent }
-  end
 end

@@ -3,7 +3,7 @@
       <h4>
       <%= checkpoint.expectation %>
       </h4>
-      <%= render partial: 'progress_bar', locals: { ratings: @phase.ratings(checkpoint), checkpoint: checkpoint } %>
+      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: checkpoint.track.classroom.students.size } %>
     </div>
 
     <div class="ratings-count">
