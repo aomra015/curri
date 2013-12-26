@@ -10,17 +10,17 @@ module AnalyticsHelper
       end
     end
     percent = count * 100.0 / total_count
-    { count: count, percent: percent }
+    { count: count, percent: percent, score: score }
   end
 
   def no_ratings(ratings, total_count)
     count = total_count - ratings.length
     percent = count * 100.0 / total_count
-    { count: count, percent: percent }
+    { count: count, percent: percent, score: 3 }
   end
 
-  def render_bar(counts, score)
-    content_tag :div, counts[:count], class: "progress-bar progress-bar-#{SCORE_WORD[score]}", style: "width: #{counts[:percent]}%"
+  def render_bar(counts)
+    content_tag :div, counts[:count], class: "progress-bar progress-bar-#{SCORE_WORD[counts[:score]]}", style: "width: #{counts[:percent]}%"
   end
 
   def ratings_count_box(checkpoint)
