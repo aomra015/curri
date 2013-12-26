@@ -30,23 +30,8 @@ module AnalyticsHelper
     big_number + byline
   end
 
-  def hasnt_voted(ratings)
-    return ["all"] if ratings.empty?
-
-    classroom = ratings.first.checkpoint.track.classroom
-    if classroom.students.size != ratings.length
-      student_list = classroom.students.pluck(:id)
-      ratings.each do |rating|
-        student_list.delete(rating.student.id)
-      end
-      student_list.map { |id| Student.find(id).email }
-    else
-      []
-    end
-  end
-
   def hasnt_voted_box(checkpoint)
-    hasnt_voted_list = hasnt_voted(@phase.ratings(checkpoint))
+    hasnt_voted_list = checkpoint.hasnt_voted(@phase)
     output = content_tag :p, "Hasn't voted:"
     output = content_tag :p, "" if hasnt_voted_list.empty?
     hasnt_voted_list.each do |email|

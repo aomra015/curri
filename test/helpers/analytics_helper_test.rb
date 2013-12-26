@@ -62,10 +62,4 @@ class AnalyticsHelperTest < ActionView::TestCase
     progress_bar = content_tag :div, 2, class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
     assert_equal progress_bar, render_bar(ratings_count(ratings, @total_count, 1), 1)
   end
-
-  test "hasnt voted list for class with two students" do
-    assert_equal ["all"], hasnt_voted(@phase.ratings(checkpoints(:noratings)))
-    assert_equal [], hasnt_voted(@phase.ratings(@checkpoint))
-    assert_equal ['student2@school.com'], hasnt_voted(@phase.ratings(checkpoints(:onerating)))
-  end
 end
