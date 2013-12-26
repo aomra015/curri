@@ -12,7 +12,7 @@ class PhaseTest < ActiveSupport::TestCase
     @test_phase_before = Phase.new(@test_track,"Before")
     @test_phase_during = Phase.new(@test_track,"During")
     @test_phase_after = Phase.new(@test_track,"After")
-    @test_phase_all = Phase.new(@test_track,"All")
+    @test_phase_all = Phase.new(@test_track,"Realtime")
   end
 
   def test_bad_phase_error
@@ -48,7 +48,7 @@ class PhaseTest < ActiveSupport::TestCase
   end
 
   def test_phase_scopes_ratings
-    phase = Phase.new(tracks(:one), "All")
+    phase = Phase.new(tracks(:one), "Realtime")
     assert_equal 2, phase.ratings(checkpoints(:one)).size
   end
 

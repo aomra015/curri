@@ -12,7 +12,7 @@ class CheckpointTest < ActiveSupport::TestCase
     Time.zone.expects(:now).returns(date_in_future)
     @checkpoint.track.created_at = date_in_past
 
-    @phase = Phase.new(@checkpoint.track,"All")
+    @phase = Phase.new(@checkpoint.track,"Realtime")
   end
 
   test "validate presence of both attributes" do

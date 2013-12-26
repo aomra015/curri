@@ -1,6 +1,6 @@
 class Phase
   attr_reader :phase_text
-  PHASES = ['All','Before','During','After']
+  PHASES = ['Realtime','Before','During','After']
 
   def initialize(track, phase_text)
     @track = track
