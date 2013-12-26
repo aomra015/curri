@@ -41,4 +41,10 @@ class CheckpointTest < ActiveSupport::TestCase
 
     assert_equal "2", @checkpoint_two.latest_student_score(student)
   end
+
+  test "hasnt voted method for class with two students" do
+    assert_equal ["all"], checkpoints(:noratings).hasnt_voted(@phase)
+    assert_equal [], checkpoints(:one).hasnt_voted(@phase)
+    assert_equal ['student2@school.com'], checkpoints(:onerating).hasnt_voted(@phase)
+  end
 end
