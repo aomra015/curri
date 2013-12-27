@@ -1,5 +1,5 @@
 <p><%= display_start_end_times(@track) %></p>
 <%= form_tag classroom_track_analytics_path(@classroom, @track), method: "get" do  %>
-  <%= select_tag :phase_text, options_for_select(Phase::PHASES, @phase.phase_text) %>
-  <%= submit_tag 'Choose phase', class: 'add-phase btn'%>
+  <%= select_tag :phase_state, options_for_select(Phase::PHASES, @phase.state) %>
+  <%= submit_tag 'Choose phase', name: nil, class: 'add-phase btn'%>
 <% end %>
