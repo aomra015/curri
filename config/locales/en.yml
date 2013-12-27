@@ -146,13 +146,11 @@ en:
 
     5_layout:
       01_grid: |
-        We use a 4-up fluid grid in combination with `@media-query`'s to organize the layout of our app. Content is designed in a mobile-first format. All app content is contained in a `.wrapper`, and this:
+        We use a 4-up fluid grid in combination with `@media-query`'s to organize the layout of our app. Content is designed in a mobile-first format. All app content is contained in a `.main`, and this:
 
         &#8226;&nbsp; Sets the `max-width` 
-        &#8226;&nbsp; Accommodates the fixed nav on the left and assigns a right margin (at larger sizes). 
-        &#8226;&nbsp; At smaller sizes, the wrapper provides an equal left and right margin, as the mobile nav becomes visible.
-
-        Within the `.wrapper`, content is contained in a `.main`, which provides padding for inner elements.
+        &#8226;&nbsp; Accommodates the fixed nav on the left. 
+        &#8226;&nbsp; At smaller sizes, it provides an equal left and right padding, as the mobile nav (icon) becomes visible.
 
         Any modules that are within the `.main` div, should be contained in a `.grid`. All grid units are 100% at mobile sizes and change according to screen width (see next section), and are assigned a `.grid-unit`. Along with this, a size class needs to be assigned, either `.narrow`, `.wide` or `.whole`, which will ensure correct display at all screen sizes.
 
