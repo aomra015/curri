@@ -1,12 +1,10 @@
-require 'simplecov'
-#SimpleCov.start
-
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'minitest/rails/capybara'
 require 'minitest/colorize'
+require 'mocha/setup'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -38,5 +36,3 @@ class ActiveSupport::TestCase
     click_button 'Send Invitation'
   end
 end
-
-require "mocha/setup"

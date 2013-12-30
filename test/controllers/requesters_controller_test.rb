@@ -2,7 +2,7 @@ require "test_helper"
 
 class RequestersControllerTest < ActionController::TestCase
   test "student should be able to toggle status" do
-    PrivatePub.stubs(:publish_to)
+    PrivatePub.expects(:publish_to).once
     session[:user_id] = users(:student).id
     @request.env['HTTP_REFERER'] = classrooms_url
     assert_equal false, invitations(:one).help
@@ -13,7 +13,7 @@ class RequestersControllerTest < ActionController::TestCase
   end
 
   test "action redirects to some default url if referer is missing" do
-    PrivatePub.stubs(:publish_to)
+    PrivatePub.expects(:publish_to).once
     session[:user_id] = users(:student).id
     patch :reset_status, {classroom_id: classrooms(:one).id}
     assert_redirected_to classrooms_path

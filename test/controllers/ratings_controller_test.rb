@@ -7,7 +7,7 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should create ratings with html request" do
-    PrivatePub.stubs(:publish_to)
+    PrivatePub.expects(:publish_to).once
 
     assert_difference 'Rating.count' do
       post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
@@ -16,7 +16,7 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should create ratings with json request" do
-    PrivatePub.stubs(:publish_to)
+    PrivatePub.expects(:publish_to).once
 
     assert_difference 'Rating.count' do
       post :create, format: 'json', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
