@@ -4,3 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Curri::Application.load_tasks
+
+MiniTest::Rails::Testing.default_tasks << "features"
+MiniTest::Rails::Testing.default_tasks << "services"

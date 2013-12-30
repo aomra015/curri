@@ -13,6 +13,8 @@ group :production do
 end
 
 group :development, :test do
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
   gem 'pry-rails'
   gem "mocha", :require => false
   gem "teaspoon"
@@ -32,8 +34,6 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'minitest-rails-capybara'
-  gem 'minitest-colorize'
 end
 
 gem 'email_validator'
