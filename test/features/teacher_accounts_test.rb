@@ -7,11 +7,9 @@ class TeacherAccountsTest < Capybara::Rails::TestCase
     fill_in :user_email, with: 'paula@littlefrance.com'
     fill_in :user_password, with: 'password123'
     fill_in :user_password_confirmation, with: 'password123'
+    click_button 'Register'
 
-    assert_difference 'User.count' do
-      click_button 'Register'
-    end
-
-    assert current_path == classrooms_path, "Not redirected to user's classrooms"
+    assert page.has_css?('#logout-link')
+    assert_equal classrooms_path, current_path
   end
 end
