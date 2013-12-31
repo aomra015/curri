@@ -6,40 +6,32 @@ class TeacherInvitationsTest < Capybara::Rails::TestCase
     @teacher = users(:ahmed)
     @student_email = users(:student).email
     login_as(@teacher)
+    @invitation = Invitation.last
   end
 
   test "teacher can invite students" do
-    assert_difference 'Invitation.count' do
-      invite_students(@teacher, @student_email)
-    end
+    classroom = @teacher.classrooms.first
+    click_link classroom.name
 
-    assert_equal classroom_tracks_path(@classroom), current_path
+    click_link 'manage-students'
+    assert_equal new_classroom_invitation_path(classroom), current_path
+
+    fill_in :invitation_emails, with: @student_emails
+    click_button 'Send Invitation'
+
     assert page.has_content?('Invitations Sent')
-
-    last_email = ActionMailer::Base.deliveries.last
-
-    assert_equal [@student_email], last_email.to
+    within "#invitation_#{@invitation.id}" do
+      assert page.has_content?(@student_email), 'Email of invited student not listed'
+    end
   end
 
-  test "teacher should see list of invited students" do
+  test "teacher can remove invitations" do
     invite_students(@teacher, @student_email)
 
-    click_link 'manage-students'
-    assert page.has_content?(@student_email), 'Email of invited student not listed'
-  end
-
-  test "teacher can cancel invitations" do
-    invite_students(@teacher, @student_email)
-
-    invitation = Invitation.last
-    click_link 'manage-students'
-
-    within "#invitation_#{invitation.id}" do
-      assert_difference 'Invitation.count', -1 do
-        click_link 'Remove'
-      end
+    within "#invitation_#{@invitation.id}" do
+      click_link 'Remove'
     end
 
-    assert_equal new_classroom_invitation_path(@classroom), current_path
+    assert page.has_no_css?("#invitation_#{@invitation.id}")
   end
 end
