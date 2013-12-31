@@ -19,11 +19,14 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     click_link 'Add Checkpoints'
     assert_equal new_classroom_track_checkpoint_path(@classroom, @track), current_path
 
-    fill_in :checkpoint_expectation, with: 'Can build a thing'
-    fill_in :checkpoint_success_criteria, with: 'something'
+    fill_in :checkpoint_expectation, with: 'New expectation'
+    fill_in :checkpoint_success_criteria, with: 'New success criteria'
+    click_button 'Create Checkpoint'
 
-    assert_difference '@track.checkpoints.count' do
-      click_button 'Create Checkpoint'
+    checkpoint = Checkpoint.last
+    within "#checkpoint#{checkpoint.id}" do
+        assert page.has_content?('New expectation')
+        assert page.has_content?('New success criteria')
     end
   end
 
@@ -37,17 +40,21 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     assert_equal edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), current_path
 
     fill_in :checkpoint_expectation, with: 'Changed expectation'
-    fill_in :checkpoint_success_criteria, with: 'some criteria'
+    fill_in :checkpoint_success_criteria, with: 'Changed success criteria'
     click_button 'Update Checkpoint'
+
+    within "#checkpoint#{checkpoint.id}" do
+        assert page.has_content?('Changed expectation')
+        assert page.has_content?('Changed success criteria')
+    end
   end
 
   test "a teacher can delete checkpoints" do
     checkpoint = checkpoints(:one)
-
     within "#checkpoint#{checkpoint.id}" do
-      assert_difference 'Checkpoint.count', -1 do
-          click_link 'delete-checkpoint'
-      end
+      click_link 'delete-checkpoint'
     end
+
+    assert page.has_no_css?("#checkpoint#{checkpoint.id}")
   end
 end
