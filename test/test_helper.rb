@@ -24,6 +24,10 @@ class ActiveSupport::TestCase
     click_button 'Login'
   end
 
+  def log_out
+    click_link 'logout-link'
+  end
+
   def invite_students(teacher, student_emails)
     @classroom = teacher.classrooms.first
     click_link @classroom.name
