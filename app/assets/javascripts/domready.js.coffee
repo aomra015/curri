@@ -29,5 +29,5 @@ $ ->
     $("#help_link#{requester}").text("I'm OK")
 
   # Navigation Collapse
-  $('.nav-links').on 'click', ->
+  $('.collapse-toggle').on 'click', ->
     $('body').toggleClass('nav-open')
