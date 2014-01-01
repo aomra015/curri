@@ -8,6 +8,8 @@ gem 'pg'
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
+  gem 'appsignal'
+  gem 'unicorn'
 end
 
 group :development, :test do
