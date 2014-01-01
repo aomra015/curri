@@ -1,4 +1,9 @@
-<li><%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %></li>
 <% if @track.try(:id)%>
-  <li><%= link_to 'Analytics', classroom_track_analytics_path(@classroom, @track) %></li>
+  <li>
+    <%= link_to classroom_track_analytics_path(@classroom, @track), class: "nav-links" do %>    
+      <span class="nav-icon nav-analytics"></span>
+      <span class="nav-label">Analytics</span>
+    <% end %>  
+  </li>
 <% end %>
+<!-- <li><%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %></li> -->

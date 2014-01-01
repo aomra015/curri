@@ -1,8 +1,18 @@
-<li><%= link_to 'Classrooms', classrooms_path %></li>
+<li>
+  <%= link_to classrooms_path, class: "nav-links" do %>
+    <span class="nav-icon nav-classrooms"></span>
+    <span class="nav-label">Classrooms</span>
+  <% end %>
+</li>
 
 <% if @classroom.try(:id) %>
-  <li id="track_link" data-classroomid="<%= @classroom.id %>" ><%= link_to 'Tracks', classroom_tracks_path(@classroom) %></li>
-  <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
+  <li id="track_link" data-classroomid="<%= @classroom.id %>" >
+    <%= link_to classroom_tracks_path(@classroom), class: "nav-links" do %>
+      <span class="nav-icon nav-tracks"></span>
+      <span class="nav-label">Tracks</span>
+    <% end %>
+  </li>
+    <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
   <% if current_user.teacher? %>
     <%= render 'shared/teacher_nav' %>
   <% else %>
@@ -10,6 +20,21 @@
   <% end %>
 <% end %>
 
-<li><%= link_to 'Profile', edit_profile_path %></li>
-<li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li>
-<li><%= link_to 'Log Out', logout_path, method: :delete, id: 'logout-link' %></li>
+<div class="bottom-nav">
+  <!-- move all account links into a secondary menu visible on hover -->
+  <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'logout-link' %></li>
+  <li>
+    <%= link_to edit_profile_path, class: "nav-links" do %>
+      <span class="nav-icon nav-account"></span>
+      <span class="nav-label">Account</span>
+    <% end %>
+  </li>
+  <!-- <li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li> -->
+  </li>
+  <li>
+    <a class="nav-links">
+      <span class="nav-icon nav-size"></span>
+      <span class="nav-label">Collapse</span>
+    </a>
+  </li>
+</div>
