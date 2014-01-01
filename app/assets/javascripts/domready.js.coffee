@@ -27,3 +27,7 @@ $ ->
   PrivatePub.subscribe "/classrooms/#{CLASSROOM_ID}/requesters", ({requester, requesters_count}) ->
     $('#requesters_link').text("Requesters (#{requesters_count})")
     $("#help_link#{requester}").text("I'm OK")
+
+  # Navigation Collapse
+  $('.nav-links').on 'click', ->
+    $('body').toggleClass('nav-open')
