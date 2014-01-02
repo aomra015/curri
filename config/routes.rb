@@ -3,7 +3,7 @@ Curri::Application.routes.draw do
   mount StyleGuide::Engine => "/style-guide" if Rails.env.development?
   root to: 'classrooms#index'
 
-  resources :classrooms do
+  resources :classrooms, except: [:show] do
     get 'requesters', to: 'requesters#index'
     patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do

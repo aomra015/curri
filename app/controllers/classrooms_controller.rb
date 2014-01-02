@@ -1,13 +1,10 @@
 class ClassroomsController < ApplicationController
 
   before_action :authorize_teacher, except: [:index, :show]
-  before_action :get_classroom, only: [:show, :edit, :update, :destroy]
+  before_action :get_classroom, only: [:edit, :update, :destroy]
 
   def index
     @classrooms = @current_user.classrooms
-  end
-
-  def show
   end
 
   def new
