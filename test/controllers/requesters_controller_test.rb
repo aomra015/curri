@@ -4,6 +4,7 @@ class RequestersControllerTest < ActionController::TestCase
 
   before do
     session[:user_id] = users(:student).id
+    PrivatePub.stubs(:publish_to)
   end
 
   test "should get list of requesters" do
