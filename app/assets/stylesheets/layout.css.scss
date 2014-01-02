@@ -244,7 +244,7 @@ a:hover {
   & .nav-tracks {
     background-position: -30px -30px;
   }
-  
+
   & .nav-analytics {
     background-position: -30px -60px;
   }
@@ -266,7 +266,7 @@ a.selected {
   & .nav-tracks, .nav-tracks:hover {
     background-position: -60px -30px;
   }
-  
+
   & .nav-analytics, .nav-analytics:hover {
     background-position: -60px -60px;
   }
@@ -312,10 +312,7 @@ a.selected {
   }
 }
 
-// hide the tooltip for the expand arrow
-.nav-label-hide {
-  display: none;
-}
+
 
 .nav-links:hover .nav-label ,
 .nav-links:focus .nav-label {
@@ -347,6 +344,10 @@ body.nav-open .nav-label {
   &:before {
     display: none;
   }
+}
+// hide the tooltip for the expand arrow
+body.nav-open .nav-label-hide {
+  display: none;
 }
 
 // Main app area
