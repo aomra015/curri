@@ -24,23 +24,13 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "latest student score" do
-    @checkpoint_two = checkpoints(:two)
+    Rating.create(score: 1, student: students(:student1), checkpoint: checkpoints(:two))
+    Rating.create(score: 2, student: students(:student1), checkpoint: checkpoints(:two))
 
-    student = students(:student1)
-    first_rating = Rating.new(score: 1)
-    first_rating.student = student
-    first_rating.checkpoint = @checkpoint_two
-    first_rating.save
-
-    second_rating = Rating.new(score: 2)
-    second_rating.student = student
-    second_rating.checkpoint = @checkpoint_two
-    second_rating.save
-
-    assert_equal "2", @checkpoint_two.latest_student_score(student)
+    assert_equal 2, checkpoints(:two).latest_student_score(students(:student1))
   end
 
-  test "hasnt voted method for class with two students" do
+  test "hasnt voted list for class with two students" do
     assert_equal ["all"], checkpoints(:noratings).hasnt_voted(@phase)
     assert_equal [], checkpoints(:one).hasnt_voted(@phase)
     assert_equal ['student2@school.com'], checkpoints(:onerating).hasnt_voted(@phase)
