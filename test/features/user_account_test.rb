@@ -11,45 +11,36 @@ class UserAccountsTest < Capybara::Rails::TestCase
   end
 
   test "a user (teacher) can edit their profile" do
-    login_as(users(:paula))
+    login_as(users(:ahmed))
+    click_link 'Profile'
 
-    click_link('Profile')
     assert_equal edit_profile_path, current_path
 
-    fill_in :user_email, with: 'paula@little.com'
+    fill_in :user_email, with: 'ahmed@little.com'
     fill_in :user_password, with: 'password453'
     fill_in :user_password_confirmation, with: 'password453'
-
     click_button 'Submit'
 
-    assert current_path == edit_profile_path
-    user = User.find(users(:paula).id)
-    assert_equal 'paula@little.com', user.email
-    assert user.authenticate('password453')
+    assert page.has_content?('Profile information updated.')
   end
 
   test "a user (student) can edit their profile" do
     login_as(users(:student))
+    click_link 'Profile'
 
-    click_link('Profile')
     assert_equal edit_profile_path, current_path
 
     fill_in :user_email, with: 'stud222@school.com'
     fill_in :user_password, with: 'password453'
     fill_in :user_password_confirmation, with: 'password453'
-
     click_button 'Submit'
 
-    assert_equal edit_profile_path, current_path
-    user = User.find(users(:student).id)
-    assert_equal 'stud222@school.com', user.email
-    assert user.authenticate('password453')
+    assert page.has_content?('Profile information updated.')
   end
 
-  test "a logged-in user (teacher) gets form errors if their profile edits are invalid (email missing)" do
-    login_as(users(:paula))
-
-    click_link('Profile')
+  test "a user gets errors with invalid profile edits" do
+    login_as(users(:ahmed))
+    click_link 'Profile'
 
     fill_in :user_email, with: ''
     fill_in :user_password, with: 'password453'
@@ -59,12 +50,11 @@ class UserAccountsTest < Capybara::Rails::TestCase
     assert page.has_content?("Email can't be blank")
   end
 
-  test "a logged-in user (teacher) gets form errors if their profile edits are invalid (password mismatch)" do
-    login_as(users(:paula))
+  test "a user gets errors with password mismatch" do
+    login_as(users(:ahmed))
+    click_link 'Profile'
 
-    click_link('Profile')
-
-    fill_in :user_email, with: 'franzini@mail.com'
+    fill_in :user_email, with: 'ahmed@little.com'
     fill_in :user_password, with: 'password453'
     fill_in :user_password_confirmation, with: 'password999'
     click_button 'Submit'
