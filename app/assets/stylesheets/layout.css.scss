@@ -191,7 +191,8 @@ body.nav-open .fixed-nav {
   cursor: pointer;
   overflow: hidden; // tooltips
   position: relative; // tooltips
-  &:hover {
+  &:hover,
+  &:focus {
     color: #fff;
     overflow: visible;
   }
@@ -316,7 +317,8 @@ a.selected {
   display: none;
 }
 
-.nav-links:hover .nav-label {
+.nav-links:hover .nav-label ,
+.nav-links:focus .nav-label {
   color: #fff;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 1;
