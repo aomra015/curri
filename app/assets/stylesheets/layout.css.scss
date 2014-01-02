@@ -156,10 +156,12 @@
 .fixed-nav {
   display: none;
   position: fixed;
+  width: 70px;
   top: 0;
   left: 0;
   bottom: 0;
   background: #415463;
+  z-index: 100;
 }
 
 body.nav-open .fixed-nav {
@@ -176,28 +178,37 @@ body.nav-open .fixed-nav {
   list-style-type: none;
 }
 
+.logo a {
+  background: $color-primary;
+  padding: 45px 20px;
+}
+
 .nav-links {
   color: lighten($color-main, 40%);
   display: block;
   padding: 15px 20px;
   line-height: 0;
   cursor: pointer;
+  overflow: hidden; // tooltips
+  position: relative; // tooltips
   &:hover {
     color: #fff;
+    overflow: visible;
   }
 }
 
+// selected class for nav links
 a.selected, a.selected:hover {
   background-color: #fff;
   color: $color-main;
 }
 
+// svg icons
 .nav-icon {
   background-image: url('curri-icons.svg');
   padding: 15px;
   display: inline-block;
   background-position: 0 0;
-  // fill: #fff;
 }
 
 .nav-tracks {
@@ -264,16 +275,76 @@ a.selected {
   }
 }
 
+// Tooltips
 .nav-label {
-  margin-left: 10px;
-  position: relative;
-  top: -9px;
-  display: none;
   font-weight: 600;
+  position: absolute;
+  background: darken($color-main, 10%);
+  padding: 17px 14px 19px;
+  top: 12px;
+  left: 85px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 33%;
+    width: 10px;
+    height: 10px;
+    background: darken($color-main, 10%);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+  }
+}
+
+// hide the tooltip for the expand arrow
+.nav-label-hide {
+  display: none;
+}
+
+.nav-links:hover .nav-label {
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  body.nav-open & {
+    left: 0;
+  }
+}
+
+body.nav-open .nav-links.selected:hover .nav-label {
+  color: darken($color-main, 10%);
 }
 
 body.nav-open .nav-label {
   display: inline;
+  background: none;
+  margin-left: 10px;
+  padding: 0;
+  position: relative;
+  top: -9px;
+  left: 0;
+  opacity: 1;
+  &:before {
+    display: none;
+  }
 }
 
 // Main app area
