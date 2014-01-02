@@ -3,6 +3,8 @@
 one:
   name: First Track
   classroom: one
+  start_time: <%= Time.zone.parse("2012-10-1 6am") %>
+  end_time: <%= Time.zone.parse("2012-10-3 6am") %>
 
 two:
   name: MyString
