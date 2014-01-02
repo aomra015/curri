@@ -13,7 +13,7 @@ $ ->
   # Update analytics bars
   TRACK_ID = $('#track').data('trackid')
   PrivatePub.subscribe "/track/#{TRACK_ID}/ratings", ({checkpoint, ratings, totalCount}) ->
-    ratingsCounts = new @RatingsCounter(ratings, totalCount).init()
+    ratingsCounts = new RatingsCounter(ratings, totalCount).init()
     $("#checkpoint#{checkpoint}").barChart(ratingsCounts)
 
   # Student rating AJAX
@@ -29,5 +29,9 @@ $ ->
     $("#help_link#{requester}").text("I'm OK")
 
   # Navigation Collapse
+  curri_ui = new CurriUiOptions()
+  curri_ui.build_from_localstorage()
+
   $('.collapse-toggle').on 'click', ->
     $('body').toggleClass('nav-open')
+    curri_ui.change_localstorage()
