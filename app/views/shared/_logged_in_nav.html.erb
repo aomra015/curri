@@ -2,7 +2,7 @@
   <%= link_to '', root_path, class: "nav-links" %>
 </li>
 <li>
-  <%= link_to classrooms_path, class: "nav-links" do %>
+  <%= link_to_selected classrooms_path, class: "nav-links" do %>
     <span class="nav-icon nav-classrooms"></span>
     <span class="nav-label">Classrooms</span>
   <% end %>
@@ -10,7 +10,7 @@
 
 <% if @classroom.try(:id) %>
   <li id="track_link" data-classroomid="<%= @classroom.id %>" >
-    <%= link_to classroom_tracks_path(@classroom), class: "nav-links" do %>
+    <%= link_to_selected classroom_tracks_path(@classroom), class: "nav-links" do %>
       <span class="nav-icon nav-tracks"></span>
       <span class="nav-label">Tracks</span>
     <% end %>
@@ -27,7 +27,7 @@
   <!-- move all account links into a secondary menu visible on hover -->
   <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'logout-link' %></li>
   <li>
-    <%= link_to edit_profile_path, class: "nav-links" do %>
+    <%= link_to_selected edit_profile_path, class: "nav-links" do %>
       <span class="nav-icon nav-account"></span>
       <span class="nav-label">Account</span>
     <% end %>
