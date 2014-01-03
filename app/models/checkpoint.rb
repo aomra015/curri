@@ -7,7 +7,7 @@ class Checkpoint < ActiveRecord::Base
   default_scope { order(id: :asc) }
 
   def latest_student_score(student)
-    ratings.where(student_id: student.id).last.try(:score).to_s
+    ratings.where(student_id: student.id).last.try(:score)
   end
 
   def hasnt_voted(phase)

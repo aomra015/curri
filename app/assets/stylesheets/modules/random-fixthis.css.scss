@@ -31,7 +31,7 @@
   }
 }
 
-.login-button, .profile-button, .invite-button, .remove_button, .register-teacher, .add-track, .add-classroom, #password-reset-button, .reset-button, .add-checkpoint, .add-phase {
+.login-button, .profile-button, .register-teacher, .add-track, .add-classroom, #password-reset-button, .reset-button, .add-checkpoint, .add-phase {
   background-color: $secondary-color;
   color: #FAFAFA;
   font-weight: bold;
@@ -42,10 +42,11 @@
     background-color: darken($secondary-color, 10%);
   }
 }
-.remove_button {
+#remove_button {
   color: #000;
   font-weight: bold;
   padding: 1px;}
+
 .form-horizontal, .new_invitation, .new_user {
   padding-left: 2px;
   h3 {

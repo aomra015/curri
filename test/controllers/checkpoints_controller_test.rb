@@ -3,7 +3,23 @@ require 'test_helper'
 class CheckpointsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
+    @params = {
+      classroom_id: classrooms(:one),
+      track_id: tracks(:one),
+      checkpoint: {
+        expectation: "Test Checkpoint",
+        success_criteria: 'something'
+      }
+    }
+    @update_params = {
+      classroom_id: classrooms(:one),
+      track_id: tracks(:one),
+      id: checkpoints(:one),
+      checkpoint: {
+        expectation: "Changed expectation"
+      }
+    }
   end
 
   test "get new checkpoint form" do
@@ -12,16 +28,17 @@ class CheckpointsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "create checkpoint" do
+  test "should create checkpoint with valid data" do
     assert_difference 'Checkpoint.count' do
-      post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: {expectation: "Test Checkpoint", success_criteria: 'something'}
+      post :create, @params
     end
 
     assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
   end
 
-  test "show form errors when missing information" do
-    post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: {expectation: "Test Checkpoint"}
+  test "should not create checkpoint with invalid data" do
+    @params[:checkpoint][:success_criteria] = nil
+    post :create, @params
 
     assert_template :new
   end
@@ -32,12 +49,19 @@ class CheckpointsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "update checkpoint" do
-    patch :update, classroom_id: classrooms(:one), track_id: tracks(:one), id: checkpoints(:one), checkpoint: {expectation: "Changed expectation" }
+  test "should update checkpoint with valid data" do
+    patch :update, @update_params
 
     checkpoint = Checkpoint.find(checkpoints(:one))
     assert_equal "Changed expectation", checkpoint.expectation
     assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
+  end
+
+  test "should not update checkpoint with invalid data" do
+    @update_params[:checkpoint][:success_criteria] = nil
+    patch :update, @update_params
+
+    assert_template :edit
   end
 
   test "delete checkpoint" do

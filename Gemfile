@@ -13,27 +13,23 @@ group :production do
 end
 
 group :development, :test do
+  gem 'minitest-rails-capybara'
+  gem 'minitest-colorize'
   gem 'pry-rails'
   gem "mocha", :require => false
   gem "teaspoon"
-  gem "thin", "~> 1.6.1"
 end
 
 group :development do
-  gem 'style-guide'
+  gem "thin", "~> 1.6.1"
   gem 'brakeman', :require => false
   gem 'better_errors'
   gem 'rails_best_practices'
   gem 'bullet'
   gem 'spring'
+  gem 'style-guide'
   gem 'rack-livereload'
   gem 'guard-livereload'
-end
-
-group :test do
-  gem 'simplecov', :require => false
-  gem 'minitest-rails-capybara'
-  gem 'minitest-colorize'
 end
 
 gem 'email_validator'

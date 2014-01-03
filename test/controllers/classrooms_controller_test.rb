@@ -3,7 +3,7 @@ require 'test_helper'
 class ClassroomsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
   end
 
   test "get list of classrooms" do
@@ -18,12 +18,18 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "create classroom" do
+  test "should create classroom with valid data" do
     assert_difference 'Classroom.count' do
       post :create, classroom: {name: "Test classroom"}
     end
 
     assert_redirected_to classrooms_path
+  end
+
+  test "should not create classroom with invalid data" do
+    post :create, classroom: { name: nil }
+
+    assert_template :new
   end
 
   test "get edit classroom form" do
@@ -32,12 +38,18 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "update classroom" do
+  test "should update classroom with valid data" do
     patch :update, id: classrooms(:one), classroom: {name: "Changed name" }
 
     classroom = Classroom.find(classrooms(:one).id)
     assert_equal "Changed name", classroom.name
     assert_redirected_to classroom_tracks_path(assigns(:classroom))
+  end
+
+  test "should not update classroom with invalid data" do
+    patch :update, id: classrooms(:one), classroom: {name: nil }
+
+    assert_template :edit
   end
 
   test "delete classroom" do

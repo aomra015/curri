@@ -4,8 +4,8 @@ class UserTest < ActiveSupport::TestCase
   setup do
     @blank_user = User.new
     @blank_user.invalid?
-    @teacher = users(:ahmed)
-    @student = users(:student)
+    @teacher = users(:teacher1)
+    @student = users(:student1)
     @nameless_student = users(:nameless_student)
     @classroom = classrooms(:one)
     @invitation1 = invitations(:one)
