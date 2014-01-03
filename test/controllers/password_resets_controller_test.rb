@@ -13,7 +13,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
   end
 
   test "should send the password reset" do
-    post :create, email: 'aomra@gmail.com'
+    post :create, email: users(:teacher1).email
     assert_equal users(:teacher1), assigns(:user)
     assert_respond_to(assigns(:user), :send_password_reset)
     assert_redirected_to login_path
