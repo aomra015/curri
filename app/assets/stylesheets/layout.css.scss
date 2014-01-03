@@ -187,7 +187,7 @@ body.nav-open .fixed-nav {
   color: lighten($color-main, 40%);
   display: block;
   padding: 15px 20px;
-  line-height: 0;
+  line-height: 1;
   cursor: pointer;
   overflow: hidden; // tooltips
   position: relative; // tooltips
@@ -281,7 +281,7 @@ a.selected {
   font-weight: 600;
   position: absolute;
   background: darken($color-main, 10%);
-  padding: 17px 14px 19px;
+  padding: 10px 14px 12px;
   top: 12px;
   left: 85px;
   -webkit-border-radius: 5px;
@@ -291,6 +291,7 @@ a.selected {
   border-radius: 5px;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
+  line-height: 1;
 
   &:before {
     content: "";
@@ -312,6 +313,10 @@ a.selected {
   }
 }
 
+// hide the tooltip for the expand arrow
+.nav-label-hide {
+  display: none;
+}
 
 
 .nav-links:hover .nav-label ,
@@ -344,10 +349,6 @@ body.nav-open .nav-label {
   &:before {
     display: none;
   }
-}
-// hide the tooltip for the expand arrow
-body.nav-open .nav-label-hide {
-  display: none;
 }
 
 // Main app area
