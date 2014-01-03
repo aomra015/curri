@@ -12,7 +12,8 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 - `$ foreman start -f Procfile-dev`
 
 ### Run tests
-- `$ rake test` to run Ruby tests.
-- `$ rake teaspoon` to run JavaScript tests. 
+- `$ rake minitest` to run all Ruby tests.
+- `$ rake minitest:<type>` to run just tests of that type. Use `:models`, `:controllers`, `:helpers`, `:services`, `:features` etc.
+- `$ rake teaspoon` to run JavaScript tests.
 
 Note that you need to have phantomjs installed (`$ brew install phantomjs`) to run the JavaScript tests.

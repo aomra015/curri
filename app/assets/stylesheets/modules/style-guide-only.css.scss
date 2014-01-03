@@ -9,3 +9,39 @@
   padding: 10px;
   margin-bottom: 0;
 }
+
+.branding-colors > div {
+  height: 35px;
+  padding:5px 10px;
+  color: white;
+  margin-bottom: 5px;
+  border-radius: $global-radius;
+}
+
+.sg-main {
+  background-color: $color-main;
+}
+
+.sg-primary {
+  background-color: $color-primary;
+}
+
+.sg-success {
+  background-color: $color-success;
+}
+.sg-warning {
+  background-color: $color-warning;
+}
+
+.sg-danger {
+  background-color: $color-danger;
+}
+
+div.sg-lt-grey {
+  background-color: $grey-lt;
+  color: $grey-md;
+}
+
+.sg-md-grey {
+  background-color: $grey-md;
+}

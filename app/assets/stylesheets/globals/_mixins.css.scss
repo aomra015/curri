@@ -22,9 +22,9 @@
 
   @if $media-query ==  medium {
       @media only screen and (min-width:$med-end) { @content; }
-    }
+  }
   
   @if $media-query ==  large {
       @media only screen and (min-width:$large-start) { @content; }
-    }
+  }
 }
