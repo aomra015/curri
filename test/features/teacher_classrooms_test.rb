@@ -3,7 +3,7 @@ require 'test_helper'
 class TeacherClassroomsTest < Capybara::Rails::TestCase
 
   before do
-    teacher = users(:ahmed)
+    teacher = users(:teacher1)
     login_as(teacher)
     @classroom = classrooms(:one)
   end
@@ -21,7 +21,7 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
   test "a teacher should see a list of their classrooms after login" do
     assert page.has_content?(@classroom.name)
 
-    other_teachers_classroom = users(:paula).classrooms.first.name
+    other_teachers_classroom = users(:teacher2).classrooms.first.name
     assert !page.has_content?(other_teachers_classroom), "Another teacher's classroom is listed"
   end
 

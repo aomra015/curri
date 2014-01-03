@@ -3,7 +3,7 @@ require 'test_helper'
 class RatingsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:student).id
+    session[:user_id] = users(:student1).id
     PrivatePub.stubs(:publish_to)
   end
 
@@ -26,7 +26,7 @@ class RatingsControllerTest < ActionController::TestCase
 
   test "rating should be associated with logged-in student" do
     post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
-    assert_equal users(:student).classrole, Rating.last.student
+    assert_equal users(:student1).classrole, Rating.last.student
   end
 
   test "should publish data to push server" do
@@ -35,7 +35,7 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "only students should be able to rate checkpoints" do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
     post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
 
     assert_redirected_to classroom_track_path(classrooms(:one), tracks(:one))

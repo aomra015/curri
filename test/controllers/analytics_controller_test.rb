@@ -3,7 +3,7 @@ require 'test_helper'
 class AnalyticsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
     @classroom = classrooms(:one)
     @track = tracks(:one)
   end

@@ -13,7 +13,7 @@ class StudentsControllerTest < ActionController::TestCase
       token: @invitation.token
     }
     @login_params = {
-      email: users(:student).email,
+      email: users(:student1).email,
       password: "password123",
       token: @invitation.token
     }
@@ -36,14 +36,14 @@ class StudentsControllerTest < ActionController::TestCase
     assert_redirected_to classrooms_path
   end
 
-  test "should not creating student with invalid token" do
+  test "should not create student with invalid token" do
     @params[:token] = "invalid-token"
     post :create, user: @params
 
     assert_equal "The invitation is no longer valid or the URL is incorrect", flash[:alert]
   end
 
-  test "should not creating student with invalid data" do
+  test "should not create student with invalid data" do
     @params[:email] = nil
     post :create, user: @params
 
@@ -58,7 +58,7 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to login form if logged in" do
-    session[:user_id] = users(:student).id
+    session[:user_id] = users(:student1).id
     get :new, token: @invitation.token
 
     assert_redirected_to students_login_path(@invitation.token)
@@ -67,12 +67,12 @@ class StudentsControllerTest < ActionController::TestCase
   test "should enroll valid student to classroom" do
     post :enroll, user: @login_params
 
-    assert_equal users(:student).classrole, @invitation.reload.student
+    assert_equal users(:student1).classrole, @invitation.reload.student
     assert_redirected_to classrooms_path
   end
 
   test "should not add teacher to classroom" do
-    @login_params[:email] = users(:ahmed).email
+    @login_params[:email] = users(:teacher1).email
     post :enroll, user: @login_params
 
     assert_equal "You need a student account to accept the invitation.", flash[:alert]

@@ -15,44 +15,44 @@ class PhaseTest < ActiveSupport::TestCase
     @test_phase_all = Phase.new(@test_track,"Realtime")
   end
 
-  test "bad_phase_error" do
+  test "bad phase error" do
     assert_raises(ArgumentError) {Phase.new(@test_track,"not before")}
   end
 
-  test "start_time_before" do
+  test "start time before" do
     assert_equal @oct1_two_am, @test_phase_before.start_time
   end
-  test "end_time_before" do
+  test "end time before" do
     assert_equal @oct10_four_am, @test_phase_before.end_time
   end
 
-  test "start_time_during" do
+  test "start time during" do
     assert_equal @oct10_four_am, @test_phase_during.start_time
   end
-  test "end_time_during" do
+  test "end time during" do
     assert_equal @oct15_six_am, @test_phase_during.end_time
   end
 
-  test "start_time_after" do
+  test "start time after" do
     assert_equal @oct15_six_am, @test_phase_after.start_time
   end
-  test "end_time_after" do
+  test "end time after" do
     assert_equal Time.zone.now.to_time.to_i, @test_phase_after.end_time.to_time.to_i
   end
 
-  test "start_time_all" do
+  test "start time all" do
     assert_equal @oct1_two_am, @test_phase_all.start_time
   end
-  test "end_time_all" do
+  test "end time all" do
     assert_equal Time.zone.now.to_time.to_i, @test_phase_all.end_time.to_time.to_i
   end
 
-  test "phase_scopes_ratings" do
+  test "phase scopes ratings" do
     phase = Phase.new(tracks(:one), "Realtime")
     assert_equal 2, phase.ratings(checkpoints(:one)).size
   end
 
-  test "before_phase_scopes_ratings" do
+  test "before phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
     assert_equal 0, @test_phase_before.ratings(checkpoints(:one)).size
 
@@ -60,7 +60,7 @@ class PhaseTest < ActiveSupport::TestCase
     assert_equal 1, @test_phase_before.ratings(checkpoints(:one)).size
   end
 
-  test "during_phase_scopes_ratings" do
+  test "during phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
     assert_equal 0, @test_phase_during.ratings(checkpoints(:one)).size
 
@@ -68,7 +68,7 @@ class PhaseTest < ActiveSupport::TestCase
     assert_equal 1, @test_phase_during.ratings(checkpoints(:one)).size
   end
 
-  test "after_phase_scopes_ratings" do
+  test "after phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
     assert_equal 2, @test_phase_after.ratings(checkpoints(:one)).size
 

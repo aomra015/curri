@@ -5,7 +5,7 @@ class StudentRatingsTest < Capybara::Rails::TestCase
   test "a student can rate checkpoints" do
     PrivatePub.stubs(:publish_to)
 
-    student = users(:student)
+    student = users(:student1)
     login_as(student)
 
     click_link classrooms(:one).name

@@ -3,7 +3,7 @@ require 'test_helper'
 class TeacherTracksTest < Capybara::Rails::TestCase
 
   before do
-    teacher = users(:ahmed)
+    teacher = users(:teacher1)
     login_as(teacher)
 
     @classroom = classrooms(:one)

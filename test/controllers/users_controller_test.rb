@@ -3,7 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
   end
 
   test "should show profile for current user" do
@@ -16,8 +16,8 @@ class UsersControllerTest < ActionController::TestCase
   test "should update user details with valid data" do
     post :update_profile, user: {email: 'ahmed@little.com', password: 'password453', password_confirmation: 'password453'}
 
-    assert_equal 'ahmed@little.com', users(:ahmed).reload.email
-    assert users(:ahmed).authenticate('password453')
+    assert_equal 'ahmed@little.com', users(:teacher1).reload.email
+    assert users(:teacher1).authenticate('password453')
   end
 
   test "should not update user details with invalid data" do

@@ -3,7 +3,7 @@ require "test_helper"
 class InvitationsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
   end
 
   test "should get invitation form & list of invitees" do

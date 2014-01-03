@@ -4,10 +4,10 @@ class StudentAccountsTest < Capybara::Rails::TestCase
 
   before do
     # Teacher
-    teacher = users(:ahmed)
+    teacher = users(:teacher1)
     login_as(teacher)
-    invite_students(teacher, "valid@email.com")
-    @invitation = Invitation.last
+    manage_students(teacher)
+    @invitation = invite_students("valid@email.com")
     log_out
 
     # Student
@@ -30,7 +30,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
     click_link 'skip this step'
     assert_equal students_login_path(@invitation.token), current_path, 'Did not go to page where students can log in to claim invitation'
 
-    fill_in :user_email, with: users(:student).email
+    fill_in :user_email, with: users(:student1).email
     fill_in :user_password, with: 'password123'
     click_button 'Login & Claim'
 

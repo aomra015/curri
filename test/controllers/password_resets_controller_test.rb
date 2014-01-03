@@ -3,8 +3,8 @@ require 'test_helper'
 class PasswordResetsControllerTest < ActionController::TestCase
 
   before do
-    users(:paula).send_password_reset
-    @token = users(:paula).reload.password_reset_token
+    users(:teacher2).send_password_reset
+    @token = users(:teacher2).reload.password_reset_token
   end
 
   test "should get new" do
@@ -14,7 +14,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
   test "should send the password reset" do
     post :create, email: 'franzini@paula.com'
-    assert_equal users(:paula), assigns(:user)
+    assert_equal users(:teacher2), assigns(:user)
     assert_respond_to(assigns(:user), :send_password_reset)
     assert_redirected_to login_path
   end
@@ -22,14 +22,14 @@ class PasswordResetsControllerTest < ActionController::TestCase
   test "should show password edit form" do
     get :edit, id: @token
 
-    assert_equal users(:paula), assigns(:user)
+    assert_equal users(:teacher2), assigns(:user)
     assert :success
   end
 
   test "should update password with valid token" do
     post :update, id: @token, user: { password: 'newpassword', password_confirmation: 'newpassword'}
 
-    assert users(:paula).reload.authenticate('newpassword')
+    assert users(:teacher2).reload.authenticate('newpassword')
     assert_redirected_to root_url
   end
 
@@ -40,8 +40,8 @@ class PasswordResetsControllerTest < ActionController::TestCase
   end
 
   test "should give error with old token" do
-    users(:paula).password_reset_sent_at = Time.zone.now - 5.hours
-    users(:paula).save
+    users(:teacher2).password_reset_sent_at = Time.zone.now - 5.hours
+    users(:teacher2).save
 
     post :update, id: @token, user: { password: 'newpassword', password_confirmation: 'newpassword'}
 

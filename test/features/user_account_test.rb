@@ -3,15 +3,14 @@ require 'test_helper'
 class UserAccountsTest < Capybara::Rails::TestCase
 
   test "a user can log out" do
-    teacher = users(:ahmed)
-    login_as(teacher)
+    login_as(users(:teacher1))
     log_out
 
     assert_equal login_path, current_path
   end
 
   test "a user (teacher) can edit their profile" do
-    login_as(users(:ahmed))
+    login_as(users(:teacher1))
     click_link 'Profile'
 
     assert_equal edit_profile_path, current_path
@@ -22,10 +21,11 @@ class UserAccountsTest < Capybara::Rails::TestCase
     click_button 'Submit'
 
     assert page.has_content?('Profile information updated.')
+    assert page.has_content?('ahmed@little.com')
   end
 
   test "a user (student) can edit their profile" do
-    login_as(users(:student))
+    login_as(users(:student1))
     click_link 'Profile'
 
     assert_equal edit_profile_path, current_path
@@ -36,10 +36,11 @@ class UserAccountsTest < Capybara::Rails::TestCase
     click_button 'Submit'
 
     assert page.has_content?('Profile information updated.')
+    assert page.has_content?('stud222@school.com')
   end
 
   test "a user gets errors with invalid profile edits" do
-    login_as(users(:ahmed))
+    login_as(users(:teacher1))
     click_link 'Profile'
 
     fill_in :user_email, with: ''
@@ -51,7 +52,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
   end
 
   test "a user gets errors with password mismatch" do
-    login_as(users(:ahmed))
+    login_as(users(:teacher1))
     click_link 'Profile'
 
     fill_in :user_email, with: 'ahmed@little.com'

@@ -28,10 +28,14 @@ class ActiveSupport::TestCase
     click_link 'logout-link'
   end
 
-  def invite_students(teacher, student_emails)
+  def manage_students(teacher)
     click_link teacher.classrooms.first.name
     click_link 'manage-students'
+  end
+
+  def invite_students(student_emails)
     fill_in :invitation_emails, with: student_emails
-    click_button 'Send Invitation'
+    click_button 'invite-button'
+    Invitation.last
   end
 end
