@@ -12,7 +12,7 @@ class InvitationsController < ApplicationController
     invitation_creator = InvitationCreator.new(params[:invitation_emails], @classroom)
 
     if invitation_creator.save
-      redirect_to classroom_tracks_path(@classroom), notice: 'Invitations Sent'
+      redirect_to new_classroom_invitation_path(@classroom), notice: 'Invitations Sent'
     else
       flash[:alert] = "Invalid email format"
       @invitations = @classroom.invitations

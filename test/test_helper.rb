@@ -1,12 +1,10 @@
-require 'simplecov'
-#SimpleCov.start
-
 ENV["RAILS_ENV"] ||= "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
 require 'minitest/rails/capybara'
 require 'minitest/colorize'
+require 'mocha/setup'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
@@ -26,17 +24,18 @@ class ActiveSupport::TestCase
     click_button 'Login'
   end
 
-  def invite_students(teacher, student_emails)
-    @classroom = teacher.classrooms.first
-    click_link @classroom.name
-    assert_equal classroom_tracks_path(@classroom), current_path
+  def log_out
+    click_link 'logout-link'
+  end
 
+  def manage_students(teacher)
+    click_link teacher.classrooms.first.name
     click_link 'manage-students'
-    assert_equal new_classroom_invitation_path(@classroom), current_path
+  end
 
+  def invite_students(student_emails)
     fill_in :invitation_emails, with: student_emails
-    click_button 'Send Invitation'
+    click_button 'invite-button'
+    Invitation.last
   end
 end
-
-require "mocha/setup"

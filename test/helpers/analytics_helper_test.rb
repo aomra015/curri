@@ -10,9 +10,7 @@ class AnalyticsHelperTest < ActionView::TestCase
 
     # stubbing time
     date_in_future = Time.zone.now + 1
-    date_in_past = @checkpoint.track.created_at - 1
     Time.zone.expects(:now).returns(date_in_future)
-    @checkpoint.track.created_at = date_in_past
 
     @phase = Phase.new(@checkpoint.track,"Realtime")
   end

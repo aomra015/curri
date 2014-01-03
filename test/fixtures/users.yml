@@ -1,18 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-ahmed:
+teacher1:
   email: aomra@gmail.com
-  classrole: ahmed
+  classrole: teacher1
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
 
-paula:
+teacher2:
   email: franzini@paula.com
-  classrole: paula
+  classrole: teacher2
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
 
-student:
+student1:
   email: student@school.com
   first_name: jane
   last_name: doe

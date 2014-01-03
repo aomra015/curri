@@ -3,35 +3,26 @@ require "test_helper"
 class InvitationsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:ahmed).id
+    session[:user_id] = users(:teacher1).id
   end
 
-  test "should get invitation form" do
+  test "should get invitation form & list of invitees" do
     get :new, classroom_id: classrooms(:one).id
 
-    assert assigns(:invitation)
-    assert assigns(:invitations)
+    assert assigns(:invitation) && assigns(:invitations)
     assert_response :success
   end
 
-  test "should get list of invitees" do
-    get :new, classroom_id: classrooms(:one).id
-
-    assert assigns(:invitation)
-
-    assert_response :success
-  end
-
-  test "create invitation" do
+  test "should create invitations" do
 
     assert_difference 'Invitation.count', 2 do
       post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com, student2@gmail.com"
     end
 
-    assert_redirected_to classroom_tracks_path(assigns(:classroom))
+    assert_redirected_to new_classroom_invitation_path(assigns(:classroom))
   end
 
-  test "invalid email formats not accepted" do
+  test "should give error with invalid email formats" do
     post :create, classroom_id: classrooms(:one), invitation_emails: "student@email.com student2@gmail.com"
 
     assert_template :new
