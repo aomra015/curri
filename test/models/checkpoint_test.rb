@@ -24,10 +24,11 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "latest student score" do
-    Rating.create(score: 1, student: students(:student1), checkpoint: checkpoints(:two))
-    Rating.create(score: 2, student: students(:student1), checkpoint: checkpoints(:two))
+    student = students(:student1)
+    Rating.create(score: 1, student: student, checkpoint: checkpoints(:two))
+    Rating.create(score: 2, student: student, checkpoint: checkpoints(:two))
 
-    assert_equal 2, checkpoints(:two).latest_student_score(students(:student1))
+    assert_equal 2, checkpoints(:two).latest_student_score(student)
   end
 
   test "hasnt voted list for class with two students" do
