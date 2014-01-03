@@ -27,7 +27,7 @@
   <!-- move all account links into a secondary menu visible on hover -->
   <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'logout-link' %></li>
   <li>
-    <%= link_to_selected edit_profile_path, class: "nav-links" do %>
+    <%= link_to_selected edit_profile_path, class: "nav-links", id: 'account' do %>
       <span class="nav-icon nav-account"></span>
       <span class="nav-label">Account</span>
     <% end %>

@@ -11,7 +11,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
 
   test "a user (teacher) can edit their profile" do
     login_as(users(:teacher1))
-    click_link 'Profile'
+    click_link 'account'
 
     assert_equal edit_profile_path, current_path
 
@@ -21,12 +21,12 @@ class UserAccountsTest < Capybara::Rails::TestCase
     click_button 'Submit'
 
     assert page.has_content?('Profile information updated.')
-    assert page.has_content?('ahmed@little.com')
+    assert_equal 'ahmed@little.com', find_field('user_email').value
   end
 
   test "a user (student) can edit their profile" do
     login_as(users(:student1))
-    click_link 'Profile'
+    click_link 'account'
 
     assert_equal edit_profile_path, current_path
 
@@ -36,12 +36,12 @@ class UserAccountsTest < Capybara::Rails::TestCase
     click_button 'Submit'
 
     assert page.has_content?('Profile information updated.')
-    assert page.has_content?('stud222@school.com')
+    assert_equal 'stud222@school.com', find_field('user_email').value
   end
 
   test "a user gets errors with invalid profile edits" do
     login_as(users(:teacher1))
-    click_link 'Profile'
+    click_link 'account'
 
     fill_in :user_email, with: ''
     fill_in :user_password, with: 'password453'
@@ -53,7 +53,7 @@ class UserAccountsTest < Capybara::Rails::TestCase
 
   test "a user gets errors with password mismatch" do
     login_as(users(:teacher1))
-    click_link 'Profile'
+    click_link 'account'
 
     fill_in :user_email, with: 'ahmed@little.com'
     fill_in :user_password, with: 'password453'
