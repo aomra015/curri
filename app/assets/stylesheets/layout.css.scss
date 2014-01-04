@@ -148,10 +148,6 @@
 
 // Navigation
 
-// slide open to show navigation labels, addClass() to body through JS
-.nav-open {
-  padding-left: 180px;
-}
 
 .fixed-nav {
   display: none;
@@ -363,8 +359,9 @@ body.nav-open .nav-label {
 .main {
   max-width: 1300px;
   min-width: 320px;
+  width: auto;
+  height: inherit;
   padding: 0 20px 20px 20px;
-  width: 100%;
   background: #FFF;
   // overflow: hidden; // for floated children
 }
@@ -443,6 +440,14 @@ a:hover .nav-burger {
 }
 
 @include media-query(medium) {
+  .main { // new
+    margin-left: 70px;
+  }
+
+  body.nav-open .main {
+  margin-left: 170px;
+  }
+
   .show-desktop {
     display: inline;
   }
