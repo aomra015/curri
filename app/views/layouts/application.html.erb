@@ -9,19 +9,9 @@
   </head>
   <body>
     <%= render "shared/nav" %>
-    
+
     <div class="main">
-      <div class="page-header grid">
-        <div class="grid-unit whole">
-          <a class="hide-desktop collapse-toggle">
-            <span class="nav-icon nav-burger"></span>
-          </a>
-          <h4>Header</h4>
-          <div class="secondary-nav pull-right">
-            <span class="help-toggle">Help Toggle</span>
-          </div>
-        </div>
-      </div>
+      <%= render 'shared/page_header' %>
       <% if notice %>
         <div class="alert alert-success alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
