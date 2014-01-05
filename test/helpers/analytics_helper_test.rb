@@ -5,8 +5,8 @@ class AnalyticsHelperTest < ActionView::TestCase
   before do
     # checkpoints(:one) has two unique ratings (score of 1)
     @checkpoint = checkpoints(:one)
-    @total_count = checkpoints(:one).track.classroom.students.size
-    @total_count_noratings = checkpoints(:noratings).track.classroom.students.size
+    @total_count = checkpoints(:one).track.classroom.students.length
+    @total_count_noratings = checkpoints(:noratings).track.classroom.students.length
 
     # stubbing time
     date_in_future = Time.zone.now + 1
@@ -23,7 +23,7 @@ class AnalyticsHelperTest < ActionView::TestCase
   end
 
   test "checkpoint with one rating count" do
-    total_count = checkpoints(:onerating).track.classroom.students.size
+    total_count = checkpoints(:onerating).track.classroom.students.length
     ratingData = @phase.ratings(checkpoints(:onerating))
 
     assert_equal({ :count => 0, :percent => 0.0, score: 0 }, ratings_count(ratingData, total_count, 0))
