@@ -32,6 +32,5 @@ Curri::Application.configure do
   config.after_initialize do
     Bullet.enable = true
     Bullet.console = true
-    Bullet.alert = true
   end
 end
