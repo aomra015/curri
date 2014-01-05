@@ -1,5 +1,5 @@
-class @CurriUiOptions
-  constructor: ->
+@CurriUiOptions =
+  init: ->
     if @supports_html5_storage()
       if @largeScreen()
         # Defaults

@@ -29,9 +29,9 @@ $ ->
     $("#help_link#{requester}").text("I'm OK")
 
   # Navigation Collapse
-  curri_ui = new CurriUiOptions()
-  curri_ui.build_from_localstorage()
+  CurriUiOptions.init()
+  CurriUiOptions.build_from_localstorage()
 
   $('.collapse-toggle').on 'click', ->
     $('body').toggleClass('nav-open')
-    curri_ui.change_localstorage()
+    CurriUiOptions.change_localstorage()
