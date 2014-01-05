@@ -30,8 +30,7 @@ $ ->
 
   # Navigation Collapse
   CurriUiOptions.init()
-  CurriUiOptions.build_from_localstorage()
 
   $('.collapse-toggle').on 'click', ->
     $('body').toggleClass('nav-open')
-    CurriUiOptions.change_localstorage()
+    CurriUiOptions.update()
