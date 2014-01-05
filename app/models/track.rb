@@ -1,5 +1,5 @@
 class Track < ActiveRecord::Base
-  belongs_to :classroom
+  belongs_to :classroom, :counter_cache => true
   has_many :checkpoints
   validates :name, presence: true
 
