@@ -18,4 +18,16 @@ module ApplicationHelper
     path.match(/tracks$/) && (params[:controller] == 'tracks' || params[:controller] == 'checkpoints')
   end
 
+  def current_page_header
+    if params[:controller] == 'users'
+      'Account'
+    elsif params[:controller] == 'sessions' || params[:controller] == 'password_resets'
+      ''
+    elsif params[:controller] == 'teachers'
+      'Register'
+    else
+      params[:controller].capitalize
+    end
+  end
+
 end

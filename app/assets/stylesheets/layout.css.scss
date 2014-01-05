@@ -148,10 +148,6 @@
 
 // Navigation
 
-// slide open to show navigation labels, addClass() to body through JS
-.nav-open {
-  padding-left: 180px;
-}
 
 .fixed-nav {
   display: none;
@@ -165,7 +161,7 @@
 }
 
 body.nav-open .fixed-nav {
-  display: inline;
+  display: block;
   width: 170px;
 }
 
@@ -182,7 +178,11 @@ body.nav-open .fixed-nav {
 
 .logo a {
   background: $color-primary;
-  padding: 45px 20px;
+  padding: 34px 20px;
+}
+
+.expand-collapse {
+  display: none;
 }
 
 .nav-links {
@@ -363,33 +363,43 @@ body.nav-open .nav-label {
 .main {
   max-width: 1300px;
   min-width: 320px;
-  padding: 0 20px 20px 20px;
-  width: 100%;
+  width: auto;
+  height: inherit;
+  padding: 0 20px 20px 30px;
   background: #FFF;
   // overflow: hidden; // for floated children
 }
 
 body.nav-open .main {
   min-width: 480px;
+  margin-left: 170px;
 }
 
 .page-header {
   overflow: hidden;
   margin-bottom: 20px;
-  h2 {
+  h4 {
     display: inline-block;
-    color: darken($color-main, 10%);
+    color: lighten($color-main, 25%);
     margin: 0;
+    line-height: 2;
   }
 
   a {
     margin: 0 10px 0 -10px;
     line-height: 0;
     position: relative;
-    top: 3px;
+    top: 6px;
     padding: 10px;
     cursor: pointer;
   }
+}
+
+.page-header.grid {
+  margin-left: -30px;
+  margin-right: -20px;
+  padding: 0 20px 4px 10px;
+  border-bottom: 1px solid $grey-lt;
 }
 
 .nav-burger {
@@ -417,7 +427,7 @@ a:hover .nav-burger {
   // display: inline-block; // causes textual whitespace
   float: left;
   padding-left: 20px;
-  margin: 10px auto;
+  margin: 15px auto 10px;
 }
 
 .pull-right {
@@ -426,6 +436,10 @@ a:hover .nav-burger {
 
 .narrow, .wide, .whole {
   width: 100%;
+}
+
+.hide-mobile {
+  display: none;
 }
 
 @include media-query(small) {
@@ -443,8 +457,20 @@ a:hover .nav-burger {
 }
 
 @include media-query(medium) {
+  .main {
+    margin-left: 70px;
+  }
+
+  body.nav-open .main {
+  margin-left: 170px;
+  }
+
+  .page-header.grid {
+    border: none;
+  }
+
   .show-desktop {
-    display: inline;
+    display: block;
   }
 
   .hide-desktop {

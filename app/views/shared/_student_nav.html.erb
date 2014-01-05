@@ -1,5 +1,0 @@
-<% if current_user.needs_help?(@classroom) %>
-  <li><%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%></li>
-<% else %>
-  <li><%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %></li>
-<% end %>

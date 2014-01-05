@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Curri</title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render "shared/nav" %>
+  <head>
+    <title>Curri</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "shared/nav" %>
 
-  <div class="main">
-    <% if notice %>
-      <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= notice %></div>
-    <% end %>
+    <div class="main">
+      <%= render 'shared/page_header' %>
+      <% if notice %>
+        <div class="alert alert-success alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= notice %></div>
+      <% end %>
 
-    <% if alert %>
-      <div class="alert alert-warning alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <%= alert %></div>
-    <% end %>
+      <% if alert %>
+        <div class="alert alert-warning alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= alert %></div>
+      <% end %>
 
-  <%= yield %>
+      <%= yield %>
 
-  </div>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-</body>
+    </div>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  </body>
 </html>

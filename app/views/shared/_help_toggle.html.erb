@@ -1,0 +1,12 @@
+<div class="help-toggle">
+  <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
+  <% if current_user.teacher? %>
+    <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %>
+  <% else %>
+    <% if current_user.needs_help?(@classroom) %>
+      <%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%>
+    <% else %>
+      <%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %>
+    <% end %>
+  <% end %>
+</div>

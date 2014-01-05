@@ -11,17 +11,18 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: $sans-serif;
-  text-rendering: optimizeLegibility;
-  color: $color-text;
-  // background: #ccc;
+html {
+  height: 100%;
 }
 
-@include media-query(medium) {
-  body {
-    padding: 0 10px 0 80px;
-  }
+body {
+  font-family: $sans-serif;
+  width: 100%;
+  height: inherit;
+  text-rendering: optimizeLegibility;
+  color: $color-text;
+  overflow-x: hidden;
+  // background: #ccc;
 }
 
 p {
@@ -66,12 +67,12 @@ h4 {
 
 // Old styles, remove these
 
-h2.page-header {
-  border-left: 5px solid $secondary-color;
-  padding-left: 10px;
-  float: left;
-  margin-top: 5px;
-}
+// h2.page-header {
+//   border-left: 5px solid $secondary-color;
+//   padding-left: 10px;
+//   float: left;
+//   margin-top: 5px;
+// }
 
 h3.grid-header {
   padding: 20px;
