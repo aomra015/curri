@@ -33,4 +33,9 @@ Curri::Application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.raise = true
+  end
 end

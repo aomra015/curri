@@ -5,7 +5,7 @@ class TracksController < ApplicationController
   before_action :get_track, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tracks = @classroom.tracks
+    @tracks = @classroom.tracks.includes(:checkpoints)
   end
 
   def show

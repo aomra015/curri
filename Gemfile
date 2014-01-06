@@ -18,6 +18,7 @@ group :development, :test do
   gem 'pry-rails'
   gem "mocha", :require => false
   gem "teaspoon"
+  gem 'bullet'
 end
 
 group :development do
@@ -25,7 +26,6 @@ group :development do
   gem 'brakeman', :require => false
   gem 'better_errors'
   gem 'rails_best_practices'
-  gem 'bullet'
   gem 'spring'
   gem 'style-guide'
   gem 'rack-livereload'

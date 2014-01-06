@@ -15,6 +15,15 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+  before do
+    Bullet.start_request if Bullet.enable?
+  end
+
+  after do
+    Bullet.perform_out_of_channel_notifications if Bullet.enable? && Bullet.notification?
+    Bullet.end_request if Bullet.enable?
+  end
+
   # Add more helper methods to be used by all tests here...
 
   def login_as(user)

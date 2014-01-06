@@ -1,9 +1,10 @@
 <div class="row" id="checkpoint<%= checkpoint.id %>">
-  <div class="unit-inner"><div class="analytics-track-name">
+  <div class="unit-inner">
+    <div class="analytics-track-name">
       <h4>
       <%= checkpoint.expectation %>
       </h4>
-      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: checkpoint.track.classroom.students.size } %>
+      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.students.size } %>
     </div>
 
     <div class="ratings-count">

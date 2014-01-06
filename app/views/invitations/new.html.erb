@@ -21,7 +21,7 @@
       <th>Status</th>
     </tr>
 
-    <% @invitations.each do |invitation| %>
+    <% @invitations.includes(student: :user).each do |invitation| %>
       <tr id="invitation_<%= invitation.id%>">
         <td><%= invitation.full_name %></td>
         <td><%= invitation.email_address %></td>

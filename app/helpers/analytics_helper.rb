@@ -31,7 +31,7 @@ module AnalyticsHelper
   end
 
   def hasnt_voted_box(checkpoint)
-    hasnt_voted_list = checkpoint.hasnt_voted(@phase)
+    hasnt_voted_list = checkpoint.hasnt_voted(@phase, @classroom)
     output = content_tag :p, "Hasn't voted:"
     output = content_tag :p, "" if hasnt_voted_list.empty?
     hasnt_voted_list.each do |email|

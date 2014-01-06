@@ -1,5 +1,5 @@
 class Invitation < ActiveRecord::Base
-  belongs_to :classroom
+  belongs_to :classroom, :counter_cache => :students_count
   belongs_to :student
 
   before_create :generate_token
