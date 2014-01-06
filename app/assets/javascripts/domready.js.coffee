@@ -34,8 +34,6 @@ $ ->
   $('.collapse-toggle').on 'click', ->
     $('body').toggleClass('nav-open')
     CurriUiOptions.update()
-
-  $('.collapse-toggle').on 'click', ->
     $('.main').removeClass('subnav-open')
     $('.subnav').removeClass('show')
 
