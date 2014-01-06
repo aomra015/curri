@@ -37,5 +37,5 @@ $ ->
 
   # Subnav Toggle
   $('.subnav-toggle').on 'click', ->
-    $('div.main').toggleClass('subnav-open')
-    $('ul.subnav').toggleClass('show')
+    $('.main').toggleClass('subnav-open')
+    $('.subnav').toggleClass('show')
