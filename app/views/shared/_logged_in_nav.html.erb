@@ -23,10 +23,10 @@
 
 <div class="bottom-nav">
   <li>
-    <a href='#' class="nav-links subnav-toggle ">
+    <%= link_to_selected '#', class: 'nav-links subnav-toggle' do %>
       <span class="nav-icon nav-account"></span>
       <span class="nav-label">Account</span>
-    </a>
+    <% end %>
   </li>
   </li>
   <li class="expand-collapse show-desktop">
