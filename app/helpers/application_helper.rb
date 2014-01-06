@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def link_to_selected(*arg, &block)
-    if current_page?(arg[0]) || at_track?(arg[0]) || at_classroom?(arg[0])
+    if current_page?(arg[0]) || at_track?(arg[0]) || at_classroom?(arg[0] || at_profile?(arg[0]))
       options = arg.extract_options!
       options[:class] += ' selected'
       arg << options

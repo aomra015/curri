@@ -7,4 +7,9 @@
       <%= render 'shared/logged_out_nav' %>
     <% end %>
   </ul>
+  <ul class="subnav">
+    <% if current_user %>
+      <%= render 'shared/subnav' %>
+    <% end %>
+  </ul>
 </div>
