@@ -6,4 +6,5 @@
 
   removeRequest: (requesterId) ->
     $("#requester#{requesterId}").remove()
-    $('#requesters-table').append('<tr id="placeholder"><td colspan="3">You have no students needing help!</td></tr>')
+    unless $('.requester').length
+      $('#requesters-table').append('<tr id="placeholder"><td colspan="3">You have no students needing help!</td></tr>')
