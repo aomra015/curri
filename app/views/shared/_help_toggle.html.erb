@@ -1,5 +1,4 @@
 <div class="help-toggle">
-  <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
   <% if current_user.teacher? %>
     <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %>
   <% else %>

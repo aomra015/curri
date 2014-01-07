@@ -1,24 +1,16 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > Your Students Needing Help</h2>
 </div>
-<div class="grid3">
-  <% if @classroom.requesters.empty? %>
-    <h2> You have no students needing help! </h2>
-  <% else %>
-    <table>
-      <tr>
-        <th>Student</th>
-        <th>Time</th>
-        <th>OK</th>
-      </tr>
-
-      <% @requesters.each do |requester| %>
-        <tr>
-          <td><%= requester.full_name %></td>
-          <td><%= requester.updated_at.strftime("%l:%M%P, %e %b %y") %></td>
-          <td><%= link_to 'Done', classroom_reset_status_path(@classroom, invitation_id: requester.id), method: :patch, class: 'remove_button btn'%></td>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
+<div class="grid3" id="student-list">
+<%= render 'student_list', requesters: @requesters %>
 </div>
+
+<!-- <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+<script type="text/javascript">
+var pusher = new Pusher('<%= Pusher.key %>');
+var channel = pusher.subscribe('classroom<%= @classroom.id %>-requesters');
+channel.bind('request', function(data) {
+  console.log('something happend');
+  $('#student-list').html("<%= j render 'student_list', requesters: @classroom.requesters %>");
+});
+</script> -->

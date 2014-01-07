@@ -3,7 +3,7 @@ require 'test_helper'
 class StudentRatingsTest < Capybara::Rails::TestCase
 
   test "a student can rate checkpoints" do
-    PrivatePub.stubs(:publish_to)
+    Pusher.stubs(:trigger)
 
     student = users(:student1)
     login_as(student)

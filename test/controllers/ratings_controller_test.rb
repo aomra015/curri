@@ -4,7 +4,7 @@ class RatingsControllerTest < ActionController::TestCase
 
   before do
     session[:user_id] = users(:student1).id
-    PrivatePub.stubs(:publish_to)
+    Pusher.stubs(:trigger)
   end
 
   test "should create ratings with html request" do
@@ -30,7 +30,7 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "should publish data to push server" do
-    PrivatePub.expects(:publish_to).once
+    Pusher.expects(:trigger).once
     post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
   end
 

@@ -14,8 +14,9 @@ class RequestersController < ApplicationController
     end
 
     requester.toggle(:help).save
-    PrivatePub.publish_to "/classrooms/#{@classroom.id}/requesters", requester: requester.id, requesters_count: @classroom.requesters.size
+    # Pusher["classroom#{@classroom.id}-requesters"].trigger('request', { requester: requester.id, requesters_count: @classroom.requesters.size })
 
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
   end
+
 end
