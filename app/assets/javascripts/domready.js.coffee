@@ -16,12 +16,6 @@ $ ->
     marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
-  # Update Header
-  # CLASSROOM_ID = $('#track_link').data('classroomid')
-  # PrivatePub.subscribe "/classrooms/#{CLASSROOM_ID}/requesters", ({requester, requesters_count}) ->
-  #   $('#requesters_link').text("Requesters (#{requesters_count})")
-  #   $("#help_link#{requester}").text("I'm OK")
-
   # Navigation Collapse
   CurriUiOptions.init()
 
