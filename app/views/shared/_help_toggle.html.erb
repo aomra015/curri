@@ -1,11 +1,14 @@
-<div class="help-toggle">
-  <% if current_user.teacher? %>
-    <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %>
-  <% else %>
+<% if current_user.teacher? %>
+  <div id="requester-numb">
+    <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom) %>
+  </div>
+<% else %>
+  <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
+  <div id="help-toggle" data-url="<%= classroom_requester_path(classroom_id: @classroom.id, id: requester.id) %>">
     <% if current_user.needs_help?(@classroom) %>
-      <%= link_to "I need help!", reset_status_classroom_requesters_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%>
+      <%= link_to "I need help!", toggle_classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% else %>
-      <%= link_to "I'm OK", reset_status_classroom_requesters_path(@classroom), method: :patch %>
+      <%= link_to "I'm OK", toggle_classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

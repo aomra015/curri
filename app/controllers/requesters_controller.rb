@@ -1,25 +1,33 @@
 class RequestersController < ApplicationController
 
   before_action :get_classroom
+  before_action :get_requester, except: [:index]
+  respond_to :html, :json
 
   def index
     @requesters = @classroom.requesters
   end
 
-  def reset_status
-    requester = @current_user.classrole.invitations.find_by(classroom_id: @classroom.id)
-    requester.toggle!(:help)
+  def show
+    respond_with help: @requester.help
+  end
 
-    Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: requester }), helpStatus: requester.help, requesterId: requester.id })
+  def toggle
+    @requester.toggle!(:help)
+
+    Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
 
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
   end
 
   def complete
-    requester = @classroom.invitations.find(params[:id])
-
-    requester.toggle!(:help)
+    @requester.toggle!(:help)
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
+  end
+
+  private
+  def get_requester
+    @requester = @classroom.invitations.find(params[:id])
   end
 
 end

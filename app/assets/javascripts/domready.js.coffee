@@ -16,6 +16,9 @@ $ ->
     marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
+  # Update Header
+  HeaderPoller.poll() if $('#help-toggle').length
+
   # Navigation Collapse
   CurriUiOptions.init()
 
