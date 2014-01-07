@@ -156,7 +156,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  background: #415463;
+  background: $color-main;
   z-index: 100;
 }
 
@@ -185,12 +185,13 @@ body.nav-open .fixed-nav {
   display: none;
 }
 
-.nav-links {
-  color: lighten($color-main, 40%);
+.nav-links, .subnav-links {
   display: block;
   padding: 15px 20px;
   line-height: 1;
-  cursor: pointer;
+}
+.nav-links {
+  color: lighten($color-main, 40%);
   overflow: hidden; // tooltips
   position: relative; // tooltips
   &:hover,
@@ -368,11 +369,19 @@ body.nav-open .nav-label {
   padding: 0 20px 20px 30px;
   background: #FFF;
   // overflow: hidden; // for floated children
+  -webkit-transition: all 0.3s ease;
+  &.subnav-open {
+    @include translate(130px, 0);
+  }
 }
 
 body.nav-open .main {
   min-width: 480px;
   margin-left: 170px;
+}
+
+body.nav-open .main.subnav-open {
+  @include translate(130px, 0);
 }
 
 .page-header {
@@ -416,6 +425,67 @@ a:hover .nav-burger {
   display: block;
 }
 
+//subnav
+
+.subnav {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: auto;
+  width: 130px;
+  left: 70px;
+  background: lighten($color-main, 30%);
+  border-right: 1px solid lighten($color-main, 25%);
+  .bottom-nav {
+    margin-bottom: 10px;
+  }
+}
+
+body.nav-open .subnav {
+  left: 170px;
+}
+
+.account-id-header {
+  font-size: 14px;
+  background: $color-main;
+  color: #fff;
+  padding: 5px 20px;
+}
+
+.account-id {
+  color: lighten($color-main, 65%);
+  background: lighten($color-main, 10%);
+  margin-bottom: 10px;
+}
+
+.user-type {
+  display: block;
+}
+
+.user-name {
+  -webkit-font-smoothing: antialiased;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 13px;
+}
+
+a.subnav-links {
+  color: $color-main;
+  font-size: 15px;
+  &:hover,
+  &:focus {
+    color: lighten($color-main, 65%);
+  }
+}
+
 // Grid
 
 .grid {
@@ -432,6 +502,10 @@ a:hover .nav-burger {
 
 .pull-right {
   float: right;
+}
+
+.show {
+  display: block;
 }
 
 .narrow, .wide, .whole {

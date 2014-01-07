@@ -1,10 +1,14 @@
 <div class="fixed-nav show-desktop">
-  <!-- <div id="logo"><a href="/"><%= image_tag("logo2.svg") %></a></div> -->
   <ul>
     <% if current_user %>
       <%= render 'shared/logged_in_nav' %>
     <% else %>
       <%= render 'shared/logged_out_nav' %>
+    <% end %>
+  </ul>
+  <ul class="subnav">
+    <% if current_user %>
+      <%= render 'shared/subnav' %>
     <% end %>
   </ul>
 </div>

@@ -22,18 +22,15 @@
 <% end %>
 
 <div class="bottom-nav">
-  <!-- move all account links into a secondary menu visible on hover -->
-  <li><%= link_to 'Log Out', logout_path, method: :delete, id: 'logout-link' %></li>
   <li>
-    <%= link_to_selected edit_profile_path, class: "nav-links", id: 'account' do %>
+    <%= link_to_selected '#', class: 'nav-links subnav-toggle' do %>
       <span class="nav-icon nav-account"></span>
       <span class="nav-label">Account</span>
     <% end %>
   </li>
-  <!-- <li class="hide-role"><span> <%= "Role: #{current_user.classrole_type}; #{current_user.email}" %> </span></li> -->
   </li>
-  <li>
-    <a class="nav-links collapse-toggle">
+  <li class="expand-collapse show-desktop">
+    <a href='#' class="nav-links collapse-toggle">
       <span class="nav-icon nav-size"></span>
       <span class="nav-label nav-label-hide">Collapse</span>
     </a>
