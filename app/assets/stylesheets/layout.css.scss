@@ -4,150 +4,7 @@
 
 @import 'globals/all';
 
-// .container {
-//   width: $container-width;
-//   margin: 0 auto;
-//   overflow: hidden;
-// }
-
-
-// .grid-unit {
-//   &:hover {
-//     background-color: darken($grid-background, 8%);
-//   }
-// }
-
-// .grid1, .grid2, .grid3 {
-//   background-color: $grid-background;
-//   float: left;
-//   @include rounded-corner;
-//   @include all-transition;
-//   margin-bottom: 30px;
-// }
-
-// .grid1 {
-//   margin-right: 30px;
-//   width: 300px;
-//   height: 400px;
-//   overflow: hidden;
-// }
-
-// .grid-temp {
-//   margin-right: 30px;
-//   width: 300px;
-//   float: left;
-// }
-
-// .grid2 {
-//   width: 630px;
-//   margin-right: 30px;
-// }
-
-// .grid3 {
-//   margin-right: 30px;
-//   width: 600px;
-//   height: 400px;
-//   overflow: hidden;
-// }
-
-// div.grids a:nth-of-type(3n) { //why not 3n? need to fix this.
-//   margin-right: 0;
-// }
-
-// .grid-add {
-//   background-color: transparent;
-//   border: 8px solid $grid-background;
-//   color: $grid-background;
-//   @include all-transition;
-
-//   &:hover {
-//     border-color: darken($grid-background, 20%);
-//     color: darken($grid-background, 20%);
-//     background-color: transparent;
-//   }
-// }
-
-// .row {
-//   border-bottom: 1px solid darken($grid-background, 10%);
-
-//   &:last-child {
-//     border-bottom: none;
-//   }
-
-//   ul {
-//     padding-left: 0;
-//     // margin-left: 20px;
-//     margin-top: 0;
-//     margin-bottom: 0;
-
-//     li {
-//       list-style:none;
-//       // border-left: 3px solid red;
-//       padding: 20px 10px 20px 20px;
-//       border-bottom: 1px solid darken($grid-background, 10%);
-//       @include all-transition;
-
-//       &:last-child {
-//         border-bottom: none;
-//       }
-
-//       &.link:hover {
-//         background-color: darken($grid-background, 10%);
-//       }
-
-//       a {
-//         display: block;
-//       }
-//     }
-//   }
-// }
-
-// .unit-inner {
-//   padding: 0 20px;
-//   position: relative;
-//   overflow: hidden;
-// }
-
-// .pull-right {
-//   float: right;
-// }
-
-// .well {
-//   background-color: #f9f9f9;
-//   margin-bottom: 60px;
-//   padding-top: 0;
-//   padding-bottom: 0;
-// }
-
-
-// .well .row {
-//   padding: 40px 0;
-//   border-bottom: 1px solid #e3e3e3;
-//   margin-right: -19px;
-//   margin-left: -19px;
-//   position: relative;
-// }
-
-// .well .row:last-child {
-//   border-bottom: none;
-// }
-
-// .row.header-row {
-//   padding: 15px 0 0 10px;
-//   background-color: #e7e7e7;
-//   text-shadow: 1px 1px 2px #fff;
-//   border-bottom: 1px solid #ccc;
-// }
-
-// .col-md-9 {
-//   padding-right: 35px;
-//   padding-left: 35px;
-// }
-
-// New styles
-
 // Navigation
-
 
 .fixed-nav {
   display: none;
@@ -157,6 +14,8 @@
   left: 0;
   bottom: 0;
   background: $color-main;
+  height: inherit;
+  min-height: 465px;
   z-index: 100;
 }
 
@@ -190,6 +49,7 @@ body.nav-open .fixed-nav {
   padding: 15px 20px;
   line-height: 1;
 }
+
 .nav-links {
   color: lighten($color-main, 40%);
   overflow: hidden; // tooltips
@@ -281,21 +141,16 @@ a.selected {
 
 // Tooltips
 .nav-label {
-  font-weight: 600;
+  font-weight: 700;
   position: absolute;
   background: darken($color-main, 10%);
   padding: 10px 14px 12px;
   top: 12px;
   left: 85px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
-  border-radius: 5px;
+  @include border-radius(5px);
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
   line-height: 1;
-
   &:before {
     content: "";
     position: absolute;
@@ -308,11 +163,7 @@ a.selected {
     -moz-transform: rotate(45deg);
     -o-transform: rotate(45deg);
     transform: rotate(45deg);
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
-    border-radius: 2px;
+    @include border-radius(2px);
   }
 }
 
@@ -320,7 +171,6 @@ a.selected {
 .nav-label-hide {
   display: none;
 }
-
 
 .nav-links:hover .nav-label ,
 .nav-links:focus .nav-label {
@@ -362,26 +212,21 @@ body.nav-open .nav-label {
 // Main app area
 
 .main {
+  position: relative;
   max-width: 1300px;
   min-width: 320px;
-  width: auto;
   height: inherit;
   padding: 0 20px 20px 30px;
   background: #FFF;
-  // overflow: hidden; // for floated children
-  -webkit-transition: all 0.3s ease;
+  @include transition-transform(all, 0.25s, ease, 0s);
   &.subnav-open {
-    @include translate(130px, 0);
+    @include transform-translate(130px, 0);
   }
 }
 
 body.nav-open .main {
   min-width: 480px;
   margin-left: 170px;
-}
-
-body.nav-open .main.subnav-open {
-  @include translate(130px, 0);
 }
 
 .page-header {
@@ -435,10 +280,13 @@ a:hover .nav-burger {
   right: auto;
   width: 130px;
   left: 70px;
-  background: lighten($color-main, 30%);
-  border-right: 1px solid lighten($color-main, 25%);
+  background: lighten($color-main, 65%);
+  border-right: 1px solid lighten($color-main, 60%);
   .bottom-nav {
     margin-bottom: 10px;
+  }
+  &.subnav-show {
+  display: block;
   }
 }
 
@@ -455,7 +303,8 @@ body.nav-open .subnav {
 
 .account-id {
   color: lighten($color-main, 65%);
-  background: lighten($color-main, 10%);
+  color: $color-main;
+  background: lighten($color-main, 50%);
   margin-bottom: 10px;
 }
 
@@ -464,7 +313,6 @@ body.nav-open .subnav {
 }
 
 .user-name {
-  -webkit-font-smoothing: antialiased;
   font-size: 18px;
   font-weight: 700;
   margin-bottom: 5px;
@@ -478,11 +326,12 @@ body.nav-open .subnav {
 }
 
 a.subnav-links {
-  color: $color-main;
+  color: lighten($color-main, 25%);
   font-size: 15px;
+  font-weight: 600;
   &:hover,
   &:focus {
-    color: lighten($color-main, 65%);
+    color: $color-main;
   }
 }
 
@@ -502,10 +351,6 @@ a.subnav-links {
 
 .pull-right {
   float: right;
-}
-
-.show {
-  display: block;
 }
 
 .narrow, .wide, .whole {
@@ -533,10 +378,6 @@ a.subnav-links {
 @include media-query(medium) {
   .main {
     margin-left: 70px;
-  }
-
-  body.nav-open .main {
-  margin-left: 170px;
   }
 
   .page-header.grid {
