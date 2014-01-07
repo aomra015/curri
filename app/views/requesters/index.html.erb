@@ -1,16 +1,33 @@
 <div id="page-head">
   <h2 class="page-header"><%= @classroom.name %> > Your Students Needing Help</h2>
 </div>
-<div class="grid3" id="student-list">
-<%= render 'student_list', requesters: @requesters %>
+<div class="grid3">
+  <table id="requesters-table">
+    <tr>
+      <th>Student</th>
+      <th>Time</th>
+      <th>OK</th>
+    </tr>
+
+    <% if @requesters.empty? %>
+      <tr id="placeholder"><td colspan="3">You have no students needing help!</td></tr>
+    <% else %>
+      <% @requesters.each do |requester| %>
+        <%= render partial: 'request', locals: { classroom: @classroom, requester: requester } %>
+      <% end %>
+    <% end %>
+  </table>
 </div>
 
-<!-- <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+<script src="http://js.pusher.com/2.0/pusher.min.js"></script>
 <script type="text/javascript">
 var pusher = new Pusher('<%= Pusher.key %>');
 var channel = pusher.subscribe('classroom<%= @classroom.id %>-requesters');
 channel.bind('request', function(data) {
-  console.log('something happend');
-  $('#student-list').html("<%= j render 'student_list', requesters: @classroom.requesters %>");
+  if (data.helpStatus === true) {
+    HelpRequests.addRequest(data.requesterPartial);
+  } else {
+    HelpRequests.removeRequest(data.requesterId);
+  }
 });
-</script> -->
+</script>

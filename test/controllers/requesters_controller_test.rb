@@ -33,7 +33,14 @@ class RequestersControllerTest < ActionController::TestCase
   end
 
   test "should publish to push server" do
-    # PrivatePub.expects(:publish_to).once
+    Pusher.expects(:trigger).once
     patch :reset_status, classroom_id: classrooms(:one).id
+  end
+
+  test "teacher should be able to toggle status" do
+    session[:user_id] = users(:teacher1).id
+    patch :complete, classroom_id: classrooms(:one).id, id: invitations(:one).id
+
+    assert_equal true, invitations(:one).reload.help
   end
 end
