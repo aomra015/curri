@@ -19,7 +19,7 @@ module ApplicationHelper
   end
 
   def at_account?(path)
-    path.match(/#/) && params[:controller] == 'users'
+    path == '' && params[:controller] == 'users'
   end
 
   def current_page_header

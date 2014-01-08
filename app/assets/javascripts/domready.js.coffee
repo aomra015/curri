@@ -31,13 +31,15 @@ $ ->
   # Navigation Collapse
   CurriUiOptions.init()
 
-  $('.collapse-toggle').on 'click', ->
+  $('.collapse-toggle').on 'click', (e) ->
+    e.preventDefault()
     $('body').toggleClass('nav-open')
     CurriUiOptions.update()
     $('.main').removeClass('subnav-open')
     $('.subnav').removeClass('subnav-show')
 
   # Subnav Toggle
-  $('.subnav-toggle').on 'click', ->
+  $('.subnav-toggle').on 'click', (e) ->
+    e.preventDefault()
     $('.main').toggleClass('subnav-open')
     $('.subnav').toggleClass('subnav-show')
