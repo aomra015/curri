@@ -17,7 +17,7 @@ class RequestersController < ApplicationController
 
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
 
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Queue status changed successfully"
   end
 
   def remove

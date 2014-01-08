@@ -4,11 +4,11 @@
   </div>
 <% else %>
   <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
-  <div id="help-toggle" data-url="<%= classroom_requester_path(classroom_id: @classroom.id, id: requester.id) %>">
+  <div id="help-toggle">
     <% if current_user.needs_help?(@classroom) %>
-      <%= link_to "I need help!", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
+      <%= link_to "In queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% else %>
-      <%= link_to "I'm OK", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
+      <%= link_to "Not in queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% end %>
   </div>
 <% end %>
