@@ -20,8 +20,8 @@
 }
 
 body.nav-open .main {
-  min-width: 480px;
   margin-left: 170px;
+  overflow: hidden;
 }
 
 .page-header {
@@ -92,6 +92,18 @@ body.nav-open .main {
 }
 
 @include media-query(medium) {
+  body.nav-open .main {
+    overflow: auto;
+  }
+  
+  .main {
+    margin-left: 70px;
+  }
+
+  .page-header.grid {
+    border: none;
+  }
+
   .narrow {
     width: 33.33%;
   }

@@ -162,11 +162,6 @@ a.selected {
   }
 }
 
-// hide the tooltip for the expand arrow
-.nav-label-hide {
-  display: none;
-}
-
 .nav-links:hover .nav-label ,
 .nav-links:focus .nav-label {
   color: #fff;
@@ -204,22 +199,7 @@ body.nav-open .nav-label {
   display: none;
 }
 
-.nav-burger {
-  padding: 11px;
-  background-position: -90px 0;
-}
-
-a:hover .nav-burger {
-  background-position: -112px 0;
-}
-
-.help-toggle {
-  margin-top: 10px;
-  display: block;
-}
-
 //subnav
-
 .subnav {
   display: none;
   position: fixed;
@@ -283,15 +263,22 @@ a.subnav-links {
   }
 }
 
+// page header navigation
+.nav-burger {
+  padding: 11px;
+  background-position: -90px 0;
+}
+
+a:hover .nav-burger {
+  background-position: -112px 0;
+}
+
+.help-toggle {
+  margin-top: 10px;
+  display: block;
+}
+
 @include media-query(medium) {
-  .main {
-    margin-left: 70px;
-  }
-
-  .page-header.grid {
-    border: none;
-  }
-
   .show-desktop {
     display: block;
   }
