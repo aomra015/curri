@@ -20,6 +20,7 @@ body {
   width: 100%;
   height: inherit;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
   color: $color-text;
   overflow-x: hidden;
   // background: #ccc;

@@ -1,0 +1,289 @@
+@import 'globals/all';
+
+// Navigation
+.fixed-nav {
+  display: none;
+  position: fixed;
+  width: 70px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  background: $color-main;
+  height: inherit;
+  min-height: 465px;
+  z-index: 100;
+}
+
+body.nav-open .fixed-nav {
+  display: block;
+  width: 170px;
+}
+
+.bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.fixed-nav li {
+  list-style-type: none;
+}
+
+.logo a {
+  background: $color-primary;
+  padding: 34px 20px;
+}
+
+.expand-collapse {
+  display: none;
+}
+
+.nav-links, .subnav-links {
+  display: block;
+  padding: 15px 20px;
+  line-height: 1;
+}
+
+.nav-links {
+  color: lighten($color-main, 40%);
+  overflow: hidden; // tooltips
+  position: relative; // tooltips
+  &:hover,
+  &:focus {
+    color: #fff;
+    overflow: visible;
+  }
+}
+
+// selected class for nav links
+a.selected, a.selected:hover {
+  background-color: #fff;
+  color: $color-main;
+}
+
+// svg icons
+.nav-icon {
+  background-image: image-url('curri-icons.svg');
+  padding: 15px;
+  display: inline-block;
+  background-position: 0 0;
+}
+
+.nav-tracks {
+  background-position: 0 -30px;
+}
+
+.nav-analytics {
+  background-position: 0 -60px;
+}
+
+.nav-account {
+  background-position: 0 -90px;
+}
+
+.nav-size {
+  background-position: 0 -150px;
+}
+
+body.nav-open .nav-size {
+  background-position: 0 -120px;
+}
+
+body.nav-open a:hover .nav-size {
+    background-position: -30px -120px;
+  }
+
+a:hover {
+  & .nav-classrooms {
+  background-position: -30px 0;
+  }
+
+  & .nav-tracks {
+    background-position: -30px -30px;
+  }
+
+  & .nav-analytics {
+    background-position: -30px -60px;
+  }
+
+  & .nav-account {
+    background-position: -30px -90px;
+  }
+
+  & .nav-size {
+    background-position: -30px -150px;
+  }
+}
+
+a.selected {
+  & .nav-classrooms, .nav-classrooms:hover {
+  background-position: -60px 0;
+  }
+
+  & .nav-tracks, .nav-tracks:hover {
+    background-position: -60px -30px;
+  }
+
+  & .nav-analytics, .nav-analytics:hover {
+    background-position: -60px -60px;
+  }
+
+  & .nav-account, .nav-account:hover {
+    background-position: -60px -90px;
+  }
+}
+
+// Tooltips
+.nav-label {
+  font-weight: 700;
+  position: absolute;
+  background: darken($color-main, 10%);
+  padding: 10px 14px 12px;
+  top: 12px;
+  left: 85px;
+  @include border-radius(5px);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+  line-height: 1;
+  &:before {
+    content: "";
+    position: absolute;
+    left: -4px;
+    top: 33%;
+    width: 10px;
+    height: 10px;
+    background: darken($color-main, 10%);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    @include border-radius(2px);
+  }
+}
+
+.nav-links:hover .nav-label ,
+.nav-links:focus .nav-label {
+  color: #fff;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+  opacity: 1;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  body.nav-open & {
+    left: 0;
+  }
+}
+
+body.nav-open .nav-links.selected:hover .nav-label {
+  color: darken($color-main, 10%);
+}
+
+body.nav-open .nav-label {
+  display: inline;
+  background: none;
+  margin-left: 10px;
+  padding: 0;
+  position: relative;
+  top: -9px;
+  left: 0;
+  opacity: 1;
+  &:before {
+    display: none;
+  }
+}
+
+// hide the tooltip for the expand arrow
+.nav-label-hide {
+  display: none;
+}
+
+//subnav
+.subnav {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: auto;
+  width: 130px;
+  left: 70px;
+  background: lighten($color-main, 65%);
+  border-right: 1px solid lighten($color-main, 60%);
+  .bottom-nav {
+    margin-bottom: 10px;
+  }
+  &.subnav-show {
+  display: block;
+  }
+}
+
+body.nav-open .subnav {
+  left: 170px;
+}
+
+.account-id-header {
+  font-size: 14px;
+  background: $color-main;
+  color: #fff;
+  padding: 5px 20px;
+}
+
+.account-id {
+  color: lighten($color-main, 65%);
+  color: $color-main;
+  background: lighten($color-main, 50%);
+  margin-bottom: 10px;
+}
+
+.user-type {
+  display: block;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-role {
+  font-size: 13px;
+}
+
+a.subnav-links {
+  color: lighten($color-main, 25%);
+  font-size: 15px;
+  font-weight: 600;
+  &:hover,
+  &:focus {
+    color: $color-main;
+  }
+}
+
+// page header navigation
+.nav-burger {
+  padding: 11px;
+  background-position: -90px 0;
+}
+
+a:hover .nav-burger {
+  background-position: -112px 0;
+}
+
+.help-toggle {
+  margin-top: 10px;
+  display: block;
+}
+
+@include media-query(medium) {
+  .show-desktop {
+    display: block;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+}
