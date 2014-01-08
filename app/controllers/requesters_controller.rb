@@ -21,8 +21,9 @@ class RequestersController < ApplicationController
   end
 
   def complete
-    @requester.toggle!(:help)
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
+    @requester.help = false
+    @requester.save
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Student removed from queue."
   end
 
   private

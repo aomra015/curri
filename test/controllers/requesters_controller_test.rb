@@ -37,10 +37,13 @@ class RequestersControllerTest < ActionController::TestCase
     patch :toggle, classroom_id: classrooms(:one).id, id: invitations(:one).id
   end
 
-  test "teacher should be able to toggle status" do
+  test "teacher should be able to remove requester from queue" do
+    invitations(:one).help = true # Student joins Queue
+    invitations(:one).save
+
     session[:user_id] = users(:teacher1).id
     patch :complete, classroom_id: classrooms(:one).id, id: invitations(:one).id
 
-    assert_equal true, invitations(:one).reload.help
+    assert_equal false, invitations(:one).reload.help
   end
 end

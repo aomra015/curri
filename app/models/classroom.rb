@@ -10,7 +10,7 @@ class Classroom < ActiveRecord::Base
   default_scope { order(id: :asc) }
 
   def requesters
-    invitations.help_needed.order(" updated_at ASC")
+    invitations.help_needed
   end
 
 end
