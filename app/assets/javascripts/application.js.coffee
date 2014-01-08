@@ -12,7 +12,6 @@
 #
 #= require jquery
 #= require jquery_ujs
-#= require private_pub
 #= require uservoice
 #= require pickadate/picker
 #= require pickadate/picker.date

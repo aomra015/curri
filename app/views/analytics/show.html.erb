@@ -1,10 +1,8 @@
-<%= subscribe_to "/track/#{@track.id}/ratings" if @phase.state == 'Realtime' %>
-
 <div id="page-head">
   <h2 class="page-header">Analytics > <%= @track.name %></h2>
 </div>
 <div class="grids">
-  <div class="grid2" id="track" data-trackid="<%= @track.id %>">
+  <div class="grid2" id="track">
     <div><%= render :partial => 'checkpoint', collection: @track.checkpoints %></div>
   </div>
 </div>
@@ -22,3 +20,15 @@
 <div>
   <%= render 'phasing' if @track.phasing? %>
 </div>
+
+<% if @phase.state == 'Realtime' %>
+  <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+  <script type="text/javascript">
+  var pusher = new Pusher('<%= Pusher.key %>');
+  var channel = pusher.subscribe('track<%= @track.id %>-ratings');
+  channel.bind('rating', function(data) {
+    var ratingsCounts = new RatingsCounter(data.ratings, data.totalCount).init();
+    $("#checkpoint" + data.checkpoint).barChart(ratingsCounts);
+  });
+  </script>
+<% end%>

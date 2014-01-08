@@ -1,12 +1,14 @@
-<div class="help-toggle">
-  <%= subscribe_to "/classrooms/#{@classroom.id}/requesters" %>
-  <% if current_user.teacher? %>
-    <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom), id: "requesters_link" %>
-  <% else %>
+<% if current_user.teacher? %>
+  <div id="requester-numb">
+    <%= link_to "Requesters (#{@classroom.requesters.size})", classroom_requesters_path(@classroom) %>
+  </div>
+<% else %>
+  <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
+  <div id="help-toggle">
     <% if current_user.needs_help?(@classroom) %>
-      <%= link_to "I need help!", classroom_reset_status_path(@classroom), method: :patch , id: "help_link#{current_user.get_invitation(@classroom).id}"%>
+      <%= link_to "In queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% else %>
-      <%= link_to "I'm OK", classroom_reset_status_path(@classroom), method: :patch %>
+      <%= link_to "Not in queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

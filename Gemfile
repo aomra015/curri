@@ -22,7 +22,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "thin", "~> 1.6.1"
   gem 'brakeman', :require => false
   gem 'better_errors'
   gem 'rails_best_practices'
@@ -34,9 +33,9 @@ end
 
 gem 'email_validator'
 gem 'bcrypt-ruby'
-gem 'private_pub'
 gem 'foreman'
 gem 'dynamic_form'
+gem 'pusher'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
