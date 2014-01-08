@@ -4,9 +4,8 @@ Curri::Application.routes.draw do
   root to: 'classrooms#index'
 
   resources :classrooms, except: [:show] do
-    resources :requesters, only: [:index, :show] do
-      patch 'toggle', on: :member
-      patch 'complete', on: :member
+    resources :requesters, only: [:index, :show, :update] do
+      patch 'remove', on: :member
     end
     # get 'requesters', to: 'requesters#index'
     # patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"

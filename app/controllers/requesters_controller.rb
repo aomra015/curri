@@ -12,7 +12,7 @@ class RequestersController < ApplicationController
     respond_with help: @requester.help
   end
 
-  def toggle
+  def update
     @requester.toggle!(:help)
 
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
@@ -20,7 +20,7 @@ class RequestersController < ApplicationController
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Help status toggled."
   end
 
-  def complete
+  def remove
     @requester.help = false
     @requester.save
     redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Student removed from queue."

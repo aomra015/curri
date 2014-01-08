@@ -1,5 +1,5 @@
 <tr class="requester" id="requester<%= requester.id %>">
   <td><%= requester.full_name %></td>
   <td><%= requester.updated_at.strftime("%l:%M%P, %e %b %y") %></td>
-  <td><%= link_to 'Done', complete_classroom_requester_path(id: requester.id, classroom_id: classroom.id), method: :patch, class: 'remove_button btn'%></td>
+  <td><%= link_to 'Done', remove_classroom_requester_path(id: requester.id, classroom_id: classroom.id), method: :patch, class: 'remove_button btn'%></td>
 </tr>
