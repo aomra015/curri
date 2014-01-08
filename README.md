@@ -9,7 +9,7 @@ The development environment requires Ruby 2.0 and Postgresql. To get this setup 
 4. `rake db:setup`
 
 ### Start development environment (at localhost:3000)
-- `$ foreman start -f Procfile-dev`
+- `$ rails s`
 
 ### Run tests
 - `$ rake minitest` to run all Ruby tests.

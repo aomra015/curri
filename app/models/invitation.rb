@@ -5,7 +5,7 @@ class Invitation < ActiveRecord::Base
   before_create :generate_token
   validates :email, :email => true
 
-  scope :help_needed, -> { where(help: true) }
+  scope :help_needed, -> { where(help: true).order(" updated_at ASC") }
 
   def generate_token
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)

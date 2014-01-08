@@ -16,7 +16,7 @@ class RatingsController < ApplicationController
       @rating.student = current_user.classrole
       @rating.save
 
-      PrivatePub.publish_to "/track/#{@track.id}/ratings", checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC"), totalCount: @classroom.students.size
+      Pusher.trigger("track#{@track.id}-ratings", 'rating', { checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC"), totalCount: @classroom.students.size })
 
       respond_to do |format|
         format.json {

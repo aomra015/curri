@@ -4,8 +4,11 @@ Curri::Application.routes.draw do
   root to: 'classrooms#index'
 
   resources :classrooms, except: [:show] do
-    get 'requesters', to: 'requesters#index'
-    patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
+    resources :requesters, only: [:index, :show, :update] do
+      patch 'remove', on: :member
+    end
+    # get 'requesters', to: 'requesters#index'
+    # patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
       get 'analytics', to: 'analytics#show'
       resources :ratings, only: [:create]
