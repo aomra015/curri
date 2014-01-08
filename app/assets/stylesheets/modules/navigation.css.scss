@@ -65,8 +65,18 @@ a.selected, a.selected:hover {
 // svg icons
 .nav-icon {
   background-image: image-url('curri-icons.svg');
+}
+
+.nav-classrooms,
+.nav-tracks,
+.nav-analytics,
+.nav-account,
+.nav-size {
   padding: 15px;
   display: inline-block;
+}
+
+.nav-classrooms {
   background-position: 0 0;
 }
 
@@ -264,8 +274,22 @@ a.subnav-links {
 }
 
 // page header navigation
+.page-header .nav-icon {
+  display: inline-block;
+}
+
+.mobile-menu {
+  margin: 0 10px 0 -10px;
+  line-height: 0;
+  position: relative;
+  top: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 .nav-burger {
-  padding: 11px;
+  width: 22px;
+  height: 22px;
   background-position: -90px 0;
 }
 
@@ -274,8 +298,35 @@ a:hover .nav-burger {
 }
 
 .help-toggle {
-  margin-top: 10px;
-  display: block;
+  position: relative;
+  top: 3px;
+}
+
+.nav-help {
+  width: 30px;
+  height: 30px;
+  background-position: -60px -120px;
+  &:hover {
+    background-position: -60px -150px;
+  }
+  &.active {
+    margin-right: 14px;
+    background-position: -60px -180px;
+  }
+}
+
+.req-num {
+  position: absolute;
+  left: 22px;
+  top: -7px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 1px 6px 3px;
+  border-radius: 100px;
+  background-color: $color-warning;
+  display: inline-block;
 }
 
 @include media-query(medium) {
