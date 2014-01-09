@@ -1,13 +1,15 @@
-<div id="page-head">
-  <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %>
-  <%= ' [Unpublished]' unless @track.published %>
-  </h2>
-
-  <!-- Teacher Controls -->
-  <% if current_user.teacher? %>
-    <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
-    <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), class: "btn btn-head pull-right", id: 'manage-track' %>
-  <% end %>
+<div class="grid page-title">
+  <div class="grid-unit whole">
+    <h2>
+      <%= @classroom.name %> > <%= @track.name %>
+      <%= ' [Unpublished]' unless @track.published %>
+    </h2>
+    <!-- Teacher Controls -->
+    <% if current_user.teacher? %>
+      <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
+      <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), class: "btn btn-head pull-right", id: 'manage-track' %>
+    <% end %>
+  </div>
 
 </div>
 <p><%= display_start_end_times(@track) %></p>

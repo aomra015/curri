@@ -6,6 +6,11 @@ class RequestersController < ApplicationController
 
   def index
     @requesters = @classroom.requesters
+
+    respond_to do |format|
+      format.json { render json: { requesters_numb: @requesters.size } }
+      format.html { }
+    end
   end
 
   def show
@@ -17,7 +22,13 @@ class RequestersController < ApplicationController
 
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
 
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Queue status changed successfully"
+    notice = if @requester.help
+      "Your teacher was notified that you need help."
+    else
+      "You were removed from the help queue."
+    end
+
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: notice
   end
 
   def remove

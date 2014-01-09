@@ -1,5 +1,7 @@
-<div id="page-head">
-  <h2 class="page-header"><%= @classroom.name %> > All Tracks</h2>
+<div class="grid page-title">
+  <div class="grid-unit whole">
+    <h2><%= @classroom.name %> > All Tracks</h2>
+  </div>
 
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>

@@ -11,7 +11,7 @@ module ApplicationHelper
   end
 
   def at_classroom?(path)
-    path.match(/classrooms$/) && (params[:controller] == 'classrooms' || params[:controller] == 'invitations')
+    path.match(/classrooms$/) && (params[:controller] == 'classrooms' || params[:controller] == 'invitations' || params[:controller] == 'requesters')
   end
 
   def at_track?(path)

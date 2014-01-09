@@ -17,7 +17,8 @@ $ ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
   # Update Header
-  HelpStatusPoller.poll() if $('#help-toggle').length
+  HelpStatusPoller.poll() if $('.help-toggle').length
+  RequestNumberPoller.poll() if $('#requesters_link').length
 
   # Navigation Collapse
   CurriUiOptions.init()
@@ -34,3 +35,10 @@ $ ->
     e.preventDefault()
     $('.main').toggleClass('subnav-open')
     $('.subnav').toggleClass('subnav-show')
+
+  # Page header style
+  $(window).scroll ->
+    if $(window).scrollTop() <= 25
+      $('.page-header').removeClass('border')
+    else
+      $('.page-header').addClass('border')

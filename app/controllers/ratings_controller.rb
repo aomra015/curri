@@ -16,7 +16,8 @@ class RatingsController < ApplicationController
       @rating.student = current_user.classrole
       @rating.save
 
-      Pusher.trigger("track#{@track.id}-ratings", 'rating', { checkpoint: @checkpoint.id, ratings: @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC"), totalCount: @classroom.students.size })
+      ratings = @checkpoint.ratings.select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC").to_json(only: :score)
+      Pusher.trigger("track#{@track.id}-ratings", 'rating', { checkpoint: @checkpoint.id, ratings: ratings, totalCount: @classroom.students.size })
 
       respond_to do |format|
         format.json {
