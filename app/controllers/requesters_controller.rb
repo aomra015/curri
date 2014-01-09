@@ -17,13 +17,13 @@ class RequestersController < ApplicationController
 
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
 
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Queue status changed successfully"
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Your teacher was notified that you need help."
   end
 
   def remove
     @requester.help = false
     @requester.save
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Student removed from queue."
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "You were removed from the help queue."
   end
 
   private
