@@ -17,7 +17,7 @@ $ ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
   # Update Header
-  HelpStatusPoller.poll() if $('#help-toggle').length
+  HelpStatusPoller.poll() if $('.help-toggle').length
 
   # Navigation Collapse
   CurriUiOptions.init()
