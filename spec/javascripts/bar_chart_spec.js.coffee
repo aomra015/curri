@@ -4,7 +4,7 @@ describe 'RatingsCounter', ->
 
   test = {}
   beforeEach ->
-    data = [{score: 0}, {score: 1}, {score: 0}]
+    data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
     myRatingsCounter = new RatingsCounter(data, 4)
     test.result = myRatingsCounter.init()
 
@@ -25,7 +25,7 @@ describe 'BarChart jQuery Plugin', ->
 
   test = {}
   beforeEach ->
-    data = [{score: 0}, {score: 1}, {score: 0}]
+    data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
     myRatingsCounter = new RatingsCounter(data, 4)
     test.counts = myRatingsCounter.init()
 

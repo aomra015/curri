@@ -1,5 +1,6 @@
 class @RatingsCounter
-  constructor: (@ratingsData, @totalStudentCount) ->
+  constructor: (ratingsData, @totalStudentCount) ->
+    @ratingsData = JSON.parse(ratingsData)
   init: ->
     count = [0, 0, 0]
     for rating in @ratingsData
