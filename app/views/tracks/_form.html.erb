@@ -15,6 +15,8 @@
     <%= f.text_field :end_date, value: nice_date_format(@track, :end_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input form-input-inline"  %>
     <%= f.text_field :end_time, value: nice_time_format(@track, :end_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
   </span>
+
+  <%= f.label :published %> <%= f.check_box :published%>
   <div>
     <%= f.submit class: "add-track btn" %>
   </div>
