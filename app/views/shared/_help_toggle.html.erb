@@ -1,7 +1,7 @@
 <% if current_user.teacher? %>
   <%= link_to classroom_requesters_path(@classroom), id: "requesters_link", class: 'help-toggle', title: 'Students Needing Help' do %>
     <% requests = @classroom.requesters.size %>
-    <% if requests > 0 %>
+    <% if requests > 0 && requests <= 30 %>
       <span class="nav-icon nav-help active"></span>
       <div class="req-num"><%= "#{requests}" %></div>
     <% elsif requests > 30 %>
