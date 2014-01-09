@@ -4,6 +4,7 @@ class Track < ActiveRecord::Base
   validates :name, presence: true
 
   default_scope { order(id: :asc) }
+  scope :published, -> { where(published: true) }
 
   def phasing?
     start_time && end_time

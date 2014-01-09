@@ -12,6 +12,22 @@ class TracksControllerTest < ActionController::TestCase
     assert :success
   end
 
+  test "teacher should see unpublished tracks" do
+    get :index, classroom_id: classrooms(:one)
+    tracks = assigns(:tracks)
+    assert_equal 2, tracks.length
+    assert tracks.include?(tracks(:two))
+  end
+
+  test "student should not see unpublished tracks" do
+    session[:user_id] = users(:student1).id
+    get :index, classroom_id: classrooms(:one)
+
+    tracks = assigns(:tracks)
+    assert_equal 1, tracks.length
+    assert_equal false, tracks.include?(tracks(:two))
+  end
+
   test "show single track" do
     get :show, classroom_id: classrooms(:one), id: tracks(:one)
     assert assigns(:track)
@@ -62,6 +78,18 @@ class TracksControllerTest < ActionController::TestCase
     patch :update, classroom_id: classrooms(:one), id: tracks(:one), track: {name: nil }
 
     assert_template :edit
+  end
+
+  test "should be able to unpublish a track" do
+    patch :update, classroom_id: classrooms(:one), id: tracks(:one), track: {published: false }
+
+    assert_equal false, tracks(:one).reload.published
+  end
+
+  test "should be able to publish a track" do
+    patch :update, classroom_id: classrooms(:one), id: tracks(:two), track: {published: true }
+
+    assert tracks(:two).reload.published
   end
 
   test "should correctly update time/date attributes" do

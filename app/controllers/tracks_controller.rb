@@ -5,7 +5,11 @@ class TracksController < ApplicationController
   before_action :get_track, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tracks = @classroom.tracks.includes(:checkpoints)
+    if @current_user.teacher?
+      @tracks = @classroom.tracks.includes(:checkpoints)
+    else
+      @tracks = @classroom.tracks.published.includes(:checkpoints)
+    end
   end
 
   def show
@@ -44,7 +48,7 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name)
+    params.require(:track).permit(:name, :published)
   end
 
   def get_track

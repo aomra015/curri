@@ -26,6 +26,26 @@ class TeacherTracksTest < Capybara::Rails::TestCase
     assert page.has_content?('New track name')
   end
 
+  test "a teacher can unpublish a published track" do
+    click_link @track.name
+    click_link 'manage-track'
+
+    uncheck :track_published
+    click_button 'Update Track'
+
+    assert page.has_content?('[Unpublished]'), 'The unpublished track was not labelled'
+  end
+
+  test "a teacher can publish an unpublished track" do
+    click_link tracks(:two).name
+    click_link 'manage-track'
+
+    check :track_published
+    click_button 'Update Track'
+
+    assert !page.has_content?('[Unpublished]'), 'The published track was labelled with [Unpublished]'
+  end
+
   test "a teacher can edit a track" do
     click_link @track.name
     click_link 'manage-track'

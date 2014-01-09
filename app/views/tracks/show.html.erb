@@ -1,5 +1,7 @@
 <div id="page-head">
-  <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %></h2>
+  <h2 class="page-header"><%= @classroom.name %> > <%= @track.name %>
+  <%= ' [Unpublished]' unless @track.published %>
+  </h2>
 
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
