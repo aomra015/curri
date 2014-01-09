@@ -34,3 +34,10 @@ $ ->
     e.preventDefault()
     $('.main').toggleClass('subnav-open')
     $('.subnav').toggleClass('subnav-show')
+
+  # Page header style
+  $(window).scroll ->
+    if $(window).scrollTop() <= 25
+      $('.page-header').removeClass('border')
+    else
+      $('.page-header').addClass('border')
