@@ -17,3 +17,6 @@
 /coverage
 rails_best_practices_output.html
 .env
+
+# Ignore Illustrator files
+/app/assets/images/*.ai

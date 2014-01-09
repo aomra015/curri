@@ -297,11 +297,13 @@ a:hover .nav-burger {
   background-position: -112px 0;
 }
 
+// secondary nav
 .help-toggle {
   position: relative;
   top: 3px;
 }
 
+// teacher
 .nav-help {
   width: 30px;
   height: 30px;
@@ -327,6 +329,44 @@ a:hover .nav-burger {
   border-radius: 100px;
   background-color: $color-warning;
   display: inline-block;
+}
+
+// students
+.help-btn {
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.1);
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.7;
+  width: 130px;
+  height: 30px;
+  margin-top: 1px;
+  @include border-radius(100px);
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 3px 1px $color-danger;
+  }
+}
+
+.in-queue {
+  color: #fff;
+  background: $color-danger;
+  box-shadow: 0 0 8px 2px $color-danger;
+  &:hover,
+  &:focus {
+    background: darken($color-danger, 10%);
+  }
+}
+
+.ask-help {
+  color: $grey-md;
+  background: $grey-lt;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: darken($grey-lt, 15%);
+  }
 }
 
 @include media-query(medium) {

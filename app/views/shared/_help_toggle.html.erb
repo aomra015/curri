@@ -13,11 +13,11 @@
   <% end %>
 <% else %>
   <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
-  <div id="help-toggle">
+  <div class="help-toggle">
     <% if current_user.needs_help?(@classroom) %>
-      <%= link_to "In queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
+      <%= link_to "In Help Queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch, class: 'help-btn in-queue' %>
     <% else %>
-      <%= link_to "Not in queue", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch %>
+      <%= link_to "Ask for Help", classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch, class: 'help-btn ask-help' %>
     <% end %>
   </div>
 <% end %>
