@@ -6,6 +6,11 @@ class RequestersController < ApplicationController
 
   def index
     @requesters = @classroom.requesters
+
+    respond_to do |format|
+      format.json { render json: { requesters_numb: @requesters.size } }
+      format.html { }
+    end
   end
 
   def show

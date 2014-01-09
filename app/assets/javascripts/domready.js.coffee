@@ -18,6 +18,7 @@ $ ->
 
   # Update Header
   HelpStatusPoller.poll() if $('.help-toggle').length
+  RequestNumberPoller.poll() if $('#requesters_link').length
 
   # Navigation Collapse
   CurriUiOptions.init()
