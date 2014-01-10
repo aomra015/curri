@@ -22,7 +22,7 @@
 
 body.nav-open .main {
   margin-left: 170px;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .page-header {
@@ -100,7 +100,10 @@ body.nav-open .main {
 
 @include media-query(medium) {
   body.nav-open .main {
-    // overflow: auto;
+    overflow: visible;
+    &.subnav-open {
+      overflow: hidden;
+    }
   }
   
   .main {

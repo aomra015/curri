@@ -22,8 +22,14 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: $color-text;
-  overflow-x: hidden;
+  // overflow: hidden;
   // background: #ccc;
+  &.nav-open {
+    overflow: hidden;
+    @include media-query(medium) {
+      overflow-y: visible;
+    }
+  }
 }
 
 p {

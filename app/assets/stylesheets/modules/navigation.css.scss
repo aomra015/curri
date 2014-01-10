@@ -225,6 +225,23 @@ body.nav-open .nav-label {
   }
   &.subnav-show {
   display: block;
+    &:before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      bottom: 25px;
+      width: 13px;
+      height: 13px;
+      background: lighten($color-main, 65%);
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      @include border-radius(2px);
+      @include media-query(medium) {
+        bottom: 88px;
+      }
+    }
   }
 }
 
@@ -232,18 +249,11 @@ body.nav-open .subnav {
   left: 170px;
 }
 
-.account-id-header {
-  font-size: 14px;
-  background: $color-main;
-  color: #fff;
-  padding: 5px 20px;
-}
-
 .account-id {
   color: lighten($color-main, 65%);
   color: $color-main;
   background: lighten($color-main, 50%);
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 .user-type {
