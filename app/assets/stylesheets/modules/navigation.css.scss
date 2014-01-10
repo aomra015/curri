@@ -358,17 +358,17 @@ a:hover .nav-burger {
   @include border-radius(100px);
   &:focus {
     outline: none;
-    box-shadow: 0 0 3px 1px $color-danger;
+    box-shadow: 0 0 3px 1px $color-success;
   }
 }
 
 .in-queue {
   color: #fff;
-  background: $color-danger;
-  box-shadow: 0 0 8px 2px $color-danger;
+  background: $color-success;
+  box-shadow: 0 0 8px 2px $color-success;
   &:hover,
   &:focus {
-    background: darken($color-danger, 10%);
+    background: darken($color-success, 10%);
   }
 }
 
