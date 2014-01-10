@@ -1,0 +1,40 @@
+@import 'globals/all';
+
+// Styles for login page
+
+.main.login {
+  padding-top: 0;
+}
+
+.brandbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 6px;
+  background: $color-main;
+}
+
+.brandcolors {
+  width: 70%;
+  max-width: 250px;
+  margin: 0 auto;
+  height: inherit;
+  background-image: linear-gradient(to right, $color-success 0%, $color-success 33.33%, $color-warning 33%, $color-warning 66.67%, $color-danger 66.67%, $color-danger 100%);
+}
+
+@include media-query(small) {
+  .brandcolors {
+    width: 40%;
+    margin-left: 70px;
+  }
+}
+
+.login-box {
+  float: none;
+  min-width: 280px;
+  padding: 30px;
+  margin-top: 100px;
+  border: 2px solid $grey-lt;
+  @include border-radius(5px);
+}
