@@ -324,6 +324,9 @@ a:hover .nav-burger {
   &.active {
     margin-right: 14px;
     background-position: -60px -180px;
+    &:hover {
+      background-position: -60px -210px;
+    }
   }
 }
 
