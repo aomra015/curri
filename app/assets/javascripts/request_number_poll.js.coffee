@@ -9,20 +9,19 @@
       success: RequestNumberPoller.updateRequesters
 
   updateRequesters: (data) ->
-    if $('.req-num').length
-      oldNumb = parseInt($('.req-num').text())
-    else
-      oldNumb = 0
-
-    if data.requesters_numb != oldNumb
-      if oldNumb == 0
+    reqLimit = $('.nav-help').data("reqlimit")
+    rnText = $('.req-num').text()
+    newReqNum = data.requesters_numb
+    oldReqNum = parseInt(rnText) + rnText.toString().indexOf("+") - reqLimit.toString().length + 1 || 0
+    if newReqNum != oldReqNum
+      if oldReqNum == 0
         $('.nav-help').after($('<div class="req-num">'))
-      if 30 >= data.requesters_numb > 0
-        $('.req-num').text(data.requesters_numb)
+      if newReqNum > 0
         $('.nav-help').toggleClass('active', true)
-      else if data.requesters_numb > 30
-        $('.req-num').text("30+")
-        $('.nav-help').toggleClass('active', true)
+        if newReqNum <= reqLimit
+          $('.req-num').text(newReqNum)
+        else
+          $('.req-num').text(reqLimit + "+")
       else
         $('.req-num').remove()
         $('.nav-help').removeClass('active')
