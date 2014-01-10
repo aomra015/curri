@@ -4,7 +4,7 @@ $ = jQuery
 $ ->
 
   # Activate jQuery libraries
-  $('.success-criteria').popover({placement: 'left'})
+  $('.success-criteria').popover({placement: 'left'}) if $('.success-criteria').length
   $('#track_start_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_end_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_start_time').pickatime({format: 'hh:i a'})
