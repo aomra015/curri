@@ -342,6 +342,11 @@ a:hover .nav-burger {
   border-radius: 100px;
   background-color: $color-primary;
   display: inline-block;
+  @include all-transition;
+  -webkit-transform: scale(0.01);
+  &.load {
+    -webkit-transform: scale(1);
+  }
 }
 
 // students
