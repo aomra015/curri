@@ -22,8 +22,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: $color-text;
-  // overflow: hidden;
-  // background: #ccc;
   &.nav-open {
     overflow: hidden;
     @include media-query(medium) {
