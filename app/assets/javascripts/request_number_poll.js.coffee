@@ -9,21 +9,25 @@
       success: RequestNumberPoller.updateRequesters
 
   updateRequesters: (data) ->
-    reqLimit = $('#requesters_link').data("reqlimit")
+    $requestsLink = $('#requesters_link')
+    reqLimit = $requestsLink.data("reqlimit")
+    oldReqNum = $requestsLink.data("requests")
     newReqNum = data.requesters_numb
-    rnText = $('.req-num').text() || 0
-    oldReqNum = parseInt(rnText)
-    oldReqNum +=  1 if rnText.toString().match(/\+/)
+
     if newReqNum != oldReqNum
-      if oldReqNum == 0
-        $('.nav-help').after($('<div class="req-num">'))
+      # Update the data for next poll
+      $requestsLink.data("requests", newReqNum)
+
+      # Update the visual
       if newReqNum > 0
         $('.nav-help').toggleClass('active', true)
+        $reqNumb = $('.req-num').show()
         if newReqNum <= reqLimit
-          $('.req-num').text(newReqNum)
+          $reqNumb.text(newReqNum)
         else
-          $('.req-num').text(reqLimit + "+")
+          $reqNumb.text(reqLimit + "+")
       else
-        $('.req-num').remove()
+        $('.req-num').hide()
         $('.nav-help').removeClass('active')
+
     RequestNumberPoller.poll()

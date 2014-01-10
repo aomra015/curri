@@ -172,3 +172,8 @@ transition: opacity .15s linear;
     font-size: 14px;
     font-weight: normal;
 }
+
+// Used by teacher request header
+.dont-show {
+  display: none;
+}
