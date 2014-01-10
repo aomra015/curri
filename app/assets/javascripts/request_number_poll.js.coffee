@@ -9,10 +9,11 @@
       success: RequestNumberPoller.updateRequesters
 
   updateRequesters: (data) ->
-    reqLimit = $('.nav-help').data("reqlimit")
-    rnText = $('.req-num').text()
+    reqLimit = $('#requesters_link').data("reqlimit")
     newReqNum = data.requesters_numb
-    oldReqNum = parseInt(rnText) + rnText.toString().indexOf("+") - reqLimit.toString().length + 1 || 0
+    rnText = $('.req-num').text() || 0
+    oldReqNum = parseInt(rnText)
+    oldReqNum +=  1 if rnText.toString().match(/\+/)
     if newReqNum != oldReqNum
       if oldReqNum == 0
         $('.nav-help').after($('<div class="req-num">'))
