@@ -42,3 +42,8 @@ $ ->
       $('.page-header').removeClass('border')
     else
       $('.page-header').addClass('border')
+
+  # Animate Requesters number when it changes
+  $(document).ready ->
+    $('window').load ->
+    $('.req-num').addClass('load')
