@@ -33,6 +33,7 @@ button,
   background: lighten($grey-lt, 10%);
   min-width: 125px;
   color: $grey-md;
+  -webkit-appearance: none;
   -webkit-box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
   box-shadow: inset 0px -3px 0px 0px $grey-lt, $button-highlight;
 
