@@ -4,6 +4,7 @@
 
 .main.login {
   padding-top: 0;
+  background: lighten($color-main, 65%);
 }
 
 .brandbar {
@@ -35,6 +36,13 @@
   min-width: 280px;
   padding: 30px;
   margin-top: 100px;
-  border: 2px solid $grey-lt;
   @include border-radius(5px);
+  & .grid-unit-header {
+  }
+}
+
+@include media-query(small) {
+  .login-box {
+    min-width: 350px;
+  }
 }
