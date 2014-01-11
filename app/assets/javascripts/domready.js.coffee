@@ -21,7 +21,7 @@ $ ->
   RequestNumberPoller.poll() if $('#requesters_link').length
 
   # Navigation Collapse
-  CurriUiOptions.init()
+  CurriUiOptions.init() if $('.collapse-toggle').length
 
   $('.collapse-toggle').on 'click', (e) ->
     e.preventDefault()
