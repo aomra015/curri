@@ -13,6 +13,7 @@ class StudentsController < ApplicationController
     @user = User.new(user_params)
     @user.classrole = Student.create
     if @user.save
+      flash[:track] = { event_name: "User Sign Up" }
       claim_invitation
     else
       render :new
@@ -31,6 +32,7 @@ class StudentsController < ApplicationController
       render :login
     else
       if @user.try(:authenticate, params[:user][:password])
+        flash[:track] = { event_name: "User joins classroom" }
         claim_invitation
       else
         flash.now.alert = "Email or password are not correct"

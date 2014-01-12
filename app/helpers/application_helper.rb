@@ -34,4 +34,16 @@ module ApplicationHelper
     end
   end
 
+  def js_render_user(user)
+    javascript_tag %Q{
+      window.Curri = {};
+      window.Curri.user = #{user.to_json};
+    }
+  end
+
+  def mixpanel_track(event_name, properties=nil)
+    p = properties.nil? ? "" : ", #{properties.to_json}"
+    javascript_tag %Q{mixpanel.track("#{event_name}"#{p});}
+  end
+
 end
