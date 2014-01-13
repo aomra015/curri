@@ -49,11 +49,11 @@ $ ->
   if Curri.user
     mixpanel.identify(Curri.user.id)
     userData =
-      email: Curri.user.email
+      $email: Curri.user.email
       classRole: Curri.user.classrole_type
-      created: Curri.user.created_at
-      firstName: Curri.user.first_name
-      lastName: Curri.user.last_name
+      $created: Curri.user.created_at
+      $first_name: Curri.user.first_name
+      $last_name: Curri.user.last_name
     mixpanel.register(userData)
     mixpanel.people.set(userData)
 
