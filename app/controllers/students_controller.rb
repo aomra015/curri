@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
   def new
     @user = User.new
     @token = params[:token]
+    render layout: "login_layout"
   end
 
   def create
@@ -15,12 +16,13 @@ class StudentsController < ApplicationController
     if @user.save
       claim_invitation
     else
-      render :new
+      render :new, layout: "login_layout"
     end
   end
 
   def login
     @token = params[:token]
+    render layout: "login_layout"
   end
 
   def enroll
