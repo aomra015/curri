@@ -16,6 +16,7 @@ $ ->
     marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
+    # Mixpanel event: Student Rates Checkpoint
     mixpanel.track("Rate checkpoint", { score: data.current_score, checkpoint_id: data.checkpoint_id })
 
   # Update Header
@@ -45,16 +46,5 @@ $ ->
     else
       $('.page-header').addClass('border')
 
-  # Mixpanel
-  if Curri.user
-    mixpanel.identify(Curri.user.id)
-    userData =
-      $email: Curri.user.email
-      classRole: Curri.user.classrole_type
-      $created: Curri.user.created_at
-      $first_name: Curri.user.first_name
-      $last_name: Curri.user.last_name
-    mixpanel.register(userData)
-    mixpanel.people.set(userData)
-
+  # Mixpanel event: Log out
   mixpanel.track_links("#logout-link", "Sign out")
