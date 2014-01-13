@@ -18,15 +18,11 @@
 .brandbar {
   height: 6px;
   background: $color-main;
-}
-
-.brandcolors {
-  height: inherit;
   background-image: repeating-linear-gradient(to right, $color-success 0px, $color-success 80px, $color-warning 80px, $color-warning 160px, $color-danger 160px, $color-danger 240px, $color-main 240px, $color-main 320px);
 }
 
 @include media-query(medium) {
-  .brandcolors {
+  .brandbar {
     background-image: repeating-linear-gradient(to right, $color-success 0px, $color-success 160px, $color-warning 160px, $color-warning 320px, $color-danger 320px, $color-danger 480px, $color-main 480px, $color-main 640px);
   }
 }
