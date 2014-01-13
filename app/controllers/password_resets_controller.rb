@@ -3,6 +3,7 @@ class PasswordResetsController < ApplicationController
   skip_before_action :authorize
 
   def new
+    render layout: "login_layout"
   end
 
   def create
@@ -13,6 +14,7 @@ class PasswordResetsController < ApplicationController
 
   def edit
     @user = User.find_by(password_reset_token: params[:id])
+    render layout: "login_layout"
   end
 
   def update
@@ -23,7 +25,7 @@ class PasswordResetsController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url, :notice => "Password reset."
     else
-      render :edit
+      render :edit, layout: "login_layout"
     end
   end
 
