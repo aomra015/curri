@@ -1,20 +1,15 @@
-<div class="grid">
-  <div class="grid-unit narrow login-box">
-    <!-- add curri logo -->
-    <div class="grid-unit-header">
-      <h3>Log In To Join Class</h3>
-    </div>
-    <%= form_tag students_enroll_path  do %>
-      <%= hidden_field_tag "user[token]", @token %>
-      <div class="form-group">
-        <label for="email"><%= label_tag "user[email]", 'Email Address' %></label>
-        <%= email_field_tag "user[email]", nil, class: "form-input" %>
-      </div>
-      <div class="form-group">
-        <label for="pswd"><%= label_tag "user[password]", 'Password' %></label>
-        <%= password_field_tag "user[password]", nil, class: "form-input" %>
-      </div>
-      <%= submit_tag "Login & Join", class: "btn btn-primary"%>
-    <% end %>
-  </div>
+<div class="grid-unit-header">
+  <h3>Log In To Join Class</h3>
 </div>
+<%= form_tag students_enroll_path  do %>
+  <%= hidden_field_tag "user[token]", @token %>
+  <div class="form-group">
+    <label for="email"><%= label_tag "user[email]", 'Email Address' %></label>
+    <%= email_field_tag "user[email]", nil, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <label for="pswd"><%= label_tag "user[password]", 'Password' %></label>
+    <%= password_field_tag "user[password]", nil, class: "form-input" %>
+  </div>
+  <%= submit_tag "Login & Join", class: "btn btn-primary"%>
+<% end %>
