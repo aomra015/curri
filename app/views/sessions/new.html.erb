@@ -1,9 +1,9 @@
 <div class="grid">
   <div class="grid-unit narrow login-box">
-    <div class="grid-unit-header">
-    <!-- replace h3 with curri logo -->
+    <!-- <div class="grid-unit-header">
+    replace h3 with curri logo
       <h3>Log in</h3>
-    </div>
+    </div> -->
     <%= form_tag login_path do %>
       <div class="form-group">
         <label for="email"><%= label_tag :email %></label>
@@ -15,7 +15,9 @@
         
       </div>
       <%= submit_tag "Login", class: "btn btn-primary"%>
-      <p class="register"><%= link_to 'Don\'t have an account? Register here!', register_path %></li>
     <% end %>
+    <div class="grid-unit-footer">
+      <p class="register"><%= link_to 'Click here to register as a Teacher', register_path %></p>
+    </div>
   </div>
 </div>

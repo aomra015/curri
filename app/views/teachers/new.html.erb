@@ -1,30 +1,31 @@
-<h1>Sign up as a Teacher</h1>
-
-<%= form_for @user, url: teachers_create_path do |f| %>
-  <%= f.error_messages %>
-
-  <h3>
-    <%= f.label :email %>
-  </h3>
-  <span>
-    <%= f.email_field :email, placeholder: 'Please enter email address', class: "form-input" %>
-  </span>
-
-  <h3>
-    <%= f.label :password %>
-  </h3>
-  <span>
-    <%= f.password_field :password, class: "form-input" %>
-  </span>
-
-  <h3>
-    <%= f.label :password_confirmation %>
-  </h3>
-  <span>
-    <%= f.password_field :password_confirmation, class: "form-input" %>
-  </span>
-
-  <div>
-    <%= f.submit 'Register', class: 'register-teacher btn' %>
+<div class="grid">
+  <div class="grid-unit narrow login-box">
+    <div class="grid-unit-header">
+    <!-- replace h3 with curri logo -->
+      <h3>Register as a Teacher</h3>
+    </div>
+    <%= form_for @user, url: teachers_create_path do |f| %>
+    <%= f.error_messages %>
+      <div class="form-group">
+        <label for="email"><%= label_tag :email %></label>
+        <%= f.email_field :email, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <label for="password"><%= label_tag :password %></label>
+        <%= f.password_field :password, class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <label for="password confirmation"><%= label_tag :confirm_Password %></label>
+        <%= f.password_field :password_confirmation, class: "form-input" %>
+      </div>
+      <%= submit_tag "Register", class: "btn btn-primary"%>
+    <% end %>
+    <div class="grid-unit-footer">
+      <p class="register"><%= link_to 'Already have an account? Login here', login_path %></p>
+      <a href='' class="register-show">
+        <span>Student?</span>
+        <span class="register-hidden">Check your inbox for an invitation email, or ask your teacher.</span>
+      </a>
+    </div>
   </div>
-<% end %>
+</div>
