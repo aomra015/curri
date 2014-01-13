@@ -1,18 +1,16 @@
-<h1>Forgot your password?</h1>
-
-<p>Please enter your email to receive password reset instructions</p>
-
-<%= form_tag password_resets_path, class: 'form-horizontal'  do %>
-
-  <h3>
-    <%= label_tag :email %>
-  </h3>
-  <span>
-    <%= email_field_tag :email, nil, placeholder: 'Please enter email address', class: "form-input" %>
-  </span>
-  <div class="login">
-    <%= submit_tag "Send", id: 'password-reset-button', class: 'btn'%>
+<div class="grid">
+  <div class="grid-unit narrow login-box">
+    <!-- add curri logo -->
+    <div class="grid-unit-header">
+      <h3>Forgot password?</h3>
+    </div>
+    <p class="reset">Please enter your email address to receive password reset instructions.</p>
+    <%= form_tag password_resets_path do %>
+      <div class="form-group">
+        <label for="email"><%= label_tag :email %></label>
+        <%= email_field_tag :email, nil, class: "form-input" %>
+      </div>
+    <%= submit_tag "Send Reset Email", class: "btn btn-primary"%>
+    <% end %>
   </div>
-
-
-<% end %>
+</div>
