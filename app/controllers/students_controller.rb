@@ -30,13 +30,13 @@ class StudentsController < ApplicationController
 
     if !@user.try(:student?)
       flash.now.alert = "You need a student account to accept the invitation."
-      render :login
+      render :login, layout: "login_layout"
     else
       if @user.try(:authenticate, params[:user][:password])
         claim_invitation
       else
         flash.now.alert = "Email or password are not correct"
-        render :login
+        render :login, layout: "login_layout"
       end
     end
 
@@ -49,7 +49,7 @@ class StudentsController < ApplicationController
     if @invitation.nil? || @invitation.student
       flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
       action = params[:action] == 'create' ? :new : :login
-      render action
+      render action, layout: "login_layout"
     end
   end
 
