@@ -7,5 +7,5 @@
     <label for="email"><%= label_tag :email %></label>
     <%= email_field_tag :email, nil, class: "form-input" %>
   </div>
-<%= submit_tag "Send Reset Email", class: "btn btn-primary"%>
+<%= submit_tag "Send Reset Email", id: 'password-reset-button', class: "btn btn-primary"%>
 <% end %>
