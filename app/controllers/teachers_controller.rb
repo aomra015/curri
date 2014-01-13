@@ -4,6 +4,7 @@ class TeachersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: "login_layout"
   end
 
   def create
@@ -14,7 +15,7 @@ class TeachersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to classrooms_path
     else
-      render :new
+      render :new, layout: "login_layout"
     end
   end
 

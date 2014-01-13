@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   skip_before_action :authorize
 
   def new
+    render layout: "login_layout"
   end
 
   def create
@@ -12,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to classrooms_path, notice: "You are signed in as #{user.email}"
     else
       flash.now.alert = "Email or password are not correct"
-      render :new
+      render :new, layout: "login_layout"
     end
   end
 
