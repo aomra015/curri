@@ -3,14 +3,11 @@ require 'test_helper'
 class CheckpointTest < ActiveSupport::TestCase
 
   before do
-    # checkpoints(:one) has two unique ratings (score of 1)
-    @checkpoint = checkpoints(:one)
-
     # stubbing time
-    date_in_future = Time.zone.now + 1
+    date_in_future = Time.zone.now + 5.days
     Time.zone.expects(:now).returns(date_in_future)
 
-    @phase = Phase.new(@checkpoint.track,"Realtime")
+    @phase = Phase.new(tracks(:one),"Realtime")
   end
 
   test "validate presence of both attributes" do
