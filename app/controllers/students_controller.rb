@@ -13,7 +13,7 @@ class StudentsController < ApplicationController
     @user = User.new(user_params)
     @user.classrole = Student.create
     if @user.save
-      flash[:track] = { event_name: "User Sign Up" }
+      flash[:track] = { event_name: "Student Sign Up" }
       claim_invitation
     else
       render :new
