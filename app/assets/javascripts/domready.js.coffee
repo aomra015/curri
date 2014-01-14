@@ -17,7 +17,8 @@ $ ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
     # Mixpanel event: Student Rates Checkpoint
-    mixpanel.track("Rate checkpoint", { score: data.current_score, checkpoint_id: data.checkpoint_id })
+    mixpanel.track("Rate checkpoint", { score: data.current_score, checkpoint_id: data.checkpoint_id, classroom_id: data.classroom_id, track_id: data.track_id
+     })
 
   # Update Header
   HelpStatusPoller.poll() if $('.help-toggle').length
