@@ -22,8 +22,10 @@
           <%= alert %></div>
       <% end %>
       <div class="grid">
+        <div class="grid-unit narrow logo">
+          <%= render 'shared/logo' %>
+        </div>
         <div class="grid-unit narrow login-box">
-          <!-- add curri logo -->
           <%= yield %>
         </div>
       </div>
