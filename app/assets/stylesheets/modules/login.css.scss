@@ -28,12 +28,12 @@
 }
 
 .login-box,
-.logo {
+.login-logo {
   float: none;
   width: 280px;
 }
 
-.logo {
+.login-logo {
   width: 171px;
   height: 51px;
   margin-top: 30px;
@@ -63,7 +63,7 @@
 }
 
 @include media-query(small) {
-  .logo {
+  .login-logo {
     margin-top: 45px;
   }
   .login-box {
