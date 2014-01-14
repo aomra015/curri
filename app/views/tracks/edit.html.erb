@@ -1,3 +1,4 @@
+<% provide(:title, 'Edit '+@track.name) %>
 <h2>Edit Track</h2>
 <%= render 'form' %>
 <%= link_to 'Delete Track', [@classroom, @track], method: :delete, data: {confirm: "Are you sure you want to delete the track?"}, class: "btn btn-head pull-right", id: 'delete-track' %>
