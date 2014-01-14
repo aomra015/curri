@@ -4,9 +4,9 @@ if (window.Curri.user) {
 
   // Set colors
   UserVoice.push(['set', {
-    accent_color: '#e2753a',
+    accent_color: '#5DA3FD',
     trigger_color: 'white',
-    trigger_background_color: '#e2753a'
+    trigger_background_color: '#5DA3FD'
   }]);
 
   // Identify the user and pass traits
@@ -17,5 +17,5 @@ if (window.Curri.user) {
   }]);
 
   // Add default trigger to the bottom-right corner of the window:
-  UserVoice.push(['addTrigger', { mode: 'contact', trigger_position: 'bottom-right' }]);
+  UserVoice.push(['addTrigger', { mode: 'satisfaction', trigger_position: 'bottom-right' }]);
 }
