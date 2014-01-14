@@ -41,9 +41,9 @@ module ApplicationHelper
     }
   end
 
-  def mixpanel_track(event_name, properties=nil)
+  def track_event(event_name, properties=nil)
     p = properties.nil? ? "" : ", #{properties.to_json}"
-    javascript_tag %Q{mixpanel.track("#{event_name}"#{p});}
+    javascript_tag %Q{analytics.track("#{event_name}"#{p});}
   end
 
 end
