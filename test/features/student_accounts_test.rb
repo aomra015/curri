@@ -32,7 +32,7 @@ class StudentAccountsTest < Capybara::Rails::TestCase
 
     fill_in :user_email, with: users(:student1).email
     fill_in :user_password, with: 'password123'
-    click_button 'Login & Claim'
+    click_button 'add-student'
 
     assert page.has_css?('#logout-link')
     assert page.has_content?(@invitation.classroom.name)
