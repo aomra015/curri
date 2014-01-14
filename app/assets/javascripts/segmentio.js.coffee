@@ -3,7 +3,7 @@ if @Curri && @Curri.user
     email: Curri.user.email
     classRole: Curri.user.classrole_type
     created: Curri.user.created_at
-    firstName: Curri.user.first_name || ''
-    lastName: Curri.user.last_name || ''
+    firstName: Curri.user.first_name || 'No'
+    lastName: Curri.user.last_name || 'Name'
 
   analytics.identify(Curri.user.id, userData)
