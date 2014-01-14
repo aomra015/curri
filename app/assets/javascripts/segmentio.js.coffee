@@ -1,4 +1,4 @@
-if Curri.user
+if @Curri && @Curri.user
   userData =
     email: Curri.user.email
     classRole: Curri.user.classrole_type
