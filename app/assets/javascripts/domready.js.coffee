@@ -51,4 +51,4 @@ $ ->
       $('.page-header').addClass('border')
 
   # SegmentIO event: Log out
-  analytics.trackLink("#logout-link", "Sign out")
+  analytics.trackLink($('#logout-link'), "Sign out")
