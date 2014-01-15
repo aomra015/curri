@@ -4,7 +4,7 @@ $ = jQuery
 $ ->
 
   # Activate jQuery libraries
-  $('.success-criteria').popover({placement: 'left'})
+  $('.success-criteria').popover({placement: 'left'}) if $('.success-criteria').length
   $('#track_start_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_end_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_start_time').pickatime({format: 'hh:i a'})
@@ -28,7 +28,7 @@ $ ->
   RequestNumberPoller.poll() if $('#requesters_link').length
 
   # Navigation Collapse
-  CurriUiOptions.init()
+  CurriUiOptions.init() if $('.collapse-toggle').length
 
   $('.collapse-toggle').on 'click', (e) ->
     e.preventDefault()

@@ -1,19 +1,15 @@
-<h1>Log In To Claim Invitation</h1>
-
-<%= form_tag students_enroll_path, class: 'form-horizontal' do %>
+<div class="grid-unit-header">
+  <h3>Log In To Join Class</h3>
+</div>
+<%= form_tag students_enroll_path  do %>
   <%= hidden_field_tag "user[token]", @token %>
-
-  <div>
-    <%= label_tag "user[email]", 'Email Address' %>
-    <%= text_field_tag "user[email]", nil, class: "form-input" %>
+  <div class="form-group">
+    <label for="email"><%= label_tag "user[email]", 'Email Address' %></label>
+    <%= email_field_tag "user[email]", nil, class: "form-input" %>
   </div>
-
-  <div>
-    <%= label_tag "user[password]", 'Password' %>
+  <div class="form-group">
+    <label for="pswd"><%= label_tag "user[password]", 'Password' %></label>
     <%= password_field_tag "user[password]", nil, class: "form-input" %>
   </div>
-
-  <div>
-    <%= submit_tag 'Login & Claim', id: 'add-student', class: "login-button btn" %>
-  </div>
+  <%= submit_tag "Login & Join", id: 'add-student', class: "btn btn-primary"%>
 <% end %>

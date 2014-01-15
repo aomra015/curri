@@ -29,6 +29,14 @@
   transform: translateZ($z-val);
 }
 
+@mixin transition($property, $duration, $timing-function, $delay) {
+  -webkit-transition: $property $duration $timing-function $delay;
+  -moz-transition: $property $duration $timing-function $delay;
+  -o-transition: $property $duration $timing-function $delay;
+  -ms-transition: $property $duration $timing-function $delay;
+  transition: $property $duration $timing-function $delay;
+}
+
 @mixin transition-transform($property, $duration, $timing-function, $delay) {
   -webkit-transition: -webkit-transform $duration $timing-function $delay;
   -moz-transition: -moz-transform $duration $timing-function $delay;

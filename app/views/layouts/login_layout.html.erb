@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
+    <title>Curri | The Syllabus Reinvented</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <%= stylesheet_link_tag "application", media: "all" %>
-    <%= render 'shared/event_tracking' %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
+    <%= favicon_link_tag 'curri512.png', rel: 'apple-touch-icon', type: 'image/png', size: '512x512' %>
+    <%= favicon_link_tag 'curri152.png', rel: 'apple-touch-icon', type: 'image/png', size: '152x152' %>
+    <%= favicon_link_tag 'curri120.png', rel: 'apple-touch-icon', type: 'image/png', size: '120x120' %>
+    <%= favicon_link_tag 'curri76.png', rel: 'apple-touch-icon', type: 'image/png', size: '76x76' %>
   </head>
-  <body>
-    <%= render "shared/nav" %>
-
+  <body class="login">
     <div class="main">
-      <%= render 'shared/page_header' %>
+      <div class="brandbar"></div>
       <% if notice %>
         <div class="alert alert-success alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -25,14 +26,15 @@
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
           <%= alert %></div>
       <% end %>
-
-      <%= yield %>
-
+      <div class="grid">
+        <div class="grid-unit narrow login-logo">
+          <%= render 'shared/logo' %>
+        </div>
+        <div class="grid-unit narrow login-box">
+          <%= yield %>
+        </div>
+      </div>
     </div>
-
-    <% if flash[:track] %>
-      <%= track_event(flash[:track][:event_name], flash[:track][:properties]) %>
-    <% end %>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>

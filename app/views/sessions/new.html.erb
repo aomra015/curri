@@ -1,24 +1,15 @@
-<h1>Log in</h1>
-
-<%= form_tag login_path , class: 'form-horizontal' do %>
-  <h3>
-    <%= label_tag :email %>
-  </h3>
-  <span>
-    <%= email_field_tag :email, nil, placeholder: 'Please enter email address', class: "form-input" %>
-  </span>
-  <h3>
-    <%= label_tag :password %>
-  </h3>
-  <span>
-    <%= password_field_tag :password, nil, class: "form-input" %>
-  </span>
-
-  <span>
-    <%= link_to "Forgot password?", new_password_reset_path, id: 'password-reset' %>
-  </span>
-
-  <div class="login">
-    <%= submit_tag "Login", class: "login-button btn"%>
+<%= form_tag login_path do %>
+  <div class="form-group">
+    <label for="email"><%= label_tag :email %></label>
+    <%= email_field_tag :email, nil, class: "form-input", :tabindex => '1' %>
   </div>
+  <div class="form-group">
+    <label for="password"><%= label_tag :password %><p class="pull-right forgot"><%= link_to "Forgot?", new_password_reset_path, id: 'password-reset' %></p></label>
+    <%= password_field_tag :password, nil, class: "form-input", :tabindex => '2' %>
+    
+  </div>
+  <%= submit_tag "Login", class: "btn btn-primary", :tabindex => '4'%>
 <% end %>
+<div class="grid-unit-footer">
+  <p class="register"><%= link_to 'Click here to register as a Teacher', register_path, :tabindex => '5' %></p>
+</div>

@@ -7,6 +7,7 @@ class StudentsController < ApplicationController
   def new
     @user = User.new
     @token = params[:token]
+    render layout: "login_layout"
   end
 
   def create
@@ -16,12 +17,13 @@ class StudentsController < ApplicationController
       flash[:track] = { event_name: "Student Sign Up" }
       claim_invitation
     else
-      render :new
+      render :new, layout: "login_layout"
     end
   end
 
   def login
     @token = params[:token]
+    render layout: "login_layout"
   end
 
   def enroll
@@ -29,14 +31,14 @@ class StudentsController < ApplicationController
 
     if !@user.try(:student?)
       flash.now.alert = "You need a student account to accept the invitation."
-      render :login
+      render :login, layout: "login_layout"
     else
       if @user.try(:authenticate, params[:user][:password])
         flash[:track] = { event_name: "User joins classroom" }
         claim_invitation
       else
         flash.now.alert = "Email or password are not correct"
-        render :login
+        render :login, layout: "login_layout"
       end
     end
 
@@ -49,7 +51,7 @@ class StudentsController < ApplicationController
     if @invitation.nil? || @invitation.student
       flash.now.alert = "The invitation is no longer valid or the URL is incorrect"
       action = params[:action] == 'create' ? :new : :login
-      render action
+      render action, layout: "login_layout"
     end
   end
 

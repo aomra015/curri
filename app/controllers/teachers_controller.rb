@@ -4,6 +4,7 @@ class TeachersController < ApplicationController
 
   def new
     @user = User.new
+    render layout: "login_layout"
   end
 
   def create
@@ -15,7 +16,7 @@ class TeachersController < ApplicationController
       flash[:track] = { event_name: "Teacher Sign Up" }
       redirect_to classrooms_path
     else
-      render :new
+      render :new, layout: "login_layout"
     end
   end
 
