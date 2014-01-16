@@ -1,15 +1,19 @@
-<%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "grid1 grid-unit" do %>
-  <h3 class="grid-header"><%=track.name %></h3>
-  <% if current_user.student? %>
-    <div class="grid-temp">
-      <%= render partial: 'shared/progress_bar', locals: { ratings: current_user.classrole.track_ratings(track), total_count: track.checkpoints.length } %>
-    </div>
-  <% end %>
-  <div class= "row">
-    <ul>
-    <% track.checkpoints.each do |checkpoint| %>
-      <li><%= checkpoint.expectation %></li>
+<div class="grid-unit narrow">
+  <div class="classroom">
+    <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "classroom-content" do %>
+      <h3 class="grid-header"><%=track.name %></h3>
+      <% if current_user.student? %>
+        <div class="grid-temp">
+          <%= render partial: 'shared/progress_bar', locals: { ratings: current_user.classrole.track_ratings(track), total_count: track.checkpoints.length } %>
+        </div>
+      <% end %>
+      <div class= "row">
+        <ul>
+        <% track.checkpoints.each do |checkpoint| %>
+          <li><%= checkpoint.expectation %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
-    </ul>
   </div>
-<% end %>
+</div>

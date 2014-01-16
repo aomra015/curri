@@ -36,7 +36,7 @@ body.nav-open .main {
   left: 30px;
   h4 {
     display: inline-block;
-    color: lighten($color-main, 25%);
+    color: lighten($color-main, 30%);
     margin: 0;
     line-height: 2;
   }
@@ -48,7 +48,7 @@ body.nav-open .main {
   }
 }
 
-.page-header.grid {
+.page-header.wrapper {
   margin-left: -30px;
   margin-right: -30px;
   padding: 0 30px 5px 10px;
@@ -56,10 +56,14 @@ body.nav-open .main {
 }
 
 .page-title {
-  margin-top: 40px;
+  margin: 60px 0 5px;
+}
+
+.subtitle {
+  color: lighten($color-main, 20%);
 }
 // Grid
-.grid {
+.wrapper {
   margin-left: -20px;
   overflow: hidden; // for floated children
 }
@@ -86,15 +90,6 @@ body.nav-open .main {
 }
 .narrow, .wide, .whole {
   width: 100%;
-}
-
-// Sitewide layout rules
-.pull-right {
-  float: right;
-}
-
-.hide-mobile {
-  display: none;
 }
 
 @include media-query(small) {
@@ -125,7 +120,7 @@ body.nav-open .main {
 
   .page-header {
     left: 100px;
-    &.grid {
+    &.wrapper {
       border: none;
     }
     &.border {

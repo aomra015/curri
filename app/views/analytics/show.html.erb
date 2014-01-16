@@ -1,27 +1,25 @@
-<% provide(:title, 'Analytics') %>
-<div class="grid page-title">
   <div class="grid-unit whole">
-    <h2>Analytics > <%= @track.name %></h2>
+    <h2><%= @track.name %></h2>
+    <h5 class="subtitle"><%= @classroom.name %></h5>
   </div>
 </div>
-<div class="grids">
-  <div class="grid2" id="track">
+<div class="wrapper">
+  <div class="grid-unit narrow pull-right">
+    <h3 class="grid-header">Analytics > All Tracks</h3>
+    <div class="row">
+      <ul>
+        <% @classroom.tracks.each do |track| %>
+          <li class="link"><%= link_to track.name, classroom_track_analytics_path(@classroom, track) %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div>
+      <%= render 'phasing' if @track.phasing? %>
+    </div>
+  </div>
+  <div class="grid-unit wide" id="track">
     <div><%= render :partial => 'checkpoint', collection: @track.checkpoints %></div>
   </div>
-</div>
-
-<div class="grid1 all-tracks">
-  <h3 class="grid-header">Analytics > All Tracks</h3>
-  <div class="row">
-    <ul>
-      <% @classroom.tracks.each do |track| %>
-        <li class="link"><%= link_to track.name, classroom_track_analytics_path(@classroom, track) %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-<div>
-  <%= render 'phasing' if @track.phasing? %>
 </div>
 
 <% if @phase.state == 'Realtime' %>
@@ -35,3 +33,4 @@
   });
   </script>
 <% end%>
+<% provide(:title, 'Analytics') %>
