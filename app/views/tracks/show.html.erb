@@ -1,5 +1,3 @@
-<% provide(:title, @track.name) %>
-<div class="wrapper page-title">
   <div class="grid-unit wide">
     <h2><%= @track.name %><span class="publish"><%= ' [Unpublished]' unless @track.published %></span></h2>
     <h5 class="subtitle"><%= @classroom.name %></h5>
@@ -30,3 +28,4 @@
     <%= render @track.checkpoints %>
   </div>
 </div>
+<% provide(:title, @track.name) %>

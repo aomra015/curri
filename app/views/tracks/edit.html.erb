@@ -1,4 +1,8 @@
+  <div class="grid-unit wide">
+    <h2>Edit Track</h2>
+    <h5 class="subtitle"><%= @classroom.name %></h5>
+    <%= render 'form' %>
+    <%= link_to 'Delete Track', [@classroom, @track], method: :delete, data: {confirm: "Are you sure you want to delete the track?"}, class: "btn btn-head pull-right", id: 'delete-track' %>
+  </div>
+</div>
 <% provide(:title, "Edit #{@track.name}") %>
-<h2>Edit Track</h2>
-<%= render 'form' %>
-<%= link_to 'Delete Track', [@classroom, @track], method: :delete, data: {confirm: "Are you sure you want to delete the track?"}, class: "btn btn-head pull-right", id: 'delete-track' %>

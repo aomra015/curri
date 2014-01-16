@@ -1,34 +1,39 @@
-<% provide(:title, 'Invite Students') %>
-<div class="grid1">
-<h1>Invite Students</h1>
-<%= form_tag classroom_invitations_path(@classroom) do %>
-  <h3>
-    <%= label_tag :invitation_emails %>
-    </h3>
-  <span>
-    <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input-area", rows: 4 %>
-  </span>
-  <div>
-    <%= submit_tag 'Send Invitation', class: 'btn btn-head', id: 'invite-button' %>
+  <div class="grid-unit wide">
+    <h2>Invite Students</h2>
+    <h5 class="subtitle"><%= @classroom.name %></h5>
   </div>
-<% end %>
 </div>
-
-<div class="grid3">
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Status</th>
-    </tr>
-
-    <% @invitations.includes(student: :user).each do |invitation| %>
-      <tr id="invitation_<%= invitation.id%>">
-        <td><%= invitation.full_name %></td>
-        <td><%= invitation.email_address %></td>
-        <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
-        <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-head', id: 'remove_button' %></td>
-      </tr>
+<div class="wrapper">
+  <div class="grid-unit narrow pull-right">
+    <%= form_tag classroom_invitations_path(@classroom) do %>
+      <h3>
+        <%= label_tag :invitation_emails %>
+        </h3>
+      <span>
+        <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input-area", rows: 4 %>
+      </span>
+      <div>
+        <%= submit_tag 'Send Invitation', class: 'btn btn-head', id: 'invite-button' %>
+      </div>
     <% end %>
-  </table>
+  </div>
+  <div class="grid-unit wide">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Status</th>
+      </tr>
+
+      <% @invitations.includes(student: :user).each do |invitation| %>
+        <tr id="invitation_<%= invitation.id%>">
+          <td><%= invitation.full_name %></td>
+          <td><%= invitation.email_address %></td>
+          <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
+          <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-head', id: 'remove_button' %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
+<% provide(:title, 'Invite Students') %>
