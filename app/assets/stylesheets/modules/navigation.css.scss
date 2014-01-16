@@ -31,10 +31,13 @@ body.nav-open .fixed-nav {
 }
 
 .logo {
-  background: $grey-lt;
+  background: lighten($color-main, 60%);
   @include all-transition(0.2s);
   &:hover {
     background: darken($color-main, 10%);
+  }
+  .nav-links {
+    padding-bottom: 18px;
   }
 }
 
@@ -42,7 +45,7 @@ body.nav-open .fixed-nav {
   display: inline-block;
   padding: 18px;
   position: relative;
-  top: 3px;
+  top: 5px;
   background-position: -90px -27px;
   .logo:hover & {
     background-position: -90px -62px;
