@@ -6,15 +6,16 @@ $grid-background: #F0ECDA;
 $secondary-color: #F16739;
 
 // colors
+$grey-lt: #ddd;
+$grey-md: #888;
 $color-main: #415463;
 $color-primary: #5DA3FD;
 $color-success: #88DB81;
 $color-warning: #FDB343;
 $color-danger: #FF5454;
-$color-text: darken($color-main, 5%);
+$color-accent: #A5A532;
+$color-text: lighten($grey-md, 5%);
 $color-link: $color-primary;
-$grey-lt: #ddd;
-$grey-md: #888;
 
 // Paula's suggestions: More saturated colors
 // $color-primary: #3D88FF;

@@ -34,6 +34,7 @@ body.nav-open .main {
   top: 0;
   right: 30px;
   left: 30px;
+  z-index: 200;
   h4 {
     display: inline-block;
     color: lighten($color-main, 30%);
@@ -57,11 +58,16 @@ body.nav-open .main {
 
 .page-title {
   margin: 60px 0 5px;
+  h2 {
+    color: lighten($color-main, 20%);
+  }
 }
 
 .subtitle {
   color: lighten($color-main, 20%);
+  color: $color-accent;
 }
+
 // Grid
 .wrapper {
   margin-left: -20px;
@@ -142,15 +148,15 @@ body.nav-open .main {
 }
 
 @include media-query(large) {
-  .narrow {
-    width: 25%;
-  }
+  // .narrow {
+  //   width: 25%;
+  // }
 
-  .wide {
-    width: 75%;
-  }
+  // .wide {
+  //   width: 75%;
+  // }
 
-  .whole {
-    width: 100%;
-  }
+  // .whole {
+  //   width: 100%;
+  // }
 }
