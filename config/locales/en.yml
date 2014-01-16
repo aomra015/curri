@@ -152,7 +152,7 @@ en:
         &#8226;&nbsp; Accommodates the fixed nav on the left. 
         &#8226;&nbsp; At smaller sizes, it provides an equal left and right padding, as the mobile nav (icon) becomes visible.
 
-        Any modules that are within the `.main` div, should be contained in a `.grid`. All grid units are 100% at mobile sizes and change according to screen width (see next section), and are assigned a `.grid-unit`. Along with this, a size class needs to be assigned, either `.narrow`, `.wide` or `.whole`, which will ensure correct display at all screen sizes.
+        Any modules that are within the `.main` div, should be contained in a `.wrapper`. All grid units are 100% at mobile sizes and change according to screen width (see next section), and are assigned a `.grid-unit`. Along with this, a size class needs to be assigned, either `.narrow`, `.wide` or `.whole`, which will ensure correct display at all screen sizes.
 
         At larger screen sizes, `.narrow` takes up 25% of the available width, and `.wide` takes up 75%. At medium sizes, these become 33.33% and 66.67% respectively, whereas at small sizes they are all full-width; `.whole` is always 100% of available width. Resize this window to see how the grid responds.
 

@@ -1,8 +1,10 @@
 <% provide(:title, 'Classrooms') %>
-<div class="grid">
+<div class="wrapper page-title">
   <div class="grid-unit whole">
-    <h2 class="page-title">Your Classrooms</h2>
+    <h2>Your Classrooms</h2>
   </div>
+</div>
+<div class="wrapper">
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <div class="grid-unit narrow add-unit">
