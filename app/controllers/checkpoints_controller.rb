@@ -12,7 +12,9 @@ class CheckpointsController < ApplicationController
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
     if @checkpoint.save
-      redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been created"
+      flash[:notice] = "Checkpoint has been created"
+      flash[:track] = { event_name: "Create checkpoint", properties: { classroom_id: @classroom.id, track_id: @track.id, checkpoint_id: @checkpoint.id } }
+      redirect_to classroom_track_path(@classroom, @track)
     else
       render :new
     end

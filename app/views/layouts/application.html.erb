@@ -3,7 +3,8 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= render 'shared/event_tracking' %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
@@ -28,6 +29,10 @@
       <%= yield %>
 
     </div>
+
+    <% if flash[:track] %>
+      <%= track_event(flash[:track][:event_name], flash[:track][:properties]) %>
+    <% end %>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>

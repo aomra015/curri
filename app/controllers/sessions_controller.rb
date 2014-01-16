@@ -10,7 +10,9 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user.try(:authenticate, params[:password])
       session[:user_id] = user.id
-      redirect_to classrooms_path, notice: "You are signed in as #{user.email}"
+      flash[:notice] = "You are signed in as #{user.email}"
+      flash[:track] = { event_name: "User Sign In" }
+      redirect_to classrooms_path
     else
       flash.now.alert = "Email or password are not correct"
       render :new, layout: "login_layout"

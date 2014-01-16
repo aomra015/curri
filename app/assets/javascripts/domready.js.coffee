@@ -16,6 +16,13 @@ $ ->
     marker.removeClass('checkpoint_0 checkpoint_1 checkpoint_2').fadeOut ->
       marker.addClass("checkpoint_#{data.current_score}").fadeIn()
 
+    # SegmentIO event: Student Rates Checkpoint
+    analytics.track "Rate checkpoint",
+      score: data.current_score
+      checkpoint_id: data.checkpoint_id
+      classroom_id: data.classroom_id
+      track_id: data.track_id
+
   # Update Header
   HelpStatusPoller.poll() if $('.help-toggle').length
   RequestNumberPoller.poll() if $('#requesters_link').length
@@ -42,3 +49,6 @@ $ ->
       $('.page-header').removeClass('border')
     else
       $('.page-header').addClass('border')
+
+  # SegmentIO event: Log out
+  analytics.trackLink($('#logout-link'), "Sign out")
