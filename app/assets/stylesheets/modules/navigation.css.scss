@@ -35,6 +35,7 @@ body.nav-open .fixed-nav {
   @include all-transition(0.2s);
   &:hover {
     background: darken($color-main, 10%);
+    background: $color-success;
   }
   .nav-links {
     padding-bottom: 18px;

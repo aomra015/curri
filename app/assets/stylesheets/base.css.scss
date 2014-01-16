@@ -21,6 +21,7 @@ body {
   height: inherit;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;// only for FF 25+ on OSX
   color: $color-main;
   &.nav-open {
     overflow: hidden;
