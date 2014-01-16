@@ -1,5 +1,8 @@
 <li class="logo">
-  <%= link_to '', root_path, class: "nav-links", title: 'Home' %>
+  <%= link_to root_path, class: "nav-links", title: 'Home' do %>
+    <span class="nav-icon nav-logo"></span>
+    <span class="nav-wordmark"></span>
+  <% end %>
 </li>
 <li>
   <%= link_to_selected classrooms_path, class: "nav-links" do %>

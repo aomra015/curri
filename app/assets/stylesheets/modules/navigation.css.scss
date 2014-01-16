@@ -30,9 +30,35 @@ body.nav-open .fixed-nav {
   list-style-type: none;
 }
 
-.logo a {
-  background: $color-primary;
-  padding: 34px 20px;
+.logo {
+  background: $grey-lt;
+  @include all-transition(0.2s);
+  &:hover {
+    background: darken($color-main, 10%);
+  }
+}
+
+.nav-logo {
+  display: inline-block;
+  padding: 18px;
+  position: relative;
+  top: 3px;
+  background-position: -90px -27px;
+  .logo:hover & {
+    background-position: -90px -62px;
+  }
+}
+
+.nav-wordmark {
+  display: none;
+  padding: 18px 45px;
+  background-position: -120px -22px;
+  .logo:hover & {
+    background-position: -120px -57px;
+  }
+  body.nav-open & {
+    display: inline-block;
+  }
 }
 
 .expand-collapse {
@@ -63,7 +89,8 @@ a.selected, a.selected:hover {
 }
 
 // svg icons
-.nav-icon {
+.nav-icon,
+.nav-wordmark {
   background-image: image-url('curri-icons.svg');
 }
 
