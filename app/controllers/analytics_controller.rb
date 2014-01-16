@@ -6,6 +6,7 @@ class AnalyticsController < ApplicationController
   def show
     @track = @classroom.tracks.find(params[:track_id])
     @phase = Phase.new(@track, params[:phase_state] || "Realtime")
+    flash.now[:track] = { event_name: "View analytics page", properties: {classroom_id: @classroom.id, track_id: @track.id } }
   end
 
 end

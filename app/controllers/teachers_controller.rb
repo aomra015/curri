@@ -13,6 +13,7 @@ class TeachersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
+      flash[:track] = { event_name: "Teacher Sign Up" }
       redirect_to classrooms_path
     else
       render :new, layout: "login_layout"

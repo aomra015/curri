@@ -34,6 +34,18 @@ module ApplicationHelper
     end
   end
 
+  def js_render_user(user)
+    javascript_tag %Q{
+      window.Curri = {};
+      window.Curri.user = #{user.to_json};
+    }
+  end
+
+  def track_event(event_name, properties=nil)
+    p = properties.nil? ? "" : ", #{properties.to_json}"
+    javascript_tag %Q{analytics.track("#{event_name}"#{p});}
+  end
+
   def full_title(page_title)
     base_title = "Curri"
     if page_title.empty?
