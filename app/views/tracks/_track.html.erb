@@ -1,6 +1,6 @@
 <div class="grid-unit narrow">
   <div class="classroom">
-    <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "grid1 grid-unit" do %>
+    <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "classroom-content" do %>
       <h3 class="grid-header"><%=track.name %></h3>
       <% if current_user.student? %>
         <div class="grid-temp">

@@ -1,31 +1,32 @@
 <% provide(:title, @track.name) %>
 <div class="grid page-title">
-  <div class="grid-unit whole">
-    <h2>
-      <%= @classroom.name %> > <%= @track.name %>
-      <%= ' [Unpublished]' unless @track.published %>
-    </h2>
+  <div class="grid-unit wide">
+    <h2><%= @track.name %><span class="publish"><%= ' [Unpublished]' unless @track.published %></span></h2>
+    <h5 class="subtitle"><%= @classroom.name %></h5>
+  </div>
+  <div class="grid-unit narrow">
     <!-- Teacher Controls -->
     <% if current_user.teacher? %>
-      <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track), class: "btn btn-head pull-right" %>
-      <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), class: "btn btn-head pull-right", id: 'manage-track' %>
+      <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track) %>
+      <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
     <% end %>
   </div>
-
 </div>
-<p><%= display_start_end_times(@track) %></p>
-
-<div class="grid2" id="track" data-trackid="<%= @track.id %>">
-  <%= render @track.checkpoints %>
-</div>
-
-<div class="grid1 all-tracks">
-  <h3 class="grid-header">All Tracks</h3>
-  <div class="row">
-    <ul>
-      <% @classroom.tracks.each do |track| %>
-        <li class="link"><%= link_to track.name, classroom_track_path(@classroom, track) %></li>
-      <% end %>
-    </ul>
+<div class="grid">
+  <div class="grid-unit whole">
+    <p><%= display_start_end_times(@track) %></p>
+  </div>
+  <div class="grid-unit narrow pull-right">
+    <h3 class="grid-header">All Tracks</h3>
+    <div class="row">
+      <ul>
+        <% @classroom.tracks.each do |track| %>
+          <li class="link"><%= link_to track.name, classroom_track_path(@classroom, track) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-unit wide" id="track" data-trackid="<%= @track.id %>">
+    <%= render @track.checkpoints %>
   </div>
 </div>
