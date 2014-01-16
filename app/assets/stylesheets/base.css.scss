@@ -62,28 +62,33 @@ h4,
 h1, 
 .h1 {
   font-size: 2rem;
-  margin: 1.5rem 0 0.9rem;
+  // margin: 1.5rem 0 0.9rem;
 }
 
 h2, 
 .h2 {
   font-size: 1.8rem;
-  margin: 1.3rem 0 0.75rem;
+  // margin: 1.3rem 0 0.75rem;
 }
 
 h3,
 .h3 {
   font-size: 1.5rem;
-  margin: 1rem 0 0.6rem;
+  // margin: 1rem 0 0.6rem;
 }
 
 h4,
 .h4 {
   font-size: 1.2rem;
-  margin: 0.7rem 0 0.5rem;
+  // margin: 0.7rem 0 0.5rem;
 }
 
-
+h5,
+.h5 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 // Old styles, remove these
 
@@ -94,16 +99,16 @@ h4,
 //   margin-top: 5px;
 // }
 
-h3.grid-header {
-  padding: 20px;
-  margin-top: 0;
-  margin-bottom: 0;
-  background-clip: border-box;
-  background-color: darken($grid-background, 30%);
-  color: #FAFAFA;
-  border-top-left-radius: $border-radius;
-  border-top-right-radius: $border-radius;
-}
+// h3.grid-header {
+//   padding: 20px;
+//   margin-top: 0;
+//   margin-bottom: 0;
+//   background-clip: border-box;
+//   background-color: darken($grid-background, 30%);
+//   color: #FAFAFA;
+//   border-top-left-radius: $border-radius;
+//   border-top-right-radius: $border-radius;
+// }
 
 // nav {
 //   background-color: $header-color;

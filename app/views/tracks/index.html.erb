@@ -1,28 +1,26 @@
 <% provide(:title, @classroom.name) %>
 <div class="grid page-title">
-  <div class="grid-unit whole">
-    <h2><%= @classroom.name %> > All Tracks</h2>
+  <div class="grid-unit wide">
+    <h2>All Tracks</h2>
+    <h5 class="subtitle"><%= @classroom.name %></h5>
   </div>
-
   <!-- Teacher Controls -->
-  <% if current_user.teacher? %>
-    <%= link_to 'Manage Students', new_classroom_invitation_path(@classroom), class: "btn btn-head pull-right", id: 'manage-students' %>
-    <%= link_to 'Manage Classroom', edit_classroom_path(@classroom), class: "btn btn-head pull-right", id: 'manage-classroom' %>
-  <% end %>
-
+  <div class="grid-unit narrow">
+    <% if current_user.teacher? %>
+      <%= link_to 'Manage Students', new_classroom_invitation_path(@classroom), id: 'manage-students' %>
+      <%= link_to 'Manage Classroom', edit_classroom_path(@classroom), id: 'manage-classroom' %>
+    <% end %>
+  </div>
 </div>
-
-<div class="grids">
-  <%= render @tracks %>
-
+<div class="grid">
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
-    <%= link_to new_classroom_track_path, class: "grid1 grid-add", id: "add-track" do %>
-      <div class="add-unit">
+    <div class="grid-unit narrow add-unit">
+      <%= link_to new_classroom_track_path, class: "classroom-content", id: "add-track" do %>
         <div class="add-sign">+</div>
         <p class="add-text">Add New Track</p>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
-
+  <%= render @tracks %>
 </div>

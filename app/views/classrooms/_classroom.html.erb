@@ -1,18 +1,22 @@
-<%= link_to classroom_tracks_path(classroom), class: "grid1 grid-unit" do %>
-  <h3 class="grid-header"><%=classroom.name %></h3>
-  <div class= "unit-inner ratings-count">
-  <div class="count-number count-large">
-    <%= classroom.students.count %>
-  </div>
-  <p>
-    <%= "Student".pluralize(classroom.students.size) %>
-  </p>
-  <h2>
-    <% if current_user.teacher? %>
-      <%= classroom.tracks.size %> <%= "Track".pluralize(classroom.tracks.size) %>
-    <% else %>
-      <%= classroom.tracks.published.size %> <%= "Track".pluralize(classroom.tracks.published.size) %>
+<div class="grid-unit narrow">
+  <div class="classroom">
+    <%= link_to classroom_tracks_path(classroom), class: 'classroom-content' do %>
+      <h3 class="grid-header"><%=classroom.name %></h3>
+      <div class= "unit-inner ratings-count">
+        <div class="count-number count-large">
+          <%= classroom.students.count %>
+        </div>
+        <p>
+          <%= "Student".pluralize(classroom.students.size) %>
+        </p>
+        <h2>
+          <% if current_user.teacher? %>
+            <%= classroom.tracks.size %> <%= "Track".pluralize(classroom.tracks.size) %>
+          <% else %>
+            <%= classroom.tracks.published.size %> <%= "Track".pluralize(classroom.tracks.published.size) %>
+          <% end %>
+        </h2>
+      </div>
     <% end %>
-  </h2>
   </div>
-<% end %>
+</div>
