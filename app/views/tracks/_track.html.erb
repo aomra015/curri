@@ -1,7 +1,7 @@
 <div class="grid-unit narrow">
   <div class="classroom">
     <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "classroom-content" do %>
-      <h4><%=track.name %></h4>
+      <h4><%=track.name %><%= ' [Unpublished]' unless track.published %></h4>
       <% if current_user.student? %>
         <div class="grid-temp">
           <%= render partial: 'shared/progress_bar', locals: { ratings: current_user.classrole.track_ratings(track), total_count: track.checkpoints.length } %>

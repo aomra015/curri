@@ -1,10 +1,10 @@
   <div class="grid-unit wide">
-    <h2>Add Classroom</h2>
+    <h2>Add/Join Classroom</h2>
     <%= render 'form' %>
   </div>
 
   <div class="grid-unit wide">
-    <h3>Join Classroom</h3>
+    <h3>Join Existing Classroom</h3>
     <%= form_tag join_classrooms_path, method: :post do %>
       <%= text_field_tag :teacher_token, nil,placeholder: "Enter classroom token", class: "form-input" %>
       <%= submit_tag 'Join Classroom', class: "btn" %>
