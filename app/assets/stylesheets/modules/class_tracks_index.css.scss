@@ -33,7 +33,7 @@ $bluegrey-v-lt: #F8FAFC;
     text-align: center;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
-    .classroom:hover & {
+    .padding-border:hover & {
       background-image: linear-gradient(to top, darken($bluegrey-lt, 2%), darken($bluegrey-v-lt, 2%));
     }
   }
@@ -105,14 +105,14 @@ $bluegrey-v-lt: #F8FAFC;
 
 .unpublished-badge {
   position: relative;
-  top: -3px;
+  top: -2px;
   margin-left: 10px;
   font-size: 10px;
   color: #fff;
-  padding: 2px 8px 3px;
+  padding: 2px 8px;
   @include border-radius(100px);
   background: $color-warning;
-  text-shadow: none;
+  text-shadow: 1px 1px rgba(0,0,0,0.07);
   letter-spacing: 0;
   box-shadow: 1px 1px #fff;
 }

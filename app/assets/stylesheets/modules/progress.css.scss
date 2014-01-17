@@ -35,13 +35,16 @@
 .progress-bar-danger {
   background-color: $color-danger;
 }
+
 .progress-bar-warning {
   background-color: $color-warning;
 }
+
 .progress-bar-success {
   background-color: $color-success;
+  border-radius: 0 15px 15px 0;
 }
+
 .progress-bar-empty {
-  // background-color: rgba(255,255,255,1.0);
   color: $color-main;
 }
