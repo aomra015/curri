@@ -2,7 +2,7 @@
   <div class="classroom">
     <%= link_to classroom_tracks_path(classroom), class: 'classroom-content' do %>
       <h4><%=classroom.name %></h4>
-      <p class="classroom-desc">Some sample description text for this class. Maximum 65 chars ok.</p>
+      <p class="classroom-desc"><%= classroom.description %></p>
       <div class="student-count">
         <span class="class-icons student-icon"></span>
         <span class="student-num"><%= classroom.students.count %></span><span><%= " #{'Student'.pluralize(classroom.students.size)} Joined" %></span>
