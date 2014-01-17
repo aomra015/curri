@@ -9,9 +9,16 @@ class Classroom < ActiveRecord::Base
   validates :name, presence: true
 
   default_scope { order(id: :asc) }
+  before_create :generate_token
 
   def requesters
     invitations.help_needed
+  end
+
+  def generate_token
+    begin
+      self.teacher_token = SecureRandom.urlsafe_base64(6)
+    end while Classroom.exists?(teacher_token: self.teacher_token)
   end
 
 end
