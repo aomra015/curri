@@ -72,6 +72,13 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert_redirected_to classrooms_path
   end
 
+  test "should remove classroom with no teachers or students" do
+    session[:user_id] = users(:teacher2).id
+    assert_difference 'Classroom.count', -1 do
+      delete :destroy, id: classrooms(:three)
+    end
+  end
+
   test "should add teacher to classroom" do
     assert_equal 1, users(:teacher1).classrooms.size
     post :join, teacher_token: classrooms(:three).teacher_token

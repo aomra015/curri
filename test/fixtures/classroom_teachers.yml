@@ -8,3 +8,7 @@ one:
 two:
   classroom: two
   teacher: teacher2
+
+three:
+  classroom: three
+  teacher: teacher2

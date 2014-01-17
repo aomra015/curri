@@ -46,6 +46,9 @@ class ClassroomsController < ApplicationController
 
   def destroy
     @current_user.classrooms.delete(@classroom)
+    if @classroom.teachers.empty? && @classroom.students.empty?
+      @classroom.destroy
+    end
     redirect_to classrooms_path, notice: "You have left the classroom."
   end
 
