@@ -5,6 +5,7 @@ class Track < ActiveRecord::Base
 
   default_scope { order(id: :asc) }
   scope :published, -> { where(published: true) }
+  scope :unpublished, -> { where(published: false) }
 
   def phasing?
     start_time && end_time
