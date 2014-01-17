@@ -52,10 +52,23 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert_template :edit
   end
 
-  test "delete classroom" do
-    assert_difference 'Classroom.count', -1 do
+  test "should remove teacher from classroom without deleting classroom" do
+    assert_difference 'users(:teacher1).classrooms.count', -1 do
       delete :destroy, id: classrooms(:one)
     end
+
+    assert classrooms(:one).reload
+    assert_redirected_to classrooms_path
+  end
+
+  test "should remove student from classroom without deleting classroom" do
+    session[:user_id] = users(:student1).id
+
+    assert_difference 'users(:student1).classrooms.count', -1 do
+      delete :destroy, id: classrooms(:one)
+    end
+
+    assert classrooms(:one).reload
     assert_redirected_to classrooms_path
   end
 

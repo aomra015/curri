@@ -1,6 +1,6 @@
 class ClassroomsController < ApplicationController
 
-  before_action :authorize_teacher, except: [:index, :show]
+  before_action :authorize_teacher, except: [:index, :show, :destroy]
   before_action :get_classroom, only: [:edit, :update, :destroy]
 
   def index
@@ -45,8 +45,8 @@ class ClassroomsController < ApplicationController
   end
 
   def destroy
-    @classroom.destroy
-    redirect_to classrooms_path, notice: "Classroom has been deleted."
+    @current_user.classrooms.delete(@classroom)
+    redirect_to classrooms_path, notice: "You have left the classroom."
   end
 
   private
