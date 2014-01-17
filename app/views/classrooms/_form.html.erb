@@ -1,13 +1,13 @@
 <%= form_for @classroom do |f| %>
   <%= f.error_messages %>
   <h3>
-    <%= f.label :name, 'Classroom Name' %>
+    <%= f.label :name, 'New Classroom Name' %>
   </h3>
   <span>
     <%= f.text_field :name, placeholder: "Enter classroom name", class: "form-input" %>
   </span>
   <span>
-    <%= f.text_area :description, maxlength: "65", placeholder: "Enter classroom description", class: "form-input" %>
+    <%= f.text_area :description, maxlength: "65", placeholder: "Enter classroom description (optional; max 65 chars)", class: "form-input" %>
   </span>
   <div>
     <%= f.submit class: "add-classroom btn" %>

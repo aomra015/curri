@@ -1,6 +1,7 @@
 class Teacher < ActiveRecord::Base
   has_one :user, as: :classrole, dependent: :destroy
-  has_many :classrooms
+  has_many :classroom_teachers
+  has_many :classrooms, through: :classroom_teachers
 
   delegate :email, to: :user
   delegate :first_name, to: :user
@@ -14,8 +15,8 @@ class Teacher < ActiveRecord::Base
 
     default_classroom = self.classrooms.find_by(name: "Sample Classroom")
 
-    js_track = default_classroom.tracks.create(name: "Beginner JavaScript")
-    jq_track = default_classroom.tracks.create(name: "Beginner jQuery")
+    js_track = default_classroom.tracks.create(name: "Beginner JavaScript", published: true)
+    jq_track = default_classroom.tracks.create(name: "Beginner jQuery", published: false)
 
     js_track.checkpoints.create([
       {expectation: "JavaScript & its uses", success_criteria: "JavaScript is a programming language used mainly for interactivity on web browsers."},
