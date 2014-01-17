@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140117022816) do
+ActiveRecord::Schema.define(version: 20140117163747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,17 +26,25 @@ ActiveRecord::Schema.define(version: 20140117022816) do
 
   add_index "checkpoints", ["track_id"], name: "index_checkpoints_on_track_id", using: :btree
 
+  create_table "classroom_teachers", force: true do |t|
+    t.integer  "classroom_id"
+    t.integer  "teacher_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "classroom_teachers", ["classroom_id"], name: "index_classroom_teachers_on_classroom_id", using: :btree
+  add_index "classroom_teachers", ["teacher_id"], name: "index_classroom_teachers_on_teacher_id", using: :btree
+
   create_table "classrooms", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "teacher_id"
     t.integer  "students_count", default: 0
     t.integer  "tracks_count",   default: 0
+    t.string   "teacher_token"
     t.text     "description"
   end
-
-  add_index "classrooms", ["teacher_id"], name: "index_classrooms_on_teacher_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.integer  "classroom_id"

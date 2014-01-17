@@ -49,30 +49,30 @@ class PhaseTest < ActiveSupport::TestCase
 
   test "phase scopes ratings" do
     phase = Phase.new(tracks(:one), "Realtime")
-    assert_equal 2, phase.ratings(checkpoints(:one)).size
+    assert_equal 2, phase.ratings(checkpoints(:one)).length
   end
 
   test "before phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
-    assert_equal 0, @test_phase_before.ratings(checkpoints(:one)).size
+    assert_equal 0, @test_phase_before.ratings(checkpoints(:one)).length
 
     checkpoints(:one).ratings << Rating.new(score: 1, student: students(:student1), created_at: @beforeDate)
-    assert_equal 1, @test_phase_before.ratings(checkpoints(:one)).size
+    assert_equal 1, @test_phase_before.ratings(checkpoints(:one)).length
   end
 
   test "during phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
-    assert_equal 0, @test_phase_during.ratings(checkpoints(:one)).size
+    assert_equal 0, @test_phase_during.ratings(checkpoints(:one)).length
 
     checkpoints(:one).ratings << Rating.new(score: 1, student: students(:student1), created_at: @duringDate)
-    assert_equal 1, @test_phase_during.ratings(checkpoints(:one)).size
+    assert_equal 1, @test_phase_during.ratings(checkpoints(:one)).length
   end
 
   test "after phase scopes ratings" do
     @test_track.checkpoints << checkpoints(:one)
-    assert_equal 2, @test_phase_after.ratings(checkpoints(:one)).size
+    assert_equal 2, @test_phase_after.ratings(checkpoints(:one)).length
 
     checkpoints(:one).ratings << Rating.new(score: 1, student: students(:student1), created_at: @duringDate)
-    assert_equal 2, @test_phase_after.ratings(checkpoints(:one)).size
+    assert_equal 2, @test_phase_after.ratings(checkpoints(:one)).length
   end
 end
