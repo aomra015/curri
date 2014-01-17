@@ -45,10 +45,13 @@ $bluegrey-v-lt: #F8FAFC;
   line-height: 1.4;
 }
 
-.student-count,
-.track-count {
-  font-size: 17px;
-  line-height: 22px;
+// .student-count,
+// .track-count, 
+// .checkpoint-count {
+.content > div,
+.content > div > div {  
+  // font-size: 17px;
+  // line-height: 22px;
   position: relative;
 }
 
@@ -75,7 +78,8 @@ $bluegrey-v-lt: #F8FAFC;
   margin: 15px 0 5px;
 }
 
-.class-icons {
+.class-icons, 
+.tracks-icons {
   position: absolute;
   top: -5px;
   padding: 12px;
@@ -92,8 +96,48 @@ $bluegrey-v-lt: #F8FAFC;
   background-position: -24px -180px;
 }
 
-.student-num,
-.track-num {
+.number {
   font-weight: 700;
   margin-left: 43px;
+}
+
+// tracks index
+
+.unpublished-badge {
+  position: relative;
+  top: -3px;
+  margin-left: 10px;
+  font-size: 10px;
+  color: #fff;
+  padding: 2px 8px 3px;
+  @include border-radius(100px);
+  background: $color-warning;
+  text-shadow: none;
+  letter-spacing: 0;
+  box-shadow: 1px 1px #fff;
+}
+
+.checkpoint-count {
+  margin-top: 15px;
+}
+
+.checkpoint-icon {
+  background-position: 0 -204px;
+  top: -7px;
+}
+
+.track-time {
+  margin-top: 10px;
+}
+.start-icon + span,
+.stop-icon + span {
+  margin-left: 43px;
+}
+
+.start-icon {
+  background-position: -24px -204px;
+}
+
+.stop-icon {
+  background-position: 0 -228px;
 }

@@ -15,4 +15,9 @@ module TracksHelper
       "Track start/end: #{start_string} to #{end_string}"
     end
   end
+
+  # def display_start_time(track)
+  #   start_string = track.start_time.strftime("%l:%M%P, %e %b %y")
+  #   "Track start: #{start_string}"
+  # end
 end

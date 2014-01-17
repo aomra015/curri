@@ -1,11 +1,25 @@
 <div class="grid-unit narrow">
   <div class="padding-border">
     <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "content" do %>
-      <h4><%=track.name %><%= ' [Unpublished]' unless track.published %></h4>
+      <h4><%=track.name %>
+        <% unless track.published %>
+          <span class="unpublished-badge h5">Unpublished</span>
+        <% end %>
+      </h4>
 
       <div class="checkpoint-count">
-        <span class="track-icons checkpoint-icon"></span>
-        <span class="student-num"><%= track.checkpoints.length %></span><span><%= " Checkpoint".pluralize %></span>
+        <span class="tracks-icons checkpoint-icon"></span>
+        <span class="number"><%= track.checkpoints.length %></span><span><%= " Checkpoint".pluralize %></span>
+      </div>
+      <div class="track-time">
+        <div class="start-time">
+          <span class="tracks-icons start-icon"></span>
+          <span><%= track.start_time %></span>
+        </div>
+        <div class="end-time">
+          <span class="tracks-icons stop-icon"></span>
+          <span><%= track.end_time %></span>
+        </div>
       </div>
  
       <% if current_user.student? %>
