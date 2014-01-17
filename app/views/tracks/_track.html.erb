@@ -14,14 +14,14 @@
       <div class="track-time">
         <div class="start-time">
           <span class="tracks-icons start-icon"></span>
-          <span><%= track.start_time %></span>
+          <span><%= display_start_time(track) %></span>
         </div>
         <div class="end-time">
           <span class="tracks-icons stop-icon"></span>
-          <span><%= track.end_time %></span>
+          <span><%= display_end_time(track) %></span>
         </div>
       </div>
- 
+
       <% if current_user.student? %>
         <div class="grid-temp">
           <%= render partial: 'shared/progress_bar', locals: { ratings: current_user.classrole.track_ratings(track), total_count: track.checkpoints.length } %>
