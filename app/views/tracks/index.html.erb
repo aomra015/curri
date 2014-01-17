@@ -11,18 +11,18 @@
   </div>
 </div>
 <div class="wrapper">
+  <!-- Tracks List -->
+  <%= render @tracks %>
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <div class="grid-unit narrow add-unit">
-      <div class="classroom">
-        <%= link_to new_classroom_track_path, class: "classroom-content", id: "add-track" do %>
+      <div class="padding-border">
+        <%= link_to new_classroom_track_path, class: "content", id: "add-track" do %>
           <div class="add-sign">+</div>
           <p class="add-text">Add New Track</p>
         <% end %>
       </div>
     </div>
   <% end %>
-  <!-- Tracks List -->
-  <%= render @tracks %>
 </div>
 <% provide(:title, @classroom.name) %>

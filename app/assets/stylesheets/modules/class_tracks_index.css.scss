@@ -1,9 +1,9 @@
-// Styles for the classroom index view
+// Styles for the classroom and tracks index views
 @import 'globals/all';
 
 $bluegrey-lt: #F0F2F5;
 $bluegrey-v-lt: #F8FAFC;
-.classroom {
+.padding-border {
   background: lighten($grey-lt, 8%);
   padding: 3px;
   @include border-radius(5px);
@@ -12,14 +12,14 @@ $bluegrey-v-lt: #F8FAFC;
   }
 }
 
-.classroom-content {
+.content {
   color: $color-main;
   display: block;
   padding: 15px 25px;
   background-color: #fff;
   border: 1px solid $grey-lt;
   @include border-radius(4px);
-  .classroom:hover & {
+  .padding-border:hover & {
     border-color: lighten($grey-md, 20%);
   }
   h4 {

@@ -8,8 +8,8 @@
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <div class="grid-unit narrow add-unit">
-      <div class="classroom">
-        <%= link_to new_classroom_path, class: "classroom-content", id: "add-classroom" do %>
+      <div class="padding-border">
+        <%= link_to new_classroom_path, class: "content", id: "add-classroom" do %>
           <div class="add-sign">+</div>
           <p class="add-text">Add New Classroom</p>
         <% end %>
