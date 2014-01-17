@@ -13,17 +13,13 @@
       <% if current_user.teacher? %>
         <%= pending_invitations(classroom.invitations.pending.size, accepted) %>
       <% end %>
+
       <div class="track-count">
         <span class="class-icons track-icon"></span>
         <% published = classroom.tracks.published.size %>
         <% if current_user.teacher? %>
           <span class="track-num"><%= published %></span><span><%= " #{'Track'.pluralize(published)} Published" %></span>
-          <% unpublished = classroom.tracks.unpublished.size %>
-          <% if unpublished != 0 %>
-            <div class="unpublished-tracks h5"><%= "#{unpublished} #{'track'.pluralize(unpublished)} unpublished" %></div>
-            <% elsif published != 0 %>
-            <div class="all-published h5">0 tracks unpublished</div>
-          <% end %>
+          <%= unpublished_tracks(classroom.tracks.unpublished.size, published) %>
         <% else %>
           <span class="track-num"><%= published %></span><span><%= " Track".pluralize(published) %>
         <% end %>
