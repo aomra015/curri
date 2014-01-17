@@ -16,7 +16,7 @@
       <div class="track-count">
         <span class="class-icons track-icon"></span>
         <% if current_user.teacher? %>
-          <span class="track-num"><%= classroom.tracks.size %></span><span><%= " #{'Track'.pluralize(classroom.tracks.size)} Published" %></span>
+          <span class="track-num"><%= classroom.tracks.published.size %></span><span><%= " #{'Track'.pluralize(classroom.tracks.size)} Published" %></span>
           <% unpublished = classroom.tracks.unpublished.count %>
           <% if unpublished != 0 %>
             <div class="unpublished-tracks h5"><%= "#{unpublished} #{'track'.pluralize(unpublished)} unpublished" %></div>
