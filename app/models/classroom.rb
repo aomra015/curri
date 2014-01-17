@@ -6,6 +6,7 @@ class Classroom < ActiveRecord::Base
 
   belongs_to :teacher
   validates :name, presence: true
+  validates_length_of :description, :maximum => 65, :allow_blank => true
 
   default_scope { order(id: :asc) }
 
