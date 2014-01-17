@@ -20,6 +20,19 @@ class ClassroomsController < ApplicationController
     end
   end
 
+  def join
+    classroom = Classroom.find_by(teacher_token: params[:teacher_token])
+
+    if classroom
+      @current_user.classrooms << classroom
+      redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher."
+    else
+      @classroom = Classroom.new
+      flash.now.alert = 'Invalid Token'
+      render :new
+    end
+  end
+
   def edit
   end
 

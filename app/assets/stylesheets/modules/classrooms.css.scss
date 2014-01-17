@@ -51,8 +51,8 @@ $bluegrey-v-lt: #F8FAFC;
   position: relative;
 }
 
-.pending-inv, 
-.unpublished-tracks, 
+.pending-inv,
+.unpublished-tracks,
 .no-pending-inv,
 .all-published {
   margin: -6px 0 0 43px;
@@ -60,7 +60,7 @@ $bluegrey-v-lt: #F8FAFC;
   font-weight: 700;
 }
 .pending-inv,
-.unpublished-tracks {
+.unpublished-tracks, .teacher-token {
   color: $color-warning;
 }
 
@@ -90,7 +90,7 @@ $bluegrey-v-lt: #F8FAFC;
   background-position: -24px -180px;
 }
 
-.student-num, 
+.student-num,
 .track-num {
   font-weight: 700;
   margin-left: 43px;

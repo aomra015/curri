@@ -46,4 +46,13 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
 
     assert !page.has_content?(@classroom.name)
   end
+
+  test "a teacher can join a classroom using token" do
+    click_link "add-classroom"
+
+    fill_in :teacher_token, with: "ELtCtf7o"
+    click_button 'Join Classroom'
+
+    assert page.has_content?('New Classroom with token')
+  end
 end

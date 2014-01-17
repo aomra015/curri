@@ -59,4 +59,28 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert_redirected_to classrooms_path
   end
 
+  test "should add teacher to classroom" do
+    assert_equal 1, users(:teacher1).classrooms.size
+    post :join, teacher_token: classrooms(:three).teacher_token
+
+    assert_equal 2, users(:teacher1).classrooms.size
+  end
+
+  test "should give error with wrong token" do
+    post :join, teacher_token: 'bad-token'
+
+    assert 'Invalid Token', flash[:alert]
+    assert_template :new
+  end
+
+  test "should not add student to classroom using token" do
+    assert_equal 1, users(:student1).classrooms.size
+
+    session[:user_id] = users(:student1).id
+    post :join, teacher_token: classrooms(:three).teacher_token
+
+    assert_equal 1, users(:student1).classrooms.size
+    assert 'Only a teacher can do that.', flash[:alert]
+  end
+
 end
