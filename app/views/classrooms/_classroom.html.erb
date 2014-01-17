@@ -11,6 +11,8 @@
         <% pending = classroom.invitations.pending.count %>
         <% if pending != 0 %>
           <div class="pending-inv h5"><%= "#{pending} #{'invitation'.pluralize(pending)} pending" %></div>
+        <% elsif classroom.students.count !=0 && pending == 0 %>  
+          <div class="no-pending-inv h5">0 invitations pending</div>
         <% end %>
       <% end %>
       <div class="track-count">
@@ -20,6 +22,8 @@
           <% unpublished = classroom.tracks.unpublished.count %>
           <% if unpublished != 0 %>
             <div class="unpublished-tracks h5"><%= "#{unpublished} #{'track'.pluralize(unpublished)} unpublished" %></div>
+            <% elsif classroom.tracks.published.size !=0 && unpublished == 0 %>
+            <div class="all-published h5">0 tracks unpublished</div>
           <% end %>
         <% else %>
           <span class="track-num"><%= classroom.tracks.published.size %></span><span><%= " Track".pluralize(classroom.tracks.published.size) %>

@@ -9,6 +9,8 @@
   left: 0;
   bottom: 0;
   background: $color-main;
+  background-image: linear-gradient(to right, $color-main, darken($color-main, 3%));
+  box-shadow: inset -3px 0 10px 0 rgba(0,0,0,0.2);
   height: inherit;
   min-height: 465px;
   z-index: 100;
@@ -32,6 +34,7 @@ body.nav-open .fixed-nav {
 
 .logo {
   background: lighten($color-main, 60%);
+  box-shadow: inset -3px 0 15px 0 rgba(0,0,0,0.08);
   @include all-transition(0.2s);
   &:hover {
     background: darken($color-main, 10%);

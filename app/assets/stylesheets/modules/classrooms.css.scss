@@ -52,11 +52,21 @@ $bluegrey-v-lt: #F8FAFC;
 }
 
 .pending-inv, 
-.unpublished-tracks {
+.unpublished-tracks, 
+.no-pending-inv,
+.all-published {
   margin: -6px 0 0 43px;
   font-size: 0.7rem;
   font-weight: 700;
+}
+.pending-inv,
+.unpublished-tracks {
   color: $color-warning;
+}
+
+.no-pending-inv,
+.all-published {
+  color: $color-success;
 }
 
 .track-count {
