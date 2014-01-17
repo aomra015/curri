@@ -26,6 +26,7 @@
         <% if current_user.student? %>
           <%= render partial: 'shared/progress_bar', locals: { ratings: current_user.classrole.track_ratings(track), total_count: track.checkpoints.length } %>
         <% else %>
+          <%= render partial: 'shared/progress_bar', locals: { ratings: track.ratings, total_count: @classroom.invitations.accepted.size * track.checkpoints.size } %>
         <% end %>
       </div>
     <% end %>

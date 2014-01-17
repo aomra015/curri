@@ -10,4 +10,8 @@ class Track < ActiveRecord::Base
   def phasing?
     start_time && end_time
   end
+
+  def ratings
+    Rating.where({ checkpoint_id: checkpoints.pluck(:id) }).select("DISTINCT ON (student_id, checkpoint_id) * ").order("student_id, checkpoint_id, created_at DESC")
+  end
 end
