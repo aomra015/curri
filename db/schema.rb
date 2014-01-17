@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140117163747) do
     t.integer  "students_count", default: 0
     t.integer  "tracks_count",   default: 0
     t.string   "teacher_token"
+    t.text     "description"
   end
 
   create_table "invitations", force: true do |t|

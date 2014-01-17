@@ -48,6 +48,7 @@ $bluegrey-v-lt: #F8FAFC;
 .student-count,
 .track-count {
   font-size: 17px;
+  line-height: 22px;
   position: relative;
 }
 
@@ -55,10 +56,11 @@ $bluegrey-v-lt: #F8FAFC;
 .unpublished-tracks,
 .no-pending-inv,
 .all-published {
-  margin: -6px 0 0 43px;
+  margin-left: 43px;
   font-size: 0.7rem;
   font-weight: 700;
 }
+
 .pending-inv,
 .unpublished-tracks, .teacher-token {
   color: $color-warning;

@@ -51,6 +51,6 @@ class ClassroomsController < ApplicationController
 
   private
   def classroom_params
-    params.require(:classroom).permit(:name)
+    params.require(:classroom).permit(:name, :description)
   end
 end
