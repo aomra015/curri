@@ -1,6 +1,7 @@
 class Teacher < ActiveRecord::Base
   has_one :user, as: :classrole, dependent: :destroy
-  has_many :classrooms
+  has_many :classroom_teachers
+  has_many :classrooms, through: :classroom_teachers
 
   delegate :email, to: :user
   delegate :first_name, to: :user
