@@ -1,20 +1,17 @@
 <div class="grid-unit narrow">
   <div class="classroom">
     <%= link_to classroom_tracks_path(classroom), class: 'classroom-content' do %>
-      <h4><%=classroom.name %></h4>
+      <h4><%= classroom.name %></h4>
       <p class="classroom-desc"><%= classroom.description %></p>
+
       <div class="student-count">
         <% accepted = classroom.invitations.accepted.size %>
         <span class="class-icons student-icon"></span>
         <span class="student-num"><%= accepted %></span><span><%= " #{'Student'.pluralize(accepted)} Joined" %></span>
       </div>
+
       <% if current_user.teacher? %>
-        <% pending = classroom.invitations.pending.size %>
-        <% if pending != 0 %>
-          <div class="pending-inv h5"><%= "#{pending} #{'invitation'.pluralize(pending)} pending" %></div>
-        <% elsif accepted != 0 %>
-          <div class="no-pending-inv h5">0 invitations pending</div>
-        <% end %>
+        <%= pending_invitations(classroom.invitations.pending.size, accepted) %>
       <% end %>
       <div class="track-count">
         <span class="class-icons track-icon"></span>
