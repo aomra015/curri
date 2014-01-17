@@ -15,7 +15,7 @@ $bluegrey-v-lt: #F8FAFC;
 .content {
   color: $color-main;
   display: block;
-  padding: 15px 25px;
+  padding: 15px 25px 20px;
   background-color: #fff;
   border: 1px solid $grey-lt;
   @include border-radius(4px);
@@ -129,6 +129,7 @@ $bluegrey-v-lt: #F8FAFC;
 .track-time {
   margin-top: 10px;
 }
+
 .start-icon + span,
 .stop-icon + span {
   margin-left: 43px;
@@ -140,4 +141,16 @@ $bluegrey-v-lt: #F8FAFC;
 
 .stop-icon {
   background-position: 0 -228px;
+}
+
+.track-progress {
+  margin: 20px -25px 0;
+  border-top: 1px solid $grey-lt;
+  padding: 5px 25px 0;
+  .progress-container {
+    min-height: 20px;
+  }
+  .progress-bar {
+    line-height: 1.5;
+  }
 }

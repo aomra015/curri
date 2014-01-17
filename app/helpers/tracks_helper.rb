@@ -20,7 +20,7 @@ module TracksHelper
     if track.start_time
       "Track start: #{track.start_time.strftime("%l:%M%P, %e %b %y")}"
     else
-      "no start time defined"
+      "Start time not set"
     end
   end
 
@@ -28,7 +28,7 @@ module TracksHelper
     if track.end_time
       "Track end: #{track.end_time.strftime("%l:%M%P, %e %b %y")}"
     else
-      "no end time defined"
+      "End time not set"
     end
   end
 end
