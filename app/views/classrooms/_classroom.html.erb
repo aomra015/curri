@@ -1,21 +1,33 @@
 <div class="grid-unit narrow">
   <div class="classroom">
     <%= link_to classroom_tracks_path(classroom), class: 'classroom-content' do %>
-      <h3 class="grid-header"><%=classroom.name %></h3>
-      <div class= "unit-inner ratings-count">
-        <div class="count-number count-large">
-          <%= classroom.students.count %>
-        </div>
-        <p>
-          <%= "Student".pluralize(classroom.students.size) %>
-        </p>
-        <h2>
-          <% if current_user.teacher? %>
-            <%= classroom.tracks.size %> <%= "Track".pluralize(classroom.tracks.size) %>
-          <% else %>
-            <%= classroom.tracks.published.size %> <%= "Track".pluralize(classroom.tracks.published.size) %>
+      <h4><%=classroom.name %></h4>
+      <p class="classroom-desc">Some sample description text for this class. Maximum 65 chars ok.</p>
+      <div class="student-count">
+        <span class="class-icons student-icon"></span>
+        <span class="student-num"><%= classroom.students.count %></span><span><%= " #{'Student'.pluralize(classroom.students.size)} Joined" %></span>
+      </div>
+      <% if current_user.teacher? %>
+        <% pending = classroom.invitations.pending.count %>
+        <% if pending != 0 %>
+          <div class="pending-inv h5"><%= "#{pending} #{'invitation'.pluralize(pending)} pending" %></div>
+        <% elsif classroom.students.count !=0 && pending == 0 %>  
+          <div class="no-pending-inv h5">0 invitations pending</div>
+        <% end %>
+      <% end %>
+      <div class="track-count">
+        <span class="class-icons track-icon"></span>
+        <% if current_user.teacher? %>
+          <span class="track-num"><%= classroom.tracks.published.size %></span><span><%= " #{'Track'.pluralize(classroom.tracks.size)} Published" %></span>
+          <% unpublished = classroom.tracks.unpublished.count %>
+          <% if unpublished != 0 %>
+            <div class="unpublished-tracks h5"><%= "#{unpublished} #{'track'.pluralize(unpublished)} unpublished" %></div>
+            <% elsif classroom.tracks.published.size !=0 && unpublished == 0 %>
+            <div class="all-published h5">0 tracks unpublished</div>
           <% end %>
-        </h2>
+        <% else %>
+          <span class="track-num"><%= classroom.tracks.published.size %></span><span><%= " Track".pluralize(classroom.tracks.published.size) %>
+        <% end %>
       </div>
     <% end %>
   </div>

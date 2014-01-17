@@ -1,24 +1,97 @@
 // Styles for the classroom index view
 @import 'globals/all';
 
+$bluegrey-lt: #F0F2F5;
+$bluegrey-v-lt: #F8FAFC;
 .classroom {
   background: lighten($grey-lt, 8%);
-  // margin-left: 20px;
   padding: 3px;
   @include border-radius(5px);
   &:hover {
-    background: lighten($grey-lt, 3%);
-    background: $grey-md;
+    background: lighten($grey-md, 30%);
   }
 }
 
 .classroom-content {
+  color: $color-main;
   display: block;
-  padding: 10px;
+  padding: 15px 25px;
   background-color: #fff;
   border: 1px solid $grey-lt;
-  @include border-radius(3px);
+  @include border-radius(4px);
   .classroom:hover & {
-    border-color: $color-main;
+    border-color: lighten($grey-md, 20%);
   }
+  h4 {
+    color: $color-main;
+    border-bottom: 1px solid $grey-lt;
+    margin: -15px -25px 0;
+    padding: 15px;
+    background: #F0F2F5;
+    background-image: linear-gradient(to top, $bluegrey-lt, $bluegrey-v-lt);
+    text-shadow: 1px 1px #fff;
+    text-align: center;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+    .classroom:hover & {
+      background-image: linear-gradient(to top, darken($bluegrey-lt, 2%), darken($bluegrey-v-lt, 2%));
+    }
+  }
+}
+
+.classroom-desc {
+  margin: 15px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.student-count,
+.track-count {
+  font-size: 17px;
+  position: relative;
+}
+
+.pending-inv, 
+.unpublished-tracks, 
+.no-pending-inv,
+.all-published {
+  margin: -6px 0 0 43px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.pending-inv,
+.unpublished-tracks {
+  color: $color-warning;
+}
+
+.no-pending-inv,
+.all-published {
+  color: $color-success;
+}
+
+.track-count {
+  margin: 15px 0 5px;
+}
+
+.class-icons {
+  position: absolute;
+  top: -5px;
+  padding: 12px;
+  margin: 6px 15px 0 0;
+  display: inline-block;
+  background-image: image-url('curri-icons.svg');
+}
+
+.student-icon {
+  background-position: 0 -180px;
+}
+
+.track-icon {
+  background-position: -24px -180px;
+}
+
+.student-num, 
+.track-num {
+  font-weight: 700;
+  margin-left: 43px;
 }

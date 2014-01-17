@@ -9,6 +9,8 @@
   left: 0;
   bottom: 0;
   background: $color-main;
+  background-image: linear-gradient(to right, $color-main, darken($color-main, 3%));
+  box-shadow: inset -3px 0 10px 0 rgba(0,0,0,0.2);
   height: inherit;
   min-height: 465px;
   z-index: 100;
@@ -30,9 +32,40 @@ body.nav-open .fixed-nav {
   list-style-type: none;
 }
 
-.logo a {
-  background: $color-primary;
-  padding: 34px 20px;
+.logo {
+  background: lighten($color-main, 60%);
+  box-shadow: inset -3px 0 15px 0 rgba(0,0,0,0.08);
+  @include all-transition(0.2s);
+  &:hover {
+    background: darken($color-main, 10%);
+    background: $color-success;
+  }
+  .nav-links {
+    padding-bottom: 18px;
+  }
+}
+
+.nav-logo {
+  display: inline-block;
+  padding: 18px;
+  position: relative;
+  top: 5px;
+  background-position: -90px -27px;
+  .logo:hover & {
+    background-position: -90px -62px;
+  }
+}
+
+.nav-wordmark {
+  display: none;
+  padding: 18px 45px;
+  background-position: -120px -22px;
+  .logo:hover & {
+    background-position: -120px -57px;
+  }
+  body.nav-open & {
+    display: inline-block;
+  }
 }
 
 .expand-collapse {
@@ -63,7 +96,8 @@ a.selected, a.selected:hover {
 }
 
 // svg icons
-.nav-icon {
+.nav-icon,
+.nav-wordmark {
   background-image: image-url('curri-icons.svg');
 }
 

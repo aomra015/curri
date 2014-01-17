@@ -6,6 +6,7 @@ class Invitation < ActiveRecord::Base
   validates :email, :email => true
 
   scope :help_needed, -> { where(help: true).order(" updated_at ASC") }
+  scope :pending, -> { where(student_id: nil) }
 
   def generate_token
     self.token = Digest::SHA1.hexdigest([Time.now, rand].join)

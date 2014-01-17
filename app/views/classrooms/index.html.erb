@@ -3,6 +3,8 @@
   </div>
 </div>
 <div class="wrapper">
+  <!-- Classrooms List -->
+  <%= render @classrooms %>
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <div class="grid-unit narrow add-unit">
@@ -14,7 +16,5 @@
       </div>
     </div>
   <% end %>
-  <!-- Classrooms List -->
-  <%= render @classrooms %>
 </div>
 <% provide(:title, 'Classrooms') %>

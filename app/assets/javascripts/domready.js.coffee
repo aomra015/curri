@@ -42,6 +42,8 @@ $ ->
     e.preventDefault()
     $('.main').toggleClass('subnav-open')
     $('.subnav').toggleClass('subnav-show')
+    # Hide hover label for Account when subnav is open
+    $('.subnav-slide').toggleClass('nav-label-hide')
 
   # Page header style
   $(window).scroll ->
