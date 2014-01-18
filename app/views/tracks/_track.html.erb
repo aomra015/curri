@@ -16,11 +16,7 @@
           <span class="number unpublished-text"><%= track.checkpoints.length %></span><span class="unpublished-text"><%= " Checkpoint".pluralize %></span>
         <% end %>
       </div>
-      <% if track.published %>
-        <div class="track-time">
-      <% else %>
-        <div class="track-time unpublished-text">
-      <% end %>
+        <div class="track-time <%= 'unpublished-text' unless track.published %>">
           <div class="start-time">
             <%= start_stop_icons("start", track.published)%>
             <%= display_start_time(track) %>
