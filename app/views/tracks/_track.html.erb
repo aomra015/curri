@@ -18,22 +18,12 @@
       </div>
       <div class="track-time">
         <div class="start-time">
-          <% if track.published %>
-            <span class="tracks-icons start-icon"></span>
-            <span><%= display_start_time(track) %></span>
-          <% else %>  
-            <span class="tracks-icons start-icon-unpublished"></span>
-            <%= display_start_time(track) %>
-          <% end %>
+          <%= start_stop_icons("start", track.published)%>
+          <%= display_start_time(track) %>
         </div>
         <div class="end-time">
-          <% if track.published %>
-            <span class="tracks-icons stop-icon"></span>
-            <span><%= display_end_time(track) %></span>
-          <% else %>
-            <span class="tracks-icons stop-icon-unpublished"></span>
-            <%= display_end_time(track) %>
-          <% end %>
+          <%= start_stop_icons("stop", track.published)%>
+          <%= display_end_time(track) %>
         </div>
       </div>
 
