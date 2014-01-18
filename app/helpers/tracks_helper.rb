@@ -12,7 +12,14 @@ module TracksHelper
     if track.phasing?
       start_string = track.start_time.strftime("%l:%M%P, %e %b %y")
       end_string = track.end_time.strftime("%l:%M%P, %e %b %y")
-      "Track start/end: #{start_string} to #{end_string}"
+      @content = content_tag(:div) do
+        @content = content_tag(:span, "Track Start: ", class: 'strong')
+        @content << content_tag(:span, "#{start_string}")
+      end
+      @content << content_tag(:div) do
+        @content = content_tag(:span, "Track End: ", class: 'strong')
+        @content << content_tag(:span, "#{end_string}")  
+      end
     end
   end
 

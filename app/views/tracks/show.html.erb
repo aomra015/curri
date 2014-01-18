@@ -2,17 +2,17 @@
     <h2><%= @track.name %><span class="publish"><%= ' [Unpublished]' unless @track.published %></span></h2>
     <h5 class="subtitle"><%= @classroom.name %></h5>
   </div>
-  <div class="grid-unit narrow">
     <!-- Teacher Controls -->
     <% if current_user.teacher? %>
-      <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track) %>
-      <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
+      <div class="grid-unit narrow">
+        <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track) %>
+        <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
+      </div>
     <% end %>
-  </div>
 </div>
 <div class="wrapper">
   <div class="grid-unit whole">
-    <p><%= display_start_end_times(@track) %></p>
+    <div class="track-times"><%= display_start_end_times(@track) %></div>
   </div>
   <div class="grid-unit narrow pull-right">
     <h3 class="grid-header">All Tracks</h3>

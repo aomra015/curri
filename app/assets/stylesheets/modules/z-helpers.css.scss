@@ -1,6 +1,10 @@
 // Styles for helper classes that are sitewide
 @import 'globals/all';
 
+.strong {
+  font-weight: 700;
+}
+
 .pull-right {
   float: right;
 }
