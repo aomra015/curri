@@ -29,3 +29,7 @@
   </div>
 </div>
 <% provide(:title, @track.name) %>
+
+<% if @current_user.student? %>
+  <%= track_event("Student views track page", {classroom_id: @classroom.id, track_id: @track.id }) %>
+<% end %>
