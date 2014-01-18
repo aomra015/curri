@@ -122,7 +122,12 @@ $bluegrey-v-lt: #F8FAFC;
 }
 
 .checkpoint-icon {
-  background-position: 0 -204px;
+  background-position: -90px -92px;
+  top: -7px;
+}
+
+.checkpoint-icon-unpublished {
+  background-position: -90px -116px;
   top: -7px;
 }
 
@@ -130,17 +135,31 @@ $bluegrey-v-lt: #F8FAFC;
   margin-top: 10px;
 }
 
+.unpublished-text {
+  color: lighten($grey-md, 10%);
+}
+
 .start-icon + span,
-.stop-icon + span {
+.stop-icon + span,
+.start-icon-unpublished + span,
+.stop-icon-unpublished + span {
   margin-left: 43px;
 }
 
 .start-icon {
-  background-position: -24px -204px;
+  background-position: -114px -92px;
+}
+
+.start-icon-unpublished {
+  background-position: -114px -116px;
 }
 
 .stop-icon {
-  background-position: 0 -228px;
+  background-position: -138px -92px;
+}
+
+.stop-icon-unpublished {
+  background-position: -138px -116px;
 }
 
 .track-progress {

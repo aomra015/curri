@@ -20,7 +20,7 @@ module TracksHelper
     if track.start_time
       "Track start: #{track.start_time.strftime("%l:%M%P, %e %b %y")}"
     else
-      content_tag(:span, "Start time not set", class: 'no-time')
+      content_tag(:span, "Start time not set", class: 'unpublished-text')
     end
   end
 
@@ -28,7 +28,7 @@ module TracksHelper
     if track.end_time
       "Track end: #{track.end_time.strftime("%l:%M%P, %e %b %y")}"
     else
-      content_tag(:span, "End time not set", class: 'no-time')
+      content_tag(:span, "End time not set", class: 'unpublished-text')
     end
   end
 end
