@@ -7,9 +7,4 @@ class Student < ActiveRecord::Base
   delegate :email, to: :user
   delegate :first_name, to: :user
   delegate :last_name, to: :user
-
-  def track_ratings(track)
-    self.ratings.where({ checkpoint_id: track.checkpoints.pluck(:id) }).select("DISTINCT ON (checkpoint_id) * ").order("checkpoint_id, created_at DESC")
-  end
-
 end

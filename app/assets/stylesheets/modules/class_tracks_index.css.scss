@@ -1,9 +1,9 @@
-// Styles for the classroom index view
+// Styles for the classroom and tracks index views
 @import 'globals/all';
 
 $bluegrey-lt: #F0F2F5;
 $bluegrey-v-lt: #F8FAFC;
-.classroom {
+.padding-border {
   background: lighten($grey-lt, 8%);
   padding: 3px;
   @include border-radius(5px);
@@ -12,14 +12,14 @@ $bluegrey-v-lt: #F8FAFC;
   }
 }
 
-.classroom-content {
+.content {
   color: $color-main;
   display: block;
-  padding: 15px 25px;
+  padding: 15px 25px 20px;
   background-color: #fff;
   border: 1px solid $grey-lt;
   @include border-radius(4px);
-  .classroom:hover & {
+  .padding-border:hover & {
     border-color: lighten($grey-md, 20%);
   }
   h4 {
@@ -33,7 +33,7 @@ $bluegrey-v-lt: #F8FAFC;
     text-align: center;
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
-    .classroom:hover & {
+    .padding-border:hover & {
       background-image: linear-gradient(to top, darken($bluegrey-lt, 2%), darken($bluegrey-v-lt, 2%));
     }
   }
@@ -45,10 +45,13 @@ $bluegrey-v-lt: #F8FAFC;
   line-height: 1.4;
 }
 
-.student-count,
-.track-count {
-  font-size: 17px;
-  line-height: 22px;
+// .student-count,
+// .track-count, 
+// .checkpoint-count {
+.content > div,
+.content > div > div {  
+  // font-size: 17px;
+  // line-height: 22px;
   position: relative;
 }
 
@@ -75,7 +78,8 @@ $bluegrey-v-lt: #F8FAFC;
   margin: 15px 0 5px;
 }
 
-.class-icons {
+.class-icons, 
+.tracks-icons {
   position: absolute;
   top: -5px;
   padding: 12px;
@@ -92,8 +96,80 @@ $bluegrey-v-lt: #F8FAFC;
   background-position: -24px -180px;
 }
 
-.student-num,
-.track-num {
+.number {
   font-weight: 700;
   margin-left: 43px;
+}
+
+// tracks index
+
+.unpublished-badge {
+  position: relative;
+  top: -2px;
+  margin-left: 10px;
+  font-size: 10px;
+  color: #fff;
+  padding: 2px 8px;
+  @include border-radius(100px);
+  background: $color-warning;
+  text-shadow: 1px 1px rgba(0,0,0,0.07);
+  letter-spacing: 0;
+  box-shadow: 1px 1px #fff;
+}
+
+.checkpoint-count {
+  margin-top: 15px;
+}
+
+.checkpoint-icon {
+  background-position: -90px -102px;
+  top: -6px;
+}
+
+.checkpoint-icon-unpublished {
+  background-position: -90px -126px;
+  top: -6px;
+}
+
+.track-time {
+  margin-top: 10px;
+}
+
+.unpublished-text {
+  color: lighten($grey-md, 10%);
+}
+
+.start-icon + span,
+.stop-icon + span,
+.start-icon-unpublished + span,
+.stop-icon-unpublished + span {
+  margin-left: 43px;
+}
+
+.start-icon {
+  background-position: -114px -102px;
+}
+
+.start-icon-unpublished {
+  background-position: -114px -126px;
+}
+
+.stop-icon {
+  background-position: -138px -102px;
+}
+
+.stop-icon-unpublished {
+  background-position: -138px -126px;
+}
+
+.track-progress {
+  margin: 20px -25px 0;
+  border-top: 1px solid $grey-lt;
+  padding: 5px 25px 0;
+  .progress-container {
+    min-height: 20px;
+  }
+  .progress-bar {
+    line-height: 1.5;
+  }
 }

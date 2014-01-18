@@ -20,6 +20,7 @@ module AnalyticsHelper
   end
 
   def render_bar(counts)
+    counts[:count] = '' if counts[:count] == 0
     content_tag :div, counts[:count], class: "progress-bar progress-bar-#{SCORE_WORD[counts[:score]]}", style: "width: #{counts[:percent]}%"
   end
 

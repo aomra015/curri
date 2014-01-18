@@ -1,13 +1,13 @@
 <div class="grid-unit narrow">
-  <div class="classroom">
-    <%= link_to classroom_tracks_path(classroom), class: 'classroom-content' do %>
+  <div class="padding-border">
+    <%= link_to classroom_tracks_path(classroom), class: 'content' do %>
       <h4><%= classroom.name %></h4>
       <p class="classroom-desc"><%= classroom.description %></p>
 
       <div class="student-count">
         <% accepted = classroom.invitations.accepted.size %>
         <span class="class-icons student-icon"></span>
-        <span class="student-num"><%= accepted %></span><span><%= " #{'Student'.pluralize(accepted)} Joined" %></span>
+        <span class="number"><%= accepted %></span><span><%= " #{'Student'.pluralize(accepted)} Joined" %></span>
       </div>
 
       <% if current_user.teacher? %>
@@ -18,10 +18,10 @@
         <span class="class-icons track-icon"></span>
         <% published = classroom.tracks.published.size %>
         <% if current_user.teacher? %>
-          <span class="track-num"><%= published %></span><span><%= " #{'Track'.pluralize(published)} Published" %></span>
+          <span class="number"><%= published %></span><span><%= " #{'Track'.pluralize(published)} Published" %></span>
           <%= unpublished_tracks(classroom.tracks.unpublished.size, published) %>
         <% else %>
-          <span class="track-num"><%= published %></span><span><%= " Track".pluralize(published) %>
+          <span class="number"><%= published %></span><span><%= " Track".pluralize(published) %>
         <% end %>
       </div>
     <% end %>

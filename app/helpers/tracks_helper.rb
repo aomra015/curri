@@ -15,4 +15,25 @@ module TracksHelper
       "Track start/end: #{start_string} to #{end_string}"
     end
   end
+
+  def display_start_time(track)
+    if track.start_time
+      content_tag(:span, "Track start: #{track.start_time.strftime("%l:%M%P, %e %b %y")}")
+    else
+      content_tag(:span, "Start time not set", class: 'unpublished-text')
+    end
+  end
+
+  def display_end_time(track)
+    if track.end_time
+      content_tag(:span, "Track end: #{track.end_time.strftime("%l:%M%P, %e %b %y")}")
+    else
+      content_tag(:span, "End time not set", class: 'unpublished-text')
+    end
+  end
+
+  def start_stop_icons(timestatus, published)
+    pubstatus = "-unpublished" unless published
+    content_tag(:span, "", class: "tracks-icons #{timestatus}-icon#{pubstatus}")
+  end
 end
