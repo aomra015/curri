@@ -16,16 +16,20 @@
           <span class="number unpublished-text"><%= track.checkpoints.length %></span><span class="unpublished-text"><%= " Checkpoint".pluralize %></span>
         <% end %>
       </div>
-      <div class="track-time">
-        <div class="start-time">
-          <%= start_stop_icons("start", track.published)%>
-          <%= display_start_time(track) %>
+      <% if track.published %>
+        <div class="track-time">
+      <% else %>
+        <div class="track-time unpublished-text">
+      <% end %>
+          <div class="start-time">
+            <%= start_stop_icons("start", track.published)%>
+            <%= display_start_time(track) %>
+          </div>
+          <div class="end-time">
+            <%= start_stop_icons("stop", track.published)%>
+            <%= display_end_time(track) %>
+          </div>
         </div>
-        <div class="end-time">
-          <%= start_stop_icons("stop", track.published)%>
-          <%= display_end_time(track) %>
-        </div>
-      </div>
 
       <div class="track-progress">
         <% if current_user.student? %>
