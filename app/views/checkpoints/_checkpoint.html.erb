@@ -18,7 +18,7 @@
             <% end %>
           </li>
         <% else %>
-          <%= content_tag :div, '?', class: 'btn btn-small success-criteria', data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
+          <%= content_tag :div, '?', class: "btn btn-small success-criteria #{'success-criteria-show' if current_user.student?}", data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
         <% end %>
       </ul>
     </div>
