@@ -27,7 +27,7 @@
     <h3 class="grid-header">All Tracks</h3>
     <div class="row">
       <ul>
-        <% @classroom.tracks.each do |track| %>
+        <% @tracks.each do |track| %>
           <li class="link"><%= link_to track.name, classroom_track_path(@classroom, track) %></li>
         <% end %>
       </ul>
