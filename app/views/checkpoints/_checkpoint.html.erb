@@ -24,31 +24,17 @@
           <li class="student-action ratings">
             <span class="choices">
               <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), class: 'face first', title: Rating::OPTIONS[2], method: :post, remote: true do %>
-                <div class="face-outer success">
-                  <div class="eye left success"></div>
-                  <div class="eye right success"></div>
-                  <div class="smile"></div>
-                </div>
+                <%= render 'ratings/face2' %>
               <% end %>
               <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), class: 'face', title: Rating::OPTIONS[1], method: :post, remote: true do %>
-                <div class="face-outer warning">
-                  <div class="eye left warning"></div>
-                  <div class="eye right warning"></div>
-                  <div class="normal"></div>
-                </div>
+                <%= render 'ratings/face1' %>
               <% end %>
               <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), class: 'face last', title: Rating::OPTIONS[0], method: :post, remote: true do %>
-                <div class="face-outer danger">
-                  <div class="eye left danger"></div>
-                  <div class="eye right danger"></div>
-                  <div class="frown"></div>
-                </div>
+                <%= render 'ratings/face0' %>
               <% end %>
             </span>
             <a href="" class="face choose choices-toggle" title="How do you feel about this checkpoint?">
-              <div class="face-outer choose">
-                <div class="caret"></div>
-              </div>
+                <%= render "ratings/face#{last_rating(checkpoint)}" %>
             </a>
           </li>
         <% end %>

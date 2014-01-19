@@ -21,7 +21,7 @@ class RatingsController < ApplicationController
 
       respond_to do |format|
         format.json {
-          render json: { classroom_id: @classroom.id, track_id: @track.id, checkpoint_id: @checkpoint.id, current_score: @rating.score }
+          render json: { classroom_id: @classroom.id, track_id: @track.id, checkpoint_id: @checkpoint.id, current_score: @rating.score, partial: render_to_string(partial: "face#{@rating.score}.html", formats: :html) }
         }
         format.html {
           redirect_to classroom_track_url(@classroom, @track)
