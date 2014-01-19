@@ -1,6 +1,6 @@
   <div class="grid-unit wide">
     <h2><%= @track.name %>
-      <% if current_user.teacher? %>
+      <% if current_user.teacher? && !@track.published %>
         <span class="unpublished-badge">
           <%= 'Unpublished' unless @track.published %>
         </span>

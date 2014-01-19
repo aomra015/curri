@@ -1,27 +1,6 @@
 // Styles for the classroom and tracks index views
 @import 'globals/all';
 
-.padding-border {
-  background: lighten($grey-lt, 8%);
-  padding: 3px;
-  @include border-radius(5px);
-  &:hover {
-    background: lighten($grey-md, 30%);
-  }
-}
-
-.content {
-  color: $color-main;
-  display: block;
-  padding: 15px 25px 20px;
-  background-color: #fff;
-  border: 1px solid $grey-lt;
-  @include border-radius(4px);
-  .padding-border:hover & {
-    border-color: lighten($grey-md, 20%);
-  }
-}
-
 .classroom-desc {
   margin: 15px 0;
   font-size: 0.9rem;
@@ -58,7 +37,7 @@
 }
 
 .track-count {
-  margin: 15px 0 5px;
+  margin: 15px 0 20px;
 }
 
 .class-icons, 
@@ -146,7 +125,7 @@
 }
 
 .track-progress {
-  margin: 20px -25px 0;
+  margin: 20px -25px 20px;
   border-top: 1px solid $grey-lt;
   padding: 5px 25px 0;
   .progress-container {

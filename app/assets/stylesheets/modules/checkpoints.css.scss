@@ -19,7 +19,6 @@ h2 .unpublished-badge {
   margin: 0 -25px;
   &:hover {
     background: lighten($grey-lt, 10%);
-    background-image: linear-gradient(to top, lighten($grey-lt, 10%), lighten($grey-lt, 15%));
   }
 }
 
