@@ -12,7 +12,8 @@ class ClassroomsController < ApplicationController
   end
 
   def create
-    @classroom = @current_user.classrooms.build(classroom_params)
+    @classroom = Classroom.new(classroom_params)
+    @classroom.teachers << @current_user.classrole
     if @classroom.save
       redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created."
     else

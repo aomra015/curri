@@ -19,7 +19,7 @@ class ClassroomsControllerTest < ActionController::TestCase
   end
 
   test "should create classroom with valid data" do
-    assert_difference 'Classroom.count' do
+    assert_difference 'users(:teacher1).classrooms.count' do
       post :create, classroom: {name: "Test classroom"}
     end
 

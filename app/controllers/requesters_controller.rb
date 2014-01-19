@@ -21,20 +21,21 @@ class RequestersController < ApplicationController
     @requester.toggle!(:help)
 
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
-
-    notice = if @requester.help
-      "Your teacher was notified that you need help."
+    if @requester.help
+      flash[:notice] = "Your teacher was notified that you need help."
+      flash[:track] = { event_name: "Student Asked for Help" }
     else
-      "You were removed from the help queue."
+      flash[:notice] = "You were removed from the help queue."
     end
-
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: notice
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path
   end
 
   def remove
     @requester.help = false
     @requester.save
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path, notice: "Student removed from queue."
+    flash[:notice] = "Student removed from queue."
+    flash[:track] = { event_name: "Teacher Answered Student" }
+    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path
   end
 
   private
