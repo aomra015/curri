@@ -27,6 +27,9 @@ h2 .unpublished-badge {
   display: inline-block;
   width: 60%;
   // display: inline;
+  &.expectation-student {
+    width: 38%;
+  }
 }
 
 .expectation-actions {
@@ -35,6 +38,9 @@ h2 .unpublished-badge {
   width: 38%;
   position: relative;
   top: -3px;
+  &.expectation-actions-student {
+    width: 60%;
+  }
 }
 
 .success-criteria {
@@ -73,18 +79,28 @@ h2 .unpublished-badge {
 
 // student actions
 .sc-show-icon {
+  font-size: 19px;
   display: inline-block;
   line-height: 0;
   color: #fff;
-  background: $grey-md;
-  padding: 15px 12px;
+  background: $color-main;
+  padding: 15px 11px;
   cursor: pointer;
-  height: 32px;
-  width: 32px;
+  height: 30px;
+  width: 30px;
   @include border-radius(100px);
   &:hover {
     background: $color-primary;
   }
+}
+
+li.student-action {
+  // margin-left: 15px;
+  position: relative;
+}
+
+.ratings {
+  top: -6px;
 }
 // old styles
 // .checkpoint-content {

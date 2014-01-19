@@ -1,9 +1,9 @@
 <div class="row" id="checkpoint<%= checkpoint.id %>">
   <div class="expectation-content">
-    <div class="expectation">
+    <div class="expectation <%='expectation-student' if current_user.student? %>">
       <span class="h5"><%= checkpoint.expectation %></span>
     </div>
-    <div class="expectation-actions">
+    <div class="expectation-actions <%='expectation-actions-student' if current_user.student? %>">
       <ul class="action-icons">
         <% if current_user.teacher? %>
         <!-- Teacher Controls -->
@@ -18,8 +18,38 @@
             <% end %>
           </li>
         <% else %>
-          <li>
+          <li class="student-action">
             <%= content_tag :a, '?', class: "sc-show-icon strong", title: "Show Success Criteria" %>
+          </li>
+          <li class="student-action ratings">
+            <span class="choices">  
+              <a href="" class="face first" title="I understand">
+                <div class="face-outer success">
+                  <div class="eye left success"></div>
+                  <div class="eye right success"></div>
+                  <div class="smile"></div>
+                </div>
+              </a>
+              <a href="" class="face" title="I kinda understand">
+                <div class="face-outer warning">
+                  <div class="eye left warning"></div>
+                  <div class="eye right warning"></div>
+                  <div class="normal"></div>
+                </div>
+              </a>
+              <a href="" class="face last" title="I don't understand">
+                <div class="face-outer danger">
+                  <div class="eye left danger"></div>
+                  <div class="eye right danger"></div>
+                  <div class="frown"></div>
+                </div>
+              </a>
+            </span>
+            <a href="" class="face choose choices-toggle" title="How do you feel about this checkpoint?">
+              <div class="face-outer choose">
+                <div class="caret"></div>
+              </div>
+            </a>
           </li>
         <% end %>
       </ul>

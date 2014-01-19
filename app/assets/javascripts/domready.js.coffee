@@ -58,3 +58,8 @@ $ ->
   $('.sc-show-icon').on 'click', (e) ->
     e.preventDefault()
     $(this).closest('.row').find('.success-criteria').toggleClass('success-criteria-show')
+
+  # Show ratings for students
+   $('.choices-toggle').on 'click', (e) ->
+      e.preventDefault()
+      $(this).closest('li').find('.choices').toggleClass('show')
