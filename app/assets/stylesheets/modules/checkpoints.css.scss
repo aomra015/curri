@@ -9,6 +9,65 @@
     margin-top: -5px;
   }
 }
+
+.expectation-content {
+  padding: 15px 25px;
+  margin: 0 -25px;
+  &:hover {
+    background: lighten($grey-lt, 10%);
+    background-image: linear-gradient(to top, lighten($grey-lt, 10%), lighten($grey-lt, 15%));
+  }
+}
+
+.expectation {
+  display: inline-block;
+  width: 60%;
+  // display: inline;
+}
+
+.expectation-actions {
+  display: inline-block;
+  float: right;
+  width: 38%;
+  position: relative;
+  top: -3px;
+}
+
+.success-criteria {
+  display: none;
+}
+
+.success-criteria-show {
+  display: block;
+}
+
+.action-icons li {
+  display: inline-block;
+  margin-left: 5px;
+  float: right;
+}
+
+.edit-icon,
+.trash-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  line-height: 0;
+}
+
+.edit,
+.trash {
+  // padding: 5px;
+  fill: $grey-md;
+  .action-icons a:hover & {
+    fill: $color-primary;
+  }
+}
+
+.success-criteria {
+  padding-top: 15px;
+}
 // old styles
 // .checkpoint-content {
 //   overflow: hidden;

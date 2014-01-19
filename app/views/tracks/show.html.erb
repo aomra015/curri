@@ -1,6 +1,6 @@
   <div class="grid-unit wide">
     <h2><%= @track.name %><span class="publish"><%= ' [Unpublished]' unless @track.published %></span></h2>
-    <h5 class="subtitle"><%= @classroom.name %></h5>
+    <h6 class="subtitle"><%= @classroom.name %></h6>
   </div>
     <!-- Teacher Controls -->
     <% if current_user.teacher? %>
@@ -28,7 +28,10 @@
     </div>
   </div>
   <div class="grid-unit wide" id="track" data-trackid="<%= @track.id %>">
-    <%= render @track.checkpoints %>
+    <div class="content">
+      <h4 class="unit-header">All Checkpoints</h4>
+      <%= render @track.checkpoints %>
+    </div>
   </div>
 </div>
 <% provide(:title, @track.name) %>

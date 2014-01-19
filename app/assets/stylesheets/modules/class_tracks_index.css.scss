@@ -1,8 +1,6 @@
 // Styles for the classroom and tracks index views
 @import 'globals/all';
 
-$bluegrey-lt: #F0F2F5;
-$bluegrey-v-lt: #F8FAFC;
 .padding-border {
   background: lighten($grey-lt, 8%);
   padding: 3px;
@@ -21,21 +19,6 @@ $bluegrey-v-lt: #F8FAFC;
   @include border-radius(4px);
   .padding-border:hover & {
     border-color: lighten($grey-md, 20%);
-  }
-  h4 {
-    color: $color-main;
-    border-bottom: 1px solid $grey-lt;
-    margin: -15px -25px 0;
-    padding: 15px;
-    background: #F0F2F5;
-    background-image: linear-gradient(to top, $bluegrey-lt, $bluegrey-v-lt);
-    text-shadow: 1px 1px #fff;
-    text-align: center;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
-    .padding-border:hover & {
-      background-image: linear-gradient(to top, darken($bluegrey-lt, 2%), darken($bluegrey-v-lt, 2%));
-    }
   }
 }
 

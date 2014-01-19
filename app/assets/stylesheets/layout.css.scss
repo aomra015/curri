@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'globals/all';
+$bluegrey-lt: #F0F2F5;
+$bluegrey-v-lt: #F8FAFC;
 
 // Main app area
 
@@ -81,19 +83,22 @@ body.nav-open .main {
   margin: 15px auto 10px;
 }
 
-.grid-unit-header, .grid-unit-footer {
-  padding: 10px 20px;
-}
-
-.grid-unit-header {
-  margin: -30px -20px 20px;
+.unit-header {
+  color: $color-main;
   border-bottom: 1px solid $grey-lt;
+  margin: -15px -25px 0;
+  padding: 15px;
+  background: #F0F2F5;
+  background-image: linear-gradient(to top, $bluegrey-lt, $bluegrey-v-lt);
+  text-shadow: 1px 1px #fff;
+  text-align: center;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  .padding-border:hover & {
+    background-image: linear-gradient(to top, darken($bluegrey-lt, 2%), darken($bluegrey-v-lt, 2%));
+  }
 }
 
-.grid-unit-footer {
-  margin: 20px -20px -30px;
-  border-top: 1px solid $grey-lt;
-}
 .narrow, .wide, .whole {
   width: 100%;
 }
@@ -159,4 +164,14 @@ body.nav-open .main {
   // .whole {
   //   width: 100%;
   // }
+}
+
+.row {
+  margin: 0 -25px 0;
+  padding: 0 25px 20px;
+  border-bottom: 1px solid $grey-lt;
+  &:last-child {
+    border: none;
+    padding-bottom: 0;
+  }
 }
