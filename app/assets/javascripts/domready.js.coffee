@@ -4,7 +4,6 @@ $ = jQuery
 $ ->
 
   # Activate jQuery libraries
-  $('.success-criteria').popover({placement: 'left'}) if $('.success-criteria').length
   $('#track_start_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_end_date').pickadate({ format: "yyyy-mm-dd" })
   $('#track_start_time').pickatime({format: 'hh:i a'})
@@ -54,3 +53,8 @@ $ ->
 
   # SegmentIO event: Log out
   analytics.trackLink($('#logout-link'), "Sign out")
+
+  # Student Track View
+  $('.sc-show-icon').on 'click', (e) ->
+    e.preventDefault()
+    $(this).closest('.row').find('.success-criteria').toggleClass('success-criteria-show')
