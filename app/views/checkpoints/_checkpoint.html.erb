@@ -8,17 +8,19 @@
         <% if current_user.teacher? %>
         <!-- Teacher Controls -->
           <li>
-            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint" do %>
+            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint", title: "Delete Checkpoint" do %>
               <%= render 'shared/trash' %>
             <% end %>
           </li>
           <li>
             <%= link_to edit_classroom_track_checkpoint_path(@classroom, @track, checkpoint), class: 'edit-icon', id: "edit-checkpoint", title: "Edit Checkpoint" do %>
-              <span><%= render 'shared/edit' %></span>
+              <%= render 'shared/edit' %>
             <% end %>
           </li>
         <% else %>
-          <%= content_tag :div, '?', class: "btn btn-small success-criteria #{'success-criteria-show' if current_user.student?}", data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
+          <li>
+            <%= content_tag :a, '?', class: "sc-show-icon strong", title: "Show Success Criteria", data: { title: "Success Criteria", content: checkpoint.success_criteria } %>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -26,11 +28,11 @@
 
   <% if current_user.student? %>
     <!-- Student Controls -->
-    <div class="checkpoint-score-links">
+    <!-- <div class="checkpoint-score-links">
       <%= button_to Rating::OPTIONS[0], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), class: 'checkpoint-rating checkpoint0 btn', remote: true %>
       <%= button_to Rating::OPTIONS[1], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), class: 'checkpoint-rating checkpoint1 btn', remote: true %>
       <%= button_to Rating::OPTIONS[2], classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), class: 'checkpoint-rating checkpoint2 btn', remote: true %>
-    </div>
+    </div> -->
   <% end %>
   <div class="success-criteria <%= 'success-criteria-show' if current_user.teacher? %>">
     <%= checkpoint.success_criteria %>

@@ -34,6 +34,7 @@
 }
 
 .success-criteria {
+  padding: 15px 0;
   display: none;
 }
 
@@ -47,6 +48,7 @@
   float: right;
 }
 
+// teacher actions
 .edit-icon,
 .trash-icon {
   display: inline-block;
@@ -65,8 +67,20 @@
   }
 }
 
-.success-criteria {
-  padding-top: 15px;
+// student actions
+.sc-show-icon {
+  display: inline-block;
+  line-height: 0;
+  color: #fff;
+  background: $grey-md;
+  padding: 15px 12px;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+  @include border-radius(100px);
+  &:hover {
+    background: $color-primary;
+  }
 }
 // old styles
 // .checkpoint-content {
