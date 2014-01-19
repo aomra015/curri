@@ -1,6 +1,10 @@
 // Styles for track show view
 @import 'globals/all';
 
+h2 .unpublished-badge {
+  top: -4px;
+}
+
 .track-times {
   margin-top: -20px;
   font-size: 14px;
