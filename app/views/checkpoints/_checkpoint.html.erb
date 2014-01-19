@@ -22,28 +22,28 @@
             <%= content_tag :a, '?', class: "sc-show-icon strong", title: "Show Success Criteria" %>
           </li>
           <li class="student-action ratings">
-            <span class="choices">  
-              <a href="" class="face first" title="I understand">
+            <span class="choices">
+              <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 2), class: 'face first', title: Rating::OPTIONS[2], method: :post, remote: true do %>
                 <div class="face-outer success">
                   <div class="eye left success"></div>
                   <div class="eye right success"></div>
                   <div class="smile"></div>
                 </div>
-              </a>
-              <a href="" class="face" title="I kinda understand">
+              <% end %>
+              <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 1), class: 'face', title: Rating::OPTIONS[1], method: :post, remote: true do %>
                 <div class="face-outer warning">
                   <div class="eye left warning"></div>
                   <div class="eye right warning"></div>
                   <div class="normal"></div>
                 </div>
-              </a>
-              <a href="" class="face last" title="I don't understand">
+              <% end %>
+              <%= link_to classroom_track_ratings_path(@classroom, @track, checkpoint_id: checkpoint, value: 0), class: 'face last', title: Rating::OPTIONS[0], method: :post, remote: true do %>
                 <div class="face-outer danger">
                   <div class="eye left danger"></div>
                   <div class="eye right danger"></div>
                   <div class="frown"></div>
                 </div>
-              </a>
+              <% end %>
             </span>
             <a href="" class="face choose choices-toggle" title="How do you feel about this checkpoint?">
               <div class="face-outer choose">
