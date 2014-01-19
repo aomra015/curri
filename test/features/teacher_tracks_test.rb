@@ -33,7 +33,7 @@ class TeacherTracksTest < Capybara::Rails::TestCase
     uncheck :track_published
     click_button 'Update Track'
 
-    assert page.has_content?('[Unpublished]'), 'The unpublished track was not labelled'
+    assert page.has_css?('.unpublished-badge'), 'The unpublished track was not labelled'
   end
 
   test "a teacher can publish an unpublished track" do
@@ -43,7 +43,7 @@ class TeacherTracksTest < Capybara::Rails::TestCase
     check :track_published
     click_button 'Update Track'
 
-    assert !page.has_content?('[Unpublished]'), 'The published track was labelled with [Unpublished]'
+    assert !page.has_css?('.unpublished-badge'), 'The published track was labelled with Unpublished'
   end
 
   test "a teacher can edit a track" do
