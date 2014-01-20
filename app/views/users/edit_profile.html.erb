@@ -1,6 +1,6 @@
   <div class="grid-unit whole">
     <h2>Edit Profile</h2>
-    <h5 class="subtitle"><%= @current_user.first_name %> <%= @current_user.last_name %></h5>
+    <h6 class="subtitle"><%= @current_user.first_name %> <%= @current_user.last_name %></h6>
   </div>
   <div class="grid-unit wide">
     <%= form_for @current_user, url: update_profile_path , class: 'form-horizontal' do |f| %>
