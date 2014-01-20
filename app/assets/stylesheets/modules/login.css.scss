@@ -75,6 +75,20 @@
   }
 }
 
+.grid-unit-header, .grid-unit-footer {
+  padding: 10px 20px;
+}
+
+.grid-unit-header {
+  margin: -30px -20px 20px;
+  border-bottom: 1px solid $grey-lt;
+}
+
+.grid-unit-footer {
+  margin: 20px -20px -30px;
+  border-top: 1px solid $grey-lt;
+}
+
 .forgot {
   font-size: 14px;
   vertical-align: baseline;

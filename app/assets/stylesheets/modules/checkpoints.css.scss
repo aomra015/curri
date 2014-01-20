@@ -1,73 +1,175 @@
+// Styles for track show view
 @import 'globals/all';
 
-.checkpoint-content {
-  overflow: hidden;
-  margin-top: 5px;
+h2 .unpublished-badge {
+  top: -4px;
+}
 
-  h4 {
-    float: left;
-    margin-right: 30px;
-    margin-bottom: 0;
-  }
-
-  .success-criteria {
-    float: left;
-    color: #FAFAFA;
-    font-weight: bold;
-    background-color: #ccc;
-    margin-top: 15px;
+.track-times {
+  margin-top: -20px;
+  font-size: 14px;
+  // color: $color-text;
+  > div {
+    margin-top: -5px;
   }
 }
 
-.checkpoint-score-links{
-  margin: 30px 0;
-}
-
-.checkpoint-rating {
-  margin-right: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  color: #FAFAFA;
-}
-
-.checkpoint0, .checkpoint1, .checkpoint2 {
-  opacity: 0.5;
-
+.expectation-content {
+  padding: 15px 25px;
+  margin: 0 -25px;
   &:hover {
-    opacity: 0.8;
+    background: lighten($grey-lt, 10%);
   }
 }
-.checkpoint0 {
-  background-color: $color-danger;
+
+.expectation {
+  display: inline-block;
+  width: 60%;
+  // display: inline;
+  &.expectation-student {
+    width: 38%;
+  }
 }
 
-.checkpoint1 {
-  background-color: $color-warning;
+.expectation-actions {
+  display: inline-block;
+  float: right;
+  width: 38%;
+  position: relative;
+  top: -3px;
+  &.expectation-actions-student {
+    width: 60%;
+  }
 }
 
-.checkpoint2 {
-  background-color: $color-success;}
-
-.checkpoint_0, .checkpoint_1, .checkpoint_2 {
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 0 35px 35px 0;
-  border-color: transparent;
-  opacity: 0.8;
-  position: absolute;
-  top: 0;
-  right: 0;
+.success-criteria {
+  padding: 15px 0;
+  display: none;
 }
 
-.checkpoint_0 {
-  border-right-color: $color-danger;
+.success-criteria-show {
+  display: block;
 }
 
-.checkpoint_1 {
-  border-right-color: $color-warning;
+.action-icons li {
+  display: inline-block;
+  margin-left: 5px;
+  float: right;
 }
 
-.checkpoint_2 {
-  border-right-color: $color-success;
+// teacher actions
+.edit-icon,
+.trash-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
+  line-height: 0;
 }
+
+.edit,
+.trash {
+  // padding: 5px;
+  fill: $grey-md;
+  .action-icons a:hover & {
+    fill: $color-primary;
+  }
+}
+
+// student actions
+.sc-show-icon {
+  font-size: 19px;
+  display: inline-block;
+  line-height: 0;
+  color: #fff;
+  background: $color-main;
+  padding: 15px 11px;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  @include border-radius(100px);
+  &:hover {
+    background: $color-primary;
+  }
+}
+
+li.student-action {
+  // margin-left: 15px;
+  position: relative;
+}
+
+.ratings {
+  top: -6px;
+}
+// old styles
+// .checkpoint-content {
+//   overflow: hidden;
+//   margin-top: 5px;
+
+//   h4 {
+//     float: left;
+//     margin-right: 30px;
+//     margin-bottom: 0;
+//   }
+
+//   .success-criteria {
+//     float: left;
+//     color: #FAFAFA;
+//     font-weight: bold;
+//     background-color: #ccc;
+//     margin-top: 15px;
+//   }
+// }
+
+// .checkpoint-score-links{
+//   margin: 30px 0;
+// }
+
+// .checkpoint-rating {
+//   margin-right: 20px;
+//   font-size: 13px;
+//   font-weight: bold;
+//   color: #FAFAFA;
+// }
+
+// .checkpoint0, .checkpoint1, .checkpoint2 {
+//   opacity: 0.5;
+
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
+// .checkpoint0 {
+//   background-color: $color-danger;
+// }
+
+// .checkpoint1 {
+//   background-color: $color-warning;
+// }
+
+// .checkpoint2 {
+//   background-color: $color-success;}
+
+// .checkpoint_0, .checkpoint_1, .checkpoint_2 {
+//   width: 0px;
+//   height: 0px;
+//   border-style: solid;
+//   border-width: 0 35px 35px 0;
+//   border-color: transparent;
+//   opacity: 0.8;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+// }
+
+// .checkpoint_0 {
+//   border-right-color: $color-danger;
+// }
+
+// .checkpoint_1 {
+//   border-right-color: $color-warning;
+// }
+
+// .checkpoint_2 {
+//   border-right-color: $color-success;
+// }

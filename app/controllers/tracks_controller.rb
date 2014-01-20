@@ -13,6 +13,12 @@ class TracksController < ApplicationController
   end
 
   def show
+    if @current_user.student?
+      @tracks = @classroom.tracks.published
+      flash.now[:track] = { event_name: "Student views track page", properties: {classroom_id: @classroom.id, track_id: @track.id } }
+    else
+      @tracks = @classroom.tracks
+    end
   end
 
   def new

@@ -1,31 +1,43 @@
   <div class="grid-unit wide">
-    <h2><%= @track.name %><span class="publish"><%= ' [Unpublished]' unless @track.published %></span></h2>
-    <h5 class="subtitle"><%= @classroom.name %></h5>
+    <h2><%= @track.name %>
+      <% if current_user.teacher? && !@track.published %>
+        <span class="unpublished-badge">
+          <%= 'Unpublished' unless @track.published %>
+        </span>
+      <% end %>
+    </h2>
+    <h6 class="subtitle"><%= @classroom.name %></h6>
   </div>
-  <div class="grid-unit narrow">
     <!-- Teacher Controls -->
     <% if current_user.teacher? %>
-      <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track) %>
-      <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
+      <div class="grid-unit narrow">
+        <%= link_to 'Add Checkpoints', new_classroom_track_checkpoint_path(@classroom, @track) %>
+        <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
+      </div>
     <% end %>
-  </div>
 </div>
 <div class="wrapper">
   <div class="grid-unit whole">
-    <p><%= display_start_end_times(@track) %></p>
+    <div class="track-times">
+      <div><%= display_start_time(@track) %></div>
+      <div><%= display_end_time(@track) %></div>
+    </div>
   </div>
   <div class="grid-unit narrow pull-right">
     <h3 class="grid-header">All Tracks</h3>
     <div class="row">
       <ul>
-        <% @classroom.tracks.each do |track| %>
+        <% @tracks.each do |track| %>
           <li class="link"><%= link_to track.name, classroom_track_path(@classroom, track) %></li>
         <% end %>
       </ul>
     </div>
   </div>
   <div class="grid-unit wide" id="track" data-trackid="<%= @track.id %>">
-    <%= render @track.checkpoints %>
+    <div class="content">
+      <h4 class="unit-header">All Checkpoints</h4>
+      <%= render @track.checkpoints %>
+    </div>
   </div>
 </div>
 <% provide(:title, @track.name) %>
