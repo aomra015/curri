@@ -19,7 +19,7 @@ class StudentRatingsTest < Capybara::Rails::TestCase
       click_link 'Totally Understand'
     end
 
-    assert find("#checkpoint#{checkpoint.id} .choices-toggle").has_css?('.smile')
+    assert find("#checkpoint#{checkpoint.id} .choices-toggle").has_css?('.happy')
   end
 
 end
