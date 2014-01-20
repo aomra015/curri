@@ -49,6 +49,10 @@ body.nav-open .main {
   .main.subnav-open & {
     left: 30px;
   }
+  .grid-unit {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
 }
 
 .page-header.wrapper {
@@ -62,6 +66,9 @@ body.nav-open .main {
   margin: 60px 0 5px;
   h2 {
     color: lighten($color-main, 20%);
+  }
+  .grid-unit {
+    margin-bottom: 10px;
   }
 }
 
@@ -80,7 +87,7 @@ body.nav-open .main {
   // display: inline-block; // causes textual whitespace
   float: left;
   padding-left: 20px;
-  margin: 15px auto 10px;
+  margin: 0 auto 25px;
 }
 
 .unit-header {
@@ -173,12 +180,16 @@ body.nav-open .main {
   &:hover {
     background: lighten($grey-md, 30%);
   }
+  .content {
+    margin-bottom: 0;
+  }
 }
 
 .content {
   color: $color-main;
   display: block;
   padding: 15px 25px 0;
+  margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid $grey-lt;
   @include border-radius(4px);
@@ -194,5 +205,34 @@ body.nav-open .main {
   &:last-child {
     border: none;
     padding-bottom: 0;
+  }
+}
+
+.sidebar-nav {
+  width: 100%;
+}
+@include media-query(medium) {
+  .sidebar-nav {
+    width: 33%;
+  }
+}
+
+.sidebar-link {
+  .row {
+    &:last-child {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+    &:hover {
+    background: lighten($grey-lt, 10%);
+    }
+  }
+  a {
+  display: block;
+  padding: 10px 0;
+  color: lighten($color-main, 25%);
+    &:hover {
+      color: lighten($color-main, 5%);
+    }
   }
 }
