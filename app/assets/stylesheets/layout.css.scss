@@ -49,6 +49,10 @@ body.nav-open .main {
   .main.subnav-open & {
     left: 30px;
   }
+  .grid-unit {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
 }
 
 .page-header.wrapper {
@@ -62,6 +66,9 @@ body.nav-open .main {
   margin: 60px 0 5px;
   h2 {
     color: lighten($color-main, 20%);
+  }
+  .grid-unit {
+    margin-bottom: 10px;
   }
 }
 
