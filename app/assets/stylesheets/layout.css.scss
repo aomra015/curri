@@ -27,6 +27,14 @@ body.nav-open .main {
   overflow: hidden;
 }
 
+//flash notice/alert
+.flash {
+  margin-top: 70px;
+  .grid-unit {
+    margin-bottom: 0;
+  }
+}
+
 .page-header {
   background: #fff;
   overflow: hidden;
