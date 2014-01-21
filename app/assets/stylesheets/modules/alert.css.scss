@@ -13,6 +13,11 @@
   border-color: $color-success;
 }
 
+.alert-warning {
+  color: darken($color-warning, 20%);
+  border-color: $color-warning;
+}
+
 .alert-dismissable {
   padding-right: 40px;
 }
@@ -37,7 +42,6 @@
   font-size: 21px;
   font-weight: bold;
   line-height: 0.5;
-  color: $color-success;
   text-shadow: 0 1px 0 #ffffff;
   // opacity: 0.2;
   filter: alpha(opacity=20);
@@ -52,17 +56,28 @@ button.close {
   -webkit-appearance: none;
 }
 
-a.close {
+.close {
   position: absolute;
   top: -11px;
   right: -11px;
   cursor: pointer;
   padding: 5px;
   @include border-radius(100px);
-  border: 2px solid $color-success;
   background: #fff;
-  &:hover {
-    background: $color-success;
-    color: #fff;
+  .alert-success & {
+    color: $color-success;
+    border: 2px solid $color-success;
+    &:hover {
+      background: $color-success;
+      color: #fff;
+    }
+  }
+  .alert-warning & {
+    color: $color-warning;
+    border: 2px solid $color-warning;
+    &:hover {
+      background: $color-warning;
+      color: #fff;
+    }
   }
 }
