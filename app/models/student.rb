@@ -11,4 +11,8 @@ class Student < ActiveRecord::Base
   def ratings_by_track(track)
     ratings.where({ checkpoint_id: track.checkpoints.pluck(:id) }).distinct_by_checkpoint
   end
+
+  def needs_help?(classroom)
+    classroom.invitations.find_by(student_id: id).help
+  end
 end
