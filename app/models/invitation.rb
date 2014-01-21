@@ -9,12 +9,6 @@ class Invitation < ActiveRecord::Base
   scope :pending, -> { where(student_id: nil) }
   scope :accepted, -> { where.not(student_id: nil) }
 
-  def generate_token
-    begin
-      self.token = SecureRandom.urlsafe_base64
-    end while Invitation.exists?(token: self.token)
-  end
-
   def status
     student ? 'Accepted' : 'Pending'
   end
@@ -25,5 +19,12 @@ class Invitation < ActiveRecord::Base
 
   def full_name
     "#{student.first_name} #{student.last_name}" if student
+  end
+
+  private
+  def generate_token
+    begin
+      self.token = SecureRandom.urlsafe_base64
+    end while Invitation.exists?(token: self.token)
   end
 end
