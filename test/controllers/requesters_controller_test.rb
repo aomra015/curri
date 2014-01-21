@@ -8,6 +8,7 @@ class RequestersControllerTest < ActionController::TestCase
   end
 
   test "should get list of requesters" do
+    session[:user_id] = users(:teacher1).id
     get :index, classroom_id: classrooms(:one).id
 
     assert assigns(:requesters)
