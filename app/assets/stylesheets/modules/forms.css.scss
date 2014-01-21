@@ -20,7 +20,7 @@
   padding: 6px 12px;
   font-size: 13px;
   line-height: 1.5;
-  color: $grey-md;
+  color: lighten($grey-md, 25%);
   vertical-align: middle;
   background-color: #fff;
   background-image: none;
@@ -31,6 +31,7 @@
     border-color: $color-primary;
     border-width: 2px;
     outline: 0;
+    color: $grey-md;
   }
 }
 
