@@ -10,7 +10,9 @@ class Invitation < ActiveRecord::Base
   scope :accepted, -> { where.not(student_id: nil) }
 
   def generate_token
-    self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
+    begin
+      self.token = SecureRandom.urlsafe_base64
+    end while Invitation.exists?(token: self.token)
   end
 
   def status
