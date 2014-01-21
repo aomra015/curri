@@ -21,10 +21,6 @@ class CheckpointTest < ActiveSupport::TestCase
   end
 
   test "hasnt voted list for class with two students" do
-    # stubbing time
-    # date_in_future = Time.zone.now + 5.days
-    # Time.zone.expects(:now).returns(date_in_future)
-
     phase = Phase.new(tracks(:one),"Realtime")
     classroom = classrooms(:one)
 
