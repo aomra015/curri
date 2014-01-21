@@ -33,7 +33,7 @@ class Phase
   end
 
   def ratings(checkpoint)
-    checkpoint.ratings.where({ created_at: start_time..end_time }).select("DISTINCT ON (student_id) * ").order("student_id, created_at DESC")
+    checkpoint.ratings.where({ created_at: start_time..end_time }).latest_distinct
   end
 
 end
