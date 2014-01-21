@@ -103,4 +103,11 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert 'Only a teacher can do that.', flash[:alert]
   end
 
+  test "should not add teacher to a classroom they are already in" do
+
+    assert_no_difference 'users(:teacher1).classrooms.count' do
+      post :join, teacher_token: classrooms(:one).teacher_token
+    end
+  end
+
 end
