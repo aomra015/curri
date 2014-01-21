@@ -2,7 +2,9 @@ class Checkpoint < ActiveRecord::Base
   belongs_to :track
   has_many :ratings
 
-  validates  :expectation, :success_criteria, presence: true
+  validates :expectation, :success_criteria, presence: true
+  validates_length_of :expectation, :maximum => 60
+  validates_length_of :success_criteria, :maximum => 200
 
   default_scope { order(id: :asc) }
 
