@@ -14,8 +14,4 @@ class Track < ActiveRecord::Base
   def ratings
     Rating.where({ checkpoint_id: checkpoints.pluck(:id) }).distinct_by_checkpoint_student
   end
-
-  def student_ratings(student)
-    student.ratings.where({ checkpoint_id: checkpoints.pluck(:id) }).distinct_by_checkpoint
-  end
 end
