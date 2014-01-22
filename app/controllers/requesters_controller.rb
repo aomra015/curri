@@ -9,8 +9,10 @@ class RequestersController < ApplicationController
     @requesters = @classroom.requesters
 
     respond_to do |format|
-      format.json { render json: { requesters_numb: @requesters.size } }
-      format.html { }
+      format.json {
+        render json: { requesters: @requesters }
+      }
+      format.html {}
     end
   end
 
