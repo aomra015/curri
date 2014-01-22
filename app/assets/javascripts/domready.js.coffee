@@ -10,11 +10,13 @@ $ ->
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
   # Student rating AJAX
+  $('.choices a').on "ajax:before", ->
+    $ratings = $(this).closest('.ratings')
+    $ratings.find('.choices-toggle').fadeOut()
+    $ratings.find('.choices').toggleClass('show')
+
   $('.choices a').on "ajax:success", (e, data) ->
-    $checkpoint = $("#checkpoint#{data.checkpoint_id}")
-    $checkpoint.find('.choices-toggle').fadeOut ->
-      $(this).html(data.partial).fadeIn()
-    $checkpoint.find('.choices').toggleClass('show')
+    $("#checkpoint#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
 
     # SegmentIO event: Student Rates Checkpoint
     analytics.track "Rate checkpoint",
