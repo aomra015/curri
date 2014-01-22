@@ -9,16 +9,14 @@ class Invitation < ActiveRecord::Base
   scope :pending, -> { where(student_id: nil) }
   scope :accepted, -> { where.not(student_id: nil) }
 
+  delegate :full_name, to: :student, allow_nil: true
+
   def status
     student ? 'Accepted' : 'Pending'
   end
 
   def email_address
     student ? student.email : email
-  end
-
-  def full_name
-    "#{student.first_name} #{student.last_name}" if student
   end
 
   private

@@ -7,6 +7,7 @@ class Student < ActiveRecord::Base
   delegate :email, to: :user
   delegate :first_name, to: :user
   delegate :last_name, to: :user
+  delegate :full_name, to: :user
 
   def ratings_by_track(track)
     ratings.where({ checkpoint_id: track.checkpoints.pluck(:id) }).distinct_by_checkpoint
