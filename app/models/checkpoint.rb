@@ -21,7 +21,7 @@ class Checkpoint < ActiveRecord::Base
       scoped_ratings.includes(:student).each do |rating|
         student_list.delete(rating.student.id)
       end
-      student_list.map { |id| Student.find(id).email }
+      student_list.map { |id| Student.find(id).full_name }
     else
       []
     end
