@@ -3,7 +3,7 @@ require "test_helper"
 class StudentsControllerTest < ActionController::TestCase
 
   before do
-    @invitation = Invitation.create(email: 'student@gmail.com')
+    @invitation = Invitation.create(email: 'student@gmail.com', classroom: classrooms(:one))
     @params = {
       email: "misty@aomran.com",
       first_name: "misty",
@@ -13,7 +13,7 @@ class StudentsControllerTest < ActionController::TestCase
       token: @invitation.token
     }
     @login_params = {
-      email: users(:student1).email,
+      email: users(:new_student).email,
       password: "password123",
       token: @invitation.token
     }
@@ -67,7 +67,7 @@ class StudentsControllerTest < ActionController::TestCase
   test "should enroll valid student to classroom" do
     post :enroll, user: @login_params
 
-    assert_equal users(:student1).classrole, @invitation.reload.student
+    assert_equal users(:new_student).classrole, @invitation.reload.student
     assert_redirected_to classrooms_path
   end
 
@@ -83,6 +83,14 @@ class StudentsControllerTest < ActionController::TestCase
     post :enroll, user: @login_params
 
     assert_equal "The invitation is no longer valid or the URL is incorrect", flash[:alert]
+  end
+
+  test "should not enroll a student twice to same classroom" do
+    @login_params[:email] = users(:student1).email
+
+    assert_no_difference 'users(:student1).classrooms.count' do
+      post :enroll, user: @login_params
+    end
   end
 
   test "should give login errors" do

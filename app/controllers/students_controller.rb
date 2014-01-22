@@ -56,9 +56,12 @@ class StudentsController < ApplicationController
   end
 
   def claim_invitation
+    unless @user.classrooms.include?(@invitation.classroom)
+      @invitation.student = @user.classrole
+      @invitation.save
+    end
+
     session[:user_id] = @user.id
-    @invitation.student = @user.classrole
-    @invitation.save
     redirect_to classrooms_path
   end
 
