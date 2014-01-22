@@ -3,17 +3,19 @@
 // Styles for login page
 .login {
   background: lighten($color-main, 65%);
+  .main {
+    padding: 0;
+    margin-left: 0;
+    background: none;
+  }
+  .wrapper {
+    margin: 0;
+  }
+  .flash {
+    float: none;
+  }
 }
 
-.login .main {
-  padding: 0;
-  margin-left: 0;
-  background: none;
-}
-
-.login .wrapper {
-  margin: 0;
-}
 
 .brandbar {
   height: 6px;

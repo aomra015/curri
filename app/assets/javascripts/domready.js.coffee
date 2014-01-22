@@ -64,3 +64,20 @@ $ ->
    $('.choices-toggle').on 'click', (e) ->
       e.preventDefault()
       $(this).closest('li').find('.choices').toggleClass('show')
+
+  # Sidebar mobile select menu
+  $("<select />").appendTo("#sidebar-links")
+  $("<option />", {
+     "selected": "selected",
+     "value"   : "",
+     "text"    : "Go to..."
+  }).appendTo("#sidebar-links select")
+  $('#sidebar-links a').each ->
+    el = $(this)
+    $("<option />", {
+         "value"   : el.attr("href"),
+         "text"    : el.text()
+     }).appendTo("#sidebar-links select")
+
+  $('#sidebar-links select').on 'change', ->
+    window.location = $(this).find("option:selected").val()

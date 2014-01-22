@@ -2,27 +2,32 @@
 
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
+  margin-top: 15px;
+  border: 2px solid transparent;
   border-radius: 4px;
+  position: relative;
 }
 
 .alert-success {
   color: darken($color-success, 20%);
-  background-color: lighten($color-success, 50%);
-  border-color: lighten($color-success, 40%);
+  border-color: $color-success;
+}
+
+.alert-warning {
+  color: darken($color-warning, 20%);
+  border-color: $color-warning;
 }
 
 .alert-dismissable {
   padding-right: 40px;
 }
 
-.alert-dismissable .close {
-  position: relative;
-  top: -2px;
-  right: -21px;
-  color: inherit;
-}
+// .alert-dismissable .close {
+//   position: relative;
+//   top: -2px;
+//   right: -21px;
+//   color: inherit;
+// }
 
 .errorExplanation { color: #222;
   border: 2px solid red;
@@ -36,20 +41,11 @@
   float: right;
   font-size: 21px;
   font-weight: bold;
-  line-height: 1;
-  color: darken($color-success, 40%);
+  line-height: 0.5;
   text-shadow: 0 1px 0 #ffffff;
-  opacity: 0.2;
+  // opacity: 0.2;
   filter: alpha(opacity=20);
   @include all-transition(0.2s);
-}
-
-.close:hover,
-.close:focus {
-  text-decoration: none;
-  cursor: pointer;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
 }
 
 button.close {
@@ -58,4 +54,30 @@ button.close {
   background: transparent;
   border: 0;
   -webkit-appearance: none;
+}
+
+.close {
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  cursor: pointer;
+  padding: 5px;
+  @include border-radius(100px);
+  background: #fff;
+  .alert-success & {
+    color: $color-success;
+    border: 2px solid $color-success;
+    &:hover {
+      background: $color-success;
+      color: #fff;
+    }
+  }
+  .alert-warning & {
+    color: $color-warning;
+    border: 2px solid $color-warning;
+    &:hover {
+      background: $color-warning;
+      color: #fff;
+    }
+  }
 }
