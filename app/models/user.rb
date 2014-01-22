@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   belongs_to :classrole, polymorphic: true
-  validates  :email, presence: true
+  validates :email, presence: true
   validates :email, uniqueness: true
   validates :email, :email => true
   validates :first_name, presence: true, if: :student?
@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   delegate :classrooms, to: :classrole
+  delegate :needs_help?, to: :classrole
 
   def teacher?
     classrole_type == 'Teacher'
@@ -17,12 +18,8 @@ class User < ActiveRecord::Base
     classrole_type == 'Student'
   end
 
-  def get_invitation(classroom)
-    classroom.invitations.find_by(student_id: self.classrole_id)
-  end
-
-  def needs_help?(classroom)
-    get_invitation(classroom).help
+  def full_name
+    "#{first_name} #{last_name}"
   end
 
   def send_password_reset

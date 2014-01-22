@@ -108,6 +108,8 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert_no_difference 'users(:teacher1).classrooms.count' do
       post :join, teacher_token: classrooms(:one).teacher_token
     end
+
+    assert_equal 'You have already used this token', flash[:alert]
   end
 
 end

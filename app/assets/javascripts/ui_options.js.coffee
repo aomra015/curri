@@ -25,3 +25,6 @@
 
   largeScreen: ->
     return window.matchMedia("(min-width: 1024px)").matches
+
+  mobileScreen: ->
+    return window.matchMedia("(max-width: 480px)").matches

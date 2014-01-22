@@ -16,6 +16,7 @@ class Classroom < ActiveRecord::Base
     invitations.help_needed
   end
 
+  private
   def generate_token
     begin
       self.teacher_token = SecureRandom.urlsafe_base64(6)

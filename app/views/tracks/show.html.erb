@@ -26,15 +26,17 @@
   <div class="grid-unit narrow pull-right sidebar-nav">
     <div class="content">
       <h4 class="unit-header">All Tracks</h4>
-      <ul>
-        <% @tracks.each do |track| %>
-          <li class="sidebar-link">
-            <div class="row">
-            <%= link_to track.name, classroom_track_path(@classroom, track) %>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+      <div class="row" id='sidebar-links'>
+        <ul>
+          <% @tracks.each do |track| %>
+            <li class="sidebar-link">
+              <div class="row">
+              <%= link_to track.name, classroom_track_path(@classroom, track) %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        </div>
     </div>
   </div>
   <div class="grid-unit wide" id="track" data-trackid="<%= @track.id %>">

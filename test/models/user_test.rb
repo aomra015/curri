@@ -31,12 +31,6 @@ class UserTest < ActiveSupport::TestCase
     assert_equal true, @teacher.teacher?
   end
 
-  test "needs_help method" do
-    assert_equal false, @student.needs_help?(@classroom)
-    @invitation1.toggle(:help).save
-    assert_equal true, @student.needs_help?(@classroom)
-  end
-
   test "naming validation" do
     # nameless student bad; nameless teacher ok
     @teacher.valid?

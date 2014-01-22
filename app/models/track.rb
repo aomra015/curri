@@ -12,10 +12,6 @@ class Track < ActiveRecord::Base
   end
 
   def ratings
-    Rating.where({ checkpoint_id: checkpoints.pluck(:id) }).select("DISTINCT ON (student_id, checkpoint_id) * ").order("student_id, checkpoint_id, created_at DESC")
-  end
-
-  def student_ratings(student)
-    student.ratings.where({ checkpoint_id: checkpoints.pluck(:id) }).select("DISTINCT ON (checkpoint_id) * ").order("checkpoint_id, created_at DESC")
+    Rating.where({ checkpoint_id: checkpoints.pluck(:id) }).distinct_by_checkpoint_student
   end
 end

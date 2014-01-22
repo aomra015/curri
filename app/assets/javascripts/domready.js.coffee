@@ -10,11 +10,13 @@ $ ->
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
   # Student rating AJAX
+  $('.choices a').on "ajax:before", ->
+    $ratings = $(this).closest('.ratings')
+    $ratings.find('.choices-toggle').fadeOut()
+    $ratings.find('.choices').toggleClass('show')
+
   $('.choices a').on "ajax:success", (e, data) ->
-    $checkpoint = $("#checkpoint#{data.checkpoint_id}")
-    $checkpoint.find('.choices-toggle').fadeOut ->
-      $(this).html(data.partial).fadeIn()
-    $checkpoint.find('.choices').toggleClass('show')
+    $("#checkpoint#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
 
     # SegmentIO event: Student Rates Checkpoint
     analytics.track "Rate checkpoint",
@@ -66,18 +68,22 @@ $ ->
       $(this).closest('li').find('.choices').toggleClass('show')
 
   # Sidebar mobile select menu
-  $("<select />").appendTo("#sidebar-links")
-  $("<option />", {
-     "selected": "selected",
-     "value"   : "",
-     "text"    : "Go to..."
-  }).appendTo("#sidebar-links select")
-  $('#sidebar-links a').each ->
-    el = $(this)
+  if CurriUiOptions.mobileScreen()
+    $("<select />").appendTo("#sidebar-links")
     $("<option />", {
-         "value"   : el.attr("href"),
-         "text"    : el.text()
-     }).appendTo("#sidebar-links select")
+       "selected": "selected",
+       "value"   : "",
+       "text"    : "Go to..."
+    }).appendTo("#sidebar-links select")
 
-  $('#sidebar-links select').on 'change', ->
-    window.location = $(this).find("option:selected").val()
+    $('#sidebar-links a').each ->
+      el = $(this)
+      $("<option />", {
+           "value"   : el.attr("href"),
+           "text"    : el.text()
+       }).appendTo("#sidebar-links select")
+
+    $('#sidebar-links ul').hide()
+
+    $('#sidebar-links select').on 'change', ->
+      window.location = $(this).find("option:selected").val()
