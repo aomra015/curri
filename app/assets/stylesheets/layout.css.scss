@@ -215,11 +215,11 @@ body.nav-open .main {
   }
 }
 
-.sidebar-nav {
+.sidebar {
   width: 100%;
 }
 @include media-query(medium) {
-  .sidebar-nav {
+  .sidebar {
     width: 33%;
   }
 }

@@ -1,23 +1,26 @@
-<div class="wrapper page-title">
   <div class="grid-unit whole">
-  <h2><%= @classroom.name %> > Your Students Needing Help</h2>
-</div>
-<div class="grid3">
-  <table id="requesters-table">
-    <tr>
-      <th>Student</th>
-      <th>Time</th>
-      <th>OK</th>
-    </tr>
+    <h2>Students in Help Queue</h2>
+    <h6 class="subtitle"><%= @classroom.name %></h6>
+  </div>
+  <div class="grid-unit wide">
+    <table id="requesters-table">
+      <thead>
+        <tr>
+          <th>Student</th>
+          <th>Help Requested At</th>
+          <th>Student Helped?</th>
+        </tr>
+      </thead>
 
-    <% if @requesters.empty? %>
-      <tr id="placeholder"><td colspan="3">You have no students needing help!</td></tr>
-    <% else %>
-      <% @requesters.each do |requester| %>
-        <%= render partial: 'request', locals: { classroom: @classroom, requester: requester } %>
+      <% if @requesters.empty? %>
+        <tr id="placeholder"><td colspan="3">You have no students needing help. Great job!</td></tr>
+      <% else %>
+        <% @requesters.each do |requester| %>
+          <%= render partial: 'request', locals: { classroom: @classroom, requester: requester } %>
+        <% end %>
       <% end %>
-    <% end %>
-  </table>
+    </table>
+  </div>
 </div>
 
 <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
