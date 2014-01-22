@@ -91,6 +91,8 @@ class StudentsControllerTest < ActionController::TestCase
     assert_no_difference 'users(:student1).classrooms.count' do
       post :enroll, user: @login_params
     end
+
+    assert_equal false, Invitation.exists?(@invitation.id)
   end
 
   test "should give login errors" do

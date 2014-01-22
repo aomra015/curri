@@ -56,7 +56,9 @@ class StudentsController < ApplicationController
   end
 
   def claim_invitation
-    unless @user.classrooms.include?(@invitation.classroom)
+    if @user.classrooms.include?(@invitation.classroom)
+      @invitation.destroy
+    else
       @invitation.student = @user.classrole
       @invitation.save
     end
