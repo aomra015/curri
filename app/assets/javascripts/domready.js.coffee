@@ -104,3 +104,7 @@ $ ->
       $(this).remove()
     # SegmentIO event
     analytics.track "Teacher Answered Student"
+
+  # Help-toggle AJAX
+  $('.help-toggle a').on 'ajax:success', (e, data) ->
+    HelpStatusPoller.helpToggle(data)

@@ -9,7 +9,9 @@
     $.ajax
       url: $('.help-toggle a').attr('href')
       dataType: 'JSON'
-      success: HelpStatusPoller.helpToggle
+      success: (data) ->
+        HelpStatusPoller.helpToggle(data)
+        HelpStatusPoller.poll()
 
   helpToggle: (data) ->
     $helpLink = $(".help-toggle a")
@@ -17,4 +19,3 @@
       $helpLink.removeClass('in-queue ask-help')
       $helpLink.text("In Help Queue").addClass('in-queue') if data.help
       $helpLink.text("Ask for Help").addClass('ask-help') if !data.help
-    HelpStatusPoller.poll()
