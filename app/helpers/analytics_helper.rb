@@ -35,9 +35,9 @@ module AnalyticsHelper
     hasnt_voted = checkpoint.hasnt_voted(@phase, @classroom)
 
     if hasnt_voted
-      content_tag :ul do
+      content_tag :div, class: 'hasnt-voted' do
         concat("Hasn't voted:")
-        hasnt_voted.map {|name| concat(content_tag(:li, name))}
+        hasnt_voted.map {|name| concat(content_tag(:span, name,))}
       end
     end
 

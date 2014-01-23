@@ -87,3 +87,8 @@ $ ->
 
     $('#sidebar-links select').on 'change', ->
       window.location = $(this).find("option:selected").val()
+
+    # Show students that haven't voted
+   $('.students-toggle').on 'click', (e) ->
+      e.preventDefault()
+      $('.hasnt-voted').toggleClass('hasnt-voted-show')

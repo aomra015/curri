@@ -1,18 +1,13 @@
 <div class="row" id="checkpoint<%= checkpoint.id %>">
-  <div class="unit-inner">
-    <div class="analytics-track-name">
-      <h4>
+  <div class="analytics-content">
+    <div class="h5">
       <%= checkpoint.expectation %>
-      </h4>
+    </div>
+    <div class="analytics-bar">
       <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.students.size } %>
     </div>
-
-    <div class="ratings-count">
-      <%= ratings_count_box(checkpoint) %>
-    </div>
   </div>
-
-  <div class="hasnt-voted">
+  <!-- <div class="hasnt-voted"> -->
       <%= hasnt_voted_box(checkpoint) %>
-  </div>
+  <!-- </div> -->
 </div>
