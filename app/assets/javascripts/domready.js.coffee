@@ -97,3 +97,10 @@ $ ->
   $('#invitations .danger-link').on "ajax:success", (e, data)->
     $("#invitation_#{data.id}").fadeOut 'slow', ->
       $(this).remove()
+
+  # Requesters AJAX
+  $('#requesters-table').on "ajax:success", '.btn-small', (e, data)->
+    $("#requester#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
+    # SegmentIO event
+    analytics.track "Teacher Answered Student"

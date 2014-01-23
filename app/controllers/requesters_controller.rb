@@ -36,9 +36,17 @@ class RequestersController < ApplicationController
   def remove
     @requester.help = false
     @requester.save
-    flash[:notice] = "Student removed from queue."
-    flash[:track] = { event_name: "Teacher Answered Student" }
-    redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path
+
+    respond_to do |format|
+      format.json {
+        render json: { id: params[:id] }
+      }
+      format.html {
+        flash[:notice] = "Student removed from queue."
+        flash[:track] = { event_name: "Teacher Answered Student" }
+        redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path
+      }
+    end
   end
 
   private
