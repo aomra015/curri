@@ -34,12 +34,7 @@ module AnalyticsHelper
   def hasnt_voted_box(checkpoint)
     hasnt_voted = checkpoint.hasnt_voted(@phase, @classroom)
 
-    if hasnt_voted
-      content_tag :div, class: 'hasnt-voted' do
-        hasnt_voted.map {|name| concat(content_tag(:span, name,))}
-      end
-    end
-
+    hasnt_voted.map {|name| content_tag(:span, name, class: 'student-not-voted')}.join('').html_safe if hasnt_voted
   end
 
 end
