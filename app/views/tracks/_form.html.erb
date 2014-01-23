@@ -1,23 +1,26 @@
 <%= form_for [@classroom, @track] do |f| %>
   <%= f.error_messages %>
-  <h3>
+  <div class="form-group">
     <%= f.label :name, 'Track Name' %>
-  </h3>
-  <span>
     <%= f.text_field :name, placeholder: "Enter track name", class: "form-input" %>
-  </span>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, 'Start Time' %>
+    <%= f.text_field :start_date, value: nice_date_format(@track, :start_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input form-input-half"  %>
+    <%= f.text_field :start_time, value: nice_time_format(@track, :start_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input form-input-half"  %>
+  </div>
 
-  <h3>Start &amp; End Time</h3>
-  <span>
-    <%= f.text_field :start_date, value: nice_date_format(@track, :start_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input form-input-inline"  %>
-    <%= f.text_field :start_time, value: nice_time_format(@track, :start_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
-    to
-    <%= f.text_field :end_date, value: nice_date_format(@track, :end_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input form-input-inline"  %>
-    <%= f.text_field :end_time, value: nice_time_format(@track, :end_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input form-input-inline"  %>
-  </span>
-
-  <%= f.label :published %> <%= f.check_box :published%>
+  <div class="form-group">
+    <%= f.label :name, 'End Time' %>
+    <%= f.text_field :end_date, value: nice_date_format(@track, :end_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input form-input-half"  %>
+    <%= f.text_field :end_time, value: nice_time_format(@track, :end_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input form-input-half"  %>
+  </div>
+  <div class="form-group">
+    <%= f.label :published %>
+    <%= f.check_box :published%>
+    <span class="form-help-block">Check this box to publish this track. Published tracks can be viewed by students.</span>
+  </div>
   <div>
-    <%= f.submit class: "add-track btn" %>
+    <%= f.submit class: "btn btn-primary" %>
   </div>
 <% end %>
