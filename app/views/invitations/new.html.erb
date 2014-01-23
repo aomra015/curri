@@ -1,38 +1,41 @@
-  <div class="grid-unit wide">
+  <div class="grid-unit whole">
     <h2>Invite Students</h2>
-    <h5 class="subtitle"><%= @classroom.name %></h5>
+    <h6 class="subtitle"><%= @classroom.name %></h6>
   </div>
 </div>
 <div class="wrapper">
-  <div class="grid-unit narrow pull-right">
+  <div class="grid-unit narrow pull-right sidebar">
     <%= form_tag classroom_invitations_path(@classroom) do %>
-      <h3>
-        <%= label_tag :invitation_emails %>
-        </h3>
-      <span>
-        <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input-area", rows: 4 %>
-      </span>
+      <div class="form-group">
+        <%= label_tag :invite_students %>
+        <%= text_area_tag :invitation_emails, '', placeholder: "Separate multiple email addresses with commas or line breaks.", class: "form-input", rows: 4 %>
+      </div>
       <div>
-        <%= submit_tag 'Send Invitation', class: 'btn btn-head', id: 'invite-button' %>
+        <%= submit_tag 'Send Invitation', class: 'btn btn-primary', id: 'invite-button' %>
       </div>
     <% end %>
   </div>
   <div class="grid-unit wide">
     <table>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Status</th>
-      </tr>
-
-      <% @invitations.includes(student: :user).each do |invitation| %>
-        <tr id="invitation_<%= invitation.id%>">
-          <td><%= invitation.full_name %></td>
-          <td><%= invitation.email_address %></td>
-          <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
-          <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-head', id: 'remove_button' %></td>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Remove</th>
         </tr>
-      <% end %>
+      </thead>
+      
+      <tbody>
+        <% @invitations.includes(student: :user).each do |invitation| %>
+          <tr id="invitation_<%= invitation.id%>">
+            <td><%= invitation.full_name %></td>
+            <td><%= invitation.email_address %></td>
+            <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
+            <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger-link', id: 'remove_button' %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   </div>
 </div>

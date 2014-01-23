@@ -33,7 +33,7 @@ body {
 
 p {
   color: $color-text;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   font-size: 1rem;
   line-height: 1.5;
 }
@@ -100,71 +100,12 @@ h6,
   letter-spacing: 1px;
 }
 
-// Old styles, remove these
-
-// h2.page-header {
-//   border-left: 5px solid $secondary-color;
-//   padding-left: 10px;
-//   float: left;
-//   margin-top: 5px;
-// }
-
-// h3.grid-header {
-//   padding: 20px;
-//   margin-top: 0;
-//   margin-bottom: 0;
-//   background-clip: border-box;
-//   background-color: darken($grid-background, 30%);
-//   color: #FAFAFA;
-//   border-top-left-radius: $border-radius;
-//   border-top-right-radius: $border-radius;
-// }
-
-// nav {
-//   background-color: $header-color;
-//   border-top: 4px solid darken($header-color, 20%);
-//   border-bottom: 1px solid darken($header-color, 5%);
-//   margin-bottom: 40px;
-
-//   #logo {
-//     float: left;
-//     padding-top: 25px;
-
-//     a {
-//       display: block;
-//     }
-//   }
-
-//   ul {
-//     float: right;
-//     margin: 0;
-//     padding: 25px 0;
-
-//     li {
-//       float: left;
-//       margin-left: 3rem;
-
-//       a {
-//       text-decoration: none;
-//       font-size: 20px;
-//       font-weight: 600;
-//       color: darken($header-color, 20%);
-//       color: darken($header-color, 20%);
-//       @include all-transition;
-
-//         &:hover{
-//          color: rgba(255,255,255,0.8);
-//         }
-//       }
-//     }
-//   }
-// }
-
-input {
+input,
+textarea {
   border: none;
   font-family: inherit;
   text-rendering: optimizeLegibility;
-  // -webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   display: block;
   &[disabled] {
     background-color: lighten($grey-lt, 5%);
@@ -172,6 +113,7 @@ input {
 }
 
 label {
+  display: block;
   font-weight: bold;
   margin-bottom: 7px;
 }

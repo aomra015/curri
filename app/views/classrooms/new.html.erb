@@ -1,13 +1,22 @@
   <div class="grid-unit wide">
     <h2>Add/Join Classroom</h2>
+  </div>
+</div>
+<div class="wrapper">
+  <div class="grid-unit wide">
+    <h6 class="subtitle classroom-option">Create New Classroom</h6 class="subtitle">
     <%= render 'form' %>
   </div>
-
   <div class="grid-unit wide">
-    <h3>Join Existing Classroom</h3>
+    <h6 class="subtitle classroom-option">Join Existing Classroom</h6>
     <%= form_tag join_classrooms_path, method: :post do %>
-      <%= text_field_tag :teacher_token, nil,placeholder: "Enter classroom token", class: "form-input" %>
-      <%= submit_tag 'Join Classroom', class: "btn" %>
+      <div class="form-group">
+        <%= label_tag :join_existing_classroom %>
+        <%= text_field_tag :teacher_token, nil,placeholder: "Enter classroom token", class: "form-input" %>
+      </div>
+      <div>
+        <%= submit_tag 'Join Classroom', class: "btn btn-primary" %>
+      </div>
     <% end %>
   </div>
 </div>
