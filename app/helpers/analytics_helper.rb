@@ -36,7 +36,6 @@ module AnalyticsHelper
 
     if hasnt_voted
       content_tag :div, class: 'hasnt-voted' do
-        concat("Hasn't voted:")
         hasnt_voted.map {|name| concat(content_tag(:span, name,))}
       end
     end

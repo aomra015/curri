@@ -7,7 +7,8 @@
       <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.students.size } %>
     </div>
   </div>
-  <!-- <div class="hasnt-voted"> -->
+  <div class="hasnt-voted">
+    <h5>Students that haven't voted:</h5>
       <%= hasnt_voted_box(checkpoint) %>
-  <!-- </div> -->
+  </div>
 </div>

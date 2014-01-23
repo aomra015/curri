@@ -16,3 +16,13 @@
 .hasnt-voted-show {
   display: block;
 }
+
+.student-not-voted {
+  color: $color-text;
+  &:after {
+    content: ", ";
+  }
+  &:last-child:after {
+    content: "";
+  }
+}
