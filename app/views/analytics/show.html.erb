@@ -12,6 +12,9 @@
   </div>
   <div class="grid-unit narrow pull-right sidebar">
     <div class="content">
+      <%= render 'phasing' if @track.phasing? %>
+    </div>
+    <div class="content">
       <h4 class="unit-header">Analytics: All Tracks</h4>
         <div class="row" id='sidebar-links'>
           <ul>
@@ -25,9 +28,6 @@
           </ul>
         </div>
       </div>
-    <div class="content">
-      <%= render 'phasing' if @track.phasing? %>
-    </div>
   </div>
   <div class="grid-unit wide" id="track">
     <div class="content">
