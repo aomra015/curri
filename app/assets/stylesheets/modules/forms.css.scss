@@ -85,9 +85,10 @@
   position: absolute;
 }
 
-.warning-link {
-  color: $color-warning;
+.danger-link {
+  color: $grey-md;
   &:hover {
+    color: $color-danger;
     text-decoration: underline;
   }
 }
@@ -145,3 +146,14 @@ tbody tr {
   }
 }
 
+.token {
+  font-weight: 700;
+  text-shadow: 1px 1px #fff;
+  color: darken($color-success, 30%);
+  display: inline-block;
+  padding: 1px 10px 3px;
+  @include border-radius(5px);
+  border: 2px solid $color-success;
+  background: lighten($color-success, 25%);
+
+}

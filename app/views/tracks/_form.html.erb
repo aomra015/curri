@@ -22,5 +22,6 @@
   </div>
   <div>
     <%= f.submit class: "btn btn-primary" %>
+    <%= link_to 'Delete Track', [@classroom, @track], method: :delete, data: {confirm: "Are you sure you want to delete the track?"}, class: "danger-link", id: 'delete-track' %>
   </div>
 <% end %>
