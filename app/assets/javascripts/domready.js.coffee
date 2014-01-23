@@ -92,3 +92,8 @@ $ ->
   $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
     $("#checkpoint#{data.id}").fadeOut 'slow', ->
       $(this).remove()
+
+  # Invitations AJAX
+  $('#invitations .danger-link').on "ajax:success", (e, data)->
+    $("#invitation_#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
