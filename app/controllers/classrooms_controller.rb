@@ -28,8 +28,13 @@ class ClassroomsController < ApplicationController
       @current_user.classrooms << classroom
       redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher."
     else
+      if @current_user.classrooms.include?(classroom)
+        flash.now.alert = 'You have already used this token'
+      else
+        flash.now.alert = 'Invalid Token'
+      end
+
       @classroom = Classroom.new
-      flash.now.alert = 'Invalid Token'
       render :new
     end
   end

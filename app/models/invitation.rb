@@ -9,9 +9,7 @@ class Invitation < ActiveRecord::Base
   scope :pending, -> { where(student_id: nil) }
   scope :accepted, -> { where.not(student_id: nil) }
 
-  def generate_token
-    self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
-  end
+  delegate :full_name, to: :student, allow_nil: true
 
   def status
     student ? 'Accepted' : 'Pending'
@@ -21,7 +19,10 @@ class Invitation < ActiveRecord::Base
     student ? student.email : email
   end
 
-  def full_name
-    "#{student.first_name} #{student.last_name}" if student
+  private
+  def generate_token
+    begin
+      self.token = SecureRandom.urlsafe_base64
+    end while Invitation.exists?(token: self.token)
   end
 end

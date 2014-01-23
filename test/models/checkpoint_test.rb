@@ -20,12 +20,12 @@ class CheckpointTest < ActiveSupport::TestCase
     assert_equal 2, checkpoints(:two).latest_student_score(student)
   end
 
-  test "hasnt voted list for class with two students" do
+  test "hasnt voted list for class with four students" do
     phase = Phase.new(tracks(:one),"Realtime")
     classroom = classrooms(:one)
 
-    assert_equal ["all"], checkpoints(:noratings).hasnt_voted(phase, classroom)
-    assert_equal [], checkpoints(:one).hasnt_voted(phase, classroom)
-    assert_equal ['student2@school.com'], checkpoints(:onerating).hasnt_voted(phase, classroom)
+    assert_equal nil, checkpoints(:one).hasnt_voted(phase, classroom)
+    assert_equal nil, checkpoints(:noratings).hasnt_voted(phase, classroom)
+    assert_equal ['john smith'], checkpoints(:onerating).hasnt_voted(phase, classroom)
   end
 end
