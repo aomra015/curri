@@ -8,7 +8,7 @@
         <% if current_user.teacher? %>
         <!-- Teacher Controls -->
           <li>
-            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint", title: "Delete Checkpoint" do %>
+            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, remote: true, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint", title: "Delete Checkpoint" do %>
               <%= render 'shared/trash' %>
             <% end %>
           </li>

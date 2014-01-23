@@ -32,8 +32,17 @@ class CheckpointsController < ApplicationController
   end
 
   def destroy
+    id = @checkpoint.id
     @checkpoint.destroy
-    redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been deleted."
+
+    respond_to do |format|
+      format.json {
+        render json: { id: id }
+      }
+      format.html {
+        redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been deleted."
+      }
+    end
   end
 
   private

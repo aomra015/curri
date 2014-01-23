@@ -87,3 +87,8 @@ $ ->
 
     $('#sidebar-links select').on 'change', ->
       window.location = $(this).find("option:selected").val()
+
+  # Tracks AJAX
+  $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
+    $("#checkpoint#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
