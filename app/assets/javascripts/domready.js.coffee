@@ -113,9 +113,9 @@ $ ->
     setTimeout(hideTooltip, 2000)
 
   # Checkpoints sort
-  if @Curri && @Curri.user.classrole == 'Teacher'
+  if Curri && Curri.user.classrole_type == 'Teacher'
     $('.checkpoints').sortable
       items: "> div.row"
       handle: '.expectation'
       cursor: 'move'
-    axis: 'y'
+      axis: 'y'
