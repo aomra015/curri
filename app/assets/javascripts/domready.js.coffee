@@ -111,3 +111,11 @@ $ ->
     $helpTooltip = $('#help-tooltip').text(data.message).show()
     hideTooltip = -> $helpTooltip.hide()
     setTimeout(hideTooltip, 2000)
+
+  # Checkpoints sort
+  if @Curri && @Curri.user.classrole == 'Teacher'
+    $('.checkpoints').sortable
+      items: "> div.row"
+      handle: '.expectation'
+      cursor: 'move'
+    axis: 'y'
