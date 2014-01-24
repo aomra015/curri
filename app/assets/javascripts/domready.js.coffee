@@ -16,7 +16,7 @@ $ ->
     $ratings.find('.choices').toggleClass('show')
 
   $('.choices a').on "ajax:success", (e, data) ->
-    $("#checkpoint#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
+    $("#checkpoint_#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
 
     # SegmentIO event: Student Rates Checkpoint
     analytics.track "Rate checkpoint",
@@ -90,7 +90,7 @@ $ ->
 
   # Tracks AJAX
   $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
-    $("#checkpoint#{data.id}").fadeOut 'slow', ->
+    $("#checkpoint_#{data.id}").fadeOut 'slow', ->
       $(this).remove()
 
   # Invitations AJAX
@@ -119,3 +119,5 @@ $ ->
       handle: '.expectation'
       cursor: 'move'
       axis: 'y'
+      update: ->
+        $.post($(this).data('url'), $(this).sortable('serialize'))

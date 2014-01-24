@@ -44,6 +44,13 @@ class CheckpointsController < ApplicationController
     end
   end
 
+  def sort
+    params[:checkpoint].each_with_index do |id, index|
+        @track.checkpoints.where(id: id).update_all(position: index+1)
+      end
+    render nothing: true
+  end
+
   private
   def checkpoint_params
     params.require(:checkpoint).permit(:expectation, :success_criteria, :track_id)

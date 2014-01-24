@@ -15,11 +15,11 @@ class StudentRatingsTest < Capybara::Rails::TestCase
     assert page.has_content?(checkpoint.expectation)
 
 
-    within "#checkpoint#{checkpoint.id}" do
+    within "#checkpoint_#{checkpoint.id}" do
       click_link 'Totally Understand'
     end
 
-    assert find("#checkpoint#{checkpoint.id} .choices-toggle").has_css?('.happy')
+    assert find("#checkpoint_#{checkpoint.id} .choices-toggle").has_css?('.happy')
   end
 
 end

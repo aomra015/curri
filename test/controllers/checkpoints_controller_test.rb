@@ -70,4 +70,18 @@ class CheckpointsControllerTest < ActionController::TestCase
     end
     assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
   end
+
+  test "should sort checkpoints" do
+    first_checkpoint = checkpoints(:one)
+    second_checkpoint = checkpoints(:two)
+    third_checkpoint = checkpoints(:noratings)
+    fourth_checkpoint = checkpoints(:onerating)
+
+    post :sort, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint: [first_checkpoint.id, fourth_checkpoint.id, third_checkpoint.id, second_checkpoint.id]
+
+    assert_equal 1, first_checkpoint.reload.position
+    assert_equal 2, fourth_checkpoint.reload.position
+    assert_equal 3, third_checkpoint.reload.position
+    assert_equal 4, second_checkpoint.reload.position
+  end
 end

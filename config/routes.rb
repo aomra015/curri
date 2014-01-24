@@ -13,7 +13,9 @@ Curri::Application.routes.draw do
     resources :tracks do
       get 'analytics', to: 'analytics#show'
       resources :ratings, only: [:create]
-      resources :checkpoints, except: [:index, :show]
+      resources :checkpoints, except: [:index, :show] do
+        post 'sort', on: :collection
+      end
     end
 
     resources :invitations, only: [:new, :create, :destroy]

@@ -6,8 +6,6 @@ class Checkpoint < ActiveRecord::Base
   validates_length_of :expectation, :maximum => 50
   validates_length_of :success_criteria, :maximum => 200
 
-  default_scope { order(id: :asc) }
-
   def latest_student_score(student)
     ratings.where(student_id: student.id).last.try(:score)
   end
