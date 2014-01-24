@@ -108,3 +108,6 @@ $ ->
   # Help-toggle AJAX
   $('.help-toggle a').on 'ajax:success', (e, data) ->
     HelpStatusPoller.helpToggle(data)
+    $helpTooltip = $('#help-tooltip').text(data.message).show()
+    hideTooltip = -> $helpTooltip.hide()
+    setTimeout(hideTooltip, 2000)
