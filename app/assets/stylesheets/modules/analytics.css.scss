@@ -32,9 +32,8 @@
 .unit-action {
   padding-top: 10px;
   padding-bottom: 10px;
-  &:hover {
-    background: $color-primary;
-    background-image: linear-gradient(to bottom, $color-primary, darken($color-primary, 5%));
+  select {
+    width: 100%;
   }
 }
 

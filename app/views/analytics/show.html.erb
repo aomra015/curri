@@ -12,10 +12,6 @@
   </div>
   <div class="grid-unit narrow pull-right sidebar">
     <div class="content">
-      <h4 class="unit-header">Phases</h4>
-      <%= render 'phasing' if @track.phasing? %>
-    </div>
-    <div class="content">
       <h4 class="unit-header">Analytics: All Tracks</h4>
         <div class="row" id='sidebar-links'>
           <ul>
@@ -34,7 +30,9 @@
     <div class="content">
       <h4 class="unit-header">Analytics: All Checkpoints</h4>
       <div class="row unit-action">
-        <a href="" class="unit-action-link students-toggle"><span class="show-icon"><%= render 'shared/show' %></span>Toggle students that haven't voted</a>
+        <h6>Choose phase</h6>
+        <%= render 'phasing' if @track.phasing? %>
+        <!-- <a href="" class="unit-action-link students-toggle"><span class="show-icon"><%= render 'shared/show' %></span>Toggle students that haven't voted</a> -->
       </div>
       <div class="row hasnt-voted">
         <p class="h6">Only shows for checkpoints where > 75% of the class has voted.</p>
