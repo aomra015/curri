@@ -108,8 +108,9 @@ $ ->
   # Help-toggle AJAX
   $('.help-toggle a').on 'ajax:success', (e, data) ->
     HelpStatusPoller.helpToggle(data)
+    $('#help-tooltip').show
     $helpTooltip = $('#help-tooltip').text(data.message).show()
-    hideTooltip = -> $helpTooltip.hide()
+    hideTooltip = -> $helpTooltip.fadeOut()
     setTimeout(hideTooltip, 2000)
 
   # Checkpoints sort
