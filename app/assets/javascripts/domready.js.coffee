@@ -48,11 +48,11 @@ $ ->
     $('.subnav-slide').toggleClass('nav-label-hide')
 
   # Page header style
-  $(window).scroll ->
-    if $(window).scrollTop() <= 25
-      $('.page-header').removeClass('border')
-    else
-      $('.page-header').addClass('border')
+  # $(window).scroll ->
+  #   if $(window).scrollTop() <= 25
+  #     $('.page-header').removeClass('border')
+  #   else
+  #     $('.page-header').addClass('border')
 
   # SegmentIO event: Log out
   analytics.trackLink($('#logout-link'), "Sign out")
