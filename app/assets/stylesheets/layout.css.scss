@@ -133,7 +133,8 @@ body.nav-open .main {
 
 @include media-query(medium) {
   body.nav-open .main {
-    overflow: visible;
+    // overflow: visible;
+    overflow: auto;
     &.subnav-open {
       overflow: hidden;
     }
