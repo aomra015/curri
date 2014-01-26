@@ -1,14 +1,19 @@
-<div class="row" id="checkpoint<%= checkpoint.id %>">
+<div class="row" id="checkpoint_<%= checkpoint.id %>">
   <div class="expectation-content">
     <div class="expectation <%='expectation-student' if current_user.student? %>">
-      <span class="h5"><%= checkpoint.expectation %></span>
+      <% if current_user.teacher? %>
+        <span class="draggable-container"><span class="draggable" title="Drag and drop to reorder checkpoint">
+                  <div></div><div></div><div></div>
+                </span></span>
+      <% end %>
+      <span class="h5" title="Drag and drop to reorder checkpoint"><%= checkpoint.expectation %></span>
     </div>
     <div class="expectation-actions <%='expectation-actions-student' if current_user.student? %>">
       <ul class="action-icons">
         <% if current_user.teacher? %>
         <!-- Teacher Controls -->
           <li>
-            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint", title: "Delete Checkpoint" do %>
+            <%= link_to classroom_track_checkpoint_path(@classroom, @track, checkpoint), method: :delete, remote: true, data: {confirm: "Are you sure?"}, class: 'trash-icon', id: "delete-checkpoint", title: "Delete Checkpoint" do %>
               <%= render 'shared/trash' %>
             <% end %>
           </li>

@@ -42,7 +42,7 @@
   <div class="grid-unit wide" id="track" data-trackid="<%= @track.id %>">
     <div class="content">
       <h4 class="unit-header">All Checkpoints</h4>
-      <%= render @track.checkpoints %>
+      <div class="checkpoints" data-url="<%= sort_classroom_track_checkpoints_path(@classroom, @track) %>"> <%= render @track.checkpoints.order("position ASC") %> </div>
     </div>
   </div>
 </div>

@@ -24,7 +24,7 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     click_button 'Create Checkpoint'
 
     checkpoint = Checkpoint.last
-    within "#checkpoint#{checkpoint.id}" do
+    within "#checkpoint_#{checkpoint.id}" do
         assert page.has_content?('New expectation')
         assert page.has_content?('New success criteria')
     end
@@ -33,7 +33,7 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
   test "a teacher can edit checkpoints" do
     checkpoint = checkpoints(:one)
 
-    within "#checkpoint#{checkpoint.id}" do
+    within "#checkpoint_#{checkpoint.id}" do
         click_link 'edit-checkpoint'
     end
 
@@ -43,7 +43,7 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
     fill_in :checkpoint_success_criteria, with: 'Changed success criteria'
     click_button 'Update Checkpoint'
 
-    within "#checkpoint#{checkpoint.id}" do
+    within "#checkpoint_#{checkpoint.id}" do
         assert page.has_content?('Changed expectation')
         assert page.has_content?('Changed success criteria')
     end
@@ -51,10 +51,10 @@ class TeacherCheckpointsTest < Capybara::Rails::TestCase
 
   test "a teacher can delete checkpoints" do
     checkpoint = checkpoints(:one)
-    within "#checkpoint#{checkpoint.id}" do
+    within "#checkpoint_#{checkpoint.id}" do
       click_link 'delete-checkpoint'
     end
 
-    assert page.has_no_css?("#checkpoint#{checkpoint.id}")
+    assert page.has_no_css?("#checkpoint_#{checkpoint.id}")
   end
 end

@@ -16,7 +16,7 @@
     <% end %>
   </div>
   <div class="grid-unit wide">
-    <table>
+    <table id="invitations">
       <thead>
         <tr>
           <th>Name</th>
@@ -25,14 +25,14 @@
           <th>Remove</th>
         </tr>
       </thead>
-      
+
       <tbody>
         <% @invitations.includes(student: :user).each do |invitation| %>
           <tr id="invitation_<%= invitation.id%>">
             <td><%= invitation.full_name %></td>
             <td><%= invitation.email_address %></td>
             <td><%= content_tag :span, invitation.status, class: invitation.status.downcase %></td>
-            <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, data: { confirm: 'Are you sure?' }, class: 'danger-link', id: 'remove_button' %></td>
+            <td><%= link_to 'Remove', classroom_invitation_path(@classroom, invitation), method: :delete, remote: true, data: { confirm: 'Are you sure?' }, class: 'danger-link', id: 'remove_button' %></td>
           </tr>
         <% end %>
       </tbody>

@@ -31,7 +31,7 @@
   </div>
   <div class="grid-unit wide" id="track">
     <div class="content">
-      <%= render :partial => 'checkpoint', collection: @track.checkpoints %>
+      <%= render :partial => 'checkpoint', collection: @track.checkpoints.order("position") %>
     </div>
   </div>
 </div>

@@ -23,6 +23,14 @@ class InvitationsController < ApplicationController
   def destroy
     invitation = @classroom.invitations.find(params[:id])
     invitation.destroy
-    redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
+
+    respond_to do |format|
+      format.json {
+        render json: { id: params[:id] }
+      }
+      format.html {
+        redirect_to new_classroom_invitation_url(@classroom), notice: 'Invitation Removed'
+      }
+    end
   end
 end

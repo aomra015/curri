@@ -45,9 +45,10 @@ body.nav-open .main {
   z-index: 200;
   h4 {
     display: inline-block;
-    color: lighten($color-main, 30%);
+    color: lighten($color-main, 25%);
     margin: 0;
     line-height: 2;
+    text-shadow: 1px 1px #fff;
   }
   body.nav-open & {
     left: 200px;
@@ -61,15 +62,16 @@ body.nav-open .main {
   }
 }
 
-.page-header.wrapper {
+.wrapper.page-header {
   margin-left: -30px;
   margin-right: -30px;
-  padding: 3px 30px 5px 10px;
+  padding: 3px 30px 4px 10px;
   border-bottom: 1px solid $grey-lt;
+  background: lighten($grey-lt, 10%);
 }
 
 .page-title {
-  margin: 60px 0 5px;
+  margin: 70px 0 5px;
   h2 {
     color: lighten($color-main, 20%);
   }
@@ -133,7 +135,8 @@ body.nav-open .main {
 
 @include media-query(medium) {
   body.nav-open .main {
-    overflow: visible;
+    // overflow: visible;
+    overflow: auto;
     &.subnav-open {
       overflow: hidden;
     }
@@ -143,11 +146,8 @@ body.nav-open .main {
     margin-left: 70px;
   }
 
-  .page-header {
+  .wrapper.page-header {
     left: 100px;
-    &.wrapper {
-      border: none;
-    }
     &.border {
       border-bottom: 1px solid $grey-lt;
     }

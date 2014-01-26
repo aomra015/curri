@@ -16,7 +16,7 @@ $ ->
     $ratings.find('.choices').toggleClass('show')
 
   $('.choices a').on "ajax:success", (e, data) ->
-    $("#checkpoint#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
+    $("#checkpoint_#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
 
     # SegmentIO event: Student Rates Checkpoint
     analytics.track "Rate checkpoint",
@@ -48,11 +48,11 @@ $ ->
     $('.subnav-slide').toggleClass('nav-label-hide')
 
   # Page header style
-  $(window).scroll ->
-    if $(window).scrollTop() <= 25
-      $('.page-header').removeClass('border')
-    else
-      $('.page-header').addClass('border')
+  # $(window).scroll ->
+  #   if $(window).scrollTop() <= 25
+  #     $('.page-header').removeClass('border')
+  #   else
+  #     $('.page-header').addClass('border')
 
   # SegmentIO event: Log out
   analytics.trackLink($('#logout-link'), "Sign out")
@@ -87,3 +87,42 @@ $ ->
 
     $('#sidebar-links select').on 'change', ->
       window.location = $(this).find("option:selected").val()
+
+  # Tracks AJAX
+  $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
+    $("#checkpoint_#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
+
+  # Invitations AJAX
+  $('#invitations .danger-link').on "ajax:success", (e, data)->
+    $("#invitation_#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
+
+  # Requesters AJAX
+  $('#requesters-table').on "ajax:success", '.btn-small', (e, data)->
+    $("#requester#{data.id}").fadeOut 'slow', ->
+      $(this).remove()
+    # SegmentIO event
+    analytics.track "Teacher Answered Student"
+
+  # Help-toggle AJAX
+  $('.help-toggle a').on 'ajax:success', (e, data) ->
+    HelpStatusPoller.helpToggle(data)
+    $('#help-tooltip').show
+    $helpTooltip = $('#help-tooltip').text(data.message).show()
+    hideTooltip = -> $helpTooltip.fadeOut()
+    setTimeout(hideTooltip, 2000)
+
+  # Checkpoints sort
+  if Curri && Curri.user.classrole_type == 'Teacher'
+    $('.checkpoints').sortable
+      items: "> div.row"
+      handle: '.expectation'
+      cursor: 'move'
+      axis: 'y'
+      placeholder: "checkpoint-drop-highlight expectation content"
+      start: (e, ui) ->
+        ui.placeholder.height(ui.item.height())
+        ui.placeholder.width(ui.item.width())
+      update: ->
+        $.post($(this).data('url'), $(this).sortable('serialize'))
