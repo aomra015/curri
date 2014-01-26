@@ -84,7 +84,7 @@ $ ->
   # Show students that haven't voted
   $('.students-toggle').on 'click', (e) ->
     e.preventDefault()
-    $('.hasnt-voted').toggleClass('hasnt-voted-show')
+    $(this).closest('.row').find('.hasnt-voted').toggleClass('hasnt-voted-show')
 
   # Phase select
   $('#phase-selector select').on 'change', ->

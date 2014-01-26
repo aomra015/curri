@@ -2,6 +2,10 @@
 
 .analytics-content {
   @extend %row-content;
+  a {
+    display: inline-block;
+    padding: 5px;
+  }
 }
 
 .analytics-bar {
@@ -20,12 +24,20 @@
 
 .student-not-voted {
   color: $color-text;
-  font-size: 13px;
+  font-size: 14px;
   &:after {
     content: ", ";
   }
-  &:last-child:after {
-    content: "";
+  &:nth-last-of-type(2):after {
+    content: " ";
+  }
+  &:last-of-type {
+    &:after {
+    content: ".";
+    }
+    &:before {
+      content: "& "
+    }
   }
 }
 
@@ -49,12 +61,10 @@
   display: inline-block;
   width: 24px;
   height: 24px;
-  position: relative;
-  top: 7px;
   margin-right: 10px;
   margin-top: -6px;
   fill: $grey-md;
-  .unit-action:hover & {
-    fill: #fff;
+  .analytics-content a:hover & {
+    fill: $color-primary;
   }
 }

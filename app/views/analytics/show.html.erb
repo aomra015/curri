@@ -33,12 +33,8 @@
           <div class="row unit-action">
             <h6>Choose phase</h6>
             <%= render 'phasing' %>
-            <!-- <a href="" class="unit-action-link students-toggle"><span class="show-icon"><%= render 'shared/show' %></span>Toggle students that haven't voted</a> -->
           </div>
         <% end %>
-      <div class="row hasnt-voted">
-        <p class="h6">Only shows for checkpoints where > 75% of the class has voted.</p>
-      </div>
       <%= render :partial => 'checkpoint', collection: @track.checkpoints.order("position") %>
     </div>
   </div>

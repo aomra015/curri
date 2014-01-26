@@ -1,8 +1,9 @@
 <div class="row" id="checkpoint<%= checkpoint.id %>">
   <div class="analytics-content">
-    <div class="h5">
-      <%= checkpoint.expectation %>
+    <div class="expectation">
+      <span class="h5"><%= checkpoint.expectation %></span>
     </div>
+    <a href="" class="students-toggle pull-right" title="Show students that haven't voted"><span class="show-icon"><%= render 'shared/show' %></span></a>
     <div class="analytics-bar">
       <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.students.size } %>
     </div>

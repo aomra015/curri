@@ -15,14 +15,14 @@ h2 .unpublished-badge {
 
 .expectation-content {
   @extend %row-content;
+  .h5 {
+    cursor: move;
+  }
 }
 
 .expectation {
   display: inline-block;
   width: 60%;
-  .h5 {
-    cursor: move;
-  }
   div {
     width: 4px;
     height: 4px;
