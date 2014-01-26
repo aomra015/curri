@@ -175,5 +175,9 @@ li.student-action {
 // }
 
 .checkpoint-drop-highlight {
-  background: red;
+  background: lighten($grey-lt, 10%);
+  margin-left: -25px;
+  border:none;
+  border-radius: 0;
+  box-shadow: inset 0 0 10px lighten($grey-md, 25%);
 }
