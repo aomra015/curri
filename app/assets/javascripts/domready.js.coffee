@@ -119,5 +119,6 @@ $ ->
       handle: '.expectation'
       cursor: 'move'
       axis: 'y'
+      placeholder: ".checkpoint-drop-highlight"
       update: ->
         $.post($(this).data('url'), $(this).sortable('serialize'))
