@@ -45,6 +45,13 @@
   transition: transform $duration $timing-function $delay;
 }
 
+@mixin rotate($value) {
+  -webkit-transform: rotate($value);
+  -moz-transform: rotate($value);
+  -o-transform: rotate($value);
+  transform: rotate($value);
+}
+
 @mixin media-query($media-query) {
 
   @if $media-query ==  small {

@@ -39,7 +39,7 @@
       <div class="row hasnt-voted">
         <p class="h6">Only shows for checkpoints where > 75% of the class has voted.</p>
       </div>
-      <%= render :partial => 'checkpoint', collection: @track.checkpoints %>
+      <%= render :partial => 'checkpoint', collection: @track.checkpoints.order("position") %>
     </div>
   </div>
 </div>

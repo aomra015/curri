@@ -12,6 +12,7 @@
 #
 #= require jquery
 #= require jquery_ujs
+#= require jquery.ui.sortable
 #= require pickadate/picker
 #= require pickadate/picker.date
 #= require pickadate/picker.time

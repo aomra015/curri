@@ -33,7 +33,22 @@ class CheckpointsController < ApplicationController
 
   def destroy
     @checkpoint.destroy
-    redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been deleted."
+
+    respond_to do |format|
+      format.json {
+        render json: { id: params[:id] }
+      }
+      format.html {
+        redirect_to classroom_track_path(@classroom, @track), notice: "Checkpoint has been deleted."
+      }
+    end
+  end
+
+  def sort
+    params[:checkpoint].each_with_index do |id, index|
+        @track.checkpoints.where(id: id).update_all(position: index+1)
+      end
+    render nothing: true
   end
 
   private
