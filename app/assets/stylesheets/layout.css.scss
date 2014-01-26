@@ -45,9 +45,10 @@ body.nav-open .main {
   z-index: 200;
   h4 {
     display: inline-block;
-    color: lighten($color-main, 30%);
+    color: lighten($color-main, 25%);
     margin: 0;
     line-height: 2;
+    text-shadow: 1px 1px #fff;
   }
   body.nav-open & {
     left: 200px;
@@ -64,8 +65,9 @@ body.nav-open .main {
 .wrapper.page-header {
   margin-left: -30px;
   margin-right: -30px;
-  padding: 3px 30px 5px 10px;
+  padding: 3px 30px 4px 10px;
   border-bottom: 1px solid $grey-lt;
+  background: lighten($grey-lt, 10%);
 }
 
 .page-title {
