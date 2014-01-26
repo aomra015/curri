@@ -56,9 +56,9 @@ $ ->
     $(this).closest('.row').find('.success-criteria').toggleClass('success-criteria-show')
 
   # Show ratings for students
-   $('.choices-toggle').on 'click', (e) ->
-      e.preventDefault()
-      $(this).closest('li').find('.choices').toggleClass('show')
+  $('.choices-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $(this).closest('li').find('.choices').toggleClass('show')
 
   # Sidebar mobile select menu
   if CurriUiOptions.mobileScreen()
@@ -82,7 +82,7 @@ $ ->
       window.location = $(this).find("option:selected").val()
 
   # Show students that haven't voted
- $('.students-toggle').on 'click', (e) ->
+  $('.students-toggle').on 'click', (e) ->
     e.preventDefault()
     $('.hasnt-voted').toggleClass('hasnt-voted-show')
 
