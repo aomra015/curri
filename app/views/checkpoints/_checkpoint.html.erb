@@ -1,7 +1,8 @@
 <div class="row" id="checkpoint_<%= checkpoint.id %>">
   <div class="expectation-content">
     <div class="expectation <%='expectation-student' if current_user.student? %>">
-      <span class="h5"><%= checkpoint.expectation %></span>
+      <span class="draggable" title="Drag and drop to reorder checkpoint"><div></div><div></div><div></div></span>
+      <span class="h5" title="Drag and drop to reorder checkpoint"><%= checkpoint.expectation %></span>
     </div>
     <div class="expectation-actions <%='expectation-actions-student' if current_user.student? %>">
       <ul class="action-icons">
