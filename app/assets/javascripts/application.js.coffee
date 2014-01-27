@@ -46,5 +46,4 @@ $ ->
       lastName: Curri.user.last_name || 'Name'
 
     analytics.identify(Curri.user.id, userData)
-
-  analytics.trackLink($('#logout-link'), "Sign out")
+    analytics.trackLink($('#logout-link'), "Sign out")

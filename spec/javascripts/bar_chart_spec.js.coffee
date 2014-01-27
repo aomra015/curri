@@ -1,4 +1,4 @@
-#= require bar_chart
+#= require objects/bar_chart
 
 describe 'RatingsCounter', ->
 

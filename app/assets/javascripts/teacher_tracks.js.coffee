@@ -16,5 +16,5 @@ $ ->
     Checkpoint.remove(data.id)
 
   # Checkpoints sort
-  if Curri && Curri.user.classrole_type == 'Teacher'
+  if @Curri && @Curri.user.classrole_type == 'Teacher'
     Checkpoint.sortable()
