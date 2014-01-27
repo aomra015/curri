@@ -40,5 +40,15 @@ $ ->
     # Hide hover label for Account when subnav is open
     $('.subnav-slide').toggleClass('nav-label-hide')
 
-  # SegmentIO event: Log out
+  # SegmentIO
+  if @Curri && @Curri.user
+    userData =
+      email: Curri.user.email
+      classRole: Curri.user.classrole_type
+      created: Curri.user.created_at
+      firstName: Curri.user.first_name || 'No'
+      lastName: Curri.user.last_name || 'Name'
+
+    analytics.identify(Curri.user.id, userData)
+
   analytics.trackLink($('#logout-link'), "Sign out")
