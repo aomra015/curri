@@ -1,4 +1,4 @@
-@HelpRequests =
+@RequestsList =
   addRequest: (partial) ->
     $placeholder = $('#placeholder')
     $placeholder.remove() if $placeholder.length
