@@ -19,8 +19,26 @@
 #= require matchMedia
 #= require_tree .
 
-#-------------------------------------
-#  Inbox
-#-------------------------------------
+$ = jQuery
 
-# If you’re not sure where something should go, add it here.
+$ ->
+  # Navigation Collapse
+  CurriUiOptions.init() if $('.collapse-toggle').length
+
+  $('.collapse-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $('body').toggleClass('nav-open')
+    CurriUiOptions.update()
+    $('.main').removeClass('subnav-open')
+    $('.subnav').removeClass('subnav-show')
+
+  # Subnav Toggle
+  $('.subnav-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $('.main').toggleClass('subnav-open')
+    $('.subnav').toggleClass('subnav-show')
+    # Hide hover label for Account when subnav is open
+    $('.subnav-slide').toggleClass('nav-label-hide')
+
+  # SegmentIO event: Log out
+  analytics.trackLink($('#logout-link'), "Sign out")
