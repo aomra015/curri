@@ -5,21 +5,18 @@ $ ->
   # Show success criteria
   $('.sc-show-icon').on 'click', (e) ->
     e.preventDefault()
-    $(this).closest('.row').find('.success-criteria').toggle()
-
-  # Show rating choices
-  $('.choices-toggle').on 'click', (e) ->
-    e.preventDefault()
-    $(this).closest('li').find('.choices').toggle()
+    Checkpoint.showCriteria($(this))
 
   # Rate checkpoint
+  $('.choices-toggle').on 'click', (e) ->
+    e.preventDefault()
+    Checkpoint.openChoices($(this))
+
   $('.choices a').on "ajax:before", ->
-    $ratings = $(this).closest('.ratings')
-    $ratings.find('.choices-toggle').fadeOut()
-    $ratings.find('.choices').toggle()
+    Checkpoint.closeChoices($(this))
 
   $('.choices a').on "ajax:success", (e, data) ->
-    $("#checkpoint_#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
+    Checkpoint.updateRating(data)
     # SegmentIO event: Student Rates Checkpoint
     analytics.track "Rate checkpoint",
       score: data.current_score
