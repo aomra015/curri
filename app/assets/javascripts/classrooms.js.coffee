@@ -2,8 +2,11 @@ $ = jQuery
 
 $ ->
   # Update Header
-  HelpStatus.poll() if $('#student-help-toggle').length
-  RequestNumber.poll() if $('#requesters_link').length
+  if $('#student-help-toggle').length
+    HelpStatus.poll()
+
+  if $('#requesters_link').length
+    RequestNumber.poll()
 
   # Student: Help-toggle AJAX
   $('#student-help-toggle a').on 'ajax:success', (e, data) ->
