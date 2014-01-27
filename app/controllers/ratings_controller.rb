@@ -2,6 +2,8 @@ class RatingsController < ApplicationController
 
   before_action :authorize_student
   before_action :get_classroom
+  before_action :get_track
+  before_action :get_checkpoint
 
   def create
     score = params[:value].to_i
@@ -9,9 +11,6 @@ class RatingsController < ApplicationController
     if !Rating::OPTIONS[score]
       head 422
     else
-      @track = @classroom.tracks.find(params[:track_id])
-      @checkpoint = @track.checkpoints.find(params[:checkpoint_id])
-
       @rating = @checkpoint.ratings.new(score: score)
       @rating.student = current_user.classrole
       @rating.save
