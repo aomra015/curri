@@ -32,7 +32,6 @@ $ ->
     CurriUiOptions.update()
     SubNav.close()
 
-  # Subnav Toggle
   $('.subnav-toggle').on 'click', (e) ->
     e.preventDefault()
     SubNav.toggle()

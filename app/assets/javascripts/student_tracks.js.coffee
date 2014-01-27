@@ -5,18 +5,18 @@ $ ->
   # Show success criteria
   $('.sc-show-icon').on 'click', (e) ->
     e.preventDefault()
-    $(this).closest('.row').find('.success-criteria').toggleClass('success-criteria-show')
+    $(this).closest('.row').find('.success-criteria').toggle()
 
-  # Show ratings choice tooltip
-   $('.choices-toggle').on 'click', (e) ->
-      e.preventDefault()
-      $(this).closest('li').find('.choices').toggleClass('show')
+  # Show rating choices
+  $('.choices-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $(this).closest('li').find('.choices').toggle()
 
   # Rate checkpoint
   $('.choices a').on "ajax:before", ->
     $ratings = $(this).closest('.ratings')
     $ratings.find('.choices-toggle').fadeOut()
-    $ratings.find('.choices').toggleClass('show')
+    $ratings.find('.choices').toggle()
 
   $('.choices a').on "ajax:success", (e, data) ->
     $("#checkpoint_#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()

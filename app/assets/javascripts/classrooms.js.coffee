@@ -8,7 +8,6 @@ $ ->
   if $('#requesters_link').length
     RequestsNumber.poll()
 
-  # Student: Help-toggle AJAX
   $('#student-help-toggle a').on 'ajax:success', (e, data) ->
     HelpStatus.helpToggle(data)
     HelpStatus.showTooltip(data)
