@@ -10,7 +10,7 @@ class RequestersController < ApplicationController
 
     respond_to do |format|
       format.json {
-        render json: { requesters: @requesters }
+        render json: { requesters: @requesters.to_json(only: [:student_id, :updated_at, :help]) }
       }
       format.html {}
     end

@@ -12,7 +12,7 @@
     $requestsLink = $('#requesters_link')
     reqLimit = $requestsLink.data("reqlimit")
     oldReqNum = $requestsLink.data("requests")
-    newReqNum = data.requesters.length
+    newReqNum = JSON.parse(data.requesters).length
 
     if newReqNum != oldReqNum
       # Update the data for next poll
