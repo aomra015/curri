@@ -1,4 +1,4 @@
-@RequestNumberPoller =
+@RequestsNumber =
   poll: ->
     setTimeout @request, 10000
 
@@ -6,7 +6,7 @@
     $.ajax
       url: $('#requesters_link').attr('href')
       dataType: 'JSON'
-      success: RequestNumberPoller.updateRequesters
+      success: RequestsNumber.updateRequesters
 
   updateRequesters: (data) ->
     $requestsLink = $('#requesters_link')
@@ -30,4 +30,4 @@
         $('.req-num').hide()
         $('.nav-help').removeClass('active')
 
-    RequestNumberPoller.poll()
+    RequestsNumber.poll()

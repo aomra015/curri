@@ -1,12 +1,11 @@
-#= require bar_chart
+#= require objects/bar_chart
 
 describe 'RatingsCounter', ->
 
   test = {}
   beforeEach ->
     data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
-    myRatingsCounter = new RatingsCounter(data, 4)
-    test.result = myRatingsCounter.init()
+    test.result = RatingsCounter.init(data, 4)
 
   it 'should count rating scores', ->
     expect(test.result.zeroCount).toEqual(2)
@@ -26,8 +25,7 @@ describe 'BarChart jQuery Plugin', ->
   test = {}
   beforeEach ->
     data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
-    myRatingsCounter = new RatingsCounter(data, 4)
-    test.counts = myRatingsCounter.init()
+    test.counts = RatingsCounter.init(data, 4)
 
     loadFixtures('analytics-checkpoint.html')
     test.checkpoint = $("#checkpoint").barChart(test.counts)
