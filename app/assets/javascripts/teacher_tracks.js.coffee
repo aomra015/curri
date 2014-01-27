@@ -7,26 +7,9 @@ $ ->
   $('#track_start_time').pickatime({format: 'hh:i a'})
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
-  # Sidebar mobile select menu
+  # Tracks sidebar select menu
   if CurriUiOptions.mobileScreen()
-    $("<select />").appendTo("#sidebar-links")
-    $("<option />", {
-       "selected": "selected",
-       "value"   : "",
-       "text"    : "Go to..."
-    }).appendTo("#sidebar-links select")
-
-    $('#sidebar-links a').each ->
-      el = $(this)
-      $("<option />", {
-           "value"   : el.attr("href"),
-           "text"    : el.text()
-       }).appendTo("#sidebar-links select")
-
-    $('#sidebar-links ul').hide()
-
-    $('#sidebar-links select').on 'change', ->
-      window.location = $(this).find("option:selected").val()
+    MobileSidebar.init()
 
   # Delete Checkpoints
   $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
