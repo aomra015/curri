@@ -31,15 +31,11 @@ module AnalyticsHelper
     big_number + byline
   end
 
-  def hasnt_voted_box(checkpoint)
-    hasnt_voted = checkpoint.hasnt_voted(@phase, @classroom)
-
-    if hasnt_voted
-      content_tag :div, class: 'hasnt-voted' do
-        concat(content_tag :h6, "Students that haven't voted:")
-        hasnt_voted.map {|name| concat(content_tag(:span, name, class: 'student-not-voted'))}
-        concat(content_tag :div, "Note: Only shows when less than 25% haven't voted")
-      end
+  def hasnt_voted_box(hasnt_voted)
+    content_tag :div, class: 'hasnt-voted' do
+      concat(content_tag :h6, "Students that haven't voted:")
+      concat(content_tag(:span, hasnt_voted.join(', ') + '.', class: 'student-not-voted'))
+      concat(content_tag :div, "Note: Only shows when less than 25% haven't voted", class: 'hasnt-voted-note')
     end
   end
 

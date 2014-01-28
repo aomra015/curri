@@ -25,20 +25,20 @@
 .student-not-voted {
   color: $color-text;
   font-size: 14px;
-  &:after {
-    content: ", ";
-  }
-  &:nth-last-of-type(2):after {
-    content: " ";
-  }
-  &:last-of-type {
-    &:after {
-    content: ".";
-    }
-    &:before {
-      content: "& "
-    }
-  }
+  // &:after {
+  //   content: ", ";
+  // }
+  // &:nth-last-of-type(2):after {
+  //   content: " ";
+  // }
+  // &:last-of-type {
+  //   &:after {
+  //   content: ".";
+  //   }
+  //   &:before {
+  //     content: "& "
+  //   }
+  // }
 }
 
 .unit-action {
