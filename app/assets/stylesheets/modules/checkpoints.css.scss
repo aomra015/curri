@@ -14,19 +14,15 @@ h2 .unpublished-badge {
 }
 
 .expectation-content {
-  padding: 15px 25px;
-  margin: 0 -25px;
-  &:hover {
-    background: lighten($grey-lt, 10%);
+  @extend %row-content;
+  .h5 {
+    cursor: move;
   }
 }
 
 .expectation {
   display: inline-block;
   width: 60%;
-  .h5 {
-    cursor: move;
-  }
   div {
     width: 4px;
     height: 4px;
@@ -134,78 +130,6 @@ li.student-action {
 .ratings {
   top: -6px;
 }
-// old styles
-// .checkpoint-content {
-//   overflow: hidden;
-//   margin-top: 5px;
-
-//   h4 {
-//     float: left;
-//     margin-right: 30px;
-//     margin-bottom: 0;
-//   }
-
-//   .success-criteria {
-//     float: left;
-//     color: #FAFAFA;
-//     font-weight: bold;
-//     background-color: #ccc;
-//     margin-top: 15px;
-//   }
-// }
-
-// .checkpoint-score-links{
-//   margin: 30px 0;
-// }
-
-// .checkpoint-rating {
-//   margin-right: 20px;
-//   font-size: 13px;
-//   font-weight: bold;
-//   color: #FAFAFA;
-// }
-
-// .checkpoint0, .checkpoint1, .checkpoint2 {
-//   opacity: 0.5;
-
-//   &:hover {
-//     opacity: 0.8;
-//   }
-// }
-// .checkpoint0 {
-//   background-color: $color-danger;
-// }
-
-// .checkpoint1 {
-//   background-color: $color-warning;
-// }
-
-// .checkpoint2 {
-//   background-color: $color-success;}
-
-// .checkpoint_0, .checkpoint_1, .checkpoint_2 {
-//   width: 0px;
-//   height: 0px;
-//   border-style: solid;
-//   border-width: 0 35px 35px 0;
-//   border-color: transparent;
-//   opacity: 0.8;
-//   position: absolute;
-//   top: 0;
-//   right: 0;
-// }
-
-// .checkpoint_0 {
-//   border-right-color: $color-danger;
-// }
-
-// .checkpoint_1 {
-//   border-right-color: $color-warning;
-// }
-
-// .checkpoint_2 {
-//   border-right-color: $color-success;
-// }
 
 //placeholder for drag/drop functionality
 .checkpoint-drop-highlight {

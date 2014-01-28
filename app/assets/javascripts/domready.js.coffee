@@ -47,13 +47,6 @@ $ ->
     # Hide hover label for Account when subnav is open
     $('.subnav-slide').toggleClass('nav-label-hide')
 
-  # Page header style
-  # $(window).scroll ->
-  #   if $(window).scrollTop() <= 25
-  #     $('.page-header').removeClass('border')
-  #   else
-  #     $('.page-header').addClass('border')
-
   # SegmentIO event: Log out
   analytics.trackLink($('#logout-link'), "Sign out")
 
@@ -63,9 +56,9 @@ $ ->
     $(this).closest('.row').find('.success-criteria').toggleClass('success-criteria-show')
 
   # Show ratings for students
-   $('.choices-toggle').on 'click', (e) ->
-      e.preventDefault()
-      $(this).closest('li').find('.choices').toggleClass('show')
+  $('.choices-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $(this).closest('li').find('.choices').toggleClass('show')
 
   # Sidebar mobile select menu
   if CurriUiOptions.mobileScreen()
@@ -87,6 +80,15 @@ $ ->
 
     $('#sidebar-links select').on 'change', ->
       window.location = $(this).find("option:selected").val()
+
+  # Show students that haven't voted
+  $('.students-toggle').on 'click', (e) ->
+    e.preventDefault()
+    $(this).closest('.row').find('.hasnt-voted').toggleClass('hasnt-voted-show')
+
+  # Phase select
+  $('#phase-selector select').on 'change', ->
+    $(this).closest('form').submit()
 
   # Tracks AJAX
   $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
