@@ -16,5 +16,15 @@ $ ->
     Checkpoint.remove(data.id)
 
   # Checkpoints sort
-  if @Curri && @Curri.user.classrole_type == 'Teacher'
-    Checkpoint.sortable()
+  if Curri && Curri.user.classrole_type == 'Teacher'
+    $('.checkpoints').sortable
+      items: "> div.row"
+      handle: '.expectation'
+      cursor: 'move'
+      axis: 'y'
+      placeholder: "checkpoint-drop-highlight expectation content"
+      start: (e, ui) ->
+        ui.placeholder.height(ui.item.height())
+        ui.placeholder.width(ui.item.width())
+      update: ->
+        $.post($(this).data('url'), $(this).sortable('serialize'))
