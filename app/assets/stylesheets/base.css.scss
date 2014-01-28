@@ -41,12 +41,12 @@ p {
 a {
   color: $color-link;
   text-decoration: none;
-  p & {
-    &:hover, &:focus {
-      color: darken($color-link, 30%);
-      border-bottom: 1px solid darken($color-link, 20%);
-    }
-  }
+  // p & {
+  //   &:hover, &:focus {
+  //     color: darken($color-link, 30%);
+  //     border-bottom: 1px solid darken($color-link, 20%);
+  //   }
+  // }
 }
 
 h1,
@@ -54,11 +54,13 @@ h2,
 h3,
 h4,
 h5,
+h6,
 .h1,
 .h2,
 .h3,
 .h4,
-.h5 {
+.h5,
+.h6 {
   font-weight: 700;
 }
 

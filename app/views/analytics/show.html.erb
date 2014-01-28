@@ -12,7 +12,7 @@
   </div>
   <div class="grid-unit narrow pull-right sidebar">
     <div class="content">
-      <h4 class="unit-header">All Tracks: Analytics</h4>
+      <h4 class="unit-header">Analytics: All Tracks</h4>
         <div class="row" id='sidebar-links'>
           <ul>
             <% @classroom.tracks.each do |track| %>
@@ -25,12 +25,16 @@
           </ul>
         </div>
       </div>
-    <div class="content">
-      <%= render 'phasing' if @track.phasing? %>
-    </div>
   </div>
   <div class="grid-unit wide" id="track">
     <div class="content">
+      <h4 class="unit-header">Analytics: All Checkpoints</h4>
+        <% if @track.phasing? %>  
+          <div class="row unit-action">
+            <h6>Choose phase</h6>
+            <%= render 'phasing' %>
+          </div>
+        <% end %>
       <%= render :partial => 'checkpoint', collection: @track.checkpoints.order("position") %>
     </div>
   </div>

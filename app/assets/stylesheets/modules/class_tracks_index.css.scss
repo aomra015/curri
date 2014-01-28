@@ -1,4 +1,4 @@
-// Styles for the classroom and tracks index views
+// Styles for the classroom and tracks index views and track edit view.
 @import 'globals/all';
 
 .classroom-desc {
@@ -134,4 +134,8 @@
   .progress-bar {
     line-height: 1.5;
   }
+}
+
+.edit-track-wrapper {
+  overflow: auto;
 }

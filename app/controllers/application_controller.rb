@@ -23,10 +23,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   def authorize
-    redirect_to login_url, alert: 'Please log in or sign up.' if current_user.nil?
+    redirect_to login_url if current_user.nil?
   end
 
   def authorize_teacher
-    redirect_to classrooms_url, alert: 'Only a teacher can do that.' unless current_user.teacher?
+    redirect_to classrooms_url unless current_user.teacher?
   end
 end
