@@ -23,22 +23,8 @@
 }
 
 .student-not-voted {
-  color: $color-text;
+  // color: $color-text;
   font-size: 14px;
-  // &:after {
-  //   content: ", ";
-  // }
-  // &:nth-last-of-type(2):after {
-  //   content: " ";
-  // }
-  // &:last-of-type {
-  //   &:after {
-  //   content: ".";
-  //   }
-  //   &:before {
-  //     content: "& "
-  //   }
-  // }
 }
 
 .unit-action {
@@ -67,4 +53,9 @@
   .analytics-content a:hover & {
     fill: $color-primary;
   }
+}
+
+.hasnt-voted-note {
+  font-size: 14px;
+  color: $color-text;
 }
