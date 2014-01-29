@@ -57,7 +57,7 @@ class AnalyticsHelperTest < ActionView::TestCase
 
   test "build bars" do
     ratings = @phase.ratings(@checkpoint)
-    progress_bar = content_tag :div, 2, class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
+    progress_bar = content_tag :div, '100%', class: 'progress-bar progress-bar-warning', style: 'width: 100.0%'
     assert_equal progress_bar, render_bar(ratings_count(ratings, @total_count, 1))
   end
 end
