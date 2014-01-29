@@ -22,7 +22,7 @@ class @RatingsCounter
 $ = jQuery
 $.fn.barChart = (data) ->
   return @each () ->
-    $(this).find('.progress-bar-danger').css('width', data.zeroPercent + "%").html(Math.round(data.zeroPercent) + "%")
-    $(this).find('.progress-bar-warning').css('width', data.onePercent + "%").html(Math.round(data.onePercent) + "%")
-    $(this).find('.progress-bar-success').css('width', data.twoPercent + "%").html(Math.round(data.twoPercent) + "%")
-    $(this).find('.progress-bar-empty').css('width', data.emptyPercent + "%").html(Math.round(data.emptyPercent) + "%")
+    $(this).find('.progress-bar-danger').css('width', data.zeroPercent + "%").find('span').text(Math.round(data.zeroPercent) + "%")
+    $(this).find('.progress-bar-warning').css('width', data.onePercent + "%").find('span').text(Math.round(data.onePercent) + "%")
+    $(this).find('.progress-bar-success').css('width', data.twoPercent + "%").find('span').text(Math.round(data.twoPercent) + "%")
+    $(this).find('.progress-bar-empty').css('width', data.emptyPercent + "%").find('span').text(Math.round(data.emptyPercent) + "%")
