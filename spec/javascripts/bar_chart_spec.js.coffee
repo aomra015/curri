@@ -35,23 +35,20 @@ describe 'BarChart jQuery Plugin', ->
     # hack to get % rather than px widths
     test.checkpoint.find('.progress').hide()
 
-  describe 'Display of counts', ->
-    it 'should display number of total ratings', ->
-      expect(test.checkpoint.find('.count-number')).toContainText(test.counts.totalCount)
+  describe 'Display of percentages', ->
+    it 'should display percent of zero ratings', ->
+      expect(test.checkpoint.find('.progress-bar-danger').text()).toEqual('50%')
 
-    it 'should display number of zero ratings', ->
-      expect(test.checkpoint.find('.progress-bar-danger')).toContainText(test.counts.zeroCount)
+    it 'should display percent of one ratings', ->
+      expect(test.checkpoint.find('.progress-bar-warning').text()).toEqual('25%')
 
-    it 'should display number of one ratings', ->
-      expect(test.checkpoint.find('.progress-bar-warning')).toContainText(test.counts.oneCount)
+    it 'should display percent of two ratings', ->
+      expect(test.checkpoint.find('.progress-bar-success').text()).toEqual('0%')
 
-    it 'should display number of two ratings', ->
-      expect(test.checkpoint.find('.progress-bar-success')).toContainText(test.counts.twoCount)
+    it 'should display percent of no ratings', ->
+      expect(test.checkpoint.find('.progress-bar-empty').text()).toEqual('25%')
 
-    it 'should display number of no ratings', ->
-      expect(test.checkpoint.find('.progress-bar-empty')).toContainText(test.counts.emptyCount)
-
-  describe 'Display of bar', ->
+  describe 'Display of bar widths', ->
     it 'should draw red portion of bar', ->
       result = parseFloat(test.checkpoint.find('.progress-bar-danger').css('width'))
       expected = test.counts.zeroPercent
