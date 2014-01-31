@@ -1,4 +1,4 @@
-@SubNav =
+@Curri.SubNav =
   close: ->
     $('.main').removeClass('subnav-open')
     $('.subnav').removeClass('subnav-show')

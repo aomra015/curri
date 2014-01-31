@@ -1,4 +1,4 @@
-@CurriUiOptions =
+@Curri.UiOptions =
   init: ->
     if @supports_html5_storage()
       if @largeScreen()

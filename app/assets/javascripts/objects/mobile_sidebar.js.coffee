@@ -1,4 +1,4 @@
-@MobileSidebar =
+@Curri.MobileSidebar =
   init: ->
     @buildSelector()
     @buildOptions()

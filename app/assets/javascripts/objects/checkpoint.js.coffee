@@ -1,4 +1,4 @@
-@Checkpoint =
+@Curri.Checkpoint =
   remove: (id) ->
     $("#checkpoint_#{id}").fadeOut 'slow', ->
       $(this).remove()
@@ -16,6 +16,11 @@
 
   updateRating: (data) ->
     $("#checkpoint_#{data.checkpoint_id} .choices-toggle").html(data.partial).fadeIn()
+    analytics.track "Rate checkpoint",
+      score: data.current_score
+      checkpoint_id: data.checkpoint_id
+      classroom_id: data.classroom_id
+      track_id: data.track_id
 
   sortable: ->
     $('.checkpoints').sortable

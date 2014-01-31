@@ -24,21 +24,21 @@ $ = jQuery
 
 $ ->
   # Navigation
-  if $('.collapse-toggle').length
-    CurriUiOptions.init()
+  if $('.fixed-nav').length
+    Curri.UiOptions.init()
 
-  $('.collapse-toggle').on 'click', (e) ->
-    e.preventDefault()
-    $('body').toggleClass('nav-open')
-    CurriUiOptions.update()
-    SubNav.close()
+    $('.collapse-toggle').on 'click', (e) ->
+      e.preventDefault()
+      $('body').toggleClass('nav-open')
+      Curri.UiOptions.update()
+      Curri.SubNav.close()
 
-  $('.subnav-toggle').on 'click', (e) ->
-    e.preventDefault()
-    SubNav.toggle()
+    $('.subnav-toggle').on 'click', (e) ->
+      e.preventDefault()
+      Curri.SubNav.toggle()
 
   # SegmentIO
-  if @Curri && @Curri.user
+  if Curri.user
     userData =
       email: Curri.user.email
       classRole: Curri.user.classrole_type

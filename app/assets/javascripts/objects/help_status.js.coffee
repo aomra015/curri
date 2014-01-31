@@ -1,4 +1,4 @@
-@HelpStatus =
+@Curri.HelpStatus =
   status:
     "In Help Queue": true
     "Ask for Help": false
@@ -11,19 +11,22 @@
       url: $('.help-toggle a').attr('href')
       dataType: 'JSON'
       success: (data) ->
-        HelpStatus.helpToggle(data)
-        HelpStatus.poll()
+        Curri.HelpStatus.helpToggle(data)
+        Curri.HelpStatus.poll()
 
   helpToggle: (data) ->
     $helpLink = $(".help-toggle a")
-    if data.help != HelpStatus.status[$helpLink.text()]
+    if data.help != Curri.HelpStatus.status[$helpLink.text()]
       $helpLink.removeClass('in-queue ask-help')
-      $helpLink.text("In Help Queue").addClass('in-queue') if data.help
-      $helpLink.text("Ask for Help").addClass('ask-help') if !data.help
+      if data.help
+        $helpLink.text("In Help Queue").addClass('in-queue')
+        analytics.track "Student Asked for Help"
+      else
+        $helpLink.text("Ask for Help").addClass('ask-help')
 
   showTooltip: (data) ->
     $('#help-tooltip').text(data.message).show()
-    setTimeout(HelpStatus.hideTooltip, 2000)
+    setTimeout(Curri.HelpStatus.hideTooltip, 2000)
 
   hideTooltip: ->
     $('#help-tooltip').fadeOut()

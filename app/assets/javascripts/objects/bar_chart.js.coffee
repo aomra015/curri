@@ -1,4 +1,4 @@
-@RatingsCounter =
+@Curri.RatingsCounter =
   init: (ratingsData, totalStudentCount) ->
     ratingsData = JSON.parse(ratingsData)
     count = @count(ratingsData)

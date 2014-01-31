@@ -3,11 +3,10 @@ $ = jQuery
 $ ->
   # Update Header
   if $('#student-help-toggle').length
-    HelpStatus.poll()
+    Curri.HelpStatus.poll()
+    $('#student-help-toggle a').on 'ajax:success', (e, data) ->
+      Curri.HelpStatus.helpToggle(data)
+      Curri.HelpStatus.showTooltip(data)
 
   if $('#requesters_link').length
-    RequestsNumber.poll()
-
-  $('#student-help-toggle a').on 'ajax:success', (e, data) ->
-    HelpStatus.helpToggle(data)
-    HelpStatus.showTooltip(data)
+    Curri.RequestsNumber.poll()

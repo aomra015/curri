@@ -8,22 +8,13 @@ $ ->
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
   # Tracks sidebar select menu
-  if CurriUiOptions.mobileScreen()
-    MobileSidebar.init()
+  if Curri.UiOptions.mobileScreen()
+    Curri.MobileSidebar.init()
 
   # Delete Checkpoints
   $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
-    Checkpoint.remove(data.id)
+    Curri.Checkpoint.remove(data.id)
 
   # Checkpoints sort
-  if Curri && Curri.user.classrole_type == 'Teacher'
-    Checkpoint.sortable()
-
-  # Phase select
-  $('#phase-selector select').on 'change', ->
-    $(this).closest('form').submit()
-
-  # Show students that haven't voted
-  $('.students-toggle').on 'click', (e) ->
-    e.preventDefault()
-    $(this).closest('.row').find('.hasnt-voted').toggleClass('hasnt-voted-show')
+  if Curri.user.classrole_type == 'Teacher'
+    Curri.Checkpoint.sortable()
