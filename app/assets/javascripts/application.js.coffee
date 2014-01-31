@@ -19,6 +19,7 @@
 #= require matchMedia
 #= require uservoice
 #= require utilities
+#= require_tree ./objects
 #= require_tree .
 
 $ = jQuery

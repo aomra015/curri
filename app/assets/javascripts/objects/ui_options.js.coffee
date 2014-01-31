@@ -1,7 +1,7 @@
 @Curri.UiOptions =
   init: ->
-    if @supports_html5_storage()
-      if @largeScreen()
+    if Curri.supports_html5_storage()
+      if Curri.largeScreen()
         # Defaults
         localStorage["expandNav"] ?= true
         # Build UI
@@ -10,21 +10,8 @@
         localStorage.removeItem("expandNav")
 
   update: ->
-    if @supports_html5_storage() && @largeScreen()
+    if Curri.supports_html5_storage() && Curri.largeScreen()
       if $('body').hasClass('nav-open')
         localStorage["expandNav"] = true
       else
         localStorage["expandNav"] = false
-
-  # Helpers
-  supports_html5_storage: ->
-    try
-      return "localStorage" of window and window["localStorage"] isnt null
-    catch e
-      return false
-
-  largeScreen: ->
-    return window.matchMedia("(min-width: 1024px)").matches
-
-  mobileScreen: ->
-    return window.matchMedia("(max-width: 480px)").matches

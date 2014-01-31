@@ -8,7 +8,7 @@ $ ->
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
   # Tracks sidebar select menu
-  if Curri.UiOptions.mobileScreen()
+  if Curri.mobileScreen()
     Curri.MobileSidebar.init()
 
   # Delete Checkpoints
