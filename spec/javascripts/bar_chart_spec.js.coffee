@@ -1,3 +1,4 @@
+#= require utilities
 #= require objects/bar_chart
 
 describe 'RatingsCounter', ->
@@ -5,7 +6,7 @@ describe 'RatingsCounter', ->
   test = {}
   beforeEach ->
     data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
-    test.result = RatingsCounter.init(data, 4)
+    test.result = Curri.RatingsCounter.init(data, 4)
 
   it 'should count rating scores', ->
     expect(test.result.zeroCount).toEqual(2)
@@ -25,7 +26,7 @@ describe 'BarChart jQuery Plugin', ->
   test = {}
   beforeEach ->
     data = "[{\"score\":0},{\"score\":1},{\"score\":0}]" #JSON
-    test.counts = RatingsCounter.init(data, 4)
+    test.counts = Curri.RatingsCounter.init(data, 4)
 
     loadFixtures('analytics-checkpoint.html')
     test.checkpoint = $("#checkpoint").barChart(test.counts)

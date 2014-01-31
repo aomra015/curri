@@ -18,6 +18,7 @@
 #= require pickadate/picker.time
 #= require matchMedia
 #= require uservoice
+#= require utilities
 #= require_tree .
 
 $ = jQuery
