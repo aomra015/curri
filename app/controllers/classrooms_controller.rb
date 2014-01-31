@@ -24,7 +24,7 @@ class ClassroomsController < ApplicationController
   def join
     classroom = Classroom.find_by(teacher_token: params[:teacher_token])
 
-    if classroom && !@current_user.classrooms.include?(classroom)
+    if classroom && @current_user.classrooms.exclude?(classroom)
       @current_user.classrooms << classroom
       redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher."
     else

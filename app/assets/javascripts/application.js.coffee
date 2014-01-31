@@ -17,10 +17,40 @@
 #= require pickadate/picker.date
 #= require pickadate/picker.time
 #= require matchMedia
+#= require uservoice
+#= require utilities
+#= require_tree ./objects
 #= require_tree .
 
-#-------------------------------------
-#  Inbox
-#-------------------------------------
+$ = jQuery
 
-# If you’re not sure where something should go, add it here.
+$ ->
+  # Navigation
+  if $('.fixed-nav').length
+    Curri.MainNav.init()
+
+    $('.collapse-toggle').on 'click', (e) ->
+      e.preventDefault()
+      $('body').toggleClass('nav-open')
+      Curri.MainNav.update()
+      Curri.SubNav.close()
+
+    $('.subnav-toggle').on 'click', (e) ->
+      e.preventDefault()
+      Curri.SubNav.toggle()
+
+  # Tracks & Analytics sidebar select menu
+  if Curri.mobileScreen() && $('#track').length
+    Curri.MobileSidebar.init()
+
+  # SegmentIO
+  if Curri.user
+    userData =
+      email: Curri.user.email
+      classRole: Curri.user.classrole_type
+      created: Curri.user.created_at
+      firstName: Curri.user.first_name || 'No'
+      lastName: Curri.user.last_name || 'Name'
+
+    analytics.identify(Curri.user.id, userData)
+    analytics.trackLink($('#logout-link'), "Sign out")

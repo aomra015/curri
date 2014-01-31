@@ -55,13 +55,5 @@ class CheckpointsController < ApplicationController
   def checkpoint_params
     params.require(:checkpoint).permit(:expectation, :success_criteria, :track_id)
   end
-
-  def get_track
-    @track = @classroom.tracks.find(params[:track_id])
-  end
-
-  def get_checkpoint
-    @checkpoint = @track.checkpoints.find(params[:id])
-  end
 end
 

@@ -1,4 +1,4 @@
-@RequestNumberPoller =
+@Curri.RequestsNumber =
   poll: ->
     setTimeout @request, 10000
 
@@ -6,13 +6,13 @@
     $.ajax
       url: $('#requesters_link').attr('href')
       dataType: 'JSON'
-      success: RequestNumberPoller.updateRequesters
+      success: Curri.RequestsNumber.updateRequesters
 
   updateRequesters: (data) ->
     $requestsLink = $('#requesters_link')
     reqLimit = $requestsLink.data("reqlimit")
     oldReqNum = $requestsLink.data("requests")
-    newReqNum = data.requesters.length
+    newReqNum = JSON.parse(data.requesters).length
 
     if newReqNum != oldReqNum
       # Update the data for next poll
@@ -30,4 +30,4 @@
         $('.req-num').hide()
         $('.nav-help').removeClass('active')
 
-    RequestNumberPoller.poll()
+    Curri.RequestsNumber.poll()
