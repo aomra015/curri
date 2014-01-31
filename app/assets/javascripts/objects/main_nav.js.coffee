@@ -1,4 +1,4 @@
-@Curri.UiOptions =
+@Curri.MainNav =
   init: ->
     if Curri.supports_html5_storage()
       if Curri.largeScreen()

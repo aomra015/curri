@@ -27,12 +27,12 @@ $ = jQuery
 $ ->
   # Navigation
   if $('.fixed-nav').length
-    Curri.UiOptions.init()
+    Curri.MainNav.init()
 
     $('.collapse-toggle').on 'click', (e) ->
       e.preventDefault()
       $('body').toggleClass('nav-open')
-      Curri.UiOptions.update()
+      Curri.MainNav.update()
       Curri.SubNav.close()
 
     $('.subnav-toggle').on 'click', (e) ->
