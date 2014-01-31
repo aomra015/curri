@@ -39,6 +39,10 @@ $ ->
       e.preventDefault()
       Curri.SubNav.toggle()
 
+  # Tracks & Analytics sidebar select menu
+  if Curri.mobileScreen() && $('#track').length
+    Curri.MobileSidebar.init()
+
   # SegmentIO
   if Curri.user
     userData =

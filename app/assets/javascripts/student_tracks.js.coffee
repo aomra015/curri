@@ -1,7 +1,7 @@
 $ = jQuery
 
 $ ->
-  if $('#track').length
+  if $('#track').length && Curri.user.classrole_type == 'Student'
     # Show success criteria
     $('.sc-show-icon').on 'click', (e) ->
       e.preventDefault()

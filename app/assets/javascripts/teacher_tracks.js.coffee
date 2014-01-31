@@ -7,14 +7,10 @@ $ ->
   $('#track_start_time').pickatime({format: 'hh:i a'})
   $('#track_end_time').pickatime({format: 'hh:i a'})
 
-  # Tracks sidebar select menu
-  if Curri.mobileScreen()
-    Curri.MobileSidebar.init()
+  if $('#track').length && Curri.user.classrole_type == 'Teacher'
+    # Delete Checkpoints
+    $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
+      Curri.Checkpoint.remove(data.id)
 
-  # Delete Checkpoints
-  $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
-    Curri.Checkpoint.remove(data.id)
-
-  # Checkpoints sort
-  if Curri.user.classrole_type == 'Teacher'
+    # Checkpoints sort
     Curri.Checkpoint.sortable()
