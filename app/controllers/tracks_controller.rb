@@ -57,10 +57,6 @@ class TracksController < ApplicationController
     params.require(:track).permit(:name, :published)
   end
 
-  def get_track
-    @track = @classroom.tracks.find(params[:id])
-  end
-
   def parse_date_time
     @track.start_time = Time.zone.parse("#{params[:track][:start_date]} #{params[:track][:start_time]}")
     @track.end_time = Time.zone.parse("#{params[:track][:end_date]} #{params[:track][:end_time]}")

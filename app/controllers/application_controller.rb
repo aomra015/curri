@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     @classroom = @current_user.classrooms.find(params[:classroom_id] || params[:id])
   end
 
+  def get_track
+    @track = @classroom.tracks.find(params[:track_id] || params[:id])
+  end
+
+  def get_checkpoint
+    @checkpoint = @track.checkpoints.find(params[:checkpoint_id] || params[:id])
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end

@@ -29,7 +29,7 @@
   <div class="grid-unit wide" id="track">
     <div class="content">
       <h4 class="unit-header">Analytics: All Checkpoints</h4>
-        <% if @track.phasing? %>  
+        <% if @track.phasing? %>
           <div class="row unit-action">
             <h6>Choose phase</h6>
             <%= render 'phasing' %>
@@ -46,7 +46,7 @@
   var pusher = new Pusher('<%= Pusher.key %>');
   var channel = pusher.subscribe('track<%= @track.id %>-ratings');
   channel.bind('rating', function(data) {
-    var ratingsCounts = new RatingsCounter(data.ratings, data.totalCount).init();
+    var ratingsCounts = Curri.RatingsCounter.init(data.ratings, data.totalCount);
     $("#checkpoint" + data.checkpoint).barChart(ratingsCounts);
   });
   </script>
