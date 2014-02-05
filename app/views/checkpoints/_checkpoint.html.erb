@@ -8,7 +8,7 @@
           </span>
         </span>
       <% end %>
-      <span class="h5" title="Drag and drop to reorder checkpoint"><%= checkpoint.expectation %></span>
+      <span class="h5" title="<%= 'Drag and drop to reorder checkpoint' if current_user.teacher? %>"><%= checkpoint.expectation %></span>
     </div>
     <div class="expectation-actions <%='expectation-actions-student' if current_user.student? %>">
       <ul class="action-icons">

@@ -15,7 +15,7 @@ h2 .unpublished-badge {
 
 .expectation-content {
   @extend %row-content;
-  .h5 {
+  .draggable-container + .h5 { //so that only teacher checkpoint.expectation gets this style
     cursor: move;
   }
 }
