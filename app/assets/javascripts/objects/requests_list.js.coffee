@@ -1,4 +1,11 @@
 @Curri.RequestsList =
+
+  updateList: (data) ->
+    if data.helpStatus == true
+      @addRequest(data.requesterPartial)
+    else
+      @removeRequest(data.requesterId)
+
   addRequest: (partial) ->
     $placeholder = $('#placeholder')
     $placeholder.remove() if $placeholder.length
