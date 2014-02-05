@@ -1,5 +1,6 @@
 class Checkpoint < ActiveRecord::Base
   belongs_to :track
+  acts_as_list scope: :track
   has_many :ratings
 
   validates :expectation, :success_criteria, presence: true
