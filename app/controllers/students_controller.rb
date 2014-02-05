@@ -63,7 +63,7 @@ class StudentsController < ApplicationController
       @invitation.save
     end
 
-    session[:user_id] = @user.id
+    sign_in(@user, true)
     redirect_to classrooms_path
   end
 

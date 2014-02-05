@@ -3,7 +3,7 @@ require 'test_helper'
 class TracksControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
   end
 
   test "get list of tracks" do
@@ -20,7 +20,7 @@ class TracksControllerTest < ActionController::TestCase
   end
 
   test "student should not see unpublished tracks" do
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
     get :index, classroom_id: classrooms(:one)
 
     tracks = assigns(:tracks)

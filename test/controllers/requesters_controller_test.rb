@@ -3,12 +3,12 @@ require "test_helper"
 class RequestersControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
     Pusher.stubs(:trigger)
   end
 
   test "should get list of requesters" do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
     get :index, classroom_id: classrooms(:one).id
 
     assert assigns(:requesters)
@@ -51,7 +51,7 @@ class RequestersControllerTest < ActionController::TestCase
     invitations(:one).help = true # Student joins Queue
     invitations(:one).save
 
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
     patch :remove, classroom_id: classrooms(:one).id, id: invitations(:one).id
 
     assert_equal false, invitations(:one).reload.help

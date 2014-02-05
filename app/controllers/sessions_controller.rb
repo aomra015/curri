@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email])
     if user.try(:authenticate, params[:password])
-      session[:user_id] = user.id
+      sign_in(user, params[:remember_me])
       flash[:track] = { event_name: "User Sign In" }
       redirect_to classrooms_path
     else
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies.delete(:auth_token)
     redirect_to login_path
   end
 end

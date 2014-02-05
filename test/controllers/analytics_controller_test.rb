@@ -3,7 +3,7 @@ require 'test_helper'
 class AnalyticsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
     @classroom = classrooms(:one)
     @track = tracks(:one)
   end

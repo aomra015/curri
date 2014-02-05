@@ -5,12 +5,14 @@ teacher1:
   classrole: teacher1
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>
 
 teacher2:
   email: franzini@paula.com
   classrole: teacher2
   classrole_type: Teacher
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>
 
 student1:
   email: student@school.com
@@ -19,6 +21,7 @@ student1:
   classrole: student1
   classrole_type: Student
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>
 
 student2:
   email: student2@school.com
@@ -27,15 +30,18 @@ student2:
   classrole: student2
   classrole_type: Student
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>
 
 nameless_student:
   email: student00@school.com
   classrole: student00
   classrole_type: Student
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>
 
 new_student:
   email: student3@school.com
   classrole: student3
   classrole_type: Student
   password_digest: <%= BCrypt::Password.create("password123")%>
+  auth_token: <%= SecureRandom.urlsafe_base64 %>

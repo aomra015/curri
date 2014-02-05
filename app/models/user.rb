@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   delegate :classrooms, to: :classrole
   delegate :needs_help?, to: :classrole
 
+  before_create { generate_token(:auth_token) }
+
   def teacher?
     classrole_type == 'Teacher'
   end
