@@ -8,7 +8,7 @@
       <a href="" class="students-toggle pull-right" title="Show students that haven't voted"><span class="show-icon"><%= render 'shared/show' %></span></a>
     <% end %>
     <div class="analytics-bar">
-      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.students.size } %>
+      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.invitations.accepted.size } %>
     </div>
   </div>
   <%= hasnt_voted_box(hasnt_voted) if hasnt_voted %>

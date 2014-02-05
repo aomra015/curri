@@ -33,7 +33,7 @@ class RatingsController < ApplicationController
 
   def push_to_channel
     ratings = @checkpoint.ratings.distinct_by_student.to_json(only: :score)
-    Pusher.trigger("track#{@track.id}-ratings", 'rating', { checkpoint: @checkpoint.id, ratings: ratings, totalCount: @classroom.students.size })
+    Pusher.trigger("track#{@track.id}-ratings", 'rating', { checkpoint: @checkpoint.id, ratings: ratings, totalCount: @classroom.invitations.accepted.size })
   end
 
 end
