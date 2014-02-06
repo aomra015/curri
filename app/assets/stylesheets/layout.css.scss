@@ -195,6 +195,7 @@ body.nav-open .main {
   margin: 0 -25px;
   padding: 0 25px;
   border-bottom: 1px solid $grey-lt;
+  @extend %clearfix;
   &:last-child {
     border: none;
     padding-bottom: 0;

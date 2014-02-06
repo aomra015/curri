@@ -7,6 +7,11 @@ $ ->
       e.preventDefault()
       Curri.Checkpoint.showCriteria($(this))
 
+    # toggle all success criteria
+    $('.sc-toggle').on 'click', (e) ->
+      e.preventDefault()
+      $('.success-criteria').toggleClass('success-criteria-show')
+
     # Rate checkpoint
     $('.choices-toggle').on 'click', (e) ->
       e.preventDefault()
