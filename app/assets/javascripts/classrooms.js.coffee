@@ -10,3 +10,5 @@ $ ->
 
   if $('#requesters_link').length
     Curri.RequestsNumber.poll()
+
+  $('.progress-bar div').tooltip()
