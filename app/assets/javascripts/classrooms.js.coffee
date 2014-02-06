@@ -10,6 +10,3 @@ $ ->
 
   if $('#requesters_link').length
     Curri.RequestsNumber.poll()
-
-  # $('.progress-bar').hover ->
-  #   $(this).find('span').toggle()

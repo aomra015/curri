@@ -36,40 +36,40 @@ describe 'BarChart jQuery Plugin', ->
 
   describe 'Display of percentages', ->
     it 'should display percent of zero ratings', ->
-      expect(test.checkpoint.find('.progress-bar-danger .progress-bar-label').text()).toEqual('50%')
+      expect(test.checkpoint.find('.progress-bar-danger + .progress-bar-label').text()).toEqual('50%')
 
     it 'should display percent of one ratings', ->
-      expect(test.checkpoint.find('.progress-bar-warning .progress-bar-label').text()).toEqual('25%')
+      expect(test.checkpoint.find('.progress-bar-warning + .progress-bar-label').text()).toEqual('25%')
 
     it 'should display percent of two ratings', ->
-      expect(test.checkpoint.find('.progress-bar-success .progress-bar-label').text()).toEqual('0%')
+      expect(test.checkpoint.find('.progress-bar-success + .progress-bar-label').text()).toEqual('0%')
 
     it 'should display percent of no ratings', ->
-      expect(test.checkpoint.find('.progress-bar-empty .progress-bar-label').text()).toEqual('25%')
+      expect(test.checkpoint.find('.progress-bar-empty + .progress-bar-label').text()).toEqual('25%')
 
   describe 'Display of bar widths', ->
     it 'should draw red portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-danger').css('width'))
+      result = parseFloat(test.checkpoint.find('.progress-bar-danger').parents('.progress-bar').css('width'))
       expected = test.counts.zeroPercent
       expect(result).toBeCloseTo(expected,3)
 
     it 'should draw orange portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-warning').css('width'))
+      result = parseFloat(test.checkpoint.find('.progress-bar-warning').parents('.progress-bar').css('width'))
       expected = test.counts.onePercent
       expect(result).toBeCloseTo(expected,3)
 
     it 'should draw green portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-success').css('width'))
+      result = parseFloat(test.checkpoint.find('.progress-bar-success').parents('.progress-bar').css('width'))
       expected = test.counts.twoPercent
       expect(result).toBeCloseTo(expected,3)
 
     it 'should draw blank portion of bar', ->
-      result = parseFloat(test.checkpoint.find('.progress-bar-empty').css('width'))
+      result = parseFloat(test.checkpoint.find('.progress-bar-empty').parents('.progress-bar').css('width'))
       expected = test.counts.emptyPercent
       expect(result).toBeCloseTo(expected,3)
 
     it 'should contain a percent sign', ->
-      expect(test.checkpoint.find('.progress-bar-danger').css('width')).toMatch(/\d+\%/)
-      expect(test.checkpoint.find('.progress-bar-warning').css('width')).toMatch(/\d+\%/)
-      expect(test.checkpoint.find('.progress-bar-success').css('width')).toMatch(/\d+\%/)
-      expect(test.checkpoint.find('.progress-bar-empty').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-danger').parents('.progress-bar').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-warning').parents('.progress-bar').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-success').parents('.progress-bar').css('width')).toMatch(/\d+\%/)
+      expect(test.checkpoint.find('.progress-bar-empty').parents('.progress-bar').css('width')).toMatch(/\d+\%/)
