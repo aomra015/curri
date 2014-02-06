@@ -26,8 +26,9 @@ module AnalyticsHelper
   def render_bar(counts)
     percent = counts[:count] == 0 ? '' : "#{counts[:percent].round}%"
     content_tag :div, class: "progress-bar", style: "width: #{counts[:percent]}%" do
-      concat(content_tag :div, '', class: "progress-bar-#{SCORE_WORD[counts[:score]]}")
-      concat(content_tag :div, percent, class: 'progress-bar-label')
+      # concat(content_tag :div, '', class: "progress-bar-#{SCORE_WORD[counts[:score]]}")
+      # concat(content_tag :div, percent, class: 'progress-bar-label')
+      content_tag :div, '', class: "progress-bar-#{SCORE_WORD[counts[:score]]}", title: "#{percent}"
     end
   end
 

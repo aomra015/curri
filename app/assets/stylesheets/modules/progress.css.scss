@@ -13,7 +13,7 @@
   margin-top: -10px;
   @include border-radius(15px);
   background: lighten($grey-lt, 8%);
-  // overflow: hidden;
+  overflow: hidden;
   position: relative;
   height: 20px;
   // > .progress-bar:first-of-type> div:first-child{
