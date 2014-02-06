@@ -13,7 +13,6 @@
 #= require jquery
 #= require jquery_ujs
 #= require jquery.ui.sortable
-#= require jquery.ui.tooltip
 #= require pickadate/picker
 #= require pickadate/picker.date
 #= require pickadate/picker.time

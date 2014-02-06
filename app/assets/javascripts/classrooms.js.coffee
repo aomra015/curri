@@ -11,4 +11,5 @@ $ ->
   if $('#requesters_link').length
     Curri.RequestsNumber.poll()
 
-  $('.progress-bar div').tooltip()
+  $('.progress-bar').hover ->
+    $(this).find('span').toggle()
