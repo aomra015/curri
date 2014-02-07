@@ -135,8 +135,8 @@ body.nav-open .main {
 
 @include media-query(medium) {
   body.nav-open .main {
-    // overflow: visible;
-    overflow: auto;
+    overflow: visible;
+    // overflow: auto;
     &.subnav-open {
       overflow: hidden;
     }
@@ -164,20 +164,6 @@ body.nav-open .main {
   .whole {
     width: 100%
   }
-}
-
-@include media-query(large) {
-  // .narrow {
-  //   width: 25%;
-  // }
-
-  // .wide {
-  //   width: 75%;
-  // }
-
-  // .whole {
-  //   width: 100%;
-  // }
 }
 
 .padding-border {
@@ -209,6 +195,7 @@ body.nav-open .main {
   margin: 0 -25px;
   padding: 0 25px;
   border-bottom: 1px solid $grey-lt;
+  @extend %clearfix;
   &:last-child {
     border: none;
     padding-bottom: 0;

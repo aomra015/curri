@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124212234) do
+ActiveRecord::Schema.define(version: 20140206143019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140124212234) do
 
   add_index "invitations", ["classroom_id"], name: "index_invitations_on_classroom_id", using: :btree
   add_index "invitations", ["student_id"], name: "index_invitations_on_student_id", using: :btree
+  add_index "invitations", ["token"], name: "index_invitations_on_token", using: :btree
 
   create_table "ratings", force: true do |t|
     t.integer  "score"
@@ -104,8 +105,10 @@ ActiveRecord::Schema.define(version: 20140124212234) do
     t.datetime "password_reset_sent_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "auth_token"
   end
 
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", using: :btree
   add_index "users", ["classrole_id", "classrole_type"], name: "index_users_on_classrole_id_and_classrole_type", using: :btree
 
 end

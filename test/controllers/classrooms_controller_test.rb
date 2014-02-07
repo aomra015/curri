@@ -3,7 +3,7 @@ require 'test_helper'
 class ClassroomsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
   end
 
   test "get list of classrooms" do
@@ -62,7 +62,7 @@ class ClassroomsControllerTest < ActionController::TestCase
   end
 
   test "should remove student from classroom without deleting classroom" do
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
 
     assert_difference 'users(:student1).classrooms.count', -1 do
       delete :destroy, id: classrooms(:one)
@@ -73,7 +73,7 @@ class ClassroomsControllerTest < ActionController::TestCase
   end
 
   test "should remove classroom with no teachers or students" do
-    session[:user_id] = users(:teacher2).id
+    cookies[:auth_token] = users(:teacher2).auth_token
     assert_difference 'Classroom.count', -1 do
       delete :destroy, id: classrooms(:three)
     end
@@ -96,7 +96,7 @@ class ClassroomsControllerTest < ActionController::TestCase
   test "should not add student to classroom using token" do
     assert_equal 1, users(:student1).classrooms.size
 
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
     post :join, teacher_token: classrooms(:three).teacher_token
 
     assert_equal 1, users(:student1).classrooms.size

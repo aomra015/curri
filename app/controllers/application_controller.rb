@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(auth_token: cookies[:auth_token]) if cookies[:auth_token]
   end
   def authorize
     redirect_to login_url if current_user.nil?
@@ -28,5 +28,13 @@ class ApplicationController < ActionController::Base
 
   def authorize_teacher
     redirect_to classrooms_url unless current_user.teacher?
+  end
+
+  def sign_in(user, remember_me)
+    if remember_me
+      cookies.permanent[:auth_token] = user.auth_token
+    else
+      cookies[:auth_token] = user.auth_token
+    end
   end
 end

@@ -9,7 +9,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "should sign current user with valid data" do
     post :create, email: "aomra@gmail.com", password: "password123"
 
-    assert_equal users(:teacher1).id, session[:user_id]
+    assert_equal users(:teacher1).auth_token, cookies[:auth_token]
   end
 
   test "should not sign current user in with invalid data" do
@@ -22,7 +22,7 @@ class SessionsControllerTest < ActionController::TestCase
   test "should sign out current user" do
     delete :destroy
 
-    assert_equal nil, session[:user_id]
+    assert_equal nil, cookies[:auth_token]
     assert_redirected_to login_path
   end
 

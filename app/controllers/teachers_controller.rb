@@ -12,7 +12,7 @@ class TeachersController < ApplicationController
     @user.classrole = Teacher.create
 
     if @user.save
-      session[:user_id] = @user.id
+      sign_in(@user, true)
       flash[:track] = { event_name: "Teacher Sign Up" }
       redirect_to classrooms_path
     else

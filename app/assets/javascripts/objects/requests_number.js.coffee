@@ -15,6 +15,9 @@
     newReqNum = JSON.parse(data.requesters).length
 
     if newReqNum != oldReqNum
+      # Reset title
+      document.title = document.title.replace(/\(\d+\)\s/, '')
+
       # Update the data for next poll
       $requestsLink.data("requests", newReqNum)
 
@@ -22,6 +25,7 @@
       if newReqNum > 0
         $('.nav-help').toggleClass('active', true)
         $reqNumb = $('.req-num').show()
+        document.title = "(#{newReqNum}) #{document.title}"
         if newReqNum <= reqLimit
           $reqNumb.text(newReqNum)
         else

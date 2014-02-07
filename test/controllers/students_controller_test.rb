@@ -58,7 +58,7 @@ class StudentsControllerTest < ActionController::TestCase
   end
 
   test "should redirect to login form if logged in" do
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
     get :new, token: @invitation.token
 
     assert_redirected_to students_login_path(@invitation.token)

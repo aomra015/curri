@@ -24,7 +24,8 @@
   margin-top: 5px;
   }
   & > input[type="checkbox"] {
-    display: inline;
+    display: inline-block;
+    margin-right: 10px;
   }
   & > input[type="text"],
   & > input[type="textarea"] {

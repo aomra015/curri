@@ -3,7 +3,7 @@ require 'test_helper'
 class CheckpointsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
     @params = {
       classroom_id: classrooms(:one),
       track_id: tracks(:one),

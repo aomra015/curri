@@ -22,8 +22,7 @@ class RequestersController < ApplicationController
 
   def update
     @requester.toggle!(:help)
-
-    Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
+    push_to_channel
 
     if @requester.help
       message = "Your teacher was notified that you need help."
@@ -46,6 +45,7 @@ class RequestersController < ApplicationController
   def remove
     @requester.help = false
     @requester.save
+    push_to_channel
 
     respond_to do |format|
       format.json {
@@ -62,6 +62,10 @@ class RequestersController < ApplicationController
   private
   def get_requester
     @requester = @classroom.invitations.find(params[:id])
+  end
+
+  def push_to_channel
+    Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
   end
 
 end

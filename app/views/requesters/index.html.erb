@@ -30,10 +30,6 @@
 var pusher = new Pusher('<%= Pusher.key %>');
 var channel = pusher.subscribe('classroom<%= @classroom.id %>-requesters');
 channel.bind('request', function(data) {
-  if (data.helpStatus === true) {
-    Curri.RequestsList.addRequest(data.requesterPartial);
-  } else {
-    Curri.RequestsList.removeRequest(data.requesterId);
-  }
+  Curri.RequestsList.updateList(data)
 });
 </script>

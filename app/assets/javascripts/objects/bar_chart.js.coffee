@@ -25,8 +25,7 @@
 $ = jQuery
 $.fn.barChart = (data) ->
   return @each () ->
-    $(this).find('.count-number').html(data.totalCount)
-    $(this).find('.progress-bar-danger').css('width', data.zeroPercent + "%").html(data.zeroCount)
-    $(this).find('.progress-bar-warning').css('width', data.onePercent + "%").html(data.oneCount)
-    $(this).find('.progress-bar-success').css('width', data.twoPercent + "%").html(data.twoCount)
-    $(this).find('.progress-bar-empty').css('width', data.emptyPercent + "%").html(data.emptyCount)
+    $(this).find('.progress-bar-danger').parents('.progress-bar').css('width', data.zeroPercent + "%").find('.progress-bar-label').text(Math.round(data.zeroPercent) + "%")
+    $(this).find('.progress-bar-warning').parents('.progress-bar').css('width', data.onePercent + "%").find('.progress-bar-label').text(Math.round(data.onePercent) + "%")
+    $(this).find('.progress-bar-success').parents('.progress-bar').css('width', data.twoPercent + "%").find('.progress-bar-label').text(Math.round(data.twoPercent) + "%")
+    $(this).find('.progress-bar-empty').parents('.progress-bar').css('width', data.emptyPercent + "%").find('.progress-bar-label').text(Math.round(data.emptyPercent) + "%")

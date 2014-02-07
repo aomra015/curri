@@ -27,7 +27,7 @@ class TeachersControllerTest < ActionController::TestCase
   test "should log teacher in after signup" do
     post :create, user: @params
 
-    assert_equal assigns(:user).id, session[:user_id]
+    assert_equal assigns(:user).auth_token, cookies[:auth_token]
   end
 
   test "should not create teacher with invalid data" do

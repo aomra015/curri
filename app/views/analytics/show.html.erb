@@ -35,7 +35,7 @@
             <%= render 'phasing' %>
           </div>
         <% end %>
-      <%= render :partial => 'checkpoint', collection: @track.checkpoints.order("position") %>
+      <%= render :partial => 'checkpoint', collection: @track.checkpoints %>
     </div>
   </div>
 </div>

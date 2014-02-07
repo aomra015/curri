@@ -3,7 +3,7 @@ require 'test_helper'
 class RatingsControllerTest < ActionController::TestCase
 
   before do
-    session[:user_id] = users(:student1).id
+    cookies[:auth_token] = users(:student1).auth_token
     Pusher.stubs(:trigger)
   end
 
@@ -35,7 +35,7 @@ class RatingsControllerTest < ActionController::TestCase
   end
 
   test "only students should be able to rate checkpoints" do
-    session[:user_id] = users(:teacher1).id
+    cookies[:auth_token] = users(:teacher1).auth_token
     post :create, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
 
     assert_redirected_to classroom_track_path(classrooms(:one), tracks(:one))
