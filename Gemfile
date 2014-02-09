@@ -7,7 +7,6 @@ gem 'pg'
 
 group :production do
   gem 'rails_12factor'
-  gem 'newrelic_rpm'
   gem 'appsignal'
   gem 'unicorn'
 end
@@ -31,6 +30,7 @@ group :development do
   gem 'guard-livereload'
 end
 
+gem 'newrelic_rpm'
 gem 'email_validator'
 gem 'bcrypt-ruby'
 gem 'foreman'
