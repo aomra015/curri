@@ -7,8 +7,10 @@ one:
   end_time: <%= Time.zone.parse("2012-10-3 6am") %>
   created_at: <%= Time.zone.parse("2012-09-01 6am") %>
   published: true
+  position: 1
 
 two:
   name: Unpublished Track
   classroom: one
   published: false
+  position: 2
