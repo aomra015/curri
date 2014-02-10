@@ -52,6 +52,13 @@ class TracksController < ApplicationController
     redirect_to classroom_tracks_path(@classroom)
   end
 
+  def sort
+    params[:track].each_with_index do |id, index|
+      @classroom.tracks.where(id: id).update_all(position: index+1)
+    end
+    render nothing: true
+  end
+
   private
   def track_params
     params.require(:track).permit(:name, :published)

@@ -14,3 +14,14 @@ $ ->
 
     # Checkpoints sort
     Curri.Checkpoint.sortable()
+
+  $('.tracks').sortable
+    items: "> div.grid-unit"
+    handle: '.unit-header'
+    cursor: 'move'
+    placeholder: ""
+    start: (e, ui) ->
+      ui.placeholder.height(ui.item.height())
+      ui.placeholder.width(ui.item.width())
+    update: ->
+      $.post($(this).data('url'), $(this).sortable('serialize'))

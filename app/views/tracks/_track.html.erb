@@ -1,4 +1,4 @@
-<div class="grid-unit narrow <%= 'today-track' if starts_today?(track) %>">
+<div class="grid-unit narrow <%= 'today-track' if starts_today?(track) %>" id="track_<%= track.id %>">
   <div class="padding-border">
     <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "content" do %>
       <h4 class="unit-header"><%=track.name %>
