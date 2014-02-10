@@ -30,4 +30,8 @@ module TracksHelper
     pubstatus = "-unpublished" unless published
     content_tag(:span, "", class: "tracks-icons #{timestatus}-icon#{pubstatus}")
   end
+
+  def starts_today?(track)
+    track.try(:start_time).try(:today?)
+  end
 end
