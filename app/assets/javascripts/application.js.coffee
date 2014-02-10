@@ -18,6 +18,7 @@
 #= require pickadate/picker.time
 #= require matchMedia
 #= require uservoice
+#= require bootstrap-dismiss
 #= require utilities
 #= require_tree ./objects
 #= require_tree .
