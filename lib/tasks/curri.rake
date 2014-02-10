@@ -7,4 +7,12 @@ namespace :curri do
     end
   end
 
+  desc "Add position value to older tracks"
+  task track_positions: :environment do
+    Track.all.find_each do |track|
+      track.position = track.id
+      track.save
+    end
+  end
+
 end
