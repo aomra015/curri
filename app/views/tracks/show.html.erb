@@ -1,9 +1,10 @@
   <div class="grid-unit wide">
     <h2><%= @track.name %>
       <% if current_user.teacher? && !@track.published %>
-        <span class="unpublished-badge">
-          <%= 'Unpublished' unless @track.published %>
-        </span>
+        <span class="badge unpublished"><%= 'Unpublished' unless @track.published %></span>
+      <% end %>
+      <% if active_track?(@track) %>
+        <span class="badge active">Active</span>
       <% end %>
     </h2>
     <h6 class="subtitle"><%= @classroom.name %></h6>

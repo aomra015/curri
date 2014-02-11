@@ -64,33 +64,38 @@
 }
 
 // tracks index
-.today-track {
-  .padding-border {
-    background: lighten($color-primary, 10%);
-    &:hover {
-      background: $color-primary;
-      .content {
-      border-color: darken($color-primary, 15%);
-      }
-    }
-  }
-  .content {
-    border-color: $color-primary;
-  }
-}
+// .today-track {
+//   .padding-border {
+//     background: lighten($color-primary, 10%);
+//     &:hover {
+//       background: $color-primary;
+//       .content {
+//       border-color: darken($color-primary, 15%);
+//       }
+//     }
+//   }
+//   .content {
+//     border-color: $color-primary;
+//   }
+// }
 
-.unpublished-badge {
+.badge {
   position: relative;
-  top: -2px;
+  top: -3px;
   margin-left: 10px;
   font-size: 10px;
   color: #fff;
   padding: 2px 8px;
   @include border-radius(100px);
-  background: $color-warning;
   text-shadow: 1px 1px rgba(0,0,0,0.07);
   letter-spacing: 0;
   box-shadow: 1px 1px #fff;
+  &.unpublished {
+    background: $color-warning;
+  }
+  &.active {
+    background: $color-primary;
+  }
 }
 
 .checkpoint-count {

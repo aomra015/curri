@@ -3,7 +3,10 @@
     <%= link_to classroom_track_path(classroom_id: @classroom, id: track), class: "content" do %>
       <h4 class="unit-header"><%=track.name %>
         <% unless track.published %>
-          <span class="unpublished-badge h5">Unpublished</span>
+          <span class="badge unpublished h5">Unpublished</span>
+        <% end %>
+        <% if active_track?(track) %>
+          <span class="badge active h5">Active</span>
         <% end %>
       </h4>
 
