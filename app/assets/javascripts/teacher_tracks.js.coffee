@@ -23,5 +23,6 @@ $ ->
     start: (e, ui) ->
       ui.placeholder.height(ui.item.height())
       ui.placeholder.width(ui.item.width())
+      $(ui.placeholder).addClass("grid-unit narrow")
     update: ->
       $.post($(this).data('url'), $(this).sortable('serialize'))
