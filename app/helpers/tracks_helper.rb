@@ -31,7 +31,9 @@ module TracksHelper
     content_tag(:span, "", class: "tracks-icons #{timestatus}-icon#{pubstatus}")
   end
 
-  def starts_today?(track)
-    track.try(:start_time).try(:today?)
+  def active_track?(track)
+    if track.phasing?
+      (track.start_time <= Time.zone.now && track.end_time >= Time.zone.now) && track.published
+    end
   end
 end
