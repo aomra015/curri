@@ -2,7 +2,7 @@
   <div class="expectation-content <%='draggable-checkpoint' if current_user.teacher? %>">
     <div class="expectation <%='expectation-student' if current_user.student? %>">
       
-      <span class="h5" title="<%= 'Drag and drop to reorder checkpoint' if current_user.teacher? %>"><%= checkpoint.expectation %></span>
+      <span class="h5" title="<%= 'Drag and drop to re-order checkpoint' if current_user.teacher? %>"><%= checkpoint.expectation %></span>
     </div>
     <div class="expectation-actions <%='expectation-actions-student' if current_user.student? %>">
       <ul class="action-icons">
