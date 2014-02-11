@@ -19,6 +19,7 @@
 #= require matchMedia
 #= require wysihtml5
 #= require parser_rules/simple
+#= require bootstrap-dismiss
 #= require utilities
 #= require_tree ./objects
 #= require_tree .
