@@ -17,10 +17,12 @@
 #= require pickadate/picker.date
 #= require pickadate/picker.time
 #= require matchMedia
-#= require uservoice
+#= require wysihtml5
+#= require parser_rules/simple
 #= require utilities
 #= require_tree ./objects
 #= require_tree .
+#= require uservoice
 
 $ = jQuery
 

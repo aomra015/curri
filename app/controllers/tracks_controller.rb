@@ -61,7 +61,7 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name, :published)
+    params.require(:track).permit(:name, :published, :note)
   end
 
   def parse_date_time

@@ -5,6 +5,22 @@
     <%= f.text_field :name, placeholder: "Enter track name", class: "form-input" %>
   </div>
   <div class="form-group">
+    <%= f.label :note, 'Track Note' %>
+    <div id="wysihtml5-toolbar" style="display: none;">
+      <a data-wysihtml5-command="bold">bold</a>
+      <a data-wysihtml5-command="italic">italic</a>
+      <a data-wysihtml5-command="createLink">insert link</a>
+      <div data-wysihtml5-dialog="createLink" style="display: none;">
+        <label>
+          Link: <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+        </label>
+        <a data-wysihtml5-dialog-action="save">OK</a>
+        <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+      </div>
+    </div>
+    <%= f.text_area :note, placeholder: "Add a brief note to for example reference a document, list readings, etc. Markdown is permitted here.", class: "form-input", id: 'wysihtml5-textarea' %>
+  </div>
+  <div class="form-group">
     <%= f.label :name, 'Start Time' %>
     <%= f.text_field :start_date, value: nice_date_format(@track, :start_time), placeholder: Time.zone.now.strftime("%Y-%m-%d"), class: "form-input"  %>
     <%= f.text_field :start_time, value: nice_time_format(@track, :start_time), placeholder: Time.zone.now.strftime("%l:%M%P"), class: "form-input"  %>
@@ -23,3 +39,11 @@
   <div>
     <%= f.submit class: "btn btn-primary" %>
 <% end %>
+
+<script>
+  var editor = new wysihtml5.Editor("wysihtml5-textarea", {
+    toolbar:      "wysihtml5-toolbar",
+    stylesheets:  "<%= stylesheet_path('wysiwyg') %>",
+    parserRules:  wysihtml5ParserRules
+  });
+</script>
