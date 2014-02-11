@@ -15,14 +15,15 @@ $ ->
     # Checkpoints sort
     Curri.Checkpoint.sortable()
 
-  $('.tracks').sortable
-    items: "> div.grid-unit"
-    handle: '.unit-header'
-    cursor: 'move'
-    placeholder: "track-drop-highlight"
-    start: (e, ui) ->
-      ui.placeholder.height(ui.item.height())
-      ui.placeholder.width(ui.item.width())
-      $(ui.placeholder).addClass("grid-unit narrow")
-    update: ->
-      $.post($(this).data('url'), $(this).sortable('serialize'))
+  if $('.tracks').length && Curri.user.classrole_type == 'Teacher'
+    $('.tracks').sortable
+      items: "> div.grid-unit"
+      handle: '.unit-header'
+      cursor: 'move'
+      placeholder: "track-drop-highlight"
+      start: (e, ui) ->
+        ui.placeholder.height(ui.item.height())
+        ui.placeholder.width(ui.item.width())
+        $(ui.placeholder).addClass("grid-unit narrow")
+      update: ->
+        $.post($(this).data('url'), $(this).sortable('serialize'))
