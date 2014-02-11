@@ -64,6 +64,9 @@
 }
 
 // tracks index
+.unit-header.draggable-track {
+  cursor: move;
+}
 // .today-track {
 //   .padding-border {
 //     background: lighten($color-primary, 10%);
@@ -156,8 +159,10 @@
 //placeholder for drag/drop functionality
 .track-drop-highlight {
   background: lighten($grey-lt, 10%);
-  margin-left: -25px;
+  margin-left: 25px;
+  margin-right: -5px;
+  // margin-bottom: -10px;
   border:none;
-  border-radius: 0;
+  @include border-radius(5px);
   box-shadow: inset 0 0 10px lighten($grey-md, 25%);
 }

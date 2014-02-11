@@ -43,23 +43,26 @@ h2 .unpublished-badge {
   }
 }
 
-.draggable-container {
-  display: inline-block;
-  padding-right: 15px;
+// .draggable-container {
+//   display: inline-block;
+//   padding-right: 15px;
+//   cursor: move;
+// }
+// .draggable {
+//   display: inline-block;
+//   width: 13px;
+//   padding: 4px;
+//   margin-left: -10px;
+//   @include border-radius(2px);
+//   position: absolute;
+//   top: 15px;
+//   left: 30px;
+//   .expectation-content:hover & {
+//     background: lighten($grey-lt, 3%);
+//   }
+// }
+.expectation-content.draggable-checkpoint {
   cursor: move;
-}
-.draggable {
-  display: inline-block;
-  width: 13px;
-  padding: 4px;
-  margin-left: -10px;
-  @include border-radius(2px);
-  position: absolute;
-  top: 15px;
-  left: 30px;
-  .expectation-content:hover & {
-    background: lighten($grey-lt, 3%);
-  }
 }
 
 .expectation-actions {

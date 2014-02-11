@@ -19,7 +19,7 @@ $ ->
     items: "> div.grid-unit"
     handle: '.unit-header'
     cursor: 'move'
-    placeholder: "track-drop-highlight padding-border"
+    placeholder: "track-drop-highlight"
     start: (e, ui) ->
       ui.placeholder.height(ui.item.height())
       ui.placeholder.width(ui.item.width())
