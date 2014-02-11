@@ -226,6 +226,13 @@ body.nav-open .main {
     background: lighten($grey-lt, 10%);
     }
   }
+  .highlight {
+    font-weight: 700;
+    a:before {
+      font-size: 22px;
+      content: "» ";
+    }
+  }
   a {
   display: block;
   padding: 10px 0;
