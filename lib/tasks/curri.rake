@@ -15,4 +15,11 @@ namespace :curri do
     end
   end
 
+  desc "Add gravatars to existing Users"
+  task add_gravatars: :environment do
+    User.all.find_each do |user|
+      user.save
+    end
+  end
+
 end
