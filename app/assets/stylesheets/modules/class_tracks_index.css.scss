@@ -70,7 +70,7 @@
 
 .active-track {
   .padding-border {
-    background: lighten($color-primary, 10%);
+    // background: lighten($color-primary, 10%);
     &:hover {
       background: $color-primary;
       .content {
@@ -78,14 +78,14 @@
       }
     }
   }
-  .content {
-    border-color: $color-primary;
-  }
+  // .content {
+  //   border-color: $color-primary;
+  // }
 }
 
 .unpublished-track {
   .padding-border {
-    background: lighten($color-warning, 10%);
+    // background: lighten($color-warning, 10%);
     &:hover {
       background: $color-warning;
       .content {
@@ -93,9 +93,9 @@
       }
     }
   }
-  .content {
-    border-color: $color-warning;
-  }
+  // .content {
+  //   border-color: $color-warning;
+  // }
 }
 
 .badge {
