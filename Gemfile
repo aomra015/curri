@@ -37,7 +37,6 @@ gem 'foreman'
 gem 'dynamic_form'
 gem 'pusher'
 gem 'acts_as_list'
-gem 'wysihtml5-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'

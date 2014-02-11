@@ -17,8 +17,8 @@
 #= require pickadate/picker.date
 #= require pickadate/picker.time
 #= require matchMedia
-#= require wysihtml5
 #= require parser_rules/simple
+#= require wysihtml5
 #= require bootstrap-dismiss
 #= require utilities
 #= require_tree ./objects
