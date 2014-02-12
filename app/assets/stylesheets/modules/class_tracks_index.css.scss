@@ -138,9 +138,34 @@
   padding: 5px 25px 0;
 }
 
+// track edit
 .edit-track-wrapper {
   overflow: auto;
 }
+
+.note-styling a {
+  display: inline-block;
+  font-size: 14px;
+  padding: 0 5px;
+  @include border-radius(5px);
+  margin-right: 10px;
+  color: $color-text;
+  &.italic {
+    font-style: italic;
+  }
+  &:hover {
+    color: $color-link;
+  }
+}
+
+a.wysihtml5-command-active {
+    color: #fff;
+    background: $grey-md;
+    &:hover {
+      color: #fff;
+      background: darken($grey-md, 10%);
+    }
+  }
 
 //placeholder for drag/drop functionality
 .track-drop-highlight {

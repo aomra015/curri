@@ -6,19 +6,19 @@
   </div>
   <div class="form-group">
     <%= f.label :note, 'Track Note' %>
-    <div id="wysihtml5-toolbar" style="display: none;">
-      <a data-wysihtml5-command="bold">bold</a>
-      <a data-wysihtml5-command="italic">italic</a>
+    <div id="wysihtml5-toolbar" class="note-styling" style="display: none;">
+      <a data-wysihtml5-command="bold" class="strong">bold</a>
+      <a data-wysihtml5-command="italic" class="italic">italic</a>
       <a data-wysihtml5-command="createLink">insert link</a>
       <div data-wysihtml5-dialog="createLink" style="display: none;">
         <label>
-          Link: <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+          Link <input data-wysihtml5-dialog-field="href" value="http://" class="text">
         </label>
         <a data-wysihtml5-dialog-action="save">OK</a>
         <a data-wysihtml5-dialog-action="cancel">Cancel</a>
       </div>
     </div>
-    <%= f.text_area :note, placeholder: "Add a brief note to for example reference a document, list readings, etc. Markdown is permitted here.", class: "form-input", id: 'wysihtml5-textarea' %>
+    <%= f.text_area :note, placeholder: "Add a brief note to for example reference a document, list readings, etc.", class: "form-input", id: 'wysihtml5-textarea' %>
   </div>
   <div class="form-group">
     <%= f.label :name, 'Start Time' %>
