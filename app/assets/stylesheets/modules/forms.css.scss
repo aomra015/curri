@@ -3,8 +3,8 @@
 ::-webkit-input-placeholder,
 :-moz-placeholder, // Firefox 18-
 ::-moz-placeholder, //* Firefox 19+
-:-ms-input-placeholder {  
-   color: lighten($grey-md, 25%);  
+:-ms-input-placeholder {
+   color: lighten($grey-md, 25%);
 }
 
 .form-group {
@@ -51,6 +51,10 @@
   }
 }
 
+.form-input-editor:focus {
+  border-width: 1px;
+}
+
 .form-input-half {
   width: 100%;
 }
@@ -92,7 +96,7 @@
 }
 
 .classroom-option {
-  margin-top: 15px;  
+  margin-top: 15px;
 }
 
 // Table
