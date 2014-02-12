@@ -27,7 +27,7 @@
 <div class="bottom-nav">
   <li>
     <%= link_to_selected '', class: 'nav-links subnav-toggle' do %>
-      <span class="nav-icon nav-account" style="background: url('http://www.gravatar.com/avatar/#{hash}?s=36&d=blank');"></span>
+      <span class="nav-icon nav-account" style="background: url('<%= current_user.gravatar%>?s=36&d=blank');"></span>
       <span class="nav-label subnav-slide">Account</span>
     <% end %>
   </li>
