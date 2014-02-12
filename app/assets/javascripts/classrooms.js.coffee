@@ -10,3 +10,7 @@ $ ->
 
   if $('#requesters_link').length
     Curri.RequestsNumber.poll()
+
+  $('a.open-modal').click ->
+    $(this).modal(fadeDuration: 250)
+    return false
