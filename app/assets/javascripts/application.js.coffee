@@ -19,6 +19,7 @@
 #= require matchMedia
 #= require uservoice
 #= require bootstrap-dismiss
+#= require jquery.modal
 #= require utilities
 #= require_tree ./objects
 #= require_tree .
