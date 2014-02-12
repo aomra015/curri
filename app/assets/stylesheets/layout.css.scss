@@ -228,9 +228,10 @@ body.nav-open .main {
   }
   .highlight {
     font-weight: 700;
-    a:before {
-      font-size: 22px;
-      content: "» ";
+    background: lighten($grey-lt, 10%);
+    a:hover {
+      color: lighten($color-main, 25%);
+      cursor: default;
     }
   }
   a {
