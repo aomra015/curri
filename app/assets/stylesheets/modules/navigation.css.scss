@@ -101,6 +101,11 @@ a.selected, a.selected:hover {
   background-image: image-url('curri-icons.svg');
 }
 
+.nav-account {
+  background-image: image-url("http://www.gravatar.com/avatar/#{hash}?s=36?d=blank");
+
+}
+
 .nav-classrooms,
 .nav-tracks,
 .nav-analytics,

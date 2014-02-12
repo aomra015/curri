@@ -19,7 +19,7 @@
       highlight = el.closest('.row').hasClass('highlight')
       $("<option />", {
            "value"   : el.attr("href"),
-           "text"    : if highlight then '>> ' + el.text() else el.text()
+           "text"    : if highlight then '» ' + el.text() else el.text()
        }).appendTo("#sidebar-links select")
 
   hideLinks: ->
