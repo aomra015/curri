@@ -10,25 +10,22 @@
 .form-group {
   margin-bottom: 20px;
   position: relative;
-  & > input {
+  input {
     margin-top: 4px;
     margin-bottom: 4px;
   }
-  // .form-input-half:first-of-type {
-  //   margin-right: 2%;
-  // }
 }
 
 .form-group {
-  & > input[type="submit"] {
+  input[type="submit"] {
   margin-top: 5px;
   }
-  & > input[type="checkbox"] {
+  input[type="checkbox"] {
     display: inline-block;
     margin-right: 10px;
   }
-  & > input[type="text"],
-  & > input[type="textarea"] {
+  input[type="text"],
+  input[type="textarea"] {
   -webkit-appearance: none;
   }
 }
