@@ -45,14 +45,9 @@
   border-radius: $global-radius;
   &:focus {
     border-color: $color-primary;
-    border-width: 2px;
     outline: 0;
     color: $grey-md;
   }
-}
-
-.form-input-editor:focus {
-  border-width: 1px;
 }
 
 .form-input-half {
