@@ -46,5 +46,4 @@ class Teacher < ActiveRecord::Base
       {expectation: "Appending an element to another", success_criteria: "$( '.buy-button' ).appendTo( '.item' )"}
       ])
   end
-
 end
