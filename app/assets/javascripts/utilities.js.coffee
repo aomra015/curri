@@ -11,3 +11,7 @@
 
 @Curri.mobileScreen = ->
   return window.matchMedia("(max-width: 480px)").matches
+
+@Curri.form_validations = (resource, errors) ->
+  for field, error of errors
+    $("##{resource}_#{field}").addClass('error').before(error)

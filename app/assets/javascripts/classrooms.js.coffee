@@ -19,13 +19,8 @@ $ ->
 
   $('#new_classroom').on "ajax:success", (e, data, status, xhr) ->
     $.modal.close()
-    $('.grid-unit').last().after(data.partial)
+    $('.grid-unit').last().after($(data.partial).fadeIn('slow'))
 
   $('#new_classroom').on "ajax:error", (e, xhr, status, error) ->
-    append_error_message('classroom', JSON.parse(xhr.responseText))
+    Curri.form_validations('classroom', JSON.parse(xhr.responseText))
 
-  append_error_message = (resource, errors) ->
-    for field, error of errors
-      $input = $("##{resource}_#{field}").addClass('error')
-      $input.before(error)
-      console.log($input)
