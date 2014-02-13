@@ -192,5 +192,5 @@ make_accounts("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakem
 make_accounts("teacher@mail.com", ["student1@mail.com", "student2@mail.com", "student3@mail.com", "student4@mail.com",
   "student5@mail.com", "student6@mail.com", "student7@mail.com", "student8@mail.com"], "abcd")
 make_accounts("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"], "defg")
-addStatsCourse("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakemail.com", "student3@fakemail.com", "student4@fakemail.com"])
-addStatsCourse("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"])
+# addStatsCourse("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakemail.com", "student3@fakemail.com", "student4@fakemail.com"])
+# addStatsCourse("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"])
