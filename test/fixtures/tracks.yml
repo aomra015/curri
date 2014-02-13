@@ -14,3 +14,17 @@ two:
   classroom: one
   published: false
   position: 2
+
+three:
+  name: Unpublished Track with Dates
+  published: false
+  position: 3
+  start_time: <%= Time.zone.parse("2012-10-1 6am") %>
+  end_time: <%= Time.zone.parse("2012-10-3 6am") %>
+
+four:
+  name: Published Track with Dates
+  published: true
+  position: 4
+  start_time: <%= Time.zone.parse("2014-10-1 6am") %>
+  end_time: <%= Time.zone.parse("2014-10-1 6pm") %>

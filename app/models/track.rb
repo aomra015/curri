@@ -12,6 +12,14 @@ class Track < ActiveRecord::Base
     start_time && end_time
   end
 
+  def active?
+    if phasing?
+      (start_time <= Time.zone.now && end_time >= Time.zone.now) && published
+    else
+      false
+    end
+  end
+
   def ratings
     Rating.where({ checkpoint_id: checkpoints.pluck(:id) }).distinct_by_checkpoint_student
   end

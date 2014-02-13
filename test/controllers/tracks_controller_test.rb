@@ -53,6 +53,11 @@ class TracksControllerTest < ActionController::TestCase
     assert_template :new
   end
 
+  test "should create track with note" do
+    post :create, classroom_id: classrooms(:one), track: {name: "Test Track", note: "Notes can be found <a href='google.com'>here</a>"}
+    assert Track.last.note
+  end
+
   test "should correctly create time/date attributes" do
     post :create, classroom_id: classrooms(:one), track: {name: "Test Track", start_date: "2013-10-1", start_time: "6:30pm", end_date: "2013-10-1", end_time: "9:30pm"}
 
@@ -80,6 +85,11 @@ class TracksControllerTest < ActionController::TestCase
     assert_template :edit
   end
 
+  test "should add note to track" do
+    patch :update, classroom_id: classrooms(:one), id: tracks(:one), track: {note: "Notes can be found <a href='google.com'>here</a>"}
+    assert tracks(:one).reload.note
+  end
+
   test "should be able to unpublish a track" do
     patch :update, classroom_id: classrooms(:one), id: tracks(:one), track: {published: false }
 
@@ -104,5 +114,12 @@ class TracksControllerTest < ActionController::TestCase
       delete :destroy, classroom_id: classrooms(:one), id: tracks(:one)
     end
     assert_redirected_to classroom_tracks_path(assigns(:classroom))
+  end
+
+  test "should sort tracks" do
+    post :sort, classroom_id: classrooms(:one), track: [tracks(:two).id, tracks(:one)]
+
+    assert_equal 1, tracks(:two).reload.position
+    assert_equal 2, tracks(:one).reload.position
   end
 end
