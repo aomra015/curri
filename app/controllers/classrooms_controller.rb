@@ -14,10 +14,15 @@ class ClassroomsController < ApplicationController
   def create
     @classroom = Classroom.new(classroom_params)
     @classroom.teachers << @current_user.classrole
-    if @classroom.save
-      redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created."
-    else
-      render :new
+
+    respond_to do |format|
+      if @classroom.save
+        format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: @classroom }) }, status: :created, location: @classroom }
+        format.html { redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created." }
+      else
+        format.json { render json: @classroom.errors, status: :unprocessable_entity }
+        format.html { render :new }
+      end
     end
   end
 

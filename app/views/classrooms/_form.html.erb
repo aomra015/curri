@@ -1,4 +1,4 @@
-<%= form_for classroom do |f| %>
+<%= form_for classroom, remote: true do |f| %>
   <%= f.error_messages %>
   <div class="form-group">
     <%= f.label :name, 'New Classroom Name' %>

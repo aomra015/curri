@@ -18,6 +18,7 @@ group :development, :test do
   gem "mocha", :require => false
   gem "teaspoon"
   gem 'bullet'
+  gem 'selenium-webdriver'
 end
 
 group :development do

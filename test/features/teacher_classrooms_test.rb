@@ -9,8 +9,7 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
   end
 
   test "a teacher can add a classroom" do
-    click_link "add-classroom"
-    assert_equal new_classroom_path, current_path
+    click_link "Add Classroom"
 
     fill_in :classroom_name, with: "New classroom name"
     click_button 'Create Classroom'
@@ -48,7 +47,7 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
   end
 
   test "a teacher can join a classroom using token" do
-    click_link "add-classroom"
+    click_link "Join Classroom"
 
     fill_in :teacher_token, with: "ELtCtf7o"
     click_button 'Join Classroom'
