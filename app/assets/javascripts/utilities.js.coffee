@@ -14,4 +14,6 @@
 
 @Curri.form_validations = (resource, errors) ->
   for field, error of errors
-    $("##{resource}_#{field}").addClass('error').before(error)
+    $('.error-message').remove()
+    $error = $('<span>').addClass('error-message').text(error)
+    $("##{resource}_#{field}").addClass('error').before($error)

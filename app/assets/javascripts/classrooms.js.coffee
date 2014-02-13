@@ -24,3 +24,10 @@ $ ->
   $('#new_classroom').on "ajax:error", (e, xhr, status, error) ->
     Curri.form_validations('classroom', JSON.parse(xhr.responseText))
 
+  $('#join_classroom').on "ajax:success", (e, data, status, xhr) ->
+    $.modal.close()
+    $('.grid-unit').last().after($(data.partial).fadeIn('slow'))
+
+  $('#join_classroom').on "ajax:error", (e, xhr, status, error) ->
+    Curri.form_validations('teacher', {token: xhr.responseText})
+

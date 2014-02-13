@@ -28,19 +28,24 @@ class ClassroomsController < ApplicationController
 
   def join
     classroom = Classroom.find_by(teacher_token: params[:teacher_token])
-
-    if classroom && @current_user.classrooms.exclude?(classroom)
-      @current_user.classrooms << classroom
-      redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher."
-    else
-      if @current_user.classrooms.include?(classroom)
-        flash.now.alert = 'You have already used this token'
+    respond_to do |format|
+      if classroom && @current_user.classrooms.exclude?(classroom)
+        @current_user.classrooms << classroom
+        format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: classroom }) }, status: :created, location: classroom }
+        format.html { redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher." }
       else
-        flash.now.alert = 'Invalid Token'
+        if @current_user.classrooms.include?(classroom)
+          message = 'You have already used this token'
+        else
+          message = 'Invalid Token'
+        end
+        format.json { render json: message, status: :unprocessable_entity }
+        format.html {
+          @classroom = Classroom.new
+          flash.now.alert = message
+          render :new
+        }
       end
-
-      @classroom = Classroom.new
-      render :new
     end
   end
 
