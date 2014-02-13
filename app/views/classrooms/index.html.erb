@@ -11,13 +11,11 @@
     <a href="#join-classroom" rel="modal:open" class="open-modal">Join Classroom</a>
 
     <div id="new-classroom" class="modal">
-      <%= render partial: 'form', locals: {classroom: Classroom.new} %></div>
-      <a href="#close" rel="modal:close">Close</a>
+      <%= render partial: 'form', locals: {classroom: Classroom.new} %>
     </div>
 
     <div id="join-classroom" class="modal">
       <%= render 'join_classroom' %>
-      <a href="#close" rel="modal:close">Close</a>
     </div>
   <% end %>
 </div>
