@@ -17,7 +17,7 @@
           <ul>
             <% @classroom.tracks.each do |track| %>
               <li class="sidebar-link">
-                <div class="row">
+                <div class="row <%= 'highlight' if track == @track %>">
                 <%= link_to track.name, classroom_track_analytics_path(@classroom, track) %>
                 </div>
               </li>

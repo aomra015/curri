@@ -100,7 +100,14 @@ a.selected, a.selected:hover {
 .nav-wordmark {
   background-image: image-url('curri-icons.svg');
 }
-
+.nav-gravatar {
+  width: 34px;
+  height: 34px;
+  position: absolute;
+  top: 13px;
+  left: 18px;
+  @include border-radius(30px);
+}
 .nav-classrooms,
 .nav-tracks,
 .nav-analytics,

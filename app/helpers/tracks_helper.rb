@@ -10,8 +10,8 @@ module TracksHelper
 
   def display_start_time(track)
     if track.start_time
-      @content = content_tag(:span, "Track start: ", class: 'strong')
-      @content << content_tag(:span, "#{track.start_time.strftime("%l:%M%P, %e %b ’%y")}")
+      @content = content_tag(:span, "Start: ", class: 'strong')
+      @content << content_tag(:span, "#{track.start_time.strftime("%a %l:%M %P (%e %b ’%y)")}")
     else
       content_tag(:span, "Start time not set", class: 'unpublished-text')
     end
@@ -19,8 +19,8 @@ module TracksHelper
 
   def display_end_time(track)
     if track.end_time
-      @content = content_tag(:span, "Track end: ", class: 'strong')
-      @content << content_tag(:span, "#{track.end_time.strftime("%l:%M%P, %e %b ’%y")}")
+      @content = content_tag(:span, "End: ", class: 'strong')
+      @content << content_tag(:span, "#{track.end_time.strftime("%a %l:%M %P (%e %b ’%y)")}")
     else
       content_tag(:span, "End time not set", class: 'unpublished-text')
     end
@@ -29,5 +29,11 @@ module TracksHelper
   def start_stop_icons(timestatus, published)
     pubstatus = "-unpublished" unless published
     content_tag(:span, "", class: "tracks-icons #{timestatus}-icon#{pubstatus}")
+  end
+
+  def active_track?(track)
+    if track.phasing?
+      (track.start_time <= Time.zone.now && track.end_time >= Time.zone.now) && track.published
+    end
   end
 end

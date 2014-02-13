@@ -1,8 +1,8 @@
 @Curri.MobileSidebar =
   init: ->
+    @hideLinks()
     @buildSelector()
     @buildOptions()
-    @hideLinks()
     @onSubmit()
 
   buildSelector: ->
@@ -16,9 +16,10 @@
   buildOptions: ->
     $('#sidebar-links a').each ->
       el = $(this)
+      highlight = el.closest('.row').hasClass('highlight')
       $("<option />", {
            "value"   : el.attr("href"),
-           "text"    : el.text()
+           "text"    : if highlight then '» ' + el.text() else el.text()
        }).appendTo("#sidebar-links select")
 
   hideLinks: ->

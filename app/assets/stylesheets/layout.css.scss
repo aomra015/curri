@@ -226,6 +226,14 @@ body.nav-open .main {
     background: lighten($grey-lt, 10%);
     }
   }
+  .highlight {
+    font-weight: 700;
+    background: lighten($grey-lt, 10%);
+    a:hover {
+      color: lighten($color-main, 25%);
+      cursor: default;
+    }
+  }
   a {
   display: block;
   padding: 10px 0;

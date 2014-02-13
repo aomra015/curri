@@ -11,6 +11,7 @@ Curri::Application.routes.draw do
     # get 'requesters', to: 'requesters#index'
     # patch 'requesters/reset_status', to: 'requesters#reset_status', as: "reset_status"
     resources :tracks do
+      post 'sort', on: :collection
       get 'analytics', to: 'analytics#show'
       resources :ratings, only: [:create]
       resources :checkpoints, except: [:index, :show] do

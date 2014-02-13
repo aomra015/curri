@@ -1,9 +1,10 @@
   <div class="grid-unit wide">
     <h2><%= @track.name %>
       <% if current_user.teacher? && !@track.published %>
-        <span class="unpublished-badge">
-          <%= 'Unpublished' unless @track.published %>
-        </span>
+        <span class="badge unpublished"><%= 'Unpublished' unless @track.published %></span>
+      <% end %>
+      <% if active_track?(@track) %>
+        <span class="badge active">Active</span>
       <% end %>
     </h2>
     <h6 class="subtitle"><%= @classroom.name %></h6>
@@ -17,12 +18,20 @@
     <% end %>
 </div>
 <div class="wrapper">
-  <div class="grid-unit whole">
+  <div class="grid-unit wide">
     <div class="track-times">
       <div><%= display_start_time(@track) %></div>
       <div><%= display_end_time(@track) %></div>
     </div>
+    <div class="track-note" <%= 'style=display:none' unless @track.note? %>>
+      <% if @track.note? %>
+        <h6>Track Note</h6>
+        <%= @track.note.html_safe%>
+      <% end %>
+    </div>
   </div>
+</div>
+<div class="wrapper">
   <div class="grid-unit narrow pull-right sidebar">
     <div class="content">
       <h4 class="unit-header">All Tracks</h4>
@@ -30,7 +39,7 @@
         <ul>
           <% @tracks.each do |track| %>
             <li class="sidebar-link">
-              <div class="row">
+              <div class="row <%= 'highlight' if track == @track %>">
               <%= link_to track.name, classroom_track_path(@classroom, track) %>
               </div>
             </li>
@@ -51,6 +60,7 @@
     </div>
   </div>
 </div>
+
 <% provide(:title, @track.name) %>
 
 <% if @current_user.student? %>

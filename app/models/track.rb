@@ -3,7 +3,8 @@ class Track < ActiveRecord::Base
   has_many :checkpoints, -> { order("position ASC") }
   validates :name, presence: true
 
-  default_scope { order(id: :asc) }
+  acts_as_list
+  default_scope { order(position: :asc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
