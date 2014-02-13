@@ -22,4 +22,12 @@ namespace :curri do
     end
   end
 
+  desc "Add authtokens to existing Users"
+  task user_authtokens: :environment do
+    User.all.find_each do |user|
+      user.generate_token(:auth_token)
+      user.save
+    end
+  end
+
 end
