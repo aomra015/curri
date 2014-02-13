@@ -64,97 +64,100 @@ def addStatsCourse(teacher_email, student_emails)
 
   myteacher = User.find_by(email: teacher_email)
   teacher_role = myteacher.classrole
-  add_second_sample_classroom(teacher_role)
-  default_classroom = teacher_role.classrooms.find_by(name: "Introduction to Statistics")
-  track_1 = default_classroom.tracks.find_by(name: "Track 1: Introduction and Terminology")
-  track_1_checkpoints = track_1.checkpoints
-  track_2 = default_classroom.tracks.find_by(name: "Track 2: Visualizing data; Mean, Median and Mode")
-  track_2_checkpoints = track_2.checkpoints
+  classroom_already_there = teacher_role.classrooms.find_by(name: "Introduction to Statistics")
+  unless classroom_already_there
+    add_second_sample_classroom(teacher_role)
+    default_classroom = teacher_role.classrooms.find_by(name: "Introduction to Statistics")
+    track_1 = default_classroom.tracks.find_by(name: "Track 1: Introduction and Terminology")
+    track_1_checkpoints = track_1.checkpoints
+    track_2 = default_classroom.tracks.find_by(name: "Track 2: Visualizing data; Mean, Median and Mode")
+    track_2_checkpoints = track_2.checkpoints
 
-  students = User.all.where(email: student_emails)
+    students = User.all.where(email: student_emails)
 
-  num_students = students.length
-  student_roles = []
-  num_students.times {|i| student_roles << students[i].classrole }
+    num_students = students.length
+    student_roles = []
+    num_students.times {|i| student_roles << students[i].classrole }
 
-  myinvitations = []
-  num_students.times {|i| myinvitations << Invitation.create(student: student_roles[i],  classroom: default_classroom, token: "esteem", email: student_emails[i]) }
+    myinvitations = []
+    num_students.times {|i| myinvitations << Invitation.create(student: student_roles[i],  classroom: default_classroom, token: "esteem", email: student_emails[i]) }
 
-  mydates = [Time.zone.parse("2014-1-20 6pm"), Time.zone.parse("2014-1-22 7pm"), Time.zone.parse("2014-1-23 1pm")]
-  mydates2 = [Time.zone.parse("2014-1-21 6pm"), Time.zone.parse("2014-1-23 7pm"), Time.zone.parse("2014-1-24 1pm")]
-  track_1.created_at = Time.zone.parse("2014-1-20 2pm")
-  track_1.start_time = Time.zone.parse("2014-1-22 6pm")
-  track_1.end_time = Time.zone.parse("2014-1-22 8pm")
-  track_1.save
-  track_2.created_at = Time.zone.parse("2014-1-20 3pm")
-  track_2.start_time = Time.zone.parse("2014-1-23 5pm")
-  track_2.end_time = Time.zone.parse("2014-1-23 8pm")
-  track_2.save
+    mydates = [Time.zone.parse("2014-1-20 6pm"), Time.zone.parse("2014-1-22 7pm"), Time.zone.parse("2014-1-23 1pm")]
+    mydates2 = [Time.zone.parse("2014-1-21 6pm"), Time.zone.parse("2014-1-23 7pm"), Time.zone.parse("2014-1-24 1pm")]
+    track_1.created_at = Time.zone.parse("2014-1-20 2pm")
+    track_1.start_time = Time.zone.parse("2014-1-22 6pm")
+    track_1.end_time = Time.zone.parse("2014-1-22 8pm")
+    track_1.save
+    track_2.created_at = Time.zone.parse("2014-1-20 3pm")
+    track_2.start_time = Time.zone.parse("2014-1-23 5pm")
+    track_2.end_time = Time.zone.parse("2014-1-23 8pm")
+    track_2.save
 
-  # 3D ratings array holds n (10-11) ratings per student (up to 8) per date (3)
-  # Rating creation checks for nil score entries and if so doesn't create rating
-  myscores = [[[]]]
-  myscores[0] = [ [  1,  0,  1,  1,  0,  0,nil,nil,nil,nil, 1],
-                   [  1,  0,  1,nil,nil,nil,nil,  0,  1,  1, 0],
-                   [  0,  1,  0,  1,  0,  1,  0,  1,  1,  1, 0],
-                   [nil,nil,nil,nil,nil,  0,  0,  0,  0,  0, 1],
-                   [  1,  0,  1,  1,  0,  0,nil,nil,  1,nil, nil],
-                   [  0,  1,  0,nil,nil,nil,nil,  0,  1,  1, nil],
-                   [  1,  0,  1,  0,  1,  0,  0,  nil,1,  1, 0],
-                   [  1,nil,1,nil,nil,  1,  0,  0,  0,  1, 0]]
-  myscores[1] = [ [  2,  0,  1,  1,  2,  0,nil,nil,1, 2, 1],
-                   [  1,  1,  1, 2,nil,nil, 2,  0,  1,  1, 0],
-                   [  1,  1,  1,  2,  0,  1,  2,  1,  2,  1, 1],
-                   [  1,  1,  1,  1,  1,  0,  0,  0,  0,  0, 1],
-                   [  1,  1,  1,  1,  1,  1,  2,  2,  1,  2, nil],
-                   [  1,  2,  1,  1,  1,  1,  1,  1,  1,  1, nil],
-                   [  1,  0,  1,  0,  1,  0,  0,  nil,1,  1, 0],
-                   [  2,nil,1,nil,nil,  1,  0,  0,  0,  1, 0]]
-  myscores[2] = [ [  nil,  2,  2,  2,  nil,  2,nil,nil,2, nil, 2],
-                   [  2,  2,  2, nil ,  1,  1, 2,  1,  2,  1, 1],
-                   [  2,  2,  1,  nil,  1,  2,  nil,  2,  nil,  1, 2],
-                   [  2,  2,  1,  2,  2,  1,  1,  1,  1,  1, 1],
-                   [  2,  2,  2,  2,  2,  1,  2,  2,  1,  2, 1],
-                   [  1,  2,  2,  2,  2,  2,  2,  1,  1,  1, 1],
-                   [  1,  2,  2,  2,  2,  2,  2,  2,2,  1, 1],
-                   [  2,  2,  1,  2,  2,  1,  1,  1,  1,  2, 2]]
-  num_ratings = myscores[0][0].length
+    # 3D ratings array holds n (10-11) ratings per student (up to 8) per date (3)
+    # Rating creation checks for nil score entries and if so doesn't create rating
+    myscores = [[[]]]
+    myscores[0] = [ [  1,  0,  1,  1,  0,  0,nil,nil,nil,nil, 1],
+                     [  1,  0,  1,nil,nil,nil,nil,  0,  1,  1, 0],
+                     [  0,  1,  0,  1,  0,  1,  0,  1,  1,  1, 0],
+                     [nil,nil,nil,nil,nil,  0,  0,  0,  0,  0, 1],
+                     [  1,  0,  1,  1,  0,  0,nil,nil,  1,nil, nil],
+                     [  0,  1,  0,nil,nil,nil,nil,  0,  1,  1, nil],
+                     [  1,  0,  1,  0,  1,  0,  0,  nil,1,  1, 0],
+                     [  1,nil,1,nil,nil,  1,  0,  0,  0,  1, 0]]
+    myscores[1] = [ [  2,  0,  1,  1,  2,  0,nil,nil,1, 2, 1],
+                     [  1,  1,  1, 2,nil,nil, 2,  0,  1,  1, 0],
+                     [  1,  1,  1,  2,  0,  1,  2,  1,  2,  1, 1],
+                     [  1,  1,  1,  1,  1,  0,  0,  0,  0,  0, 1],
+                     [  1,  1,  1,  1,  1,  1,  2,  2,  1,  2, nil],
+                     [  1,  2,  1,  1,  1,  1,  1,  1,  1,  1, nil],
+                     [  1,  0,  1,  0,  1,  0,  0,  nil,1,  1, 0],
+                     [  2,nil,1,nil,nil,  1,  0,  0,  0,  1, 0]]
+    myscores[2] = [ [  nil,  2,  2,  2,  nil,  2,nil,nil,2, nil, 2],
+                     [  2,  2,  2, nil ,  1,  1, 2,  1,  2,  1, 1],
+                     [  2,  2,  1,  nil,  1,  2,  nil,  2,  nil,  1, 2],
+                     [  2,  2,  1,  2,  2,  1,  1,  1,  1,  1, 1],
+                     [  2,  2,  2,  2,  2,  1,  2,  2,  1,  2, 1],
+                     [  1,  2,  2,  2,  2,  2,  2,  1,  1,  1, 1],
+                     [  1,  2,  2,  2,  2,  2,  2,  2,2,  1, 1],
+                     [  2,  2,  1,  2,  2,  1,  1,  1,  1,  2, 2]]
+    num_ratings = myscores[0][0].length
 
-  num_ratings.times {|i|
-    num_students.times {|j|
-      mydates.length.times {|k|
-       student_roles[j].ratings.create(checkpoint: track_1_checkpoints[i], score: myscores[k][j][i], created_at: mydates[k]) if myscores[k][j][i]}}}
+    num_ratings.times {|i|
+      num_students.times {|j|
+        mydates.length.times {|k|
+         student_roles[j].ratings.create(checkpoint: track_1_checkpoints[i], score: myscores[k][j][i], created_at: mydates[k]) if myscores[k][j][i]}}}
 
-  myscores[0] = [ [  0,  1,  1,  0,  nil,  1,nil,nil,nil,1],
-                   [  1,  1,  0,nil,nil, 0,nil,  0,  nil,  1],
-                   [  0,  0,  0,  1,  1,  0,  0,  1,  0,  1],
-                   [nil,0,nil,nil,nil,  0,  0,  nil,  0,  nil],
-                   [  0,  0,  1,  0,  0,  0,0,nil,  nil,nil],
-                   [  0,  0,  0,  0,nil,nil, 0,  0,  1,  1],
-                   [  0,  0,  nil,  0,  1,  0,  0,  nil,0,  1],
-                   [  0,  0, 1,nil ,0,  1,  0,  nil,  0,  0]]
-  myscores[1] = [ [  1,  2,  2,  0,   1,  1,  1,  1,  1,2],
-                   [  nil,  1,  1,  1,  1, 0,  1,  0,    2,  1],
-                   [  0,  1,  2,  2,  1,  1,  1,  1,  2,  1],
-                   [  1, 1,  1,  2,  1,   1,   2,    1,   1, 0],
-                   [  1,  1,  2,  1,  1,  0, 0,2,  2, 1],
-                   [  0,  1,  1,  1, 2, 2, 0,  1,  2,  1],
-                   [  2,  1,  1,  1,  1,  2,  1,  1,0,  1],
-                   [  0,  1, 1, 2 ,1,  2,  0,  2,  1,  1]]
-  myscores[2] = [ [  2,  nil,  nil,  1,   2,  2,  2,  1,  2,nil],
-                   [  1,  1,  2,  2,  2, 0,  1,  2,    2,  2],
-                   [  2,  1,  nil,  nil,  1,  2,  1,  2,  nil,  12],
-                   [  1, 2,  1,  2,  1,   2,   2,    1,   1, 2],
-                   [  2,  1,  2,  1,  1,  1, 1,nil,  nil, 1],
-                   [  0,  2,  2,  2, 2, 2, 1,  1,  2,  1],
-                   [  2,  1,  2,  2,  2,  2,  1,  1,1,  1],
-                   [  1,  1, 2, 2 ,2,  2,  2,  2,  1,  1]]
-  num_ratings = myscores[0][0].length
+    myscores[0] = [ [  0,  1,  1,  0,  nil,  1,nil,nil,nil,1],
+                     [  1,  1,  0,nil,nil, 0,nil,  0,  nil,  1],
+                     [  0,  0,  0,  1,  1,  0,  0,  1,  0,  1],
+                     [nil,0,nil,nil,nil,  0,  0,  nil,  0,  nil],
+                     [  0,  0,  1,  0,  0,  0,0,nil,  nil,nil],
+                     [  0,  0,  0,  0,nil,nil, 0,  0,  1,  1],
+                     [  0,  0,  nil,  0,  1,  0,  0,  nil,0,  1],
+                     [  0,  0, 1,nil ,0,  1,  0,  nil,  0,  0]]
+    myscores[1] = [ [  1,  2,  2,  0,   1,  1,  1,  1,  1,2],
+                     [  nil,  1,  1,  1,  1, 0,  1,  0,    2,  1],
+                     [  0,  1,  2,  2,  1,  1,  1,  1,  2,  1],
+                     [  1, 1,  1,  2,  1,   1,   2,    1,   1, 0],
+                     [  1,  1,  2,  1,  1,  0, 0,2,  2, 1],
+                     [  0,  1,  1,  1, 2, 2, 0,  1,  2,  1],
+                     [  2,  1,  1,  1,  1,  2,  1,  1,0,  1],
+                     [  0,  1, 1, 2 ,1,  2,  0,  2,  1,  1]]
+    myscores[2] = [ [  2,  nil,  nil,  1,   2,  2,  2,  1,  2,nil],
+                     [  1,  1,  2,  2,  2, 0,  1,  2,    2,  2],
+                     [  2,  1,  nil,  nil,  1,  2,  1,  2,  nil,  12],
+                     [  1, 2,  1,  2,  1,   2,   2,    1,   1, 2],
+                     [  2,  1,  2,  1,  1,  1, 1,nil,  nil, 1],
+                     [  0,  2,  2,  2, 2, 2, 1,  1,  2,  1],
+                     [  2,  1,  2,  2,  2,  2,  1,  1,1,  1],
+                     [  1,  1, 2, 2 ,2,  2,  2,  2,  1,  1]]
+    num_ratings = myscores[0][0].length
 
-  num_ratings.times {|i|
-    num_students.times {|j|
-      mydates.length.times {|k|
-       Student.find(students[j].classrole_id).ratings.create(checkpoint: track_2_checkpoints[i], score: myscores[k][j][i], created_at: mydates2[k]) if myscores[k][j][i]}}}
+    num_ratings.times {|i|
+      num_students.times {|j|
+        mydates.length.times {|k|
+         Student.find(students[j].classrole_id).ratings.create(checkpoint: track_2_checkpoints[i], score: myscores[k][j][i], created_at: mydates2[k]) if myscores[k][j][i]}}}
+  end
 end
 def add_second_sample_classroom(teacher)
   default_classroom = teacher.classrooms.create(name: "Introduction to Statistics")
@@ -192,5 +195,5 @@ make_accounts("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakem
 make_accounts("teacher@mail.com", ["student1@mail.com", "student2@mail.com", "student3@mail.com", "student4@mail.com",
   "student5@mail.com", "student6@mail.com", "student7@mail.com", "student8@mail.com"], "abcd")
 make_accounts("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"], "defg")
-# addStatsCourse("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakemail.com", "student3@fakemail.com", "student4@fakemail.com"])
-# addStatsCourse("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"])
+addStatsCourse("teacher1@fakemail.com", ["student1@fakemail.com", "student2@fakemail.com", "student3@fakemail.com", "student4@fakemail.com"])
+addStatsCourse("teacher1@mail.com", ["student_1@mail.com", "student_2@mail.com", "student_3@mail.com", "student_4@mail.com"])
