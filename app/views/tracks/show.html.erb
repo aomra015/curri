@@ -3,7 +3,7 @@
       <% if current_user.teacher? && !@track.published %>
         <span class="badge unpublished"><%= 'Unpublished' unless @track.published %></span>
       <% end %>
-      <% if active_track?(@track) %>
+      <% if @track.active? %>
         <span class="badge active">Active</span>
       <% end %>
     </h2>
