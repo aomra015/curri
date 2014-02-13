@@ -16,7 +16,7 @@ class RatingsControllerTest < ActionController::TestCase
 
   test "should create ratings with json request" do
     assert_difference 'Rating.count' do
-      post :create, format: 'json', classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
+      xhr :post, :create, format: :json, classroom_id: classrooms(:one), track_id: tracks(:one), checkpoint_id: checkpoints(:one).id, value: 0
     end
 
     response = JSON.parse(@response.body)
