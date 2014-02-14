@@ -3,7 +3,7 @@ Curri::Application.routes.draw do
   mount StyleGuide::Engine => "/style-guide" if Rails.env.development?
   root to: 'classrooms#index'
 
-  resources :classrooms, except: [:show] do
+  resources :classrooms, except: [:show, :new] do
     post 'join', on: :collection
     resources :requesters, only: [:index, :show, :update] do
       patch 'remove', on: :member

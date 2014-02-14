@@ -7,10 +7,6 @@ class ClassroomsController < ApplicationController
     @classrooms = @current_user.classrooms
   end
 
-  def new
-    @classroom = Classroom.new
-  end
-
   def create
     @classroom = Classroom.new(classroom_params)
     @classroom.teachers << @current_user.classrole
