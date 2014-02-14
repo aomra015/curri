@@ -3,7 +3,8 @@ class Checkpoint < ActiveRecord::Base
   acts_as_list scope: :track
   has_many :ratings
 
-  validates :expectation, :success_criteria, presence: true
+  validates :expectation, presence: {message: "You must enter an expectation!"}
+  validates :success_criteria, presence: {message: "You must enter a success criteria!"}
   validates_length_of :expectation, :maximum => 50
   validates_length_of :success_criteria, :maximum => 250
 

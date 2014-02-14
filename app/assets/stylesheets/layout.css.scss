@@ -253,3 +253,13 @@ body.nav-open .main {
 .classroom-unit {
   min-height: 185px;
 }
+
+//jQuery modal override
+.modal {
+  width: 300px;
+}
+@include media-query(small) {
+  .modal {
+    width: 400px;
+  }
+}

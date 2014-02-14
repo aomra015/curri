@@ -16,7 +16,7 @@
   $('.error-message').remove()
   for field, error of errors
     $input = $("##{resource}_#{field}")
-    $error = $('<span>').addClass('error-message').text(error)
+    $error = $('<span>').addClass('error-message h6').text(error)
     $input.addClass('error').before($error)
 
 @Curri.clear_modal = ->
