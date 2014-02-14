@@ -28,7 +28,6 @@ class JSFeaturesTest < Capybara::Rails::TestCase
   end
 
   test "a teacher can add checkpoints to a track" do
-    Capybara.default_wait_time = 5
     click_link @classroom.name
 
     @track = tracks(:one)
@@ -40,6 +39,7 @@ class JSFeaturesTest < Capybara::Rails::TestCase
     fill_in :checkpoint_success_criteria, with: 'New success criteria'
     click_button 'Create Checkpoint'
 
+    wait_for_ajax
     checkpoint = Checkpoint.last
     within "#checkpoint_#{checkpoint.id}" do
         assert page.has_content?('New expectation')
