@@ -3,6 +3,14 @@
     $("#checkpoint_#{id}").fadeOut 'slow', ->
       $(this).remove()
 
+  add: (data) ->
+    Curri.clear_modal()
+    $('.checkpoints').append($(data.partial).fadeIn('slow'))
+    analytics.track "Create checkpoint",
+      classroom_id: data.classroom_id
+      track_id: data.track_id
+      checkpoint_id: data.checkpoint_id
+
   showCriteria: (el) ->
     el.closest('.row').find('.success-criteria').toggle()
 

@@ -5,7 +5,7 @@
 </div>
 <div class="wrapper">
   <div class="grid-unit wide">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: {checkpoint: @checkpoint} %>
   </div>
 </div>
 <% provide(:title, 'Add Checkpoint') %>

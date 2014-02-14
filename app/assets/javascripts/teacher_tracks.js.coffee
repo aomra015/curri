@@ -4,11 +4,16 @@ $ ->
   if Curri.user.classrole_type == 'Teacher'
     if $('#track').length
       # Delete Checkpoints
-      $('.expectation-actions .trash-icon').on "ajax:success", (e, data)->
+      $('.checkpoints').on "ajax:success", '.trash-icon', (e, data)->
         Curri.Checkpoint.remove(data.id)
 
       # Checkpoints sort
       Curri.Checkpoint.sortable()
+
+      $('#new_checkpoint').on "ajax:success", (e, data, status, xhr) ->
+        Curri.Checkpoint.add(data)
+      $('#new_checkpoint').on "ajax:error", (e, xhr, status, error) ->
+        Curri.form_validations('checkpoint', JSON.parse(xhr.responseText))
 
     if $('.tracks').length
       $('.tracks').sortable

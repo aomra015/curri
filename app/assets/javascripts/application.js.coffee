@@ -58,3 +58,8 @@ $ ->
 
     analytics.identify(Curri.user.id, userData)
     analytics.trackLink($('#logout-link'), "Sign out")
+
+  $('a.open-modal').click ->
+    $('.error-message').remove()
+    $(this).modal(fadeDuration: 250)
+    return false

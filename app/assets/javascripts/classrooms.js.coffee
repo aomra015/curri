@@ -11,22 +11,16 @@ $ ->
   if $('#requesters_link').length
     Curri.RequestsNumber.poll()
 
-  $('a.open-modal').click ->
-    $('input[type="text"]').each ->
-      $(this).val('')
-    $(this).modal(fadeDuration: 250)
-    return false
-
   if $('#classrooms').length && Curri.user.classrole_type == 'Teacher'
     $('#new_classroom').on "ajax:success", (e, data, status, xhr) ->
-      $.modal.close()
+      Curri.clear_modal()
       $('.grid-unit').last().after($(data.partial).fadeIn('slow'))
 
     $('#new_classroom').on "ajax:error", (e, xhr, status, error) ->
       Curri.form_validations('classroom', JSON.parse(xhr.responseText))
 
     $('#join_classroom').on "ajax:success", (e, data, status, xhr) ->
-      $.modal.close()
+      Curri.clear_modal()
       $('.grid-unit').last().after($(data.partial).fadeIn('slow'))
 
     $('#join_classroom').on "ajax:error", (e, xhr, status, error) ->
