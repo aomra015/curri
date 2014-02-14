@@ -12,7 +12,9 @@
 </div>
 <div class="wrapper">
   <!-- Tracks List -->
-  <%= render @tracks %>
+  <div class="tracks" data-url="<%= sort_classroom_tracks_path(@classroom) %>">
+    <%= render @tracks %>
+  </div>
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
     <div class="grid-unit narrow add-unit">

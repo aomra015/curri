@@ -3,12 +3,21 @@ class Track < ActiveRecord::Base
   has_many :checkpoints, -> { order("position ASC") }
   validates :name, presence: true
 
-  default_scope { order(id: :asc) }
+  acts_as_list
+  default_scope { order(position: :asc) }
   scope :published, -> { where(published: true) }
   scope :unpublished, -> { where(published: false) }
 
   def phasing?
     start_time && end_time
+  end
+
+  def active?
+    if phasing?
+      (start_time <= Time.zone.now && end_time >= Time.zone.now) && published
+    else
+      false
+    end
   end
 
   def ratings

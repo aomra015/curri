@@ -7,4 +7,27 @@ namespace :curri do
     end
   end
 
+  desc "Add position value to older tracks"
+  task track_positions: :environment do
+    Track.all.find_each do |track|
+      track.position = track.id
+      track.save
+    end
+  end
+
+  desc "Add gravatars to existing Users"
+  task add_gravatars: :environment do
+    User.all.find_each do |user|
+      user.save
+    end
+  end
+
+  desc "Add authtokens to existing Users"
+  task user_authtokens: :environment do
+    User.all.find_each do |user|
+      user.generate_token(:auth_token)
+      user.save
+    end
+  end
+
 end

@@ -3,32 +3,29 @@
 ::-webkit-input-placeholder,
 :-moz-placeholder, // Firefox 18-
 ::-moz-placeholder, //* Firefox 19+
-:-ms-input-placeholder {  
-   color: lighten($grey-md, 25%);  
+:-ms-input-placeholder {
+   color: lighten($grey-md, 25%);
 }
 
 .form-group {
   margin-bottom: 20px;
   position: relative;
-  & > input {
+  input {
     margin-top: 4px;
     margin-bottom: 4px;
   }
-  // .form-input-half:first-of-type {
-  //   margin-right: 2%;
-  // }
 }
 
 .form-group {
-  & > input[type="submit"] {
+  input[type="submit"] {
   margin-top: 5px;
   }
-  & > input[type="checkbox"] {
+  input[type="checkbox"] {
     display: inline-block;
     margin-right: 10px;
   }
-  & > input[type="text"],
-  & > input[type="textarea"] {
+  input[type="text"],
+  input[type="textarea"] {
   -webkit-appearance: none;
   }
 }
@@ -48,7 +45,6 @@
   border-radius: $global-radius;
   &:focus {
     border-color: $color-primary;
-    border-width: 2px;
     outline: 0;
     color: $grey-md;
   }
@@ -95,7 +91,7 @@
 }
 
 .classroom-option {
-  margin-top: 15px;  
+  margin-top: 15px;
 }
 
 // Table
@@ -156,5 +152,4 @@ tbody tr {
   @include border-radius(5px);
   border: 2px solid $color-success;
   background: lighten($color-success, 25%);
-
 }

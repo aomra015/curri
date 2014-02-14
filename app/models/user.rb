@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   delegate :needs_help?, to: :classrole
 
   before_create { generate_token(:auth_token) }
+  before_save :set_gravatar
 
   def teacher?
     classrole_type == 'Teacher'
@@ -35,5 +36,11 @@ class User < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
+  end
+
+  def set_gravatar
+    email_address = self.email.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    self.gravatar = "http://www.gravatar.com/avatar/#{hash}"
   end
 end
