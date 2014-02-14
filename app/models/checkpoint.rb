@@ -5,7 +5,7 @@ class Checkpoint < ActiveRecord::Base
 
   validates :expectation, :success_criteria, presence: true
   validates_length_of :expectation, :maximum => 50
-  validates_length_of :success_criteria, :maximum => 300
+  validates_length_of :success_criteria, :maximum => 250
 
   def latest_student_score(student)
     ratings.where(student_id: student.id).last.try(:score)
