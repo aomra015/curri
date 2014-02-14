@@ -5,10 +5,6 @@ class CheckpointsController < ApplicationController
   before_action :get_track
   before_action :get_checkpoint, only: [:edit, :update, :destroy]
 
-  def new
-    @checkpoint = Checkpoint.new
-  end
-
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
 
