@@ -14,10 +14,8 @@ class ClassroomsController < ApplicationController
     respond_to do |format|
       if @classroom.save
         format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: @classroom }) }, status: :created, location: @classroom }
-        format.html { redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created." }
       else
         format.json { render json: @classroom.errors, status: :unprocessable_entity }
-        format.html { render :new }
       end
     end
   end
@@ -28,7 +26,6 @@ class ClassroomsController < ApplicationController
       if classroom && @current_user.classrooms.exclude?(classroom)
         @current_user.classrooms << classroom
         format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: classroom }) }, status: :created, location: classroom }
-        format.html { redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher." }
       else
         if @current_user.classrooms.include?(classroom)
           message = 'You have already used this token'
@@ -36,11 +33,6 @@ class ClassroomsController < ApplicationController
           message = 'Invalid Token'
         end
         format.json { render json: message, status: :unprocessable_entity }
-        format.html {
-          @classroom = Classroom.new
-          flash.now.alert = message
-          render :new
-        }
       end
     end
   end
