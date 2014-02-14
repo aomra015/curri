@@ -14,6 +14,7 @@ class JSFeaturesTest < Capybara::Rails::TestCase
 
     fill_in :classroom_name, with: "New classroom name"
     click_button 'Create Classroom'
+    wait_for_ajax
 
     assert page.has_content?('New classroom name')
   end
@@ -23,6 +24,7 @@ class JSFeaturesTest < Capybara::Rails::TestCase
 
     fill_in :teacher_token, with: "ELtCtf7o"
     click_button 'Join Classroom'
+    wait_for_ajax
 
     assert page.has_content?('New Classroom with token')
   end
@@ -38,8 +40,8 @@ class JSFeaturesTest < Capybara::Rails::TestCase
     fill_in :checkpoint_expectation, with: 'New expectation'
     fill_in :checkpoint_success_criteria, with: 'New success criteria'
     click_button 'Create Checkpoint'
-
     wait_for_ajax
+
     checkpoint = Checkpoint.last
     within "#checkpoint_#{checkpoint.id}" do
         assert page.has_content?('New expectation')
