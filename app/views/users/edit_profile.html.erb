@@ -5,17 +5,17 @@
   <div class="grid-unit wide">
     <%= form_for @current_user, url: update_profile_path , class: 'form-horizontal' do |f| %>
     <%= f.error_messages %>
-      <div class="form-group">
+      <div class="form-group form-input-required">
         <%= f.label :email %>
         <%= f.email_field :email, class: "form-input" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group form-input-required">
         <%= f.label :first_name %>
         <%= f.text_field :first_name, class: "form-input" %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group form-input-required">
         <%= f.label :last_name %>
         <%= f.text_field :last_name, class: "form-input" %>
       </div>
