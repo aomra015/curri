@@ -67,6 +67,9 @@ class TracksController < ApplicationController
   def parse_date_time
     @track.start_time = Time.zone.parse("#{params[:track][:start_date]} #{params[:track][:start_time]}")
     @track.end_time = Time.zone.parse("#{params[:track][:end_date]} #{params[:track][:end_time]}")
+    if params[:track][:end_date] && params[:track][:end_time].nil?
+      @track.end_time = @track.end_time.end_of_day
+    end
   end
 
 end

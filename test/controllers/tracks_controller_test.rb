@@ -61,8 +61,14 @@ class TracksControllerTest < ActionController::TestCase
   test "should correctly create time/date attributes" do
     post :create, classroom_id: classrooms(:one), track: {name: "Test Track", start_date: "2013-10-1", start_time: "6:30pm", end_date: "2013-10-1", end_time: "9:30pm"}
 
-    assert_equal Time.zone.parse("2013-10-1 6:30pm"), Track.last.start_time
-    assert_equal Time.zone.parse('2013-10-1 9:30pm'), Track.last.end_time
+    assert_equal Time.zone.parse("2013-10-1 6:30pm").to_s, Track.last.start_time.to_s
+    assert_equal Time.zone.parse('2013-10-1 9:30pm').to_s, Track.last.end_time.to_s
+  end
+
+  test "should set end_time to end_of_day if no time is provided" do
+    post :create, classroom_id: classrooms(:one), track: {name: "Test Track", start_date: "2013-10-1", end_date: "2013-10-1" }
+
+    assert_equal Time.zone.parse('2013-10-1 11:59:59pm').to_s, Track.last.end_time.to_s
   end
 
   test "get edit track form" do
@@ -105,8 +111,8 @@ class TracksControllerTest < ActionController::TestCase
   test "should correctly update time/date attributes" do
     patch :update, classroom_id: classrooms(:one), id: tracks(:one), track: {start_date: "2013-08-10", start_time: "6:30pm", end_date: "2013-08-10", end_time: "11:30pm"}
 
-    assert_equal Time.zone.parse('2013-08-10 6:30pm'), tracks(:one).reload.start_time
-    assert_equal Time.zone.parse('2013-08-10 11:30pm'), tracks(:one).reload.end_time
+    assert_equal Time.zone.parse('2013-08-10 6:30pm').to_s, tracks(:one).reload.start_time.to_s
+    assert_equal Time.zone.parse('2013-08-10 11:30pm').to_s, tracks(:one).reload.end_time.to_s
   end
 
   test "delete track" do
