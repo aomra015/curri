@@ -1,7 +1,7 @@
 <h6 class="subtitle classroom-option">Create New Classroom</h6>
 <%= form_for classroom, remote: true do |f| %>
   <%= f.error_messages %>
-  <div class="form-group">
+  <div class="form-group form-input-required">
     <%= f.label :name, 'Classroom Name' %>
     <%= f.text_field :name, placeholder: "Enter classroom name", class: "form-input" %>
   </div>

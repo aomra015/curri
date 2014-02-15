@@ -1,11 +1,11 @@
 <%= form_for [@classroom, @track, checkpoint], remote: true do |f| %>
   <%= f.error_messages %>
-  <div class="form-group">
+  <div class="form-group form-input-required">
     <%= f.label :expectation %>
     <%= f.text_field :expectation, maxlength: "50", placeholder: 'Enter an Expectation Title. Maximum 50 characters.', class: "form-input" %>
   </div>
 
-  <div class="form-group">
+  <div class="form-group form-input-required">
     <%= f.label :success_criteria %>
     <%= f.text_area :success_criteria, rows: 2, maxlength: "250",placeholder: 'Enter Success Criteria for this expectation. Maximum 250 characters, but shorter is better!', class: "form-input"  %>
   </div>
