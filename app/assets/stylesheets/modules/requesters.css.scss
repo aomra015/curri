@@ -1,0 +1,9 @@
+@import 'globals/all';
+
+.requester {
+  img {
+    @include border-radius(30px);
+    display: inline-block;
+    margin-right: 20px;
+  }
+}
