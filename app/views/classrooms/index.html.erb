@@ -9,7 +9,8 @@
     </div>
 
     <div id="new-classroom" class="modal">
-      <%= render partial: 'form', locals: {classroom: Classroom.new} %>
+      <h6 class="subtitle classroom-option">Create New Classroom</h6>
+      <%= render partial: 'form', locals: {classroom: Classroom.new, remote: true, leave_link: false} %>
     </div>
 
     <div id="join-classroom" class="modal">
