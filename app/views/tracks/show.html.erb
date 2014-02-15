@@ -15,7 +15,7 @@
         <a href="#new-checkpoint" rel="modal:open" class="open-modal">Add Checkpoint</a>
         <div id="new-checkpoint" class="modal">
         <h6 class="subtitle">Add Checkpoint</h6>
-        <%= render partial: 'checkpoints/form', locals: {checkpoint: Checkpoint.new } %>
+        <%= render partial: 'checkpoints/form', locals: {checkpoint: Checkpoint.new, remote: true } %>
         </div>
         <%= link_to 'Edit Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
       </div>
