@@ -28,7 +28,7 @@ class ClassroomsController < ApplicationController
         format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: classroom }) }, status: :created, location: classroom }
       else
         if @current_user.classrooms.include?(classroom)
-          message = 'You have already used this token'
+          message = 'You are already in this classroom'
         else
           message = 'Invalid Token'
         end

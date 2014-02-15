@@ -104,7 +104,7 @@ class ClassroomsControllerTest < ActionController::TestCase
       xhr :post, :join, format: :json, teacher_token: classrooms(:one).teacher_token
     end
 
-    assert_equal 'You have already used this token', @response.body
+    assert_equal 'You are already in this classroom', @response.body
   end
 
 end

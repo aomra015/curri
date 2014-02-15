@@ -49,7 +49,7 @@ class RequestersController < ApplicationController
 
     respond_to do |format|
       format.json {
-        render json: { id: params[:id], classroom_id: data.classroom_id }
+        render json: { id: params[:id], classroom_id: @classroom.id }
       }
       format.html {
         flash[:notice] = "Student removed from queue."

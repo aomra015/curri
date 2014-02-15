@@ -10,6 +10,7 @@ class Invitation < ActiveRecord::Base
   scope :accepted, -> { where.not(student_id: nil) }
 
   delegate :full_name, to: :student, allow_nil: true
+  delegate :gravatar, to: :student
 
   def status
     student ? 'Accepted' : 'Pending'
