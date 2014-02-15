@@ -17,7 +17,7 @@
         <h6 class="subtitle">Add Checkpoint</h6>
         <%= render partial: 'checkpoints/form', locals: {checkpoint: Checkpoint.new } %>
         </div>
-        <%= link_to 'Manage Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
+        <%= link_to 'Edit Track', edit_classroom_track_path(@classroom, @track), id: 'manage-track' %>
       </div>
     <% end %>
 </div>

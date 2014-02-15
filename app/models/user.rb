@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   validates :email, presence: true
   validates :email, uniqueness: true
   validates :email, :email => true
-  validates :first_name, presence: true, if: :student?
-  validates :last_name, presence: true, if: :student?
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   has_secure_password
 
   delegate :classrooms, to: :classrole

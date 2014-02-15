@@ -8,6 +8,14 @@
     <%= f.email_field :email, class: "form-input" %>
   </div>
   <div class="form-group">
+    <label for="first_name"><%= label_tag "user[first_name]", 'First Name' %></label>
+    <%= text_field_tag "user[first_name]", nil, class: "form-input" %>
+  </div>
+  <div class="form-group">
+    <label for="last_name"><%= label_tag "user[last_name]", 'Last Name' %></label>
+    <%= text_field_tag "user[last_name]", nil, class: "form-input" %>
+  </div>
+  <div class="form-group">
     <label for="password"><%= label_tag :password %></label>
     <%= f.password_field :password, class: "form-input" %>
   </div>
