@@ -7,35 +7,33 @@ class ClassroomsController < ApplicationController
     @classrooms = @current_user.classrooms
   end
 
-  def new
-    @classroom = Classroom.new
-  end
-
   def create
     @classroom = Classroom.new(classroom_params)
     @classroom.teachers << @current_user.classrole
-    if @classroom.save
-      redirect_to classrooms_path, notice: "Your new classroom '#{@classroom.name}' has been created."
-    else
-      render :new
+
+    respond_to do |format|
+      if @classroom.save
+        format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: @classroom }) }, status: :created, location: @classroom }
+      else
+        format.json { render json: @classroom.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def join
     classroom = Classroom.find_by(teacher_token: params[:teacher_token])
-
-    if classroom && @current_user.classrooms.exclude?(classroom)
-      @current_user.classrooms << classroom
-      redirect_to classrooms_path, notice: "You have joined '#{classroom.name}' as a teacher."
-    else
-      if @current_user.classrooms.include?(classroom)
-        flash.now.alert = 'You have already used this token'
+    respond_to do |format|
+      if classroom && @current_user.classrooms.exclude?(classroom)
+        @current_user.classrooms << classroom
+        format.json { render json: { partial: render_to_string(partial: 'classroom.html', locals: { classroom: classroom }) }, status: :created, location: classroom }
       else
-        flash.now.alert = 'Invalid Token'
+        if @current_user.classrooms.include?(classroom)
+          message = 'You are already in this classroom'
+        else
+          message = 'Invalid Token'
+        end
+        format.json { render json: message, status: :unprocessable_entity }
       end
-
-      @classroom = Classroom.new
-      render :new
     end
   end
 

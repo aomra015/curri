@@ -22,6 +22,8 @@ class ActiveSupport::TestCase
   after do
     Bullet.perform_out_of_channel_notifications if Bullet.enable? && Bullet.notification?
     Bullet.end_request if Bullet.enable?
+
+    Capybara.current_driver = Capybara.default_driver
   end
 
   # Add more helper methods to be used by all tests here...
@@ -46,5 +48,14 @@ class ActiveSupport::TestCase
     fill_in :invitation_emails, with: student_emails
     click_button 'invite-button'
     Invitation.last
+  end
+
+  def wait_for_ajax
+    Timeout.timeout(Capybara.default_wait_time) do
+      loop do
+        active = page.evaluate_script('jQuery.active')
+        break if active == 0
+      end
+    end
   end
 end

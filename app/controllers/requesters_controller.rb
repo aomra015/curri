@@ -26,14 +26,14 @@ class RequestersController < ApplicationController
 
     if @requester.help
       message = "Your teacher was notified that you need help."
-      flash[:track] = { event_name: "Student Asked for Help" }
+      flash[:track] = { event_name: "Student Asked for Help", properties: {classroom_id: @classroom.id } }
     else
       message = "You were removed from the help queue."
     end
 
     respond_to do |format|
       format.json {
-        render json: { help: @requester.help, message: message }
+        render json: { help: @requester.help, message: message, classroom_id: @classroom.id }
       }
       format.html {
         flash[:notice] = message
@@ -49,11 +49,11 @@ class RequestersController < ApplicationController
 
     respond_to do |format|
       format.json {
-        render json: { id: params[:id] }
+        render json: { id: params[:id], classroom_id: @classroom.id }
       }
       format.html {
         flash[:notice] = "Student removed from queue."
-        flash[:track] = { event_name: "Teacher Answered Student" }
+        flash[:track] = { event_name: "Teacher Answered Student", properties: {classroom_id: @classroom.id } }
         redirect_to request.env['HTTP_REFERER'] ? :back : classrooms_path
       }
     end

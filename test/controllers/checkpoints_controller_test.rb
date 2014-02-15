@@ -22,25 +22,23 @@ class CheckpointsControllerTest < ActionController::TestCase
     }
   end
 
-  test "get new checkpoint form" do
-    get :new, classroom_id: classrooms(:one), track_id: tracks(:one)
-    assert assigns(:checkpoint)
-    assert :success
-  end
-
   test "should create checkpoint with valid data" do
     assert_difference 'Checkpoint.count' do
-      post :create, @params
+      @params[:format] = :json
+      xhr :post, :create, @params
     end
 
-    assert_redirected_to classroom_track_path(assigns(:classroom), assigns(:track))
+    response = JSON.parse(@response.body)
+    assert response["partial"]
   end
 
   test "should not create checkpoint with invalid data" do
+    @params[:format] = :json
     @params[:checkpoint][:success_criteria] = nil
-    post :create, @params
+    xhr :post, :create, @params
 
-    assert_template :new
+    response = JSON.parse(@response.body)
+    assert response["success_criteria"]
   end
 
   test "get edit checkpoint form" do

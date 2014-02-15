@@ -2,7 +2,7 @@
   <h3>Register as a Student</h3>
 </div>
 <p class="login-top">If you already have a student account then <%= link_to 'skip this step', students_login_path(@token) %> and join the class.</p>
-<%= form_tag students_create_path, class: "form-required" do %>
+<%= form_tag students_create_path, class: "form-required form-input-required" do %>
   <%= hidden_field_tag "user[token]", @token %>
   <div class="form-group">
     <label for="email"><%= label_tag "user[email]", 'Email Address' %></label>

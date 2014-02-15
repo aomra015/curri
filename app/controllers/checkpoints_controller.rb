@@ -5,18 +5,15 @@ class CheckpointsController < ApplicationController
   before_action :get_track
   before_action :get_checkpoint, only: [:edit, :update, :destroy]
 
-  def new
-    @checkpoint = Checkpoint.new
-  end
-
   def create
     @checkpoint = @track.checkpoints.build(checkpoint_params)
-    if @checkpoint.save
-      flash[:notice] = "Checkpoint has been created"
-      flash[:track] = { event_name: "Create checkpoint", properties: { classroom_id: @classroom.id, track_id: @track.id, checkpoint_id: @checkpoint.id } }
-      redirect_to classroom_track_path(@classroom, @track)
-    else
-      render :new
+
+    respond_to do |format|
+      if @checkpoint.save
+        format.json { render json: { partial: render_to_string(partial: 'checkpoint.html', locals: { checkpoint: @checkpoint }), classroom_id: @classroom.id, track_id: @track.id, checkpoint_id: @checkpoint.id }, status: :created }
+      else
+        format.json { render json: @checkpoint.errors, status: :unprocessable_entity }
+      end
     end
   end
 

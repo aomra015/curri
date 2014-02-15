@@ -1,7 +1,7 @@
 # setting up some sample teacher/student data
 def make_accounts(teacher_email, student_emails, passwd)
   teacher_role = Teacher.create()
-  myteacher = User.create(email: teacher_email, classrole: teacher_role, classrole_type: "Teacher" , password: passwd, password_confirmation: passwd )
+  myteacher = User.create(email: teacher_email, classrole: teacher_role, classrole_type: "Teacher" , password: passwd, password_confirmation: passwd, first_name: 'Teacher', last_name: 'Teacher' )
 
   default_classroom = teacher_role.classrooms.find_by(name: "Sample Classroom")
   js_track = default_classroom.tracks.find_by(name: "Beginner JavaScript")
@@ -118,7 +118,7 @@ def addStatsCourse(teacher_email, student_emails)
                      [  2,  2,  1,  2,  2,  1,  1,  1,  1,  1, 1],
                      [  2,  2,  2,  2,  2,  1,  2,  2,  1,  2, 1],
                      [  1,  2,  2,  2,  2,  2,  2,  1,  1,  1, 1],
-                     [  1,  2,  2,  2,  2,  2,  2,  2,2,  1, 1],
+                     [  1,  2,  2,  2,  2,  2,  2,  2,  2,  1, 1],
                      [  2,  2,  1,  2,  2,  1,  1,  1,  1,  2, 2]]
     num_ratings = myscores[0][0].length
 
@@ -145,7 +145,7 @@ def addStatsCourse(teacher_email, student_emails)
                      [  0,  1, 1, 2 ,1,  2,  0,  2,  1,  1]]
     myscores[2] = [ [  2,  nil,  nil,  1,   2,  2,  2,  1,  2,nil],
                      [  1,  1,  2,  2,  2, 0,  1,  2,    2,  2],
-                     [  2,  1,  nil,  nil,  1,  2,  1,  2,  nil,  12],
+                     [  2,  1,  nil,  nil,  1,  2,  1,  2,  nil,  1],
                      [  1, 2,  1,  2,  1,   2,   2,    1,   1, 2],
                      [  2,  1,  2,  1,  1,  1, 1,nil,  nil, 1],
                      [  0,  2,  2,  2, 2, 2, 1,  1,  2,  1],

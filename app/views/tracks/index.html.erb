@@ -5,7 +5,7 @@
   <!-- Teacher Controls -->
   <div class="grid-unit narrow">
     <% if current_user.teacher? %>
-      <%= link_to 'Add Students', new_classroom_invitation_path(@classroom), id: 'manage-students' %>
+      <%= link_to 'Manage Students', new_classroom_invitation_path(@classroom), id: 'manage-students' %>
       <%= link_to 'Manage Classroom', edit_classroom_path(@classroom), id: 'manage-classroom' %>
     <% end %>
   </div>

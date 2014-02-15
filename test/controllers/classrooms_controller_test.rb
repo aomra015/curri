@@ -12,24 +12,20 @@ class ClassroomsControllerTest < ActionController::TestCase
     assert :success
   end
 
-  test "get new classroom form" do
-    get :new
-    assert assigns(:classroom)
-    assert :success
-  end
-
   test "should create classroom with valid data" do
     assert_difference 'users(:teacher1).classrooms.count' do
-      post :create, classroom: {name: "Test classroom"}
+      xhr :post, :create, format: :json, classroom: {name: "Test classroom"}
     end
 
-    assert_redirected_to classrooms_path
+    response = JSON.parse(@response.body)
+    assert response["partial"]
   end
 
   test "should not create classroom with invalid data" do
-    post :create, classroom: { name: nil }
+    xhr :post, :create, format: :json, classroom: { name: nil }
 
-    assert_template :new
+    response = JSON.parse(@response.body)
+    assert response["name"]
   end
 
   test "get edit classroom form" do
@@ -81,23 +77,22 @@ class ClassroomsControllerTest < ActionController::TestCase
 
   test "should add teacher to classroom" do
     assert_equal 1, users(:teacher1).classrooms.size
-    post :join, teacher_token: classrooms(:three).teacher_token
+    xhr :post, :join, format: :json, teacher_token: classrooms(:three).teacher_token
 
     assert_equal 2, users(:teacher1).classrooms.size
   end
 
   test "should give error with wrong token" do
-    post :join, teacher_token: 'bad-token'
+    xhr :post, :join, format: :json, teacher_token: 'bad-token'
 
-    assert 'Invalid Token', flash[:alert]
-    assert_template :new
+    assert_equal 'Invalid Token', @response.body
   end
 
   test "should not add student to classroom using token" do
     assert_equal 1, users(:student1).classrooms.size
 
     cookies[:auth_token] = users(:student1).auth_token
-    post :join, teacher_token: classrooms(:three).teacher_token
+    xhr :post, :join, format: :json, teacher_token: classrooms(:three).teacher_token
 
     assert_equal 1, users(:student1).classrooms.size
     assert 'Only a teacher can do that.', flash[:alert]
@@ -106,10 +101,10 @@ class ClassroomsControllerTest < ActionController::TestCase
   test "should not add teacher to a classroom they are already in" do
 
     assert_no_difference 'users(:teacher1).classrooms.count' do
-      post :join, teacher_token: classrooms(:one).teacher_token
+      xhr :post, :join, format: :json, teacher_token: classrooms(:one).teacher_token
     end
 
-    assert_equal 'You have already used this token', flash[:alert]
+    assert_equal 'You are already in this classroom', @response.body
   end
 
 end

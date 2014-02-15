@@ -1,20 +1,25 @@
-  <div class="grid-unit whole">
+  <div class="grid-unit wide">
     <h2>Your Classrooms</h2>
   </div>
-</div>
-<div class="wrapper">
-  <!-- Classrooms List -->
-  <%= render @classrooms %>
   <!-- Teacher Controls -->
   <% if current_user.teacher? %>
-    <div class="grid-unit narrow add-unit">
-      <div class="padding-border">
-        <%= link_to new_classroom_path, class: "content", id: "add-classroom" do %>
-          <div class="add-sign">+</div>
-          <p class="add-text">Add/Join Classroom</p>
-        <% end %>
-      </div>
+    <div class="grid-unit narrow">
+      <a href="#new-classroom" rel="modal:open" class="open-modal">Create Classroom</a>
+      <a href="#join-classroom" rel="modal:open" class="open-modal">Join Classroom</a>
+    </div>
+
+    <div id="new-classroom" class="modal">
+      <h6 class="subtitle classroom-option">Create New Classroom</h6>
+      <%= render partial: 'form', locals: {classroom: Classroom.new, remote: true, leave_link: false} %>
+    </div>
+
+    <div id="join-classroom" class="modal">
+      <%= render 'join_classroom' %>
     </div>
   <% end %>
+</div>
+<div class="wrapper" id="classrooms">
+  <!-- Classrooms List -->
+  <%= render @classrooms %>
 </div>
 <% provide(:title, 'Classrooms') %>

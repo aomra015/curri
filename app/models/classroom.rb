@@ -6,8 +6,9 @@ class Classroom < ActiveRecord::Base
 
   has_many :classroom_teachers
   has_many :teachers, through: :classroom_teachers
-  validates :name, presence: true
-  validates_length_of :description, :maximum => 65, :allow_blank => true
+  validates :name, presence: {message: "You must name the classroom!"}
+  validates_length_of :name, :maximum => 90
+  validates_length_of :description, :maximum => 90, :allow_blank => true
 
   default_scope { order(id: :asc) }
   before_create :generate_token

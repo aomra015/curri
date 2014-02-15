@@ -20,7 +20,7 @@
       $helpLink.removeClass('in-queue ask-help')
       if data.help
         $helpLink.text("In Help Queue").addClass('in-queue')
-        analytics.track "Student Asked for Help"
+        analytics.track "Student Asked for Help", classroom_id: data.classroom_id
       else
         $helpLink.text("Ask for Help").addClass('ask-help')
 

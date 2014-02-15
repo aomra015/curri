@@ -153,3 +153,8 @@ tbody tr {
   border: 2px solid $color-success;
   background: lighten($color-success, 25%);
 }
+
+//error messages
+.error-message {
+  color: $color-danger;
+}

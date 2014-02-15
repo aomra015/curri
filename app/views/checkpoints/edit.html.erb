@@ -5,6 +5,6 @@
 </div>
 <div class="wrapper">
   <div class="grid-unit wide">
-    <%= render 'form' %>
+    <%= render partial: 'form', locals: {checkpoint: @checkpoint, remote: false} %>
   </div>
 </div>

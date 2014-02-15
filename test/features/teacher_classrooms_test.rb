@@ -8,16 +8,6 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
     @classroom = classrooms(:one)
   end
 
-  test "a teacher can add a classroom" do
-    click_link "add-classroom"
-    assert_equal new_classroom_path, current_path
-
-    fill_in :classroom_name, with: "New classroom name"
-    click_button 'Create Classroom'
-
-    assert page.has_content?('New classroom name')
-  end
-
   test "a teacher should see a list of their classrooms after login" do
     assert page.has_content?(@classroom.name)
 
@@ -45,14 +35,5 @@ class TeacherClassroomsTest < Capybara::Rails::TestCase
     click_link 'delete-classroom'
 
     assert !page.has_content?(@classroom.name)
-  end
-
-  test "a teacher can join a classroom using token" do
-    click_link "add-classroom"
-
-    fill_in :teacher_token, with: "ELtCtf7o"
-    click_button 'Join Classroom'
-
-    assert page.has_content?('New Classroom with token')
   end
 end

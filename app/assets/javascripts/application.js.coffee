@@ -20,6 +20,7 @@
 #= require parser_rules/simple
 #= require wysihtml5
 #= require bootstrap-dismiss
+#= require jquery.modal
 #= require utilities
 #= require_tree ./objects
 #= require_tree .
@@ -57,3 +58,8 @@ $ ->
 
     analytics.identify(Curri.user.id, userData)
     analytics.trackLink($('#logout-link'), "Sign out")
+
+  $('a.open-modal').click ->
+    $('.error-message').remove()
+    $(this).modal(fadeDuration: 250)
+    return false

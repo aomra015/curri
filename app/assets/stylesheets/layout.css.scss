@@ -141,7 +141,7 @@ body.nav-open .main {
       overflow: hidden;
     }
   }
-  
+
   .main {
     margin-left: 70px;
   }
@@ -152,7 +152,7 @@ body.nav-open .main {
       border-bottom: 1px solid $grey-lt;
     }
   }
-  
+
   .narrow {
     width: 33.33%;
   }
@@ -241,5 +241,30 @@ body.nav-open .main {
     &:hover {
       color: lighten($color-main, 5%);
     }
+  }
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.classroom-unit {
+  min-height: 185px;
+}
+
+.gravatar-image {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+//jQuery modal override
+.modal {
+  width: 300px;
+}
+@include media-query(small) {
+  .modal {
+    width: 400px;
   }
 }

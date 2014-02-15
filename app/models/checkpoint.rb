@@ -3,9 +3,10 @@ class Checkpoint < ActiveRecord::Base
   acts_as_list scope: :track
   has_many :ratings
 
-  validates :expectation, :success_criteria, presence: true
+  validates :expectation, presence: {message: "You must enter an expectation!"}
+  validates :success_criteria, presence: {message: "You must enter a success criteria!"}
   validates_length_of :expectation, :maximum => 50
-  validates_length_of :success_criteria, :maximum => 200
+  validates_length_of :success_criteria, :maximum => 250
 
   def latest_student_score(student)
     ratings.where(student_id: student.id).last.try(:score)
@@ -16,7 +17,7 @@ class Checkpoint < ActiveRecord::Base
     numb_ratings = scoped_ratings.length
     numb_students = classroom.students.count
 
-    if (numb_ratings >= (numb_students*0.70).floor) && (numb_ratings < numb_students)
+    if (numb_ratings >= (numb_students*0.75).floor) && (numb_ratings < numb_students)
       student_list = classroom.students.pluck(:id)
       scoped_ratings.includes(:student).each do |rating|
         student_list.delete(rating.student.id)
