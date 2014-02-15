@@ -5,6 +5,8 @@ class TeachersControllerTest < ActionController::TestCase
   before do
     @params = {
       email: "misty@aomran.com",
+      first_name: 'Misty',
+      last_name: 'Omran-Franzini',
       password: "likeskoi",
       password_confirmation: "likeskoi"
     }

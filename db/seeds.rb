@@ -1,7 +1,7 @@
 # setting up some sample teacher/student data
 def make_accounts(teacher_email, student_emails, passwd)
   teacher_role = Teacher.create()
-  myteacher = User.create(email: teacher_email, classrole: teacher_role, classrole_type: "Teacher" , password: passwd, password_confirmation: passwd )
+  myteacher = User.create(email: teacher_email, classrole: teacher_role, classrole_type: "Teacher" , password: passwd, password_confirmation: passwd, first_name: 'Teacher', last_name: 'Teacher' )
 
   default_classroom = teacher_role.classrooms.find_by(name: "Sample Classroom")
   js_track = default_classroom.tracks.find_by(name: "Beginner JavaScript")

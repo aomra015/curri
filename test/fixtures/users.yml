@@ -4,6 +4,8 @@ teacher1:
   email: aomra@gmail.com
   classrole: teacher1
   classrole_type: Teacher
+  first_name: Ahmed
+  last_name: Omran
   password_digest: <%= BCrypt::Password.create("password123")%>
   auth_token: <%= SecureRandom.urlsafe_base64 %>
 
@@ -11,6 +13,8 @@ teacher2:
   email: franzini@paula.com
   classrole: teacher2
   classrole_type: Teacher
+  first_name: Paula
+  last_name: Franzini
   password_digest: <%= BCrypt::Password.create("password123")%>
   auth_token: <%= SecureRandom.urlsafe_base64 %>
 

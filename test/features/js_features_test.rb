@@ -10,7 +10,7 @@ class JSFeaturesTest < Capybara::Rails::TestCase
   end
 
   test "a teacher can add a classroom" do
-    click_link "Add Classroom"
+    click_link "Create Classroom"
 
     fill_in :classroom_name, with: "New classroom name"
     click_button 'Create Classroom'
