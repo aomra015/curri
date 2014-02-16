@@ -27,7 +27,7 @@ class InvitationCreator
     if valid?
       invitations.each do |inv|
         inv.save
-        InvitationMailer.invite(inv).deliver
+        InvitationMailer.delay.invite(inv.id)
       end
       return true
     else
