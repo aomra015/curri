@@ -40,6 +40,7 @@ gem 'acts_as_list'
 gem 'unicorn'
 gem 'delayed_job_active_record'
 gem "hirefire-resource"
+gem "mail_view", "~> 1.0.3"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
