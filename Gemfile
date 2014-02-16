@@ -8,7 +8,6 @@ gem 'pg'
 group :production do
   gem 'rails_12factor'
   gem 'appsignal'
-  gem 'unicorn'
 end
 
 group :development, :test do
@@ -38,6 +37,8 @@ gem 'foreman'
 gem 'dynamic_form'
 gem 'pusher'
 gem 'acts_as_list'
+gem 'unicorn'
+gem 'delayed_job_active_record'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
