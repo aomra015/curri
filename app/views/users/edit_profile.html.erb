@@ -2,6 +2,11 @@
     <h2>Edit Profile</h2>
     <h6 class="subtitle"><%= @current_user.first_name %> <%= @current_user.last_name %></h6>
   </div>
+  <div class="grid-unit narrow pull-right">
+    <div class="gravatar">
+      <p><%= image_tag "#{@current_user.gravatar}?s=300" %>Change your avatar at <br><%= link_to 'Gravatar.com', 'http://www.gravatar.com', target: '_blank', class:"strong" %></p>
+    </div>
+  </div>
   <div class="grid-unit wide">
     <%= form_for @current_user, url: update_profile_path , class: 'form-horizontal' do |f| %>
     <%= f.error_messages %>
