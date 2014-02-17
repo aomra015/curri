@@ -41,9 +41,8 @@ class InvitationsCreatorTest < ActiveSupport::TestCase
   end
 
   test "with valid emails invitations should be emailed" do
-    ActionMailer::Base.deliveries.clear
-
     @valid_invitation_creator.save
-    assert_equal @valid_invitation_creator.emails.length, ActionMailer::Base.deliveries.length
+
+    assert_equal [@valid_invitation_creator.emails.length, 0], Delayed::Worker.new.work_off
   end
 end

@@ -1,6 +1,9 @@
 Curri::Application.routes.draw do
 
-  mount StyleGuide::Engine => "/style-guide" if Rails.env.development?
+  if Rails.env.development?
+    mount MailPreview => 'mail_view'
+    mount StyleGuide::Engine => "/style-guide"
+  end
   root to: 'classrooms#index'
 
   resources :classrooms, except: [:show, :new] do

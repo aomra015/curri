@@ -4,6 +4,7 @@ class PasswordResetsControllerTest < ActionController::TestCase
 
   before do
     users(:teacher1).send_password_reset
+    Delayed::Worker.new.work_off
     @token = users(:teacher1).reload.password_reset_token
   end
 
@@ -15,7 +16,8 @@ class PasswordResetsControllerTest < ActionController::TestCase
   test "should send the password reset" do
     post :create, email: users(:teacher1).email
     assert_equal users(:teacher1), assigns(:user)
-    assert_respond_to(assigns(:user), :send_password_reset)
+
+    assert_equal [1, 0], Delayed::Worker.new.work_off
     assert_redirected_to login_path
   end
 

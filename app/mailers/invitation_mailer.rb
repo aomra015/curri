@@ -6,7 +6,8 @@ class InvitationMailer < ActionMailer::Base
   #
   #   en.invitation.invite.subject
   #
-  def invite(invitation)
+  def invite(id)
+    invitation = Invitation.find(id)
     @token = invitation.token
     @classroom = invitation.classroom
     mail to: invitation.email, subject: "Invitation to Curri"
