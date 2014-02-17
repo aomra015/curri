@@ -4,11 +4,14 @@
   img {
     @include border-radius(30px);
     display: inline-block;
-    margin-right: 20px;
   }
 }
 
 .gravatar-image {
-  height: 34px;
-  width: 34px;
+  height: 28px;
+  width: 28px;
+}
+
+td .btn-small {
+  margin-right: 0;
 }
