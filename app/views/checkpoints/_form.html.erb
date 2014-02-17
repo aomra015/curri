@@ -1,5 +1,4 @@
 <%= form_for [@classroom, @track, checkpoint], remote: remote do |f| %>
-  <%= f.error_messages %>
   <div class="form-group form-input-required">
     <%= f.label :expectation %>
     <%= f.text_field :expectation, maxlength: "50", placeholder: 'Enter an Expectation Title. Maximum 50 characters.', class: "form-input" %>

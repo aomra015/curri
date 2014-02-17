@@ -1,5 +1,4 @@
 <%= form_for [@classroom, @track] do |f| %>
-  <%= f.error_messages %>
   <div class="form-group form-input-required">
     <%= f.label :name, 'Track Name' %>
     <%= f.text_field :name, placeholder: "Enter track name", class: "form-input" %>

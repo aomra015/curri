@@ -1,8 +1,6 @@
 <h1>Reset your password</h1>
 
 <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-  <%= f.error_messages %>
-
   <h3>
     <%= f.label :password, "New Password" %>
   </h3>
