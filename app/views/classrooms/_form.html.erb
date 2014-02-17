@@ -1,5 +1,4 @@
 <%= form_for classroom, remote: remote do |f| %>
-  <%= f.error_messages %>
   <div class="form-group form-input-required">
     <%= f.label :name, 'Classroom Name' %>
     <%= f.text_field :name, maxlength: "90", placeholder: "Enter classroom name", class: "form-input" %>

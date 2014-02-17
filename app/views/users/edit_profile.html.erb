@@ -4,7 +4,6 @@
   </div>
   <div class="grid-unit wide">
     <%= form_for @current_user, url: update_profile_path , class: 'form-horizontal' do |f| %>
-    <%= f.error_messages %>
       <div class="form-group form-input-required">
         <%= f.label :email %>
         <%= f.email_field :email, class: "form-input" %>
