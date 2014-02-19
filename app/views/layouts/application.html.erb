@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= render 'shared/event_tracking' %>
+    <% if current_user.teacher? %>
+      <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
+      <script type="text/javascript">
+      window.Curri.pusher = new Pusher('<%= Pusher.key %>');
+      </script>
+    <% end %>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
   </head>

@@ -1,7 +1,7 @@
 <% if current_user.teacher? %>
   <% requests_limit = 30 %>
   <% requests = @classroom.requesters.size %>
-  <%= link_to classroom_requesters_path(@classroom), id: "requesters_link", class: 'help-toggle pull-right', data: { reqlimit: requests_limit, requests: requests } do %>
+  <%= link_to classroom_requesters_path(@classroom), id: "requesters_link", class: 'help-toggle pull-right', data: { reqlimit: requests_limit, requests: requests, classroom_id: @classroom.id } do %>
     <% if requests > 0 %>
       <span class="nav-icon nav-help active" title="Your Students Need Help" ></span>
       <div class="req-num">
