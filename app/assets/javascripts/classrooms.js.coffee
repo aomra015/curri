@@ -9,7 +9,9 @@ $ ->
       Curri.HelpStatus.showTooltip(data)
 
   if $('#requesters_link').length
-    Curri.RequestsNumber.poll()
+    Curri.channel ?= Curri.pusher.subscribe("classroom#{$('#requesters_link').data('classroom-id')}-requesters")
+    Curri.channel.bind 'requestUpdate', (data) ->
+      Curri.RequestsNumber.update(data)
 
   if $('#classrooms').length && Curri.user.classrole_type == 'Teacher'
     $('#new_classroom').on "ajax:success", (e, data, status, xhr) ->

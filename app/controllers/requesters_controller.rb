@@ -23,6 +23,7 @@ class RequestersController < ApplicationController
   def update
     @requester.toggle!(:help)
     push_to_channel
+    update_requesters_number(@requester.help)
 
     if @requester.help
       message = "Your teacher was notified that you need help."
@@ -46,6 +47,7 @@ class RequestersController < ApplicationController
     @requester.help = false
     @requester.save
     push_to_channel
+    update_requesters_number(@requester.help)
 
     respond_to do |format|
       format.json {
@@ -66,6 +68,10 @@ class RequestersController < ApplicationController
 
   def push_to_channel
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
+  end
+
+  def update_requesters_number(add)
+    Pusher.trigger("classroom#{@classroom.id}-requesters", 'requestUpdate', { add: add })
   end
 
 end
