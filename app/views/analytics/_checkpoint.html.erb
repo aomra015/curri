@@ -3,9 +3,11 @@
     <div class="expectation">
       <span class="h5"><%= checkpoint.expectation %></span>
     </div>
-    <% hasnt_voted = checkpoint.hasnt_voted(@phase, @classroom) %>
-    <% if hasnt_voted %>
-      <a href="" class="students-toggle pull-right" title="Show students that haven't voted"><span class="show-icon"><%= render 'shared/show' %></span></a>
+    <% if current_user.teacher? %>
+      <% hasnt_voted = checkpoint.hasnt_voted(@phase, @classroom) %>
+      <% if hasnt_voted %>
+        <a href="" class="students-toggle pull-right" title="Show students that haven't voted"><span class="show-icon"><%= render 'shared/show' %></span></a>
+      <% end %>
     <% end %>
     <div class="analytics-bar">
       <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.invitations.accepted.size } %>

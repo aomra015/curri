@@ -1,6 +1,4 @@
 class AnalyticsController < ApplicationController
-
-  before_action :authorize_teacher
   before_action :get_classroom
   before_action :get_track
 
