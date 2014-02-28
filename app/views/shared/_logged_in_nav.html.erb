@@ -19,8 +19,13 @@
     <% end %>
   </li>
 
-  <% if current_user.teacher? %>
-    <%= render 'shared/teacher_nav' %>
+  <% if @track.try(:id)%>
+    <li>
+      <%= link_to_selected classroom_track_analytics_path(@classroom, @track), class: "nav-links" do %>
+        <span class="nav-icon nav-analytics"></span>
+        <span class="nav-label">Analytics</span>
+      <% end %>
+    </li>
   <% end %>
 <% end %>
 

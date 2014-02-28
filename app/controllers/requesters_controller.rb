@@ -1,6 +1,6 @@
 class RequestersController < ApplicationController
 
-  before_filter :authorize_teacher, only: [:index, :remove]
+  before_filter :authorize_teacher, only: [:remove]
   before_action :get_classroom
   before_action :get_requester, except: [:index]
   respond_to :html, :json
@@ -47,6 +47,7 @@ class RequestersController < ApplicationController
     @requester.help = false
     @requester.save
     push_to_channel
+    notify_student
     update_requesters_number(@requester.help)
 
     respond_to do |format|
@@ -68,6 +69,10 @@ class RequestersController < ApplicationController
 
   def push_to_channel
     Pusher.trigger("classroom#{@classroom.id}-requesters", 'request', { requesterPartial: render_to_string(partial: 'request', locals: { classroom: @classroom, requester: @requester }), helpStatus: @requester.help, requesterId: @requester.id })
+  end
+
+  def notify_student
+    Pusher.trigger("classroom#{@classroom.id}-requesters", 'notifyStudent', { helpStatus: @requester.help, requesterId: @requester.id })
   end
 
   def update_requesters_number(add)

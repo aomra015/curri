@@ -23,11 +23,12 @@ module AnalyticsHelper
     total_count == 0 ? 0 : (count * 100.0 / total_count)
   end
 
-  def render_bar(counts)
+  def render_bar(counts, show_count=false)
     percent = counts[:count] == 0 ? '' : "#{counts[:percent].round}%"
+    content = show_count ? counts[:count] : percent
     content_tag :div, class: "progress-bar", style: "width: #{counts[:percent]}%" do
       concat(content_tag :div, '', class: "progress-bar-#{SCORE_WORD[counts[:score]]}")
-      concat(content_tag :div, percent, class: 'progress-bar-label')
+      concat(content_tag :div, content, class: 'progress-bar-label')
     end
   end
 

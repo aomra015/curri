@@ -3,19 +3,8 @@
     "In Help Queue": true
     "Ask for Help": false
 
-  poll: ->
-    setTimeout @request, 10000
-
-  request: ->
-    $.ajax
-      url: $('.help-toggle a').attr('href')
-      dataType: 'JSON'
-      success: (data) ->
-        Curri.HelpStatus.helpToggle(data)
-        Curri.HelpStatus.poll()
-
   helpToggle: (data) ->
-    $helpLink = $(".help-toggle a")
+    $helpLink = $(".help-toggle .help-btn")
     if data.help != Curri.HelpStatus.status[$helpLink.text()]
       $helpLink.removeClass('in-queue ask-help')
       if data.help
