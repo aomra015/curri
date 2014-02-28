@@ -18,7 +18,7 @@
   <% end %>
 <% else %>
   <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
-  <div class="help-toggle pull-right" id= "student-help-toggle">
+  <%= content_tag :div, class: 'help-toggle pull-right', id: 'student-help-toggle', data: { classroom_id: @classroom.id, requester_id: requester.id } do %>
     <% if current_user.needs_help?(@classroom) %>
       <%= link_to 'In Help Queue', classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch, remote: true, class: 'help-btn in-queue' %>
     <% else %>
@@ -27,6 +27,6 @@
     <div>
       <%= link_to 'View Queue', classroom_requesters_path(@classroom) %>
     </div>
-  </div>
+  <% end %>
   <div class="student-help-tooltip strong" id="help-tooltip"></div>
 <% end %>

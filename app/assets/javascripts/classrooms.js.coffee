@@ -3,7 +3,11 @@ $ = jQuery
 $ ->
   # Update Header
   if $('#student-help-toggle').length
-    Curri.HelpStatus.poll()
+    Curri.channel ?= Curri.pusher.subscribe("classroom#{$('#student-help-toggle').data('classroom-id')}-requesters")
+    Curri.channel.bind 'notifyStudent', (data) ->
+      if data.requesterId == $('#student-help-toggle').data('requester-id')
+        Curri.HelpStatus.helpToggle({ help: data.HelpStatus })
+
     $('#student-help-toggle a').on 'ajax:success', (e, data) ->
       Curri.HelpStatus.helpToggle(data)
       Curri.HelpStatus.showTooltip(data)
