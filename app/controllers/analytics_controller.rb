@@ -4,7 +4,7 @@ class AnalyticsController < ApplicationController
 
   def show
     @phase = Phase.new(@track, params[:phase_state] || "Realtime")
-    flash.now[:track] = { event_name: "View analytics page", properties: {classroom_id: @classroom.id, track_id: @track.id, phase_state: @phase.state } }
+    flash.now[:track] = { event_name: "View analytics page", properties: {classroom_id: @classroom.id, track_id: @track.id, phase_state: @phase.state, role: current_user.classrole_type } }
   end
 
 end
