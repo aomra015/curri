@@ -34,18 +34,18 @@ describe 'BarChart jQuery Plugin', ->
     # hack to get % rather than px widths
     test.checkpoint.find('.progress').hide()
 
-  describe 'Display of percentages', ->
+  describe 'Display of counts', ->
     it 'should display percent of zero ratings', ->
-      expect(test.checkpoint.find('.progress-bar-danger + .progress-bar-label').text()).toEqual('50%')
+      expect(test.checkpoint.find('.progress-bar-danger + .progress-bar-label').text()).toEqual('2')
 
     it 'should display percent of one ratings', ->
-      expect(test.checkpoint.find('.progress-bar-warning + .progress-bar-label').text()).toEqual('25%')
+      expect(test.checkpoint.find('.progress-bar-warning + .progress-bar-label').text()).toEqual('1')
 
     it 'should display percent of two ratings', ->
-      expect(test.checkpoint.find('.progress-bar-success + .progress-bar-label').text()).toEqual('0%')
+      expect(test.checkpoint.find('.progress-bar-success + .progress-bar-label').text()).toEqual('0')
 
     it 'should display percent of no ratings', ->
-      expect(test.checkpoint.find('.progress-bar-empty + .progress-bar-label').text()).toEqual('25%')
+      expect(test.checkpoint.find('.progress-bar-empty + .progress-bar-label').text()).toEqual('1')
 
   describe 'Display of bar widths', ->
     it 'should draw red portion of bar', ->

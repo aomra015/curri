@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
     <div class="analytics-bar">
-      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.invitations.accepted.size } %>
+      <%= render partial: 'shared/progress_bar', locals: { ratings: @phase.ratings(checkpoint), total_count: @classroom.invitations.accepted.size, show_count: true } %>
     </div>
   </div>
   <%= hasnt_voted_box(hasnt_voted) if hasnt_voted %>

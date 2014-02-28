@@ -1,8 +1,9 @@
 <div class="progress-container">
   <div class="progress-bkgd">
-    <%= render_bar(ratings_count(ratings, total_count, 0))%>
-    <%= render_bar(ratings_count(ratings, total_count, 1))%>
-    <%= render_bar(ratings_count(ratings, total_count, 2))%>
-    <%= render_bar(no_ratings(ratings, total_count))%>
+    <% show_count ||= false %>
+    <%= render_bar(ratings_count(ratings, total_count, 0), show_count)%>
+    <%= render_bar(ratings_count(ratings, total_count, 1), show_count)%>
+    <%= render_bar(ratings_count(ratings, total_count, 2), show_count)%>
+    <%= render_bar(no_ratings(ratings, total_count), show_count)%>
   </div>
 </div>
