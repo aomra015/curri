@@ -34,7 +34,7 @@ class StudentsController < ApplicationController
       render :login, layout: "login_layout"
     else
       if @user.try(:authenticate, params[:user][:password])
-        flash[:track] = { event_name: "User joins classroom" }
+        flash[:track] = { event_name: "User joins classroom", classroom_id:  @invitation.classroom.id }
         claim_invitation
       else
         flash.now.alert = "Email or password are not correct"
