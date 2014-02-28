@@ -43,7 +43,11 @@ module ApplicationHelper
 
   def track_event(event_name, properties=nil)
     p = properties.nil? ? "" : ", #{properties.to_json}"
-    javascript_tag %Q{analytics.track("#{event_name}"#{p});}
+    javascript_tag %Q{
+      $(document).ready(function(){
+        analytics.track("#{event_name}"#{p});
+      });
+    }
   end
 
   def full_title(page_title)
