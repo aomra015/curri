@@ -29,24 +29,16 @@
   <div class="grid-unit wide" id="track">
     <div class="content">
       <h4 class="unit-header">Classroom Analytics</h4>
-        <% if @track.phasing? %>
-          <div class="row unit-action">
-            <h6>Choose phase</h6>
-            <%= render 'phasing' %>
-          </div>
-        <% end %>
       <%= render :partial => 'checkpoint', collection: @track.checkpoints %>
     </div>
   </div>
 </div>
 
-<% if @phase.state == 'Realtime' %>
-  <script type="text/javascript">
-  var channel = window.Curri.pusher.subscribe('track<%= @track.id %>-ratings');
-  channel.bind('rating', function(data) {
-    var ratingsCounts = Curri.RatingsCounter.init(data.ratings, data.totalCount);
-    $("#checkpoint" + data.checkpoint).barChart(ratingsCounts);
-  });
-  </script>
-<% end %>
+<script type="text/javascript">
+var channel = window.Curri.pusher.subscribe('track<%= @track.id %>-ratings');
+channel.bind('rating', function(data) {
+  var ratingsCounts = Curri.RatingsCounter.init(data.ratings, data.totalCount);
+  $("#checkpoint" + data.checkpoint).barChart(ratingsCounts);
+});
+</script>
 <% provide(:title, 'Analytics') %>
