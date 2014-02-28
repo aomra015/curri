@@ -17,7 +17,7 @@
       </thead>
 
       <% if @requesters.empty? %>
-        <tr id="placeholder"><td colspan="4">You have no students needing help. Great job!</td></tr>
+        <tr id="placeholder"><td colspan="4">No students need help right now.</td></tr>
       <% else %>
         <% @requesters.each do |requester| %>
           <%= render partial: 'request', locals: { classroom: @classroom, requester: requester } %>
