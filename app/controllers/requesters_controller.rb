@@ -1,6 +1,6 @@
 class RequestersController < ApplicationController
 
-  before_filter :authorize_teacher, only: [:index, :remove]
+  before_filter :authorize_teacher, only: [:remove]
   before_action :get_classroom
   before_action :get_requester, except: [:index]
   respond_to :html, :json

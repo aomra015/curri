@@ -24,6 +24,9 @@
     <% else %>
       <%= link_to 'Ask for Help', classroom_requester_path(classroom_id: @classroom.id, id: requester.id), method: :patch, remote: true, class: 'help-btn ask-help' %>
     <% end %>
+    <div>
+      <%= link_to 'View Queue', classroom_requesters_path(@classroom) %>
+    </div>
   </div>
   <div class="student-help-tooltip strong" id="help-tooltip"></div>
 <% end %>

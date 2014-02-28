@@ -7,7 +7,7 @@
     <%= render 'shared/event_tracking' %>
     <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
     <script type="text/javascript">
-    window.Curri.pusher = new Pusher('<%= Pusher.key %>');
+      window.Curri.pusher = new Pusher('<%= Pusher.key %>');
     </script>
     <%= csrf_meta_tags %>
     <%= favicon_link_tag %>
