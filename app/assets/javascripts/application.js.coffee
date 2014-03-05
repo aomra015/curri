@@ -60,6 +60,7 @@ $ ->
     analytics.trackLink($('#logout-link'), "Sign out")
 
   $('a.open-modal').click ->
+    Curri.SubNav.close()
     $('.error-message').remove()
     $(this).modal(fadeDuration: 250)
     return false
