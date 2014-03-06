@@ -1,6 +1,6 @@
 <% if current_user.teacher? %>
   <% requests_limit = 30 %>
-  <% requests = @classroom.requesters.size %>
+  <% requests = @classroom.requesters.need_help.size %>
   <%= link_to classroom_requesters_path(@classroom), id: "requesters_link", class: 'help-toggle pull-right', data: { reqlimit: requests_limit, requests: requests, classroom_id: @classroom.id } do %>
     <% if requests > 0 %>
       <span class="nav-icon nav-help active" title="Your Students Need Help" ></span>
@@ -17,7 +17,7 @@
     <% end %>
   <% end %>
 <% else %>
-  <% requester = current_user.classrole.invitations.find_by(classroom_id: @classroom.id) %>
+  <% requester = current_user.classrole.requesters.find_by(classroom_id: @classroom.id) %>
   <%= content_tag :div, class: 'help-toggle pull-right', id: 'student-help-toggle', data: { classroom_id: @classroom.id, requester_id: requester.id } do %>
     <%= link_to 'View Queue', classroom_requesters_path(@classroom), class: 'view-q' %>
     <% if current_user.needs_help?(@classroom) %>

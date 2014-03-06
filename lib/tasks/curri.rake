@@ -30,4 +30,13 @@ namespace :curri do
     end
   end
 
+  desc "Add request object to existing Students"
+  task student_requests: :environment do
+    Student.all.find_each do |student|
+      student.classrooms.find_each do |cls|
+        Requester.create(classroom: cls, student: student)
+      end
+    end
+  end
+
 end

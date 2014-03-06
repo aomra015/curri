@@ -1,0 +1,12 @@
+# Read about fixtures at
+# http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  help: false
+  student: student1
+  classroom: one
+
+two:
+  help: false
+  classroom: one
+  student: student2

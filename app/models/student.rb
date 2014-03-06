@@ -1,6 +1,7 @@
 class Student < ActiveRecord::Base
   has_one :user, as: :classrole, dependent: :destroy
   has_many :invitations
+  has_many :requesters
   has_many :classrooms, through: :invitations
   has_many :ratings
 
@@ -15,6 +16,6 @@ class Student < ActiveRecord::Base
   end
 
   def needs_help?(classroom)
-    classroom.invitations.find_by(student_id: id).help
+    classroom.requesters.find_by(student_id: id).help
   end
 end

@@ -36,6 +36,16 @@ class StudentsControllerTest < ActionController::TestCase
     assert_redirected_to classrooms_path
   end
 
+  test "should create a student with request object" do
+    assert_difference 'Requester.count' do
+      post :create, user: @params
+    end
+
+    request_object = Requester.last
+    assert User.last.classrole, request_object.student
+    assert User.last.classrole.classrooms.first, request_object.student
+  end
+
   test "should not create student with invalid token" do
     @params[:token] = "invalid-token"
     post :create, user: @params

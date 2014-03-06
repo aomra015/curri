@@ -6,7 +6,7 @@ class RequestersController < ApplicationController
   respond_to :html, :json
 
   def index
-    @requesters = @classroom.requesters
+    @requesters = @classroom.requesters.need_help
 
     respond_to do |format|
       format.json {
@@ -64,7 +64,7 @@ class RequestersController < ApplicationController
 
   private
   def get_requester
-    @requester = @classroom.invitations.find(params[:id])
+    @requester = @classroom.requesters.find(params[:id])
   end
 
   def push_to_channel

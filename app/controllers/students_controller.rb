@@ -61,6 +61,7 @@ class StudentsController < ApplicationController
     else
       @invitation.student = @user.classrole
       @invitation.save
+      Requester.create(classroom: @invitation.classroom, student: @invitation.student)
     end
 
     sign_in(@user, true)
