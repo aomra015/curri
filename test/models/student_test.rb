@@ -8,7 +8,7 @@ class StudentTest < ActiveSupport::TestCase
 
     assert_equal false, student.needs_help?(classroom)
 
-    invitations(:one).toggle!(:help)
+    requesters(:one).toggle!(:help)
     assert_equal true, student.needs_help?(classroom)
   end
 

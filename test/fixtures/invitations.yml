@@ -6,7 +6,6 @@ one:
   student: student1
   token: MyString
   email: foo1@foo.com
-  help: false
 
 two:
   classroom: two

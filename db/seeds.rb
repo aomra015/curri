@@ -14,6 +14,10 @@ def make_accounts(teacher_email, student_emails, passwd)
   myinvitations = []
   num_students.times {|i| myinvitations << Invitation.create(student: student_roles[i],  classroom: default_classroom, token: "esteem", email: student_emails[i]) }
 
+  myinvitations.each do |invitation|
+    Requester.create(classroom: invitation.classroom, student: invitation.student)
+  end
+
   mystudents = []
   num_students.times {|i| mystudents << User.create(email: student_emails[i],
     first_name: "Student#{i+1}", last_name: "S#{i+1}",

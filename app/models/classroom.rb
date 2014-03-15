@@ -2,6 +2,7 @@ class Classroom < ActiveRecord::Base
   has_many :tracks
 
   has_many :invitations
+  has_many :requesters
   has_many :students, through: :invitations
 
   has_many :classroom_teachers
@@ -12,10 +13,6 @@ class Classroom < ActiveRecord::Base
 
   default_scope { order(id: :asc) }
   before_create :generate_token
-
-  def requesters
-    invitations.help_needed
-  end
 
   private
   def generate_token

@@ -5,7 +5,6 @@ class Invitation < ActiveRecord::Base
   before_create :generate_token
   validates :email, :email => true
 
-  scope :help_needed, -> { where(help: true).order(" updated_at ASC") }
   scope :pending, -> { where(student_id: nil) }
   scope :accepted, -> { where.not(student_id: nil) }
 
