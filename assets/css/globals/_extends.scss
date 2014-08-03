@@ -1,0 +1,42 @@
+// Clearfix: use .cf, apply to .row
+%cf {
+  *zoom: 1;
+  &:before,
+  &:after {
+  content: " ";
+  display: table;
+  }
+  &:after {
+  clear: both;
+  }
+}
+
+%sans-body {
+  font-family: $sans-serif;
+}
+
+%external-link {
+  color: $color-red;
+}
+
+%menu-link {
+  text-decoration: none;
+  padding: 8px 15px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: lighten($color-main, 30%);
+  &:hover {
+    color: $color-main;
+  }
+}
+
+%center-left-text {
+  text-align: center;
+}
+
+@include media-query(medium) {
+  %center-left-text {
+    text-align: left;
+  }
+}

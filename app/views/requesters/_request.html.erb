@@ -1,5 +1,0 @@
-<tr class="requester" id="requester<%= requester.id %>">
-  <td colspan="2"><%= image_tag "#{requester.gravatar}?s=56", class: 'gravatar-image' %><%= requester.full_name %></td>
-  <td><%= requester.updated_at.strftime("%l:%M%P, %e %b %y") %></td>
-  <td><%= link_to 'Yes', remove_classroom_requester_path(id: requester.id, classroom_id: classroom.id), method: :patch, remote: true, class: 'btn btn-primary btn-small request-button'%></td>
-</tr>

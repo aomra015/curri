@@ -1,0 +1,63 @@
+.container {
+  width: 90%;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.row {
+  padding-top: 20px;
+  @extend %cf;
+}
+
+.column,
+.half, 
+.one-third,
+.two-thirds,
+.one-fourth,
+.three-fourths {
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  float: left;
+}
+
+@include media-query(medium) {
+  .one-fourth {
+    width: 25%;
+  }
+  .one-third {
+    width: 33.3%;
+  }
+  .half {
+    width: 50%;
+  }
+  .two-thirds {
+    width: 66.67%;
+  }
+  .three-fourths {
+    width: 75%;
+  }
+}
+
+.pr {
+  float: right;
+}
+
+.hide-mobile {
+  display: none;
+}
+
+@include media-query(medium) {
+  .hide-mobile {
+    display: inline-block;
+  }
+  .hide-desktop {
+    display: none;
+  }
+}
+// @media only screen and (min-width: 320px) and (max-width: 768px) {
+//   Styles for mobile
+//   .grid, .grid-1, .grid-2 {
+//     width: 100%;
+//     margin: 0;
+//     display: block; } }

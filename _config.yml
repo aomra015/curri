@@ -1,0 +1,4 @@
+name: Curri
+pygments: true
+exclude: [Gemfile, Gemfile.lock, config.rb, .env, Icon, README.md]
+permalink: /blog/:title

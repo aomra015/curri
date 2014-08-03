@@ -1,0 +1,35 @@
+.bio {
+  margin-bottom: 60px;
+  p {
+    // @extend .small;
+    @extend %sans-body;
+  }
+  a {
+    @extend %external-link;
+  }
+  .img {
+    text-align: center;
+  }
+  .headshot {
+    display: inline-block;
+    border: 5px solid #fff;
+    box-shadow: 0 0 2px #555;
+    @include border-radius(300px);
+    height: 50%;
+    width: 50%;
+  }
+}
+
+@include media-query(medium) {
+  .bio {
+    .headshot {
+      width: 70%;
+      height: 70%;
+    }
+  }
+}
+
+.about {
+  margin-bottom: 30px;
+  border-bottom: 1px solid $grey-lt;
+}

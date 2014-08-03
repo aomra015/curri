@@ -1,0 +1,133 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  @include text-rendering;
+}
+
+html {
+  height: 100%; }
+
+body {
+  font-family: $sans-serif;
+  background-color: #ffffff;
+  color: $color-main;
+}
+
+p {
+  font-family: $serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: $grey-dk;
+  margin: 10px 0 20px 0;
+  a {
+    color: darken($color-primary, 30%);
+    &:hover {
+      text-decoration: underline;
+      color: $color-primary;
+    }
+  }
+}
+
+a {
+  color: $color-main;
+  text-decoration: none;
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+h1, 
+h2, 
+h3, 
+h4 {
+  font-family: $sans-serif;
+  font-weight: 900;
+}
+
+h1,
+.h1 {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+
+h2,
+.h2 {
+  font-size: 1.625rem;
+  line-height: 1.21;
+}
+
+h3,
+.h3 {
+  font-size: 1rem;
+  line-height: 1.136363;
+}
+
+.small {
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+@include media-query(medium) {
+  h1,
+  .h1 {
+    font-size: 2.25rem;
+    line-height: 1.125;
+  }
+  h2,
+  .h2 {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+  h3,
+  .h3 {
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .small {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@include media-query(large) {
+  h1,
+  .h1 {
+    font-size: 2.5rem;
+    line-height: 1.05;
+  }
+  h2,
+  .h2 {
+    font-size: 2.25rem;
+  }
+  h3,
+  .h3 {
+    font-size: 1.3rem;
+  }
+  p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+  }
+}
+
+input {
+  font-family: $sans-serif;
+  color: $color-main;
+  @include border-radius($global-radius);
+  @include all-transition;
+}
+
+input[type=email] {
+  @include text-rendering;
+  border: none;
+  padding: 0.5rem 0.7rem;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+input[type=email]:focus {
+  background-color: #FFFFFF;
+}

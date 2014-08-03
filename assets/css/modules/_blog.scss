@@ -1,0 +1,156 @@
+.blog {
+  .container {
+    max-width: 900px;
+  }
+  .header {
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 0;
+  }
+}
+
+.blurb {
+  p {
+    padding-bottom: 30px;
+    border-bottom: 1px solid $grey-lt;
+    margin-bottom: 10px;
+    color: $grey-md;
+    a {
+      color: $color-red;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+@include media-query(medium) {
+  .blog {
+    .header {
+      padding-top: 50px;
+    }
+  }
+}
+
+blockquote {
+  @extend .h2;
+  font-family: $serif;
+  font-style: italic;
+  color: $grey-md;
+  padding-left: 20px;
+  margin: 30px 30px 30px 0px;
+  border-left: 4px solid $grey-lt;
+}
+
+@include media-query(medium) {
+  blockquote {
+    padding-left: 40px;
+    border-left-width: 6px;
+  }
+} 
+
+article {
+  h3 {
+    margin-top: 40px;
+  }
+  ol {
+    @extend p;
+    li {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.post-index-title {
+  text-transform: uppercase;
+  color: lighten($color-main, 30%);
+  margin-top: 0;
+}
+
+.footnote {
+  position: relative;
+  a {
+    display: inline-block;
+    margin-left: -5px;
+    margin-right: -5px;
+    padding: 0 8px;
+  }
+}
+
+.references {
+  font-family: $sans-serif;
+  padding-top: 10px;
+  border-top: 1px solid $grey-lt;
+  &:before {
+    content: "References";
+    display: block;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  p {
+    color: $grey-md;
+    @extend %sans-body;
+  }
+  a {
+    @extend %external-link;
+  }
+}
+
+.ref-return {
+  color: $grey-dk;
+  display: inline-block;
+  margin-left: 5px;
+  margin-top: -2px;
+  font-size: 1.2rem;
+  background: $grey-lt;
+  padding: 0 5px 5px;
+  line-height: 0.8;
+  @include border-radius(10px);
+  &:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background: $color-red;
+  }
+}
+
+.post {
+  border-bottom: 1px solid $grey-lt;
+}
+.post .meta {
+  margin-top: 60px;
+  &:before {
+    content: "— by";
+    font-style: italic;
+  }
+  .name {
+    color: $color-red;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  &.hide-desktop {
+    margin-top: 10px;
+    &:before {
+      content: none;
+    }
+  }
+  span.date {
+    margin-left: 5px;
+  }
+}
+
+.post,
+.post-index {
+  .date {
+    color: $grey-md;
+    font-family: $sans-serif;
+  }
+}
+
+.post-index {
+  border-bottom: 1px solid $grey-lt;
+}
+
+.read-more {
+  @extend %sans-body;
+  @extend .small;
+}

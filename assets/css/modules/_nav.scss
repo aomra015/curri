@@ -1,0 +1,101 @@
+.nav {
+}
+
+.brandbar {
+  height: 6px;
+  background: $color-main;
+  background-image: repeating-linear-gradient(to right, $color-success 0px, $color-success 80px, $color-warning 80px, $color-warning 160px, $color-danger 160px, $color-danger 240px, $color-main 240px, $color-main 320px);
+}
+
+@include media-query(medium) {
+  .brandbar {
+    background-image: repeating-linear-gradient(to right, $color-success 0px, $color-success 160px, $color-warning 160px, $color-warning 320px, $color-danger 320px, $color-danger 480px, $color-main 480px, $color-main 640px);
+  }
+}
+
+.header {
+  padding: 20px 0;
+}
+
+@include media-query(medium) {
+  .header {
+  padding: 30px 0;
+  }
+}
+
+a.logo {
+  display: inline-block;
+  width: 170px;
+  height: 38px;
+  &:hover {
+    .green {
+      fill: $color-success;
+      @include transition(fill, 0.3s, ease, 0.6s);
+    }
+    .orange {
+      fill: $color-warning;
+      @include transition(fill, 0.3s, ease, 0.3s);
+    }
+    .red {
+      fill: $color-danger;
+      @include transition(fill, 0.3s, ease, 0);
+    }
+  }
+}
+
+.logo-container {
+  @extend %center-left-text;
+}
+
+.menu {
+  @extend %cf;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+  li {
+    width: 50%;
+    float: right;
+    text-align: center;
+  }
+  a {
+    display: block;
+    @extend %menu-link;
+    .footer & {
+      text-transform: none;
+    }
+  }
+  .footer & a:hover {
+    color: #ffffff;
+  }
+}
+
+@include media-query(large) {
+  .menu {
+    li {
+      width: 33%;
+    }
+  }
+}
+
+@include media-query(medium) {
+  .menu {
+    margin-top: 0;
+    a {
+      font-size: 1rem;
+    }
+  }
+}
+
+.footer {
+  color: #c8d3db;
+  background: $color-main;
+  padding: 30px 0 25px;
+}
+
+.copyright {
+  color: #ffffff;
+  padding: 10px 0;
+  @extend %center-left-text;
+  @extend .small;
+}

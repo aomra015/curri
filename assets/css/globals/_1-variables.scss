@@ -1,0 +1,19 @@
+// Use of the sass-globbing gem means that files in a folder are imported in alphabetical order. This file needs to be the first in the list within the 'globals' folder.
+$color-main: #415463;
+$color-success: #88DB81;
+$color-warning: #FDB343;
+$color-danger: #FF5454;
+$color-primary: #5DA3FD;
+$color-red: #E25274;
+$grey-lt: #ddd;
+$grey-md: #888;
+$grey-dk: #51515B;
+
+$global-radius: 4px;
+$sans-serif: "petala-pro", "source sans pro", "Helvetica Neue", "Helvetica", sans-serif;
+$serif: "skolar", "merriweather", Georgia, Cambria, "Times New Roman", Times, serif;
+
+// breakpoint sizes
+$small-end: 480px;
+$med-end: 600px;
+$large-start: 1024px;

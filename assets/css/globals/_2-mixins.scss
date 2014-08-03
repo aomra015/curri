@@ -1,0 +1,41 @@
+@mixin text-rendering {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+@mixin all-transition {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+@mixin border-radius($value) {
+  -webkit-border-radius: $value;
+  -moz-border-radius: $value;
+  -o-border-radius: $value;
+  border-radius: $value;
+}
+
+@mixin transition($property, $duration, $timing-function, $delay) {
+  -webkit-transition: $property $duration $timing-function $delay;
+  -moz-transition: $property $duration $timing-function $delay;
+  -o-transition: $property $duration $timing-function $delay;
+  -ms-transition: $property $duration $timing-function $delay;
+  transition: $property $duration $timing-function $delay;
+}
+
+@mixin media-query($media-query) {
+
+  @if $media-query ==  small {
+    @media only screen and (min-width:$small-end) { @content; }
+  }
+
+  @if $media-query ==  medium {
+      @media only screen and (min-width:$med-end) { @content; }
+  }
+  
+  @if $media-query ==  large {
+      @media only screen and (min-width:$large-start) { @content; }
+  }
+}
