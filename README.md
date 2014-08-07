@@ -1,7 +1,7 @@
 # Curri App
 
 ## Getting Started
-The development environment requires Ruby 2.0 and Postgresql. To get this setup please follow the instructions in the [Wiki](https://github.com/aomra015/curri/wiki). After that:
+The development environment requires Ruby 2.1.1 and Postgresql. To get this setup please follow the instructions in the [Wiki](https://github.com/aomra015/curri/wiki). After that:
 
 1. `$ git clone git@github.com:aomra015/curri.git`
 2. `$ cd curri`
