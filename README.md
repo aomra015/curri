@@ -1,5 +1,7 @@
 # Curri App
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 We saw too many frustrated teachers who wanted to know what their students were struggling with. We saw too many students who felt completely lost and didn't know what questions to ask. Curri was built to address this problem by improving student-teacher communication.
 
 The app was built by Ahmed Omran, Paula Franzini, Nachiket Kumar, and Alexander Miloff. We talked to a lot of teachers and tested the app with HackerYou's first front-end bootcamp course. There was very little interest from teachers because it "sounds like a lot of work".
