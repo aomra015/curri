@@ -2,7 +2,13 @@
     "name": "Curri Education Tool",
     "description": "Education tool for better student-teacher communication. http://www.curriapp.com",
     "repository": "https://github.com/aomra015/curri",
-    "addons": [ "heroku-postgresql:hobby-dev", "mandrill:starter", "pusher:sandbox" ],
+    "addons": [ "heroku-postgresql:hobby-dev", "mandrill:starter", "pusher:sandbox", "papertrail:choklad" ],
+    "env": {
+        "SECRET_TOKEN": {
+                "description": "This gets generated",
+                "generator": "secret"
+        }
+      },
     "scripts": {
         "postdeploy": "bundle exec rake db:migrate"
       }
